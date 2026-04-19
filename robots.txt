@@ -1,0 +1,31 @@
+# Block search engines from indexing the protected portfolio.
+# Public pages (index, about, dashboards) remain crawlable.
+User-agent: *
+Disallow: /work.html
+Disallow: /case-studies/
+Disallow: /case-studies/*
+
+# Extra belt-and-suspenders for specific well-known crawlers
+User-agent: Googlebot
+Disallow: /work.html
+Disallow: /case-studies/
+
+User-agent: Bingbot
+Disallow: /work.html
+Disallow: /case-studies/
+
+User-agent: GPTBot
+Disallow: /work.html
+Disallow: /case-studies/
+
+User-agent: ClaudeBot
+Disallow: /work.html
+Disallow: /case-studies/
+
+User-agent: CCBot
+Disallow: /work.html
+Disallow: /case-studies/
+
+User-agent: PerplexityBot
+Disallow: /work.html
+Disallow: /case-studies/

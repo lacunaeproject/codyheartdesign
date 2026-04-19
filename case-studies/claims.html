@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claims — Cody Heart</title>
+<meta name="description" content="Rebuilding claims processing for a third-party administrator. Case study.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codyheart.design/case-studies/claims.html">
+<meta property="og:title" content="Claims Infrastructure — Cody Heart">
+<meta property="og:description" content="Rebuilding claims processing for a third-party administrator. Case study.">
+<meta property="og:image" content="https://codyheart.design/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cody Heart — Lead Product Designer">
+<meta property="og:site_name" content="Cody Heart">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claims Infrastructure — Cody Heart">
+<meta name="twitter:description" content="Rebuilding claims processing for a third-party administrator. Case study.">
+<meta name="twitter:image" content="https://codyheart.design/og-image.png">
+
+<!-- Theme color (mobile browser chrome) -->
+<meta name="theme-color" content="#FBFAF6">
+<link rel="stylesheet" href="../css/main.css">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<style>
+  /* Hide the case study content until the password is entered on this page.
+     The .cs-lock screen stays visible until body.is-unlocked is applied. */
+  main > .cs-content { display: none; }
+  body.is-unlocked main > .cs-content { display: block; }
+  body.is-unlocked main > .cs-lock { display: none; }
+</style>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=../work.html">
+</noscript>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="wordmark"><svg class="wordmark__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.5-9.5-9.5C1 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5C19.5 16.5 12 21 12 21z"/></svg><span>Cody Heart</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../work.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:hello@codyheart.design">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cs">
+
+  <!-- LOCK — inline password screen for this case study -->
+  <section class="lock cs-lock" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 03 · Protected</span>
+      <h1>Claims</h1>
+      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-content">
+
+  <section class="cs-hero shell">
+    <div class="cs-hero__nav">
+      <a href="../work.html">← All case studies</a>
+      <span>·</span>
+      <span>№ 03 of 05</span>
+    </div>
+    <span class="eyebrow cs-hero__eyebrow">№ 03 · Claims</span>
+    <h1 class="reveal">Rebuilding the slowest screen in the building.</h1>
+    <p class="cs-hero__lede reveal reveal--d1">
+      At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: make it faster, and make it auditable.
+    </p>
+
+    <div class="cs-meta">
+      <div>
+        <div class="cs-meta__label">Role</div>
+        <div class="cs-meta__value">Senior Product Designer</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Team</div>
+        <div class="cs-meta__value">Platform Experience, CX</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Timeline</div>
+        <div class="cs-meta__value">2018 – 2021</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Focus</div>
+        <div class="cs-meta__value">Internal tools &amp; reporting</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="metrics__grid">
+      <div class="metric reveal">
+        <p class="metric__num">-60%</p>
+        <p class="metric__label">Time on task for out-of-network claim transcription.</p>
+      </div>
+      <div class="metric reveal reveal--d1">
+        <p class="metric__num">-50%</p>
+        <p class="metric__label">Time on task across adjacent CX workflows that shared the same data model.</p>
+      </div>
+      <div class="metric reveal reveal--d2">
+        <p class="metric__num">45+ ships</p>
+        <p class="metric__label">Features shipped across internal tools, member platform, and reporting infrastructure over the engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-body shell--read">
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">01 / The screen</div>
+      <div>
+        <h2 class="reveal">Twenty minutes per claim.</h2>
+        <p class="reveal">An out-of-network (OON) claim is, by definition, one where the provider wasn&#8217;t in Collective&#8217;s network — so the paperwork lands in a stack of PDFs, scanned forms, and faxed itemizations. A CX specialist has to transcribe each one into our internal system, and every field matters: dates of service, procedure codes, modifiers, diagnosis codes, billed amounts, patient responsibility. A twenty-minute data-entry job, done by a human, on work that ultimately flows into a reimbursement decision.</p>
+        <p class="reveal">The existing screen had been built quickly, several years earlier, by an engineer who was no longer at the company. It was a literal top-to-bottom form with no contextual intelligence, no duplicate detection, and no way to keep a PDF open side-by-side without leaving the tool.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">02 / Research</div>
+      <div>
+        <h2 class="reveal">The source document is the interface.</h2>
+        <p class="reveal">After shadowing the CX team for several weeks, I realized the real interface wasn&#8217;t the form. It was the PDF. Specialists spent most of their time scanning back and forth between the document and the form, losing their place, re-reading lines. The form field you were filling in had to match the region of the document you were reading, or the work got slow and error-prone.</p>
+        <p class="reveal">The design insight, once it clicked, felt obvious: put the document in the tool, not next to it. Make the form follow the reader&#8217;s eye.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">03 / Design</div>
+      <div>
+        <h2 class="reveal">A split that actually works.</h2>
+        <p class="reveal">We shipped a split-screen transcription tool with the PDF on the left and the form on the right. Fields were grouped to match the way information typically appears on a claim form — patient identifiers up top, service lines in the middle, totals at the bottom. We added keyboard navigation between fields, auto-advance on known field lengths (like date of service), and a running total that the specialist could sanity-check against the document.</p>
+        <p class="reveal">On the data side, I worked with engineering to pre-fill any field we already had high-confidence data for — provider NPI, member ID, plan details — leaving only the novel fields for manual entry. Duplicate-claim detection flagged likely re-submissions before the specialist had to find them.</p>
+        <h3 class="reveal">Small details that mattered</h3>
+        <ul class="reveal">
+          <li>A persistent note field on every claim, for specialists to leave context for the next reviewer. The line between &#8220;can I process this?&#8221; and &#8220;I need help&#8221; used to live in Slack; we brought it into the record.</li>
+          <li>Field-level audit: who entered each value, when, and what it was changed from. Compliance loved it; specialists were surprised how often they referred back to it themselves.</li>
+          <li>Undo. A real undo, not a refresh-and-cry undo.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">04 / Reporting</div>
+      <div>
+        <h2 class="reveal">Dashboards that made the next investment legible.</h2>
+        <p class="reveal">Reducing time-on-task was the headline. The second-order work was the reporting — the system-level views that let CX leadership, finance, and product see where claims work was piling up and why. I designed reporting dashboards that exposed queue depth, claim age, exception rate, and specialist throughput, with drill-downs to the individual claim. Those dashboards were later used to justify hiring, to prioritize engineering work, and to make the case for further automation.</p>
+        <blockquote class="reveal">A design team that can&#8217;t show you its numbers is, quietly, a design team you can cut.</blockquote>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">05 / Reflection</div>
+      <div>
+        <h2 class="reveal">What I learned from the specialists.</h2>
+        <p class="reveal">The specialists who transcribed claims every day were the best product partners I&#8217;d worked with. They knew the edge cases, the weird-plan exceptions, the carriers whose PDFs were unreadable, the small lies that certain provider forms told. Most of the durable improvements on this project came from their corrections to my first drafts.</p>
+        <p class="reveal">The lesson I kept, and have kept using at LifeStance: when you&#8217;re designing an internal tool, the people using it for eight hours a day are not a research population to be synthesized. They are collaborators whose names should be in the commit history.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="cs-next">
+    <div class="cs-next__inner">
+      <div>
+        <div class="cs-next__label">Next Case Study · № 04</div>
+      </div>
+      <a href="billing.html">
+        <h2 class="cs-next__title">Billing →</h2>
+      </a>
+    </div>
+  </section>
+
+  </div><!-- /.cs-content -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <h3>Elsewhere</h3>
+      <p class="site-footer__sign">Remote · Franklin, TN → Chicago, IL 2027</p>
+      <p style="color: var(--muted); margin: 0;">hello@codyheart.design</p>
+    </div>
+    <div>
+      <h3>Links</h3>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work.html">Case studies</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Find me</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__colophon">
+      <span>© 2026 Cody Heart.</span>
+      <span>Designed by me, coded with Claude.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  (function() {
+    // If already unlocked, reveal content immediately
+    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
+      document.body.classList.add('is-unlocked');
+      return;
+    }
+
+    const lock  = document.getElementById('cs-lock');
+    const form  = document.getElementById('cs-lock-form');
+    const input = document.getElementById('cs-lock-input');
+    const err   = document.getElementById('cs-lock-error');
+    if (!form || !input || !lock) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
+        err.classList.remove('is-visible');
+        lock.classList.remove('is-error');
+        lock.classList.add('is-success');
+        // Let the unlock animation play, then reveal content
+        setTimeout(() => {
+          document.body.classList.add('is-unlocked');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 850);
+      } else {
+        err.classList.add('is-visible');
+        lock.classList.remove('is-error');
+        // Force reflow so the animation can re-trigger
+        void lock.offsetWidth;
+        lock.classList.add('is-error');
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    // Autofocus the input so visitors can just start typing
+    window.addEventListener('load', () => input.focus());
+  })();
+</script>
+</body>
+</html>

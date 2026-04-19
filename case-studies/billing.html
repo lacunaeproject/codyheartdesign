@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billing — Cody Heart</title>
+<meta name="description" content="Cutting 40% of manual work out of member billing. Case study.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codyheart.design/case-studies/billing.html">
+<meta property="og:title" content="Billing Systems — Cody Heart">
+<meta property="og:description" content="Cutting 40% of manual work out of member billing. Case study.">
+<meta property="og:image" content="https://codyheart.design/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cody Heart — Lead Product Designer">
+<meta property="og:site_name" content="Cody Heart">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Billing Systems — Cody Heart">
+<meta name="twitter:description" content="Cutting 40% of manual work out of member billing. Case study.">
+<meta name="twitter:image" content="https://codyheart.design/og-image.png">
+
+<!-- Theme color (mobile browser chrome) -->
+<meta name="theme-color" content="#FBFAF6">
+<link rel="stylesheet" href="../css/main.css">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<style>
+  /* Hide the case study content until the password is entered on this page.
+     The .cs-lock screen stays visible until body.is-unlocked is applied. */
+  main > .cs-content { display: none; }
+  body.is-unlocked main > .cs-content { display: block; }
+  body.is-unlocked main > .cs-lock { display: none; }
+</style>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=../work.html">
+</noscript>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="wordmark"><svg class="wordmark__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.5-9.5-9.5C1 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5C19.5 16.5 12 21 12 21z"/></svg><span>Cody Heart</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../work.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:hello@codyheart.design">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cs">
+
+  <!-- LOCK — inline password screen for this case study -->
+  <section class="lock cs-lock" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 04 · Protected</span>
+      <h1>Billing</h1>
+      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-content">
+
+  <section class="cs-hero shell">
+    <div class="cs-hero__nav">
+      <a href="../work.html">← All case studies</a>
+      <span>·</span>
+      <span>№ 04 of 05</span>
+    </div>
+    <span class="eyebrow cs-hero__eyebrow">№ 04 · Billing</span>
+    <h1 class="reveal">The invisible half of member finance.</h1>
+    <p class="cs-hero__lede reveal reveal--d1">
+      Most of the work in a billing system isn&#8217;t billing. It&#8217;s the adjacent work that keeps the books honest — reconciliation between what we charged and what the carrier paid, disputes when those don&#8217;t match, and the reporting that tells leadership which of it is working. That adjacent work was eating up 40% of the billing team&#8217;s manual effort. We got rid of it.
+    </p>
+
+    <div class="cs-meta">
+      <div>
+        <div class="cs-meta__label">Role</div>
+        <div class="cs-meta__value">Senior Product Designer</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Team</div>
+        <div class="cs-meta__value">Platform Experience</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Timeline</div>
+        <div class="cs-meta__value">2019 – 2021</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Focus</div>
+        <div class="cs-meta__value">Workflow automation</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="metrics__grid">
+      <div class="metric reveal">
+        <p class="metric__num">-40%</p>
+        <p class="metric__label">Manual billing work eliminated through workflow automation.</p>
+      </div>
+      <div class="metric reveal reveal--d1">
+        <p class="metric__num">1 system</p>
+        <p class="metric__label">Consolidated three disconnected tools (reconciliation, disputes, reporting) into one.</p>
+      </div>
+      <div class="metric reveal reveal--d2">
+        <p class="metric__num">All lines</p>
+        <p class="metric__label">Every billing line item now has a state machine, not a spreadsheet column.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-body shell--read">
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">01 / Problem</div>
+      <div>
+        <h2 class="reveal">Three tools, one reality.</h2>
+        <p class="reveal">The billing team at Collective Health was managing their work across three different systems. Reconciliation — matching charges to payments — lived in one. Disputes — the long-tail cases where the numbers didn&#8217;t line up — lived in a second. Reporting — the monthly view leadership needed — was built by copying data from the first two into a shared spreadsheet. Each tool had its own vocabulary for the same line item.</p>
+        <p class="reveal">The work wasn&#8217;t slow because people were slow. It was slow because each billing specialist was doing, in parallel, the invisible job of translating between three systems.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">02 / Insight</div>
+      <div>
+        <h2 class="reveal">A state machine, not a list.</h2>
+        <p class="reveal">The throughline across all three tools was a single entity — a billing line item — that moves through states: pending, reconciled, disputed, adjusted, resolved, reported. Each tool touched different states. Nobody owned the journey.</p>
+        <p class="reveal">The design move, once we saw it, was to stop designing three tools and start designing one — a single workspace that followed a line item through its life, with the right surface exposed at each state.</p>
+        <blockquote class="reveal">The fastest way to automate a workflow is to make the object it operates on legible.</blockquote>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">03 / Design</div>
+      <div>
+        <h2 class="reveal">One workspace, state-aware.</h2>
+        <p class="reveal">We built a single billing workspace organized around line items. At each state in the line item&#8217;s life, the specialist saw only the tools relevant to that state:</p>
+        <ul class="reveal">
+          <li><strong>Pending:</strong> a simple reconciliation view, with carrier payments auto-matched against expected amounts where possible.</li>
+          <li><strong>Disputed:</strong> a focused dispute view with a timeline of communications, a template library for common responses, and a clear next-action surface.</li>
+          <li><strong>Resolved / Reported:</strong> lightweight audit trail, plus the line item&#8217;s inclusion in the monthly report generated automatically from the source data.</li>
+        </ul>
+        <p class="reveal">What went away: the triple-entry of the same line item in different tools, the monthly reporting scramble, the opaque &#8220;how did this number get here&#8221; question at every quarterly review.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">04 / Automation</div>
+      <div>
+        <h2 class="reveal">The 40% came from the boring half.</h2>
+        <p class="reveal">The headline number — 40% of manual billing work eliminated — didn&#8217;t come from the glamorous parts of the tool. It came from the background jobs: auto-matching reconciled line items, auto-generating the monthly close report from the live data, auto-filing resolved disputes instead of asking a specialist to click through. Each one is a small script. Together they are a working week a billing specialist gets back every month.</p>
+        <p class="reveal">The design job was less about inventing the automations and more about deciding which ones were safe to automate and which ones needed a human in the loop. Anything with financial risk got explicit specialist review. Anything deterministic and auditable got automated. The line between the two was the product.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">05 / Outcome</div>
+      <div>
+        <h2 class="reveal">Reporting as a byproduct of the work.</h2>
+        <p class="reveal">Before this project, monthly billing reports were a separate deliverable — a document pulled together at the end of the month, from data that had already been transcribed twice. After this project, the monthly report is a read-only view of the live system. It is, in a small but satisfying way, the same job as the day-to-day work.</p>
+        <p class="reveal">That pattern — reporting as a byproduct of correctly-shaped data, not a separate deliverable — is something I&#8217;ve carried into every internal tool I&#8217;ve designed since. Most of the reporting dashboards I&#8217;ve built at LifeStance work this way.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="cs-next">
+    <div class="cs-next__inner">
+      <div>
+        <div class="cs-next__label">Next Case Study · № 05</div>
+      </div>
+      <a href="design-roi.html">
+        <h2 class="cs-next__title">Design ROI →</h2>
+      </a>
+    </div>
+  </section>
+
+  </div><!-- /.cs-content -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <h3>Elsewhere</h3>
+      <p class="site-footer__sign">Remote · Franklin, TN → Chicago, IL 2027</p>
+      <p style="color: var(--muted); margin: 0;">hello@codyheart.design</p>
+    </div>
+    <div>
+      <h3>Links</h3>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work.html">Case studies</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Find me</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__colophon">
+      <span>© 2026 Cody Heart.</span>
+      <span>Designed by me, coded with Claude.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  (function() {
+    // If already unlocked, reveal content immediately
+    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
+      document.body.classList.add('is-unlocked');
+      return;
+    }
+
+    const lock  = document.getElementById('cs-lock');
+    const form  = document.getElementById('cs-lock-form');
+    const input = document.getElementById('cs-lock-input');
+    const err   = document.getElementById('cs-lock-error');
+    if (!form || !input || !lock) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
+        err.classList.remove('is-visible');
+        lock.classList.remove('is-error');
+        lock.classList.add('is-success');
+        // Let the unlock animation play, then reveal content
+        setTimeout(() => {
+          document.body.classList.add('is-unlocked');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 850);
+      } else {
+        err.classList.add('is-visible');
+        lock.classList.remove('is-error');
+        // Force reflow so the animation can re-trigger
+        void lock.offsetWidth;
+        lock.classList.add('is-error');
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    // Autofocus the input so visitors can just start typing
+    window.addEventListener('load', () => input.focus());
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matching Logic — Cody Heart</title>
+<meta name="description" content="Care routing for a national mental health platform. One of five selected case studies.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://codyheart.design/case-studies/matching-logic.html">
+<meta property="og:title" content="Matching Logic — Cody Heart">
+<meta property="og:description" content="Care routing for a national mental health platform. One of five selected case studies.">
+<meta property="og:image" content="https://codyheart.design/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cody Heart — Lead Product Designer">
+<meta property="og:site_name" content="Cody Heart">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Matching Logic — Cody Heart">
+<meta name="twitter:description" content="Care routing for a national mental health platform. One of five selected case studies.">
+<meta name="twitter:image" content="https://codyheart.design/og-image.png">
+
+<!-- Theme color (mobile browser chrome) -->
+<meta name="theme-color" content="#FBFAF6">
+<link rel="stylesheet" href="../css/main.css">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<style>
+  /* Hide the case study content until the password is entered on this page.
+     The .cs-lock screen stays visible until body.is-unlocked is applied. */
+  main > .cs-content { display: none; }
+  body.is-unlocked main > .cs-content { display: block; }
+  body.is-unlocked main > .cs-lock { display: none; }
+</style>
+<noscript>
+  <meta http-equiv="refresh" content="0; url=../work.html">
+</noscript>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a href="../index.html" class="wordmark"><svg class="wordmark__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.5-9.5-9.5C1 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6 4 4.5 7.5C19.5 16.5 12 21 12 21z"/></svg><span>Cody Heart</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="../work.html">Work</a>
+      <a href="../about.html">About</a>
+      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="mailto:hello@codyheart.design">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="cs">
+
+  <!-- LOCK — inline password screen for this case study -->
+  <section class="lock cs-lock" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 01 · Protected</span>
+      <h1>Matching Logic</h1>
+      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-content">
+
+  <section class="cs-hero shell">
+    <div class="cs-hero__nav">
+      <a href="../work.html">← All case studies</a>
+      <span>·</span>
+      <span>№ 01 of 05</span>
+    </div>
+    <span class="eyebrow cs-hero__eyebrow">№ 01 · Matching Logic</span>
+    <h1 class="reveal">Turning an ambiguous funnel into a measurable framework.</h1>
+    <p class="cs-hero__lede reveal reveal--d1">
+      LifeStance operates in 33 states with thousands of clinicians across its behavioral-health footprint. When a patient searches for care, the match between them and a provider has to clear a lot of gates — insurance, license state, specialty, modality, availability, intent. Until recently, the funnel was opaque; we could see conversions, but we couldn&#8217;t say why.
+    </p>
+
+    <div class="cs-meta">
+      <div>
+        <div class="cs-meta__label">Role</div>
+        <div class="cs-meta__value">Lead Product Designer</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Team</div>
+        <div class="cs-meta__value">Product, Eng, Ops, Clinical</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Timeline</div>
+        <div class="cs-meta__value">2024 – present</div>
+      </div>
+      <div>
+        <div class="cs-meta__label">Focus</div>
+        <div class="cs-meta__value">Routing &amp; measurement</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics">
+    <div class="metrics__grid">
+      <div class="metric reveal">
+        <p class="metric__num">4 gates</p>
+        <p class="metric__label">Translated a vague funnel into a four-stage measurable model: Intent → Eligibility → Availability → Acceptance.</p>
+      </div>
+      <div class="metric reveal reveal--d1">
+        <p class="metric__num">33 states</p>
+        <p class="metric__label">Rolled out across the full national footprint, not a pilot market.</p>
+      </div>
+      <div class="metric reveal reveal--d2">
+        <p class="metric__num">Every spec</p>
+        <p class="metric__label">New product asks now ship with a conversion, capacity, and intent hypothesis attached.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-body shell--read">
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">01 / Problem</div>
+      <div>
+        <h2 class="reveal">The funnel nobody trusted.</h2>
+        <p class="reveal">When I joined the effort, the routing system was a series of rules patched together over several years. Leadership&#8217;s question was a good one: &#8220;Is our conversion bad because we&#8217;re bad at matching, or because not enough of the right patients are coming in?&#8221;</p>
+        <p class="reveal">Nobody could answer it. The funnel lumped intent, eligibility, and availability together. A patient who never intended to book looked the same as a patient who wanted care but couldn&#8217;t find an in-network clinician in their state.</p>
+        <p class="reveal">The first job, before any pixels, was to build a shared vocabulary.</p>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">02 / Framework</div>
+      <div>
+        <h2 class="reveal">Four gates, in order.</h2>
+        <p class="reveal">I worked with product, clinical ops, and data to split the funnel into four explicit stages:</p>
+        <ul class="reveal">
+          <li><strong>Intent</strong> — Did the patient come here wanting care, or information, or a price check?</li>
+          <li><strong>Eligibility</strong> — Do we accept their insurance? Do we have a licensed clinician in their state?</li>
+          <li><strong>Availability</strong> — Is there a matching clinician with open slots in a reasonable window?</li>
+          <li><strong>Acceptance</strong> — Did the patient actually take the appointment we offered?</li>
+        </ul>
+        <p class="reveal">Each gate gets its own metric, its own failure mode, and its own design intervention. Dropoffs at Eligibility are a network and licensing problem. Dropoffs at Availability are a capacity problem. Dropoffs at Acceptance are a design problem — modality, timing, clinician fit.</p>
+        <blockquote class="reveal">A conversion metric that can&#8217;t be disaggregated isn&#8217;t a conversion metric — it&#8217;s a vibe.</blockquote>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">03 / Design</div>
+      <div>
+        <h2 class="reveal">Routing as a first-class surface.</h2>
+        <p class="reveal">We rebuilt the matching screens around intent first, then surfaced eligibility and availability as progressive disclosure. The patient sees clinicians who can actually see them, filtered to their state and insurance, ordered by availability window, with modality (in-person vs. telehealth) treated as a primary choice rather than a filter.</p>
+        <p class="reveal">On the admin side, care coordinators got a dashboard showing which gate was rejecting a patient — so if eligibility was the issue, they could offer alternatives (self-pay, different modality, referral) instead of ending the call.</p>
+        <h3 class="reveal">A few specific moves</h3>
+        <ul class="reveal">
+          <li>Split &#8220;not available&#8221; into capacity-out-of-stock vs. not-a-match. They get different copy and different next steps.</li>
+          <li>Pulled clinician modality (telehealth/in-person) to the top of the provider card. A majority of mismatches were patients wanting one and getting matched to the other.</li>
+          <li>Added an intent check at the top of the funnel — a soft, non-blocking question. Early data suggests it improves downstream accuracy without hurting conversion.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cs-chapter">
+      <div class="cs-chapter__num">04 / Outcome</div>
+      <div>
+        <h2 class="reveal">The second-order effect.</h2>
+        <p class="reveal">The direct conversion gains are real but, honestly, not the most interesting part. The larger shift is that routing is now a thing the org can reason about. Engineering spec reviews now open with a conversion, capacity, and intent hypothesis. Product roadmap prioritization uses the four-gate model to estimate which interventions move which stage.</p>
+        <p class="reveal">Design, for the first time in my tenure here, shows up in the financial model — not as a cost, but as an attributable lift on a specific gate.</p>
+        <h3 class="reveal">What I&#8217;d do differently</h3>
+        <p class="reveal">We underinvested, at first, in the clinician-side view of the same funnel. Matching is a two-sided market, and clinicians who feel mismatched cancel. The next phase of work is building the clinician counterpart to the routing framework.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="cs-next">
+    <div class="cs-next__inner">
+      <div>
+        <div class="cs-next__label">Next Case Study · № 02</div>
+      </div>
+      <a href="matching-tool.html">
+        <h2 class="cs-next__title">Matching Tool →</h2>
+      </a>
+    </div>
+  </section>
+
+  </div><!-- /.cs-content -->
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <h3>Elsewhere</h3>
+      <p class="site-footer__sign">Remote · Franklin, TN → Chicago, IL 2027</p>
+      <p style="color: var(--muted); margin: 0;">hello@codyheart.design</p>
+    </div>
+    <div>
+      <h3>Links</h3>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work.html">Case studies</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Find me</h3>
+      <ul>
+        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
+      </ul>
+    </div>
+    <div class="site-footer__colophon">
+      <span>© 2026 Cody Heart.</span>
+      <span>Designed by me, coded with Claude.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  (function() {
+    // If already unlocked, reveal content immediately
+    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
+      document.body.classList.add('is-unlocked');
+      return;
+    }
+
+    const lock  = document.getElementById('cs-lock');
+    const form  = document.getElementById('cs-lock-form');
+    const input = document.getElementById('cs-lock-input');
+    const err   = document.getElementById('cs-lock-error');
+    if (!form || !input || !lock) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
+        err.classList.remove('is-visible');
+        lock.classList.remove('is-error');
+        lock.classList.add('is-success');
+        // Let the unlock animation play, then reveal content
+        setTimeout(() => {
+          document.body.classList.add('is-unlocked');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 850);
+      } else {
+        err.classList.add('is-visible');
+        lock.classList.remove('is-error');
+        // Force reflow so the animation can re-trigger
+        void lock.offsetWidth;
+        lock.classList.add('is-error');
+        input.value = '';
+        input.focus();
+      }
+    });
+
+    // Autofocus the input so visitors can just start typing
+    window.addEventListener('load', () => input.focus());
+  })();
+</script>
+</body>
+</html>
