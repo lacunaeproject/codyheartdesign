@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m http.server 8765 --directory .)",
+      "Bash(echo \"server pid: $!\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8765/case-studies/matching-logic.html)",
+      "Skill(claude-in-chrome)",
+      "Bash(kill 569)",
+      "mcp__claude-in-chrome__javascript_tool",
+      "Bash(curl -s -o /dev/null -w \"work.html: HTTP %{http_code}\\\\n\" http://localhost:8765/work.html)",
+      "mcp__claude-in-chrome__navigate",
+      "Bash(kill 857)",
+      "Bash(echo \"pid: $!\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:8765/case-studies/matching-tool.html)",
+      "Bash(kill 2001)",
+      "Bash(curl -s -o /dev/null -w \"matching-tool: HTTP %{http_code}\\\\n\" http://localhost:8765/case-studies/matching-tool.html)",
+      "Bash(curl -s -o /dev/null -w \"design-roi:    HTTP %{http_code}\\\\n\" http://localhost:8765/case-studies/design-roi.html)",
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "Bash(kill 1088)",
+      "Bash(curl -s -o /dev/null -w \"matching-logic: HTTP %{http_code}\\\\n\" http://localhost:8765/case-studies/matching-logic.html)",
+      "mcp__claude-in-chrome__read_console_messages",
+      "Bash(curl -s http://localhost:8765/js/main.js)",
+      "Bash(kill 1814)",
+      "Bash(kill 257)",
+      "Bash(kill 1676)",
+      "WebFetch(domain:owltastic.com)",
+      "Bash(curl -s -o /dev/null -w \"font: HTTP %{http_code}\\\\n\" http://localhost:8765/assets/fonts/regards-webfont.woff2)",
+      "Bash(kill 1550)",
+      "Bash(kill 1897)",
+      "Bash(kill 617)",
+      "Bash(kill 1753)",
+      "Bash(curl -s -o /dev/null -w \"index: HTTP %{http_code}\\\\n\" http://localhost:8765/index.html)",
+      "Bash(kill 1111)",
+      "Bash(kill 831)",
+      "Bash(kill 1961)",
+      "Bash(kill 1512)",
+      "Bash(kill 1296)",
+      "mcp__claude-in-chrome__resize_window",
+      "Bash(kill 1712)",
+      "Bash(kill 109)"
+    ]
+  }
+}

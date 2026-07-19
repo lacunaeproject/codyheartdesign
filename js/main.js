@@ -126,3 +126,287 @@ window.CH_AUTH = (function() {
 
   return { isUnlocked, unlock, lock, requireAuth, PASSWORD_HINT: 'Hint: ask me.' };
 })();
+
+/* ---------- Hero H1 word-by-word reveal ----------
+   Splits any hero H1 (homepage .hero h1, case-study .cs-hero h1)
+   into word spans that fade+lift in on a stagger. Skipped for H1s
+   that contain HTML children (e.g. inline <em>), for reduced-motion,
+   and if no such H1 exists. */
+(function initHeroH1Reveal() {
+  const h1s = document.querySelectorAll('.hero h1, .cs-hero h1');
+  if (!h1s.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  h1s.forEach(h1 => {
+    // Preserve any inline markup: only split H1s that are pure text.
+    if (h1.children.length > 0) return;
+
+    const text = h1.textContent.trim();
+    if (!text) return;
+    const words = text.split(/\s+/);
+
+    // Drop the block-level .reveal so we don't double-animate the parent.
+    h1.classList.remove('reveal', 'reveal--d1', 'reveal--d2', 'reveal--d3');
+    h1.innerHTML = words.map((w, i) => {
+      const delay = 120 + i * 55; // 120ms base + 55ms per word
+      return '<span class="h1-word" style="transition-delay:' + delay + 'ms">' + w + '</span>';
+    }).join(' ');
+
+    requestAnimationFrame(() => {
+      h1.querySelectorAll('.h1-word').forEach(w => w.classList.add('is-in'));
+    });
+  });
+})();
+
+/* ---------- Case-study byline card ----------
+   Inject an NYT-style byline at the end of the hero: bold "By Cody
+   Heart" on top, small meta line (role from .cs-meta + timeline +
+   reading time from body word count at 220 wpm) underneath. */
+(function initHeroByline() {
+  const hero = document.querySelector('.cs-hero');
+  if (!hero) return;
+  if (hero.querySelector('.cs-hero__byline')) return;
+
+  const body = document.querySelector('main.cs .cs-body:not(.cs-body--overview)');
+  if (!body) return;
+  const wordCount = body.innerText.trim().split(/\s+/).length;
+  const readMin = Math.max(2, Math.round(wordCount / 220));
+
+  const getMeta = (label) => {
+    const el = [...hero.querySelectorAll('.cs-meta__label')].find(x => x.textContent.trim() === label);
+    return el && el.nextElementSibling ? el.nextElementSibling.textContent.trim() : '';
+  };
+  const role = getMeta('Role');
+  const timeline = getMeta('Timeline');
+
+  const metaParts = [];
+  if (role) metaParts.push(role);
+  if (timeline) metaParts.push(timeline);
+  metaParts.push(readMin + ' min read');
+
+  const byline = document.createElement('div');
+  byline.className = 'cs-hero__byline';
+
+  const name = document.createElement('div');
+  name.className = 'cs-hero__byline-name';
+  name.textContent = 'By Cody Heart';
+  byline.appendChild(name);
+
+  const meta = document.createElement('div');
+  meta.className = 'cs-hero__byline-meta';
+  meta.textContent = metaParts.join(' · ');
+  byline.appendChild(meta);
+
+  // If there's a lead illustration in the hero, place byline just before it
+  // so the order reads: eyebrow → H1 → lede → byline card → illustration.
+  const illustration = hero.querySelector('.cs-hero-illustration');
+  if (illustration) hero.insertBefore(byline, illustration);
+  else hero.appendChild(byline);
+})();
+
+/* ---------- Continents counter ----------
+   Small exploration/travel tag injected in the footer after the sign
+   line. Universal across every page that uses .site-footer. Update
+   the constants below when the count changes. */
+(function initFooterContinents() {
+  const sign = document.querySelector('.site-footer__sign');
+  if (!sign) return;
+  if (sign.nextElementSibling && sign.nextElementSibling.classList.contains('site-footer__continents')) return;
+
+  // === Continent count — update these when you visit a new one ===
+  const VISITED = 3;
+  const TOTAL = 7;
+  const NEXT_LABEL = 'Antarctica next';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'site-footer__continents';
+  wrap.setAttribute('aria-label', 'Continents visited so far');
+
+  const label = document.createElement('span');
+  label.className = 'site-footer__continents-label';
+  label.textContent = 'Continents · ' + VISITED + ' of ' + TOTAL;
+  wrap.appendChild(label);
+
+  const dots = document.createElement('span');
+  dots.className = 'site-footer__continents-dots';
+  for (let i = 0; i < TOTAL; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'site-footer__continent-dot' + (i < VISITED ? ' site-footer__continent-dot--filled' : '');
+    dots.appendChild(dot);
+  }
+  wrap.appendChild(dots);
+
+  if (NEXT_LABEL) {
+    const next = document.createElement('span');
+    next.className = 'site-footer__continents-next';
+    next.textContent = NEXT_LABEL;
+    wrap.appendChild(next);
+  }
+
+  sign.insertAdjacentElement('afterend', wrap);
+})();
+
+/* ---------- Reading progress bar ----------
+   Fixed top-of-viewport bar that fills as the reader scrolls the page.
+   Only injected on case-study pages (identified by main.cs). Scroll
+   handler is rAF-throttled and passive so it stays cheap. */
+(function initReadingProgress() {
+  if (!document.querySelector('main.cs')) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const bar = document.createElement('div');
+  bar.className = 'reading-progress';
+  bar.setAttribute('aria-hidden', 'true');
+  document.body.prepend(bar);
+
+  let ticking = false;
+  function update() {
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop || 0;
+    const height = (doc.scrollHeight - window.innerHeight) || 1;
+    const progress = Math.max(0, Math.min(scrollTop / height, 1));
+    bar.style.width = (progress * 100).toFixed(2) + '%';
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+
+/* ---------- Count-up on scroll ----------
+   Any element with [data-countup] gets its numeric content animated
+   from 0 → the parsed target value when it scrolls into view.
+   Preserves any prefix/suffix (e.g. "3.3%", "-24.1%", "10×", "$117K").
+   Respects prefers-reduced-motion by rendering the final value immediately.
+*/
+(function initCountUp() {
+  const els = document.querySelectorAll('[data-countup]');
+  if (!els.length) return;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function parse(text) {
+    const m = text.match(/(-?\d+(?:\.\d+)?)/);
+    if (!m) return null;
+    const raw = m[1];
+    const idx = text.indexOf(raw);
+    return {
+      num: parseFloat(raw),
+      prefix: text.slice(0, idx),
+      suffix: text.slice(idx + raw.length),
+      decimals: raw.includes('.') ? raw.split('.')[1].length : 0
+    };
+  }
+
+  function format(n, decimals) {
+    return decimals > 0 ? n.toFixed(decimals) : String(Math.round(n));
+  }
+
+  function animate(el, parsed) {
+    const duration = 1400;
+    const start = performance.now();
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    function step(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const value = parsed.num * easeOut(t);
+      el.textContent = parsed.prefix + format(value, parsed.decimals) + parsed.suffix;
+      if (t < 1) requestAnimationFrame(step);
+      else el.textContent = parsed.prefix + format(parsed.num, parsed.decimals) + parsed.suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  els.forEach(el => {
+    const parsed = parse(el.textContent);
+    if (!parsed) return;
+    if (prefersReduced || !('IntersectionObserver' in window)) return;
+
+    // Zero out the number, preserve prefix/suffix
+    el.textContent = parsed.prefix + format(0, parsed.decimals) + parsed.suffix;
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(el, parsed);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  });
+})();
+
+/* ---------- Diagram reveal ----------
+   Elements with [data-diagram-reveal] get an 'is-in' class when they
+   scroll into view. CSS drives the actual animation (stroke-dashoffset,
+   scaleX on bars, opacity fades). Reduced-motion is handled in CSS.
+*/
+(function initDiagramReveal() {
+  const els = document.querySelectorAll('[data-diagram-reveal]');
+  if (!els.length) return;
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ---------- Screens gate ----------
+   A per-page inline gate for a "Screens" section. Password is
+   sessionStorage-persisted so unlocking one page unlocks all screens
+   sections in the same tab session.
+
+   === SCREENS PASSWORD — change SCREENS_PASSWORD below to your string ===
+   Location: this file, top of the CH_SCREENS IIFE.
+*/
+window.CH_SCREENS = (function() {
+  const SCREENS_PASSWORD = 'CHANGE_ME_SCREENS';
+  const STORAGE_KEY = 'ch_screens_unlock_session';
+
+  function isUnlocked() {
+    try { return sessionStorage.getItem(STORAGE_KEY) === '1'; }
+    catch (e) { return false; }
+  }
+  function unlock(pw) {
+    if (pw === SCREENS_PASSWORD) {
+      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+      return true;
+    }
+    return false;
+  }
+  return { isUnlocked, unlock };
+})();
+
+(function initScreensGate() {
+  const gates = document.querySelectorAll('[data-screens-gate]');
+  if (!gates.length) return;
+  gates.forEach(gate => {
+    if (window.CH_SCREENS.isUnlocked()) gate.classList.add('is-unlocked');
+    const form = gate.querySelector('.screens-gate__form');
+    const input = gate.querySelector('.screens-gate__input');
+    const err = gate.querySelector('.screens-gate__error');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const value = input.value.trim();
+      if (window.CH_SCREENS.unlock(value)) {
+        if (err) err.classList.remove('is-visible');
+        gate.classList.add('is-unlocked');
+      } else {
+        if (err) err.classList.add('is-visible');
+        input.value = '';
+        input.focus();
+      }
+    });
+  });
+})();

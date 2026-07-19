@@ -37,10 +37,11 @@
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
 <style>
-  /* Hide the case study content until the password is entered on this page.
-     The .cs-lock screen stays visible until body.is-unlocked is applied. */
-  main > .cs-content { display: none; }
-  body.is-unlocked main > .cs-content { display: block; }
+  /* Case study preview (hero, metrics, solution summary) is always visible.
+     The detail chapters — where visuals live — stay hidden behind the inline
+     password gate until body.is-unlocked is applied. */
+  main > .cs-details { display: none; }
+  body.is-unlocked main > .cs-details { display: block; }
   body.is-unlocked main > .cs-lock { display: none; }
 </style>
 <noscript>
@@ -63,42 +64,13 @@
 
 <main class="cs">
 
-  <!-- LOCK — inline password screen for this case study -->
-  <section class="lock cs-lock" id="cs-lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">№ 05 · Protected</span>
-      <h1>Design as a revenue lever</h1>
-      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
-        <label for="cs-lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="cs-lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-      </form>
-      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
-    </div>
-  </section>
-
-  <div class="cs-content">
-
-  <section class="cs-hero shell">
+  <section class="cs-hero shell" data-coords="35.925°N · 86.868°W · Remote → boardroom">
     <div class="cs-hero__nav">
       <a href="../work.html">← All case studies</a>
       <span>·</span>
-      <span>№ 05 of 05</span>
+      <span>№ 06 of 06</span>
     </div>
-    <span class="eyebrow cs-hero__eyebrow">№ 05 · Design ROI</span>
+    <span class="eyebrow cs-hero__eyebrow">№ 06 · Design ROI</span>
     <h1 class="reveal">Design as a revenue lever, not a cost center.</h1>
     <p class="cs-hero__lede reveal reveal--d1">
       Most design teams get discussed in cost terms — headcount, burn, allocation. Late last year, with a new CTO coming in and a resource-planning cycle opening up, I decided to stop arguing that design was valuable and start showing it. I built a financial model of the design team&#8217;s ROI, grounded in the shipped projects we could point to, and walked it into the room. It changed the conversation.
@@ -141,6 +113,45 @@
     </div>
   </section>
 
+  <section class="cs-body cs-body--overview shell--read">
+    <div class="cs-chapter">
+      <div class="cs-chapter__num cs-chapter__num--plain">Solution</div>
+      <div>
+        <h2 class="reveal">Build the model on the ledger, not the mood board.</h2>
+        <p class="reveal">For each shipped project, wrote down the directly-attributable savings, the reasonable inferred upside, and the assumptions behind both — so finance could redline the numbers instead of arguing with the designer. It became the new CTO's working document for resource planning, and the shared prioritization framework product, design, and engineering now use every quarter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCK — inline gate for the detailed case study + visuals -->
+  <section class="lock cs-lock cs-lock--inline" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 05 · Design detail</span>
+      <h1>See the full case study.</h1>
+      <p class="lock__access">The high-level story is above. Enter the password to see the process, decisions, and screens behind it. Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-details">
+
   <section class="cs-body shell--read">
 
     <div class="cs-chapter">
@@ -159,7 +170,7 @@
         <p class="reveal">I started with the shipped work the team could clearly claim an outcome on. For each project, I wrote down three things: the directly-attributable savings or revenue (the hard number), the reasonable inferred upside (the softer but defensible one), and the assumptions behind both — so anyone reading the model could argue with them instead of with me.</p>
         <h3 class="reveal">The big entries</h3>
         <ul class="reveal">
-          <li><strong>Booking tool ROI</strong> — $500K/yr direct savings from reduced handle time, plus $15–25M in inferred unlocked revenue capacity at average visit value. (See <a href="matching-tool.html" style="color:var(--accent); border-bottom:1px solid var(--accent);">Matching Tool</a>.)</li>
+          <li><strong>Matching tool time savings</strong> — a measured 39-second per-call handle-time reduction across a 33-state rollout, isolated by a natural control group. Modeled downstream two ways, both shown: reclaimed coordinator labor at fully-loaded cost, and the booking capacity that time opens up at average visit revenue. The dollar figures are potential, not booked; the assumptions are on the same page as the number. The largest single input to the model. (See <a href="matching-tool.html" style="color:var(--accent); border-bottom:1px solid var(--accent);">Matching Tool</a>.)</li>
           <li><strong>Matching framework lift</strong> — estimated conversion gains on specific funnel stages attributable to design interventions at each gate.</li>
           <li><strong>Operational unlocks</strong> — capacity returned to care coordinators, clinicians, and call-center agents from tool consolidation, priced at fully-loaded labor.</li>
           <li><strong>Avoided build</strong> — engineering work the team didn&#8217;t have to do because a design iteration ruled it out before the commit.</li>
@@ -199,6 +210,8 @@
 
   </section>
 
+  </div><!-- /.cs-details -->
+
   <section class="cs-next">
     <div class="cs-next__inner">
       <div>
@@ -210,7 +223,6 @@
     </div>
   </section>
 
-  </div><!-- /.cs-content -->
 </main>
 
 <footer class="site-footer">
@@ -242,7 +254,7 @@
   </div>
 </footer>
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js?v=10"></script>
 <script>
   (function() {
     // If already unlocked, reveal content immediately

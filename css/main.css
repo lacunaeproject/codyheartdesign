@@ -61,7 +61,7 @@
 
   /* Layout */
   --max:         1280px;
-  --max-read:    720px;
+  --max-read:    680px;
   --gutter:      clamp(1.25rem, 5.5vw, 4rem);
 }
 
@@ -561,6 +561,7 @@ main { position: relative; z-index: 2; }
 .case-card--03 { --card-accent: var(--flw); }
 .case-card--04 { --card-accent: var(--grant); }
 .case-card--05 { --card-accent: var(--drawbridge); }
+.case-card--06 { --card-accent: var(--flag-blue); }
 
 /* ---------- Dashboards ---------- */
 .dashboards {
@@ -1162,48 +1163,199 @@ main { position: relative; z-index: 2; }
   color: var(--accent);
   margin-bottom: 1.25rem;
 }
+
+/* NYT-style lead illustration — a wide editorial figure that sits
+   between the byline card and the metrics/body. Since we can't show
+   real UI, this carries the visual weight. Line-based, two-tone,
+   gently animated. Caption + credit below in classic figure style. */
+.cs-hero-illustration {
+  margin: 3rem 0 0;
+  padding: 0;
+}
+.cs-hero-illustration__frame {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 2.5rem 0;
+  color: var(--ink);
+  overflow: hidden;
+}
+.cs-hero-illustration svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+.cs-hero-illustration figcaption {
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+  text-align: left;
+  line-height: 1.45;
+  max-width: 52ch;
+}
+.cs-hero-illustration__credit {
+  display: block;
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+/* Subtle animation on the hero illustration — a gentle pulse on the
+   concentric rings around the hub, and a dash-flow on connecting lines. */
+.cs-hero-illustration .illust-pulse {
+  transform-origin: center;
+  animation: illust-pulse 4.5s ease-in-out infinite;
+}
+.cs-hero-illustration .illust-pulse--slow { animation-duration: 6s; animation-delay: 0.8s; }
+.cs-hero-illustration .illust-pulse--slower { animation-duration: 8s; animation-delay: 1.6s; }
+@keyframes illust-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 0.15; }
+}
+.cs-hero-illustration .illust-flow {
+  stroke-dasharray: 6 8;
+  animation: illust-flow 22s linear infinite;
+}
+@keyframes illust-flow {
+  to { stroke-dashoffset: -280; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-hero-illustration .illust-pulse,
+  .cs-hero-illustration .illust-flow { animation: none; }
+}
+
+/* NYT-style byline card — bold name on top, small muted meta line
+   underneath, with a hairline rule above and below. Injected via JS
+   after the lede on any case study. */
+.cs-hero__byline {
+  margin: 2.5rem 0 0;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font-family: 'Petrona', Georgia, serif;
+}
+.cs-hero__byline-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.cs-hero__byline-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.35rem;
+  letter-spacing: 0.01em;
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-weight: 500;
+}
+
+/* Continents counter — a small always-visible expedition tag in the
+   footer. Injected in JS after .site-footer__sign on every page. */
+.site-footer__continents {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.site-footer__continents-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.site-footer__continents-dots {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.site-footer__continent-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--muted);
+  display: inline-block;
+}
+.site-footer__continent-dot--filled {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.site-footer__continents-next {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Word-by-word reveal on hero H1s. Each word starts opacity 0 and
+   translated 12px down; on load, JS adds .is-in with a per-word
+   stagger to fade+lift in sequence. Fills in as-authored under
+   prefers-reduced-motion. */
+.h1-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 620ms cubic-bezier(.2,.7,.2,1),
+              transform 620ms cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.h1-word.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .h1-word { opacity: 1; transform: none; transition: none; }
+}
+
+/* Reading progress bar — fixed 2px line at the top of case-study pages
+   that fills with the scroll. Injected in JS only on .cs pages. */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  z-index: 100;
+  pointer-events: none;
+  transform-origin: left center;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reading-progress { display: none; }
+}
 .cs-hero h1 {
   font-family: 'Petrona', serif;
-  font-weight: 400;
-  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin: 0 0 1.5rem;
-  max-width: 22ch;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  max-width: none;
+  color: var(--ink);
 }
 .cs-hero h1 em { font-style: italic; color: var(--accent); }
 .cs-hero__lede {
   font-family: 'Petrona', Georgia, serif;
-  font-size: 1.3rem;
-  line-height: 1.55;
+  font-size: 1.25rem;
+  line-height: 1.5;
   color: var(--ink-soft);
-  max-width: 58ch;
-  margin: 0 0 3rem;
+  max-width: none;
+  margin: 0;
+  font-weight: 400;
 }
-.cs-meta {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--rule);
-}
-@media (max-width: 760px) {
-  .cs-meta { grid-template-columns: repeat(2, 1fr); }
-}
-.cs-meta__label {
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.35rem;
-  font-weight: 600;
-}
-.cs-meta__value {
-  font-family: 'Petrona', serif;
-  font-size: 1.05rem;
-  font-weight: 500;
-}
+/* .cs-meta 4-column grid is redundant with the injected NYT byline card;
+   hide it and let the byline carry the metadata cleanly. */
+.cs-meta { display: none; }
 
 /* Metrics strip */
 .metrics {
@@ -1231,8 +1383,14 @@ main { position: relative; z-index: 2; }
   grid-template-columns: repeat(3, 1fr);
   gap: 3rem;
 }
+/* 4-metric variant — two rows of two on mid widths, single column on mobile. */
+.metrics__grid--4 { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
+@media (max-width: 1000px) {
+  .metrics__grid--4 { grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3rem; }
+}
 @media (max-width: 760px) {
   .metrics__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .metrics__grid--4 { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 .metric {
   border-top: 1px solid rgba(251, 250, 246, 0.2);
@@ -1247,13 +1405,27 @@ main { position: relative; z-index: 2; }
   margin: 0 0 0.75rem;
 }
 .metric__num em { font-style: italic; color: var(--flag-blue); }
+/* Small "Modeled" / "Validated" tag above a metric — separates first-person
+   modeled projections from manager-validated outcomes. */
+.metric__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(251, 250, 246, 0.55);
+  margin: 0 0 0.6rem;
+  font-weight: 500;
+}
 .metric__label {
   font-family: 'Inter Tight', system-ui, sans-serif;
   font-size: 0.9rem;
-  color: rgba(251, 250, 246, 0.72);
-  line-height: 1.5;
+  color: rgba(251, 250, 246, 0.78);
+  line-height: 1.45;
   font-weight: 500;
+  letter-spacing: 0.005em;
   max-width: 32ch;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(251, 250, 246, 0.12);
 }
 
 /* Long-form body */
@@ -1261,30 +1433,50 @@ main { position: relative; z-index: 2; }
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
+/* Compact overview variant — used for the visible Solution summary that
+   sits above the inline lock. Lets the chapter's own margin/border carry
+   the vertical rhythm so we don't double up on padding. */
+.cs-body--overview {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 .cs-body h2 {
   font-family: 'Petrona', serif;
-  font-weight: 500;
-  font-size: 2.4rem;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin: 3.5rem 0 1.25rem;
-  max-width: 22ch;
+  font-weight: 700;
+  font-size: 1.65rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 2.75rem 0 1rem;
+  max-width: none;
+  color: var(--ink);
 }
 .cs-body h2 em { font-style: italic; color: var(--accent); }
 .cs-body h2:first-child { margin-top: 0; }
 .cs-body h3 {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', serif;
   font-weight: 700;
-  font-size: 1.1rem;
-  margin: 2rem 0 0.75rem;
+  font-size: 1.2rem;
+  margin: 2rem 0 0.6rem;
   letter-spacing: -0.005em;
   color: var(--ink);
 }
 .cs-body p {
-  max-width: 64ch;
+  max-width: none;
   margin: 0 0 1.25rem;
-  color: var(--ink-soft);
-  line-height: 1.7;
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 1.185rem;
+}
+/* Drop cap on the first paragraph of the first narrative chapter —
+   signals the start of the long-form read, like an NYT article. */
+.cs-body:not(.cs-body--overview) .cs-chapter:first-of-type > div > p:first-of-type::first-letter {
+  font-family: 'Petrona', serif;
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 0.85;
+  float: left;
+  margin: 0.35rem 0.55rem -0.15rem 0;
+  color: var(--ink);
 }
 .cs-body p strong { color: var(--ink); font-weight: 700; }
 
@@ -1349,23 +1541,36 @@ main { position: relative; z-index: 2; }
 @media (max-width: 640px) {
   .about-hero__portrait { max-width: 220px; }
 }
+/* NYT-style pull quote — centered, italic serif, no left border.
+   A short horizontal accent rule above the quote signals the break
+   from body copy without shouting. */
 .cs-body blockquote {
-  margin: 2.5rem 0;
-  padding: 0 0 0 1.5rem;
-  border-left: 3px solid var(--accent);
+  margin: 3.5rem auto;
+  padding: 0;
+  border-left: none;
   font-family: 'Petrona', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 1.55rem;
-  line-height: 1.32;
+  font-size: 1.95rem;
+  line-height: 1.28;
   color: var(--ink);
-  max-width: 32ch;
+  max-width: 28ch;
+  text-align: center;
+}
+.cs-body blockquote::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: var(--accent);
+  margin: 0 auto 1.35rem;
 }
 .cs-body ul {
-  max-width: 64ch;
+  max-width: none;
   margin: 0 0 1.5rem;
   padding-left: 0;
   list-style: none;
+  font-size: 1.1rem;
 }
 .cs-body ul li {
   padding-left: 1.6rem;
@@ -1383,26 +1588,43 @@ main { position: relative; z-index: 2; }
 }
 
 .cs-chapter {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 2rem;
+  position: relative;
+  display: block;
   margin-top: 4rem;
   padding-top: 3rem;
   border-top: 1px solid var(--rule);
 }
-@media (max-width: 760px) {
-  .cs-chapter { grid-template-columns: 1fr; gap: 0.5rem; }
-}
 .cs-chapter__num {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.65rem;
+  display: block;
+}
+.cs-chapter__num::before {
+  content: "№ ";
   color: var(--accent);
-  padding-top: 0.5rem;
   font-weight: 500;
 }
-.cs-chapter__num::before { content: "№ "; }
+.cs-chapter__num--plain::before { content: none; }
+
+/* Inline lock — used mid-case-study to gate detail/visuals,
+   not the whole page. Removes the full-viewport treatment. */
+.cs-lock--inline {
+  min-height: auto;
+  max-height: none;
+  padding: 4.5rem var(--gutter);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+@supports (height: 100dvh) {
+  .cs-lock--inline { min-height: auto; }
+}
 
 /* In-body stat callout */
 .cs-stat {
@@ -1434,6 +1656,228 @@ main { position: relative; z-index: 2; }
   line-height: 1.5;
   max-width: 36ch;
   align-self: center;
+}
+
+/* ---------- Case-study before/after comparison ---------- */
+.cs-comparison {
+  margin: 2.75rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.cs-comparison__col-labels {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0 0.5rem;
+}
+.cs-comparison__col-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.cs-comparison__row {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  align-items: baseline;
+}
+.cs-comparison__header {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cs-comparison__before {
+  font-family: 'Petrona', serif;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.cs-comparison__after {
+  font-family: 'Petrona', serif;
+  color: var(--ink);
+  line-height: 1.5;
+  font-weight: 500;
+}
+@media (max-width: 720px) {
+  .cs-comparison__col-labels,
+  .cs-comparison__row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .cs-comparison__col-labels { display: none; }
+  .cs-comparison__before::before { content: "Before — "; color: var(--muted); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
+  .cs-comparison__after::before  { content: "After — ";  color: var(--accent); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
+}
+
+/* ---------- Case-study diagram (animated SVG systems visual) ---------- */
+.cs-diagram {
+  max-width: var(--max);
+  margin: 5rem auto;
+  padding: 0 var(--gutter);
+}
+.cs-diagram__frame {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 3.5rem 0;
+  color: var(--ink);
+}
+.cs-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  overflow: visible;
+}
+.cs-diagram figcaption {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Progressive-reveal primitives that diagram descendants can opt into
+   with class hooks. Transitions only touch transform/opacity/dashoffset
+   so animations stay on the compositor. */
+[data-diagram-reveal] .d-bar {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 900ms cubic-bezier(.2,.7,.2,1);
+}
+[data-diagram-reveal].is-in .d-bar { transform: scaleX(1); }
+
+[data-diagram-reveal] .d-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1400ms cubic-bezier(.2,.7,.2,1);
+}
+[data-diagram-reveal].is-in .d-line { stroke-dashoffset: 0; }
+
+[data-diagram-reveal] .d-fade {
+  opacity: 0;
+  transition: opacity 500ms ease 400ms;
+}
+[data-diagram-reveal].is-in .d-fade { opacity: 1; }
+
+[data-diagram-reveal] .d-fade--late { transition-delay: 900ms; }
+[data-diagram-reveal] .d-bar--delay { transition-delay: 150ms; }
+[data-diagram-reveal] .d-bar--delay-2 { transition-delay: 300ms; }
+[data-diagram-reveal] .d-bar--delay-3 { transition-delay: 450ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-diagram-reveal] .d-bar,
+  [data-diagram-reveal] .d-line,
+  [data-diagram-reveal] .d-fade {
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- Screens gate (inline password gate for the Screens section) ---------- */
+.screens-gate {
+  max-width: var(--max);
+  margin: 5rem auto;
+  padding: 0 var(--gutter);
+}
+.screens-gate__frame {
+  border-top: 1px solid var(--rule);
+  padding: 4rem 0 4.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .screens-gate__frame { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+}
+.screens-gate__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.screens-gate__title {
+  font-family: 'Petrona', serif;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+.screens-gate__body p {
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  max-width: 44ch;
+}
+.screens-gate__body a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+.screens-gate__form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  max-width: 380px;
+}
+.screens-gate__input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  text-align: center;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.screens-gate__input:focus {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+.screens-gate__error {
+  color: var(--accent);
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease;
+}
+.screens-gate__error.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.screens-gate__content { display: none; }
+.screens-gate.is-unlocked .screens-gate__form { display: none; }
+.screens-gate.is-unlocked .screens-gate__error { display: none; }
+.screens-gate.is-unlocked .screens-gate__content { display: block; }
+
+.screens-gate__placeholder {
+  border: 1px dashed var(--rule);
+  padding: 3rem;
+  text-align: center;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
 }
 
 /* Next case */

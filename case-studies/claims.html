@@ -37,10 +37,11 @@
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
 <style>
-  /* Hide the case study content until the password is entered on this page.
-     The .cs-lock screen stays visible until body.is-unlocked is applied. */
-  main > .cs-content { display: none; }
-  body.is-unlocked main > .cs-content { display: block; }
+  /* Case study preview (hero, metrics, solution summary) is always visible.
+     The detail chapters — where visuals live — stay hidden behind the inline
+     password gate until body.is-unlocked is applied. */
+  main > .cs-details { display: none; }
+  body.is-unlocked main > .cs-details { display: block; }
   body.is-unlocked main > .cs-lock { display: none; }
 </style>
 <noscript>
@@ -63,42 +64,13 @@
 
 <main class="cs">
 
-  <!-- LOCK — inline password screen for this case study -->
-  <section class="lock cs-lock" id="cs-lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">№ 03 · Protected</span>
-      <h1>Claims</h1>
-      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
-        <label for="cs-lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="cs-lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-      </form>
-      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
-    </div>
-  </section>
-
-  <div class="cs-content">
-
-  <section class="cs-hero shell">
+  <section class="cs-hero shell" data-coords="37.775°N · 122.418°W · SF → nationwide">
     <div class="cs-hero__nav">
       <a href="../work.html">← All case studies</a>
       <span>·</span>
-      <span>№ 03 of 05</span>
+      <span>№ 04 of 06</span>
     </div>
-    <span class="eyebrow cs-hero__eyebrow">№ 03 · Claims</span>
+    <span class="eyebrow cs-hero__eyebrow">№ 04 · Claims</span>
     <h1 class="reveal">Rebuilding the slowest screen in the building.</h1>
     <p class="cs-hero__lede reveal reveal--d1">
       At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: make it faster, and make it auditable.
@@ -140,6 +112,45 @@
       </div>
     </div>
   </section>
+
+  <section class="cs-body cs-body--overview shell--read">
+    <div class="cs-chapter">
+      <div class="cs-chapter__num cs-chapter__num--plain">Solution</div>
+      <div>
+        <h2 class="reveal">Put the source document inside the workflow.</h2>
+        <p class="reveal">A split-screen transcription tool with the claim PDF on the left and the form on the right, field groupings that follow how information appears on the page, keyboard navigation, pre-filled high-confidence data, and a real field-level audit trail. Paired with reporting dashboards that finally made queue depth, claim age, and specialist throughput legible to the rest of the org.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCK — inline gate for the detailed case study + visuals -->
+  <section class="lock cs-lock cs-lock--inline" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 03 · Design detail</span>
+      <h1>See the full case study.</h1>
+      <p class="lock__access">The high-level story is above. Enter the password to see the process, decisions, and screens behind it. Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-details">
 
   <section class="cs-body shell--read">
 
@@ -196,10 +207,12 @@
 
   </section>
 
+  </div><!-- /.cs-details -->
+
   <section class="cs-next">
     <div class="cs-next__inner">
       <div>
-        <div class="cs-next__label">Next Case Study · № 04</div>
+        <div class="cs-next__label">Next Case Study · № 05</div>
       </div>
       <a href="billing.html">
         <h2 class="cs-next__title">Billing →</h2>
@@ -207,7 +220,6 @@
     </div>
   </section>
 
-  </div><!-- /.cs-content -->
 </main>
 
 <footer class="site-footer">
@@ -239,7 +251,7 @@
   </div>
 </footer>
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js?v=10"></script>
 <script>
   (function() {
     // If already unlocked, reveal content immediately

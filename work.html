@@ -36,11 +36,6 @@
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
 <link rel="stylesheet" href="css/main.css">
-<style>
-  .work-content { display: none; }
-  body.is-unlocked .lock { display: none; }
-  body.is-unlocked .work-content { display: block; }
-</style>
 </head>
 <body>
 
@@ -58,60 +53,19 @@
 
 <main>
 
-  <!-- LOCK -->
-  <section class="lock" id="lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">My Work · Protected</span>
-      <h1>Five case studies, behind a door.</h1>
-      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="lock-form" autocomplete="off" novalidate>
-        <label for="lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-      </form>
-      <div class="lock__error" id="lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
-    </div>
-  </section>
-
-  <!-- UNLOCKED CONTENT -->
-  <div class="work-content">
-    <section class="shell">
+  <section class="shell">
       <div class="case-intro" style="padding-top: 5rem;">
         <span class="eyebrow">Selected Work · 2018 – 2026</span>
-        <h2>Five projects that paid their own way.</h2>
+        <h2>Six projects that paid their own way.</h2>
       </div>
 
       <div class="case-grid">
 
-        <a class="case-card case-card--01" href="case-studies/matching-logic.html">
-          <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/></svg></span>
-          <div class="case-card__num">№ 01 · Care Routing</div>
-          <h3 class="case-card__title">Matching Logic</h3>
-          <p class="case-card__desc">A patient–provider routing system that translated an ambiguous funnel into a measurable framework for conversion, capacity, and intent.</p>
-          <div class="case-card__meta">
-            <span><strong>LifeStance Health</strong></span>
-            <span>2024 – present</span>
-            <span>Lead designer</span>
-          </div>
-        </a>
-
-        <a class="case-card case-card--02" href="case-studies/matching-tool.html">
+        <a class="case-card case-card--01" href="case-studies/matching-tool.html">
           <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g fill="currentColor" opacity="0.35"><circle cx="14" cy="14" r="3"/><circle cx="38" cy="14" r="3"/><circle cx="62" cy="14" r="3"/><circle cx="86" cy="14" r="3"/><circle cx="14" cy="38" r="3"/><circle cx="38" cy="38" r="3"/><circle cx="62" cy="38" r="3"/><circle cx="86" cy="38" r="3"/><circle cx="14" cy="62" r="3"/><circle cx="38" cy="62" r="3"/><circle cx="62" cy="62" r="3"/><circle cx="86" cy="62" r="3"/><circle cx="14" cy="86" r="3"/><circle cx="38" cy="86" r="3"/><circle cx="62" cy="86" r="3"/><circle cx="86" cy="86" r="3"/></g><circle cx="14" cy="14" r="6" fill="currentColor"/><path d="M20 20 Q50 40 72 72" stroke-dasharray="3 3"/><circle cx="80" cy="80" r="12" fill="currentColor"/></svg></span>
-          <div class="case-card__num">№ 02 · Internal Tooling</div>
+          <div class="case-card__num">№ 01 · Internal Platform</div>
           <h3 class="case-card__title">Matching Tool</h3>
-          <p class="case-card__desc">Getting our operations staff out of Microsoft tools and into a purpose-built internal product — $500K saved annually, $15–25M in unlocked revenue capacity.</p>
+          <p class="case-card__desc">From a two-state pilot to 99% national adoption of an internal matching platform. 147 of 178 coordinators rated it &#8220;much better&#8221; than what they&#8217;d been using.</p>
           <div class="case-card__meta">
             <span><strong>LifeStance Health</strong></span>
             <span>2022 – 2024</span>
@@ -119,9 +73,33 @@
           </div>
         </a>
 
-        <a class="case-card case-card--03" href="case-studies/claims.html">
+        <a class="case-card case-card--02" href="case-studies/tool-consolidation.html">
+          <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g fill="currentColor" opacity="0.35"><rect x="6" y="8" width="14" height="14"/><rect x="26" y="8" width="14" height="14"/><rect x="46" y="8" width="14" height="14"/><rect x="66" y="8" width="14" height="14"/><rect x="6" y="26" width="14" height="14"/><rect x="26" y="26" width="14" height="14"/><rect x="46" y="26" width="14" height="14"/><rect x="66" y="26" width="14" height="14"/></g><path d="M50 44 L50 58"/><g fill="currentColor"><rect x="14" y="60" width="22" height="14"/><rect x="42" y="60" width="22" height="14"/><rect x="70" y="60" width="22" height="14"/></g><path d="M50 76 L50 86"/><rect x="20" y="86" width="60" height="10" fill="currentColor"/></svg></span>
+          <div class="case-card__num">№ 02 · Systems Research</div>
+          <h3 class="case-card__title">Tool Consolidation</h3>
+          <p class="case-card__desc">Inventoried 50+ regional intake tools and showed they reduced to six underlying jobs. The consolidation hypothesis became the spine of the platform roadmap.</p>
+          <div class="case-card__meta">
+            <span><strong>LifeStance Health</strong></span>
+            <span>2022 – 2023</span>
+            <span>Lead designer</span>
+          </div>
+        </a>
+
+        <a class="case-card case-card--03" href="case-studies/matching-logic.html">
+          <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="8" fill="currentColor" stroke="none"/></svg></span>
+          <div class="case-card__num">№ 03 · Care Routing</div>
+          <h3 class="case-card__title">Care Matching</h3>
+          <p class="case-card__desc">Turned a black-box matching funnel into a four-gate measurable system across 33 states. Manager-validated: 3.3% handle-time reduction, 24.1% rematch reduction, 10% YoY bookings.</p>
+          <div class="case-card__meta">
+            <span><strong>LifeStance Health</strong></span>
+            <span>2024 – present</span>
+            <span>Lead designer</span>
+          </div>
+        </a>
+
+        <a class="case-card case-card--04" href="case-studies/claims.html">
           <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><g transform="rotate(-6 36 52)"><path d="M16 20 L48 20 L56 28 L56 84 L16 84 Z" fill="none"/><path d="M48 20 L48 28 L56 28"/><line x1="22" y1="40" x2="48" y2="40"/><line x1="22" y1="50" x2="48" y2="50"/><line x1="22" y1="60" x2="38" y2="60"/></g><g transform="rotate(8 64 52)" fill="var(--paper)"><path d="M44 16 L76 16 L84 24 L84 80 L44 80 Z"/><path d="M76 16 L76 24 L84 24" fill="none"/><line x1="50" y1="36" x2="78" y2="36" stroke="currentColor"/><line x1="50" y1="46" x2="78" y2="46" stroke="currentColor"/><line x1="50" y1="56" x2="70" y2="56" stroke="currentColor"/></g></svg></span>
-          <div class="case-card__num">№ 03 · Claims Infrastructure</div>
+          <div class="case-card__num">№ 04 · Claims Infrastructure</div>
           <h3 class="case-card__title">Claims</h3>
           <p class="case-card__desc">Reworking out-of-network claims transcription and the financial tooling around it. 60% less time per claim; 40% less manual billing overall.</p>
           <div class="case-card__meta">
@@ -131,9 +109,9 @@
           </div>
         </a>
 
-        <a class="case-card case-card--04" href="case-studies/billing.html">
+        <a class="case-card case-card--05" href="case-studies/billing.html">
           <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 30 Q50 10 78 30" stroke-dasharray="3 3"/><path d="M22 70 Q50 90 78 70" stroke-dasharray="3 3"/><circle cx="18" cy="50" r="10" fill="var(--paper)"/><circle cx="50" cy="30" r="10" fill="currentColor"/><circle cx="82" cy="50" r="10" fill="var(--paper)"/><circle cx="50" cy="70" r="10" fill="var(--paper)"/></svg></span>
-          <div class="case-card__num">№ 04 · Billing Systems</div>
+          <div class="case-card__num">№ 05 · Billing Systems</div>
           <h3 class="case-card__title">Billing</h3>
           <p class="case-card__desc">Automating the invisible half of member finance — reconciliation, disputes, and the reporting dashboards that make the next investment call legible.</p>
           <div class="case-card__meta">
@@ -143,9 +121,9 @@
           </div>
         </a>
 
-        <a class="case-card case-card--05" href="case-studies/design-roi.html" style="grid-column: 1 / -1;">
+        <a class="case-card case-card--06" href="case-studies/design-roi.html" style="grid-column: 1 / -1;">
           <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g fill="currentColor"><rect x="10" y="76" width="12" height="16"/><rect x="30" y="62" width="12" height="30"/><rect x="50" y="44" width="12" height="48"/><rect x="70" y="18" width="12" height="74"/></g><path d="M12 68 Q30 50 52 36 T 88 8" fill="none" stroke-width="2.25"/><path d="M82 4 L88 8 L84 14" stroke-linejoin="round" fill="none"/></svg></span>
-          <div class="case-card__num">№ 05 · Design ROI</div>
+          <div class="case-card__num">№ 06 · Design ROI</div>
           <h3 class="case-card__title">Design as a revenue lever</h3>
           <p class="case-card__desc">Financial modeling for the design team — realized savings, scoped upside, and the shared prioritization framework product, design, and engineering now use to plan.</p>
           <div class="case-card__meta">
@@ -157,7 +135,6 @@
 
       </div>
     </section>
-  </div>
 
 </main>
 
@@ -190,52 +167,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script>
-  (function() {
-    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
-      document.body.classList.add('is-unlocked');
-    }
-
-    const lock  = document.getElementById('lock');
-    const form  = document.getElementById('lock-form');
-    const input = document.getElementById('lock-input');
-    const err   = document.getElementById('lock-error');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const value = input.value.trim();
-      if (window.CH_AUTH.unlock(value)) {
-        err.classList.remove('is-visible');
-        lock.classList.remove('is-error');
-        lock.classList.add('is-success');
-
-        const params = new URLSearchParams(window.location.search);
-        const ret = params.get('return');
-        // If there's a return URL, navigate after a short unlock moment so the
-        // animation can play; otherwise reveal content on this page.
-        setTimeout(() => {
-          if (ret && /^[a-zA-Z0-9_\-./]+$/.test(ret) && ret !== 'work.html') {
-            window.location.href = ret;
-          } else {
-            document.body.classList.add('is-unlocked');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }
-        }, 850);
-      } else {
-        err.classList.add('is-visible');
-        lock.classList.remove('is-error');
-        void lock.offsetWidth; // force reflow so the shake can re-trigger
-        lock.classList.add('is-error');
-        input.value = '';
-        input.focus();
-      }
-    });
-
-    if (!document.body.classList.contains('is-unlocked')) {
-      window.addEventListener('load', () => input.focus());
-    }
-  })();
-</script>
+<script src="js/main.js?v=10"></script>
 </body>
 </html>

@@ -37,10 +37,11 @@
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
 <style>
-  /* Hide the case study content until the password is entered on this page.
-     The .cs-lock screen stays visible until body.is-unlocked is applied. */
-  main > .cs-content { display: none; }
-  body.is-unlocked main > .cs-content { display: block; }
+  /* Case study preview (hero, metrics, solution summary) is always visible.
+     The detail chapters — where visuals live — stay hidden behind the inline
+     password gate until body.is-unlocked is applied. */
+  main > .cs-details { display: none; }
+  body.is-unlocked main > .cs-details { display: block; }
   body.is-unlocked main > .cs-lock { display: none; }
 </style>
 <noscript>
@@ -63,42 +64,13 @@
 
 <main class="cs">
 
-  <!-- LOCK — inline password screen for this case study -->
-  <section class="lock cs-lock" id="cs-lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">№ 04 · Protected</span>
-      <h1>Billing</h1>
-      <p class="lock__access">Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
-        <label for="cs-lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="cs-lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-      </form>
-      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
-    </div>
-  </section>
-
-  <div class="cs-content">
-
-  <section class="cs-hero shell">
+  <section class="cs-hero shell" data-coords="37.775°N · 122.418°W · SF → nationwide">
     <div class="cs-hero__nav">
       <a href="../work.html">← All case studies</a>
       <span>·</span>
-      <span>№ 04 of 05</span>
+      <span>№ 05 of 06</span>
     </div>
-    <span class="eyebrow cs-hero__eyebrow">№ 04 · Billing</span>
+    <span class="eyebrow cs-hero__eyebrow">№ 05 · Billing</span>
     <h1 class="reveal">The invisible half of member finance.</h1>
     <p class="cs-hero__lede reveal reveal--d1">
       Most of the work in a billing system isn&#8217;t billing. It&#8217;s the adjacent work that keeps the books honest — reconciliation between what we charged and what the carrier paid, disputes when those don&#8217;t match, and the reporting that tells leadership which of it is working. That adjacent work was eating up 40% of the billing team&#8217;s manual effort. We got rid of it.
@@ -140,6 +112,45 @@
       </div>
     </div>
   </section>
+
+  <section class="cs-body cs-body--overview shell--read">
+    <div class="cs-chapter">
+      <div class="cs-chapter__num cs-chapter__num--plain">Solution</div>
+      <div>
+        <h2 class="reveal">One state-aware workspace for a line item's whole life.</h2>
+        <p class="reveal">Replaced three disconnected tools — reconciliation, disputes, reporting — with a single workspace organized around the billing line item. The right surface shows up at each state, background jobs handle the deterministic work, and the monthly report is now a byproduct of the daily job instead of a separate deliverable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCK — inline gate for the detailed case study + visuals -->
+  <section class="lock cs-lock cs-lock--inline" id="cs-lock">
+    <div class="lock__card">
+      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
+        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
+      </svg>
+      <span class="eyebrow">№ 04 · Design detail</span>
+      <h1>See the full case study.</h1>
+      <p class="lock__access">The high-level story is above. Enter the password to see the process, decisions, and screens behind it. Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
+      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
+        <label for="cs-lock-input" class="visually-hidden">Password</label>
+        <input
+          class="lock__input"
+          id="cs-lock-input"
+          type="password"
+          placeholder="Password"
+          spellcheck="false"
+          autocapitalize="off"
+          autocorrect="off"
+          required>
+        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      </form>
+      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+    </div>
+  </section>
+
+  <div class="cs-details">
 
   <section class="cs-body shell--read">
 
@@ -196,10 +207,12 @@
 
   </section>
 
+  </div><!-- /.cs-details -->
+
   <section class="cs-next">
     <div class="cs-next__inner">
       <div>
-        <div class="cs-next__label">Next Case Study · № 05</div>
+        <div class="cs-next__label">Next Case Study · № 06</div>
       </div>
       <a href="design-roi.html">
         <h2 class="cs-next__title">Design ROI →</h2>
@@ -207,7 +220,6 @@
     </div>
   </section>
 
-  </div><!-- /.cs-content -->
 </main>
 
 <footer class="site-footer">
@@ -239,7 +251,7 @@
   </div>
 </footer>
 
-<script src="../js/main.js"></script>
+<script src="../js/main.js?v=10"></script>
 <script>
   (function() {
     // If already unlocked, reveal content immediately
