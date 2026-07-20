@@ -47,7 +47,16 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/index.html)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/arctic-hero.html)",
       "Bash(curl -s -o selina.webp \"https://rxycovhqjpnotuntfhqc.supabase.co/storage/v1/object/public/portfolio-screenshots/selina-turfus.webp\")",
-      "Bash(python -c \"print\\('x'\\)\")"
+      "Bash(python -c \"print\\('x'\\)\")",
+      "Bash(mkdir -p assets/fonts)",
+      "Bash(cp \"Regards-Modern-Retro-Serif/Web Fonts/regards-webfont.woff2\" assets/fonts/)",
+      "Bash(cp \"Regards-Modern-Retro-Serif/Web Fonts/regards-webfont.woff\" assets/fonts/)",
+      "Bash(pkill -f \"http.server 8765\")",
+      "Bash(git add *)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(git ls-tree *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
