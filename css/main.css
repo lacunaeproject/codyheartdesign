@@ -59,6 +59,7 @@
   --secondary:   var(--malibu);
   --tertiary:    var(--flw);
   --highlight:   var(--ltrain);
+  --display-brown: #3B2A1E;   /* deep brown for the Regards display headers */
 
   /* Type scale */
   --fs-eyebrow:  0.72rem;
@@ -80,7 +81,10 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--paper);
+  /* Pale glacial blue-grey — a nat-geo arctic tone that lets the icy hero
+     dissolve straight into the page. Cards/surfaces keep --paper (#FBFAF6)
+     and sit a touch lighter. */
+  background: #DEE6EA;
   color: var(--ink);
   font-family: 'Petrona', Georgia, serif;
   font-size: var(--fs-body);
@@ -403,7 +407,11 @@ main { position: relative; z-index: 2; }
   padding-right: var(--gutter);
   padding-top: clamp(7.5rem, 15vw, 12rem);
   padding-bottom: clamp(4.5rem, 12vw, 9rem);
-  background-image: url('../assets/hero/arctic.PNG');
+  /* Arctic artwork with a gradient layered on top that dissolves the bottom
+     of the image into the page's beige (#EDE4D5) — no hard section edge. */
+  background-image:
+    linear-gradient(to bottom, rgba(222, 230, 234, 0) 30%, #DEE6EA 92%),
+    url('../assets/hero/arctic.PNG');
   background-size: cover;
   background-position: 72% center;
   background-repeat: no-repeat;
@@ -429,15 +437,21 @@ main { position: relative; z-index: 2; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  font-size: 1.02rem;
-  line-height: 1.4;
-  color: var(--harbor);
+  gap: 0.3rem;
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 1.28rem;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--midnight);
+  font-weight: 500;
+  /* Soft paper halo keeps the byline legible where it crosses the darker,
+     busier part of the artwork — readable at a glance. */
+  text-shadow: 0 1px 8px rgba(251, 250, 246, 0.85);
   margin: 0 0 2.25rem;
 }
+.hero__meta span:first-child { font-weight: 600; }
 .hero__meta span:last-child {
-  color: var(--lakemichigan);
+  color: var(--river);
   font-weight: 500;
 }
 
@@ -494,7 +508,7 @@ main { position: relative; z-index: 2; }
   background: var(--ink);
   color: var(--paper);
   cursor: pointer;
-  border-radius: 999px;
+  border-radius: 12px;
   transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 .btn:hover {
@@ -531,13 +545,14 @@ main { position: relative; z-index: 2; }
   .case-intro__grid { grid-template-columns: 1fr; gap: 1.5rem; align-items: start; }
 }
 .case-intro h2 {
-  font-family: 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
   letter-spacing: -0.022em;
   margin: 1rem 0 0;
   max-width: 18ch;
+  color: var(--display-brown);
 }
 .case-intro h2 em { font-style: italic; color: var(--accent); }
 .case-intro p {
@@ -666,13 +681,14 @@ main { position: relative; z-index: 2; }
   margin-bottom: 1.25rem;
 }
 .experience h2 {
-  font-family: 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
   letter-spacing: -0.022em;
   margin: 0 0 1.25rem;
   max-width: 18ch;
+  color: var(--display-brown);
 }
 .experience h2 em { font-style: italic; color: var(--accent); }
 .experience__intro {
@@ -774,13 +790,14 @@ main { position: relative; z-index: 2; }
   .hello__grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 .hello h2 {
-  font-family: 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
   letter-spacing: -0.022em;
   margin: 1rem 0 1.5rem;
   max-width: 16ch;
+  color: var(--display-brown);
 }
 .hello h2 em { font-style: italic; color: var(--accent); }
 .hello p {
@@ -1331,14 +1348,14 @@ main { position: relative; z-index: 2; }
   .reading-progress { display: none; }
 }
 .cs-hero h1 {
-  font-family: 'Petrona', serif;
-  font-weight: 700;
+  font-family: 'Regards', 'Petrona', serif;
+  font-weight: 400;
   font-size: clamp(2.1rem, 5.5vw, 3.6rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
   margin: 0 0 1.25rem;
   max-width: none;
-  color: var(--ink);
+  color: var(--display-brown);
 }
 .cs-hero h1 em { font-style: italic; color: var(--accent); }
 .cs-hero__lede {
@@ -1438,14 +1455,14 @@ main { position: relative; z-index: 2; }
   padding-bottom: 0;
 }
 .cs-body h2 {
-  font-family: 'Petrona', serif;
-  font-weight: 700;
+  font-family: 'Regards', 'Petrona', serif;
+  font-weight: 400;
   font-size: 1.65rem;
   line-height: 1.15;
   letter-spacing: -0.01em;
   margin: 2.75rem 0 1rem;
   max-width: none;
-  color: var(--ink);
+  color: var(--display-brown);
 }
 .cs-body h2 em { font-style: italic; color: var(--accent); }
 .cs-body h2:first-child { margin-top: 0; }
@@ -1912,7 +1929,7 @@ main { position: relative; z-index: 2; }
   font-weight: 600;
 }
 .cs-next__title {
-  font-family: 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', serif;
   font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
