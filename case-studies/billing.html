@@ -94,6 +94,66 @@
         <div class="cs-meta__value">Workflow automation</div>
       </div>
     </div>
+
+    <!-- Lead editorial illustration — a billing line item advancing through
+         its six states along a spine, with the 'invisible half' (reconcile,
+         disputes, reporting) floating faintly above as adjacent work. -->
+    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-05">
+      <div class="cs-hero-illustration__frame">
+        <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title id="hero-illust-05">A billing line item moving through its states, the invisible adjacent work above</title>
+
+          <!-- The invisible half — adjacent work most systems never surface -->
+          <text x="338" y="42" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="3">THE INVISIBLE HALF</text>
+          <g class="illust-pulse illust-pulse--slow">
+            <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.45" stroke-dasharray="3 4">
+              <circle cx="204" cy="104" r="15"/>
+              <circle cx="338" cy="104" r="15"/>
+              <circle cx="740" cy="104" r="15"/>
+              <line x1="204" y1="119" x2="204" y2="173"/>
+              <line x1="338" y1="119" x2="338" y2="173"/>
+              <line x1="740" y1="119" x2="740" y2="173"/>
+            </g>
+          </g>
+          <g text-anchor="middle" font-family="'Petrona', serif" font-style="italic" font-size="12" fill="var(--ink-soft)">
+            <text x="204" y="80">reconcile</text>
+            <text x="338" y="80">disputes</text>
+            <text x="740" y="80">reporting</text>
+          </g>
+
+          <!-- The visible spine: six states -->
+          <line x1="70" y1="180" x2="740" y2="180" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>
+          <g fill="currentColor">
+            <circle cx="70" cy="180" r="7"/>
+            <circle cx="204" cy="180" r="7"/>
+            <circle cx="338" cy="180" r="7"/>
+            <circle cx="472" cy="180" r="7"/>
+            <circle cx="606" cy="180" r="7"/>
+          </g>
+          <circle cx="740" cy="180" r="8" fill="var(--accent)"/>
+
+          <!-- Token advancing along the spine -->
+          <g transform="translate(70, 180)">
+            <circle cx="0" cy="0" r="5" fill="var(--accent)" class="illust-travel" style="--travel: 670px"/>
+          </g>
+
+          <!-- State labels -->
+          <g text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" letter-spacing="1" fill="var(--muted)">
+            <text x="70" y="210">PENDING</text>
+            <text x="204" y="210">RECONCILED</text>
+            <text x="338" y="210">DISPUTED</text>
+            <text x="472" y="210">ADJUSTED</text>
+            <text x="606" y="210">RESOLVED</text>
+            <text x="740" y="210" fill="var(--accent)">REPORTED</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>
+        One line item, its whole life. Modeling billing as a state machine — pending through reported — turned the invisible adjacent work of reconciliation, disputes, and reporting into a byproduct of the daily job.
+        <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
+      </figcaption>
+    </figure>
+
   </section>
 
   <section class="metrics">

@@ -86,6 +86,60 @@
         <div class="cs-meta__value">Routing &amp; measurement</div>
       </div>
     </div>
+
+    <!-- Lead editorial illustration — a black box resolving into four named,
+         narrowing gates, with a token travelling the path through all of
+         them. Complements the horizontal dropoff diagram further down. -->
+    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-03">
+      <div class="cs-hero-illustration__frame">
+        <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
+          <title id="hero-illust-03">A single path passing through four named gates</title>
+
+          <!-- The path everything travels -->
+          <line x1="72" y1="150" x2="746" y2="150" stroke="currentColor" stroke-width="1" opacity="0.18" stroke-dasharray="2 6"/>
+
+          <!-- Left: the black box the old funnel used to be -->
+          <rect x="24" y="126" width="48" height="48" rx="6" fill="currentColor" opacity="0.88"/>
+          <text x="48" y="158" text-anchor="middle" font-family="'Petrona', serif" font-size="22" fill="var(--paper)">?</text>
+          <text x="48" y="196" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="1.5">BLACK BOX</text>
+
+          <!-- Four narrowing gates (the dropoff shape) -->
+          <g fill="none" stroke-width="1.6">
+            <rect x="174" y="55" width="92" height="190" rx="12" stroke="currentColor"/>
+            <rect x="334" y="70" width="92" height="160" rx="12" stroke="currentColor"/>
+            <rect x="494" y="84" width="92" height="132" rx="12" stroke="currentColor"/>
+            <rect x="654" y="96" width="92" height="108" rx="12" stroke="var(--accent)"/>
+          </g>
+
+          <!-- Gate 'active' markers, lighting in sequence -->
+          <g fill="var(--accent)">
+            <circle cx="220" cy="55" r="4" class="illust-pulse" style="animation-delay: 0s"/>
+            <circle cx="380" cy="70" r="4" class="illust-pulse" style="animation-delay: 0.7s"/>
+            <circle cx="540" cy="84" r="4" class="illust-pulse" style="animation-delay: 1.4s"/>
+            <circle cx="700" cy="96" r="4" class="illust-pulse" style="animation-delay: 2.1s"/>
+          </g>
+
+          <!-- Token travelling the path through every gate -->
+          <g transform="translate(80, 150)">
+            <circle cx="0" cy="0" r="10" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.4" class="illust-travel illust-travel--slow" style="--travel: 660px"/>
+            <circle cx="0" cy="0" r="6" fill="var(--accent)" class="illust-travel" style="--travel: 660px"/>
+          </g>
+
+          <!-- Gate labels -->
+          <g text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" letter-spacing="1.5" font-size="10">
+            <text x="220" y="264" fill="var(--muted)">01</text><text x="220" y="280" fill="currentColor">INTENT</text>
+            <text x="380" y="264" fill="var(--muted)">02</text><text x="380" y="280" fill="currentColor">ELIGIBILITY</text>
+            <text x="540" y="264" fill="var(--muted)">03</text><text x="540" y="280" fill="currentColor">AVAILABILITY</text>
+            <text x="700" y="264" fill="var(--accent)">04</text><text x="700" y="280" fill="var(--accent)">ACCEPTANCE</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>
+        One path, four named gates — Intent, Eligibility, Availability, Acceptance. Splitting a black-box funnel into four explicit stages gave every dropoff a name, and every name an owner.
+        <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
+      </figcaption>
+    </figure>
+
   </section>
 
   <section class="metrics">

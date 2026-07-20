@@ -37,7 +37,17 @@
       "Bash(kill 1296)",
       "mcp__claude-in-chrome__resize_window",
       "Bash(kill 1712)",
-      "Bash(kill 109)"
+      "Bash(kill 109)",
+      "WebFetch(domain:www.nytimes.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/case-studies/tool-consolidation.html)",
+      "Bash(cp css/main.css /tmp/main.css.bak)",
+      "Bash(sed -i '566,703d;2027d;2037d;2063,2065d' css/main.css)",
+      "Bash(awk '{o+=gsub\\(/{/,\"{\"\\); c+=gsub\\(/}/,\"}\"\\)} END{print \"open=\"o\" close=\"c\" diff=\"o-c}' css/main.css)",
+      "WebFetch(domain:chaachiedesigns.framer.website)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/index.html)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8765/arctic-hero.html)",
+      "Bash(curl -s -o selina.webp \"https://rxycovhqjpnotuntfhqc.supabase.co/storage/v1/object/public/portfolio-screenshots/selina-turfus.webp\")",
+      "Bash(python -c \"print\\('x'\\)\")"
     ]
   }
 }

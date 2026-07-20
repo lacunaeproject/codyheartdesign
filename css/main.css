@@ -563,144 +563,6 @@ main { position: relative; z-index: 2; }
 .case-card--05 { --card-accent: var(--drawbridge); }
 .case-card--06 { --card-accent: var(--flag-blue); }
 
-/* ---------- Dashboards ---------- */
-.dashboards {
-  padding-top: 5rem;
-  padding-bottom: 6rem;
-  border-top: 1px solid var(--rule);
-}
-.dashboards__head {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 3rem;
-  align-items: end;
-  margin-bottom: 3rem;
-}
-@media (max-width: 760px) {
-  .dashboards__head { grid-template-columns: 1fr; gap: 1.25rem; align-items: start; }
-}
-.dashboards h2 {
-  font-family: 'Petrona', serif;
-  font-weight: 400;
-  font-size: var(--fs-h2);
-  line-height: 1.05;
-  letter-spacing: -0.022em;
-  margin: 1rem 0 0;
-  max-width: 18ch;
-}
-.dashboards h2 em { font-style: italic; color: var(--accent); }
-.dashboards__intro {
-  color: var(--ink-soft);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0;
-  max-width: 52ch;
-}
-.dashboards__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-@media (max-width: 820px) {
-  .dashboards__grid { grid-template-columns: 1fr; }
-}
-.dashboard {
-  border: 1.5px solid var(--ink);
-  border-radius: 14px;
-  padding: 2.25rem;
-  display: flex;
-  flex-direction: column;
-  background: var(--paper-pure);
-  transition: transform 300ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms cubic-bezier(.2,.7,.2,1);
-  position: relative;
-}
-.dashboard:hover {
-  transform: translate(-6px, -6px);
-  box-shadow: 10px 10px 0 var(--dash-accent, var(--malibu));
-}
-
-.dashboard__viz {
-  background: linear-gradient(180deg, var(--blue-mist) 0%, var(--sky) 100%);
-  margin: -2.25rem -2.25rem 1.75rem;
-  padding: 1.5rem 2rem 1.25rem;
-  border-bottom: 1px solid var(--cornflower);
-  /* Match the parent card's rounded corners at the top so the
-     background gradient doesn't poke past the card's rounded edges.
-     Uses slightly smaller radius since the border sits inside. */
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-.dashboard__viz svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 150px;
-}
-
-.dashboard__eyebrow {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--dash-accent, var(--malibu));
-  margin-bottom: 1rem;
-  font-weight: 500;
-}
-.dashboard__title {
-  font-family: 'Petrona', serif;
-  font-weight: 500;
-  font-size: 2rem;
-  line-height: 1.05;
-  letter-spacing: -0.022em;
-  margin: 0 0 0.8rem;
-}
-.dashboard__title em { font-style: italic; color: var(--dash-accent, var(--malibu)); }
-.dashboard__desc {
-  color: var(--ink-soft);
-  font-size: 0.98rem;
-  line-height: 1.6;
-  margin: 0 0 1.5rem;
-  max-width: 42ch;
-}
-.dashboard__books {
-  font-family: 'Petrona', Georgia, serif;
-  font-size: 0.88rem;
-  color: var(--muted);
-  line-height: 1.5;
-  margin: 0 0 1.5rem;
-  font-style: italic;
-}
-.dashboard__books strong {
-  font-style: normal;
-  color: var(--ink);
-  font-weight: 600;
-  display: block;
-  margin-bottom: 0.25rem;
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.dashboard__link {
-  margin-top: auto;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--ink);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 180ms ease, gap 220ms cubic-bezier(.2,.7,.2,1);
-}
-.dashboard__link:hover {
-  color: var(--dash-accent, var(--malibu));
-  gap: 0.7rem;
-}
-.dashboard--casualties { --dash-accent: var(--portillos); }
-.dashboard--lacunae    { --dash-accent: var(--bahama); }
-
 /* ---------- Experience ---------- */
 .experience {
   padding-top: 5rem;
@@ -1142,6 +1004,9 @@ main { position: relative; z-index: 2; }
 
 /* ---------- Case study page ---------- */
 .cs-hero {
+  /* Match the reading column below — hero title, lede, and lead
+     illustration share the same width as the body content. */
+  max-width: var(--max-read);
   padding-top: 4rem;
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--rule);
@@ -1223,12 +1088,56 @@ main { position: relative; z-index: 2; }
   stroke-dasharray: 6 8;
   animation: illust-flow 22s linear infinite;
 }
+.cs-hero-illustration .illust-flow--rev  { animation-direction: reverse; }
+.cs-hero-illustration .illust-flow--fast { animation-duration: 10s; }
 @keyframes illust-flow {
   to { stroke-dashoffset: -280; }
 }
+
+/* Extended vocabulary for the per-case-study hero illustrations. Every one
+   is built from the same two ideas as above — a breathing pulse and a
+   flowing/travelling stroke — so the six read as one editorial system. */
+
+/* A token that travels a fixed distance along a chain (state machine,
+   gates, before/after lanes). Distance is set per element via --travel. */
+.cs-hero-illustration .illust-travel {
+  animation: illust-travel 7s cubic-bezier(.55, 0, .45, 1) infinite;
+}
+.cs-hero-illustration .illust-travel--fast { animation-duration: 3.4s; }
+.cs-hero-illustration .illust-travel--slow { animation-duration: 12s; }
+@keyframes illust-travel {
+  0%   { transform: translateX(0);                    opacity: 0; }
+  7%   { opacity: 1; }
+  93%  { opacity: 1; }
+  100% { transform: translateX(var(--travel, 400px)); opacity: 0; }
+}
+
+/* A stroke that draws itself in on a loop — the ROI projection lines. */
+.cs-hero-illustration .illust-draw {
+  stroke-dasharray: var(--len, 600);
+  stroke-dashoffset: 0;
+  animation: illust-draw 6.5s ease-in-out infinite;
+}
+@keyframes illust-draw {
+  0%        { stroke-dashoffset: var(--len, 600); }
+  55%, 100% { stroke-dashoffset: 0; }
+}
+
+/* Gentle vertical drift — a rising 'revenue' arrowhead. */
+.cs-hero-illustration .illust-rise {
+  animation: illust-rise 5s ease-in-out infinite;
+}
+@keyframes illust-rise {
+  0%, 100% { transform: translateY(3px);  opacity: .7; }
+  50%      { transform: translateY(-4px); opacity: 1;  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cs-hero-illustration .illust-pulse,
-  .cs-hero-illustration .illust-flow { animation: none; }
+  .cs-hero-illustration .illust-flow,
+  .cs-hero-illustration .illust-travel,
+  .cs-hero-illustration .illust-draw,
+  .cs-hero-illustration .illust-rise { animation: none; }
 }
 
 /* NYT-style byline card — bold name on top, small muted meta line
@@ -1977,7 +1886,6 @@ main { position: relative; z-index: 2; }
   /* Compress section padding across the site */
   .case-intro    { padding: 4rem 0 2rem; }
   .case-grid     { padding: 1.5rem 0 4rem; }
-  .dashboards    { padding-top: 3.5rem; padding-bottom: 4rem; }
   .experience    { padding-top: 3.5rem; padding-bottom: 3.5rem; }
   .hello         { padding: 4rem 0; }
   .site-footer   { padding: 3rem 0 2.5rem; }
@@ -1987,7 +1895,6 @@ main { position: relative; z-index: 2; }
   .cs-next       { padding: 3rem 0; }
 
   /* Grid gaps tighten */
-  .dashboards__head { margin-bottom: 2rem; }
   .experience__head { margin-bottom: 2.5rem; }
 
   /* Buttons go full-width-ish on mobile for easier tapping */
@@ -2013,9 +1920,6 @@ main { position: relative; z-index: 2; }
   .case-card__title { font-size: 1.9rem; }
   .case-card__desc  { font-size: 0.95rem; }
 
-  /* Dashboards padding matches cards */
-  .dashboard { padding: 1.75rem; }
-  .dashboard__viz { margin: -1.75rem -1.75rem 1.5rem; }
 
   /* Case study hero — meta label 4-up is too cramped on phones; the existing
      760px query puts it at 2x2 which is good, but fix spacing there */
