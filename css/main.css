@@ -173,8 +173,16 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  /* Mat colour — shows through the .frame margin like a matted print */
-  background: #C89577;
+  /* Mat — shows through the .frame margin like a matted print. Antarctic sunset:
+     warm apricot horizon sweeping up through rose and periwinkle to deep glacier
+     blue. Fixed to the viewport so the full sunset reads in the thin margin. */
+  background: linear-gradient(155deg,
+    #F7C89B 0%,
+    #F3A98C 22%,
+    #D99BA6 45%,
+    #9E9EC6 68%,
+    #3F6E97 100%);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: 'Petrona', Georgia, serif;
   font-size: var(--fs-body);
@@ -206,7 +214,7 @@ body::before {
 .site-header.is-scrolled {
   position: static;
   z-index: 10;
-  background: var(--ink-navy);
+  background: #222427;
   border: none;
   box-shadow: none;
   backdrop-filter: none;
@@ -242,7 +250,7 @@ body::before {
 .wordmark__heart {
   width: 30px;
   height: 30px;
-  color: var(--burnt-orange);
+  color: #F2C230;
   flex-shrink: 0;
   display: block;
   /* Optical nudge up — the heart glyph is bottom-heavy and sits low in its box
@@ -357,7 +365,7 @@ main { position: relative; z-index: 2; }
 /* Full-bleed icy band for Selected Work — the hero dissolves into it and the
    white case cards lift off the sky-pale. */
 .work-band {
-  background-color: var(--ink-navy);
+  background-color: #222427;
   background-image: var(--grain-fine);
   background-size: 200px 200px;
   background-blend-mode: overlay;
@@ -505,7 +513,7 @@ main { position: relative; z-index: 2; }
 .hero--arctic {
   max-width: none;
   margin: 0;
-  min-height: 82vh;
+  min-height: 86vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -603,7 +611,7 @@ main { position: relative; z-index: 2; }
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
   line-height: 1.03;
   letter-spacing: 0.005em;
-  color: #24384D;
+  color: #222427;
   margin: 0 0 1.35rem;
 }
 
@@ -779,13 +787,10 @@ main { position: relative; z-index: 2; }
 }
 
 .case-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
   padding: 2rem 0 6rem;
-}
-@media (max-width: 760px) {
-  .case-grid { grid-template-columns: 1fr; }
 }
 
 .case-card {
@@ -793,12 +798,19 @@ main { position: relative; z-index: 2; }
   background: color-mix(in srgb, var(--card-accent, var(--accent)) 15%, var(--white));
   border: 2px solid var(--card-accent, var(--accent));
   border-radius: 14px;
-  padding: 2.25rem;
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  /* Full-width feature row: text on one side, motif on the other. */
   display: flex;
-  flex-direction: column;
-  min-height: 340px;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  min-height: 200px;
   box-shadow: 7px 7px 0 var(--card-accent, var(--accent));
   transition: transform 300ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms cubic-bezier(.2,.7,.2,1);
+}
+.case-card__body { flex: 1; min-width: 0; }
+@media (max-width: 760px) {
+  .case-card { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
 }
 .case-card:hover {
   transform: translate(-5px, -5px);
@@ -809,14 +821,12 @@ main { position: relative; z-index: 2; }
    Uses currentColor through var(--card-accent) so each card's motif
    matches its per-project accent color. */
 .case-card__viz {
-  position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
-  width: 72px;
-  height: 72px;
+  flex: none;
+  width: clamp(104px, 13vw, 172px);
+  height: clamp(104px, 13vw, 172px);
   color: var(--card-accent, var(--accent));
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
   transition: transform 500ms cubic-bezier(.2,.7,.2,1), opacity 300ms ease;
 }
 .case-card__viz svg {
@@ -840,7 +850,6 @@ main { position: relative; z-index: 2; }
   text-transform: uppercase;
   margin-bottom: 1.25rem;
   font-weight: 500;
-  padding-right: 90px; /* room for the __viz illustration in the top-right */
 }
 .case-card__title {
   font-family: 'Petrona', Georgia, serif;
@@ -1058,8 +1067,8 @@ main { position: relative; z-index: 2; }
 .site-footer {
   border: none;
   padding: 4rem 0 3rem;
-  /* Deeper navy than the nav/work band for a grounded base */
-  background-color: #0E1822;
+  /* Neutral charcoal — matches the header and work band */
+  background-color: #222427;
   background-image: var(--grain-fine);
   background-size: 200px 200px;
   background-blend-mode: overlay;
