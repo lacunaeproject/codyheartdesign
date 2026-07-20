@@ -6,6 +6,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap');
 
+/* Regards — modern retro serif, used for the hero display */
+@font-face {
+  font-family: 'Regards';
+  src: url('../assets/fonts/regards-webfont.woff2') format('woff2'),
+       url('../assets/fonts/regards-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- Tokens ---------- */
 :root {
   /* Chicago print — grounded */
@@ -223,6 +233,32 @@ body::before {
   .site-header__inner { gap: 0.75rem; padding: 1rem var(--gutter); }
 }
 
+/* ---------- Home header ----------
+   On the homepage the nav overlays the full-bleed arctic hero: transparent,
+   not sticky, a touch smaller, and no scrolled-glass blue stroke. */
+body.home .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+body.home .site-header,
+body.home .site-header.is-scrolled {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+body.home .site-header__inner,
+body.home .site-header.is-scrolled .site-header__inner {
+  padding-top: 1.05rem;
+  padding-bottom: 1.05rem;
+}
+body.home .wordmark { font-size: 1.15rem; }
+body.home .wordmark__heart { width: 21px; height: 21px; }
+body.home .nav { font-size: 0.9rem; gap: 1.6rem; }
+
 /* ---------- Shell ---------- */
 main { position: relative; z-index: 2; }
 .shell {
@@ -355,6 +391,58 @@ main { position: relative; z-index: 2; }
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+/* ---------- Arctic hero ---------- */
+.hero--arctic {
+  /* Full-bleed: break out of the shell so the artwork runs edge to edge,
+     up behind the transparent nav */
+  max-width: none;
+  margin: 0;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+  padding-top: clamp(7.5rem, 15vw, 12rem);
+  padding-bottom: clamp(4.5rem, 12vw, 9rem);
+  background-image: url('../assets/hero/arctic.PNG');
+  background-size: cover;
+  background-position: 72% center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+}
+.hero--arctic .hero__content {
+  max-width: 40ch;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero--arctic .hero__name {
+  font-family: 'Regards', 'Petrona', serif;
+  font-weight: 400;
+  font-size: clamp(3.2rem, 9vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  color: var(--river);
+  margin: 0 0 1.5rem;
+}
+
+.hero__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--harbor);
+  margin: 0 0 2.25rem;
+}
+.hero__meta span:last-child {
+  color: var(--lakemichigan);
+  font-weight: 500;
+}
+
+.hero--arctic .hero__actions {
+  justify-content: center;
 }
 
 .hero h1 {
@@ -1935,6 +2023,14 @@ main { position: relative; z-index: 2; }
 
   /* Buttons stack vertically and fill width — easier thumb targets */
   .hero__actions .btn { flex: 1 1 100%; justify-content: center; }
+
+  /* Arctic hero — keep the light, warm left of the image behind the text
+     when the landscape is cropped to a narrow portrait frame */
+  .hero--arctic {
+    padding-top: clamp(6rem, 20vw, 8rem);
+    padding-bottom: clamp(3.5rem, 12vw, 5rem);
+    background-position: center;
+  }
 
   /* Body paragraph width maxes at viewport — 64ch constraint is already
      loose enough on phones but ensure no horizontal overflow */
