@@ -204,48 +204,6 @@ window.CH_AUTH = (function() {
   else hero.appendChild(byline);
 })();
 
-/* ---------- Continents counter ----------
-   Small exploration/travel tag injected in the footer after the sign
-   line. Universal across every page that uses .site-footer. Update
-   the constants below when the count changes. */
-(function initFooterContinents() {
-  const sign = document.querySelector('.site-footer__sign');
-  if (!sign) return;
-  if (sign.nextElementSibling && sign.nextElementSibling.classList.contains('site-footer__continents')) return;
-
-  // === Continent count — update these when you visit a new one ===
-  const VISITED = 3;
-  const TOTAL = 7;
-  const NEXT_LABEL = 'Antarctica next';
-
-  const wrap = document.createElement('div');
-  wrap.className = 'site-footer__continents';
-  wrap.setAttribute('aria-label', 'Continents visited so far');
-
-  const label = document.createElement('span');
-  label.className = 'site-footer__continents-label';
-  label.textContent = 'Continents · ' + VISITED + ' of ' + TOTAL;
-  wrap.appendChild(label);
-
-  const dots = document.createElement('span');
-  dots.className = 'site-footer__continents-dots';
-  for (let i = 0; i < TOTAL; i++) {
-    const dot = document.createElement('span');
-    dot.className = 'site-footer__continent-dot' + (i < VISITED ? ' site-footer__continent-dot--filled' : '');
-    dots.appendChild(dot);
-  }
-  wrap.appendChild(dots);
-
-  if (NEXT_LABEL) {
-    const next = document.createElement('span');
-    next.className = 'site-footer__continents-next';
-    next.textContent = NEXT_LABEL;
-    wrap.appendChild(next);
-  }
-
-  sign.insertAdjacentElement('afterend', wrap);
-})();
-
 /* ---------- Reading progress bar ----------
    Fixed top-of-viewport bar that fills as the reader scrolls the page.
    Only injected on case-study pages (identified by main.cs). Scroll

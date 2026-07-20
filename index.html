@@ -32,9 +32,10 @@
 
 <!-- Theme color (mobile browser chrome) -->
 <meta name="theme-color" content="#FBFAF6">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/main.css?v=16">
 </head>
 <body class="home">
+<div class="frame">
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -53,31 +54,23 @@
        HERO — more weight variety, a little more teeth
        ============================================================ -->
   <section class="hero shell hero--arctic">
+    <div class="hero__snow" aria-hidden="true"></div>
     <div class="hero__content">
-      <h1 class="hero__name reveal">Cody Heart</h1>
+      <h1 class="hero__name reveal">I design systems that help people, animals, or the planet — and always move the numbers.</h1>
 
       <p class="hero__meta reveal reveal--d1">
-        <span>Lead Product Designer at LifeStance Health</span>
-        <span>Currently remote · open to hybrid in Chicago</span>
+        <span class="hero__meta-pill">Currently Lead Product Designer at <a href="https://www.lifestance.com" target="_blank" rel="noopener">LifeStance Health</a></span>
       </p>
-
-      <div class="hero__actions reveal reveal--d2">
-        <a class="btn" href="work.html">
-          See case studies <span class="arrow">→</span>
-        </a>
-        <a class="btn btn--ghost" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">
-          View resume <span class="arrow">↗</span>
-        </a>
-      </div>
     </div>
   </section>
 
   <!-- ============================================================
        CASE STUDY TEASER GRID — 6 cards, chronological order
        ============================================================ -->
-  <section class="shell">
+  <section class="work-band">
+    <div class="shell">
     <div class="case-intro reveal">
-      <span class="eyebrow">Selected Work</span>
+      <span class="eyebrow eyebrow--blue">Selected Work</span>
       <h2>Six projects that paid their own way.</h2>
     </div>
 
@@ -149,10 +142,10 @@
       </a>
 
       <!-- 06 · Design ROI -->
-      <a class="case-card case-card--06 reveal reveal--d5" href="case-studies/design-roi.html" style="grid-column: 1 / -1;">
+      <a class="case-card case-card--06 reveal reveal--d5" href="case-studies/design-roi.html">
         <span class="case-card__viz" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><g fill="currentColor"><rect x="10" y="76" width="12" height="16"/><rect x="30" y="62" width="12" height="30"/><rect x="50" y="44" width="12" height="48"/><rect x="70" y="18" width="12" height="74"/></g><path d="M12 68 Q30 50 52 36 T 88 8" fill="none" stroke-width="2.25"/><path d="M82 4 L88 8 L84 14" stroke-linejoin="round" fill="none"/></svg></span>
         <div class="case-card__num">№ 06 · Design ROI</div>
-        <h3 class="case-card__title">Design as a revenue lever</h3>
+        <h3 class="case-card__title">Revenue Lever</h3>
         <p class="case-card__desc">Financial modeling for the design team — realized savings, scoped upside, and the shared prioritization framework product, design, and engineering now use to plan.</p>
         <div class="case-card__meta">
           <span><strong>LifeStance Health</strong></span>
@@ -162,70 +155,70 @@
       </a>
 
     </div>
+    </div>
   </section>
 
   <!-- ============================================================
        EXPERIENCE
        ============================================================ -->
-  <section class="experience shell">
+  <section class="experience">
+    <div class="shell">
     <div class="experience__head">
-      <span class="eyebrow reveal">Experience</span>
+      <span class="eyebrow eyebrow--lake reveal">Experience</span>
       <h2 class="reveal">Seven years inside healthcare operations.</h2>
       <p class="experience__intro reveal reveal--d1">Most of my work is internal tools — the software that call-center agents, clinicians, claims adjusters, and billing teams stare at for eight hours a day. It&#8217;s where small friction compounds into millions of dollars and thousands of bad appointments.</p>
     </div>
 
     <article class="job job--lifestance-lead reveal">
-      <div class="job__meta">
-        <strong>LifeStance Health</strong>
-        Jun 2024 – present<br>
-        Lead Product Designer<br>
-        Remote
+      <div class="job__head">
+        <div class="job__id">
+          <strong class="job__company">LifeStance Health</strong>
+          <span class="job__title">Lead Product Designer · Remote</span>
+        </div>
+        <span class="job__dates">Jun 2024 – present</span>
       </div>
-      <div>
-        <h3 class="job__role">Design across the 33-state footprint</h3>
-        <ul class="job__list">
-          <li>Enabled the national rollout of an internal booking tool by removing operational bottlenecks and aligning cross-functional priorities. $500K annual savings; $15–25M in unlocked revenue capacity.</li>
-          <li>Modeled a 9–11× ROI from the current design team, plus a scoped 40–100× upside through targeted hires — used by the new CTO for resource planning.</li>
-          <li>Led strategy and design for a patient–provider routing system; turned an ambiguous funnel into a measurable framework for conversion, capacity, and intent.</li>
-          <li>Influenced leadership to treat design as a revenue lever, not a cost center.</li>
-        </ul>
-      </div>
+      <h3 class="job__role">Design across the 33-state footprint</h3>
+      <ul class="job__list">
+        <li>Enabled the national rollout of an internal booking tool by removing operational bottlenecks and aligning cross-functional priorities. $500K annual savings; $15–25M in unlocked revenue capacity.</li>
+        <li>Modeled a 9–11× ROI from the current design team, plus a scoped 40–100× upside through targeted hires — used by the new CTO for resource planning.</li>
+        <li>Led strategy and design for a patient–provider routing system; turned an ambiguous funnel into a measurable framework for conversion, capacity, and intent.</li>
+        <li>Influenced leadership to treat design as a revenue lever, not a cost center.</li>
+      </ul>
     </article>
 
     <article class="job job--lifestance-senior reveal">
-      <div class="job__meta">
-        <strong>LifeStance Health</strong>
-        Jun 2021 – Jun 2024<br>
-        Senior Designer &amp; acting PO<br>
-        Remote
+      <div class="job__head">
+        <div class="job__id">
+          <strong class="job__company">LifeStance Health</strong>
+          <span class="job__title">Senior Designer &amp; acting PO · Remote</span>
+        </div>
+        <span class="job__dates">Jun 2021 – Jun 2024</span>
       </div>
-      <div>
-        <h3 class="job__role">Unblocking the admin booking tool</h3>
-        <ul class="job__list">
-          <li>Shipped the streamlined admin booking tool — cut average call time by 15 seconds, $250K/year in labor.</li>
-          <li>Directed design across internal tools in 33 states; spent a year as acting Product Owner (backlog, stories, sprints).</li>
-          <li>Surfaced cross-functional inefficiencies through research and proposed system-level fixes that seeded new initiatives.</li>
-        </ul>
-      </div>
+      <h3 class="job__role">Unblocking the admin booking tool</h3>
+      <ul class="job__list">
+        <li>Shipped the streamlined admin booking tool — cut average call time by 15 seconds, $250K/year in labor.</li>
+        <li>Directed design across internal tools in 33 states; spent a year as acting Product Owner (backlog, stories, sprints).</li>
+        <li>Surfaced cross-functional inefficiencies through research and proposed system-level fixes that seeded new initiatives.</li>
+      </ul>
     </article>
 
     <article class="job job--collective-health reveal">
-      <div class="job__meta">
-        <strong>Collective Health</strong>
-        Nov 2018 – Jun 2021<br>
-        Designer → Sr. Designer<br>
-        San Francisco
+      <div class="job__head">
+        <div class="job__id">
+          <strong class="job__company">Collective Health</strong>
+          <span class="job__title">Designer to Sr. Designer · San Francisco</span>
+        </div>
+        <span class="job__dates">Nov 2018 – Jun 2021</span>
       </div>
-      <div>
-        <h3 class="job__role">Platform experience, member &amp; internal</h3>
-        <ul class="job__list">
-          <li>Led end-to-end design of 45+ features across internal tools, member experiences, and platform infrastructure.</li>
-          <li>Cut time on task by 50% in key CX workflows; 60% for out-of-network claim transcription.</li>
-          <li>Eliminated 40% of manual billing work through workflow automation and UX enhancements.</li>
-          <li>Built reporting dashboards to drive future product investment decisions.</li>
-        </ul>
-      </div>
+      <h3 class="job__role">Platform experience, member &amp; internal</h3>
+      <ul class="job__list">
+        <li>Led end-to-end design of 45+ features across internal tools, member experiences, and platform infrastructure.</li>
+        <li>Cut time on task by 50% in key CX workflows; 60% for out-of-network claim transcription.</li>
+        <li>Eliminated 40% of manual billing work through workflow automation and UX enhancements.</li>
+        <li>Built reporting dashboards to drive future product investment decisions.</li>
+      </ul>
     </article>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -235,12 +228,12 @@
     <div class="hello__grid">
       <div>
         <span class="eyebrow reveal">Hello</span>
-        <h2 class="reveal reveal--d1">Design &amp; operations, in close contact.</h2>
+        <h2 class="reveal reveal--d1">Work that&#8217;s mine — and does some good.</h2>
       </div>
       <div>
-        <p class="reveal">I&#8217;m Cody. I grew up in Los Angeles, spent a decade in the Bay Area, two years in New York, and I&#8217;m now in Franklin, Tennessee — headed to Chicago in 2027. I studied illustration at California College of the Arts and spent a few years in operations at Postmates and Twitter before moving fully into product design.</p>
-        <p class="reveal reveal--d1">What I care about: the systems behind the screens, the financial case for design, and the small act of paying attention to the person on the other end of a workflow.</p>
-        <p class="reveal reveal--d2">I also keep <a href="https://codynheart.com" target="_blank" rel="noopener" class="hello__link">a reader&#8217;s atlas</a> — a separate site about the books and the data around them.</p>
+        <p class="reveal">I&#8217;m Cody. I came to product design through illustration and a few years in operations at Postmates and Twitter, and I&#8217;ve spent the last seven years designing tools for healthcare.</p>
+        <p class="reveal reveal--d1">For a while I let the work be measured by what it handed back to me — the title, the raise, the approval. I chased those, got them, and found they don&#8217;t add up to much on their own. What pulls at me now is different: work that&#8217;s unmistakably mine, that includes more people than it leaves out, and that treats the person on the other side of the screen with real care.</p>
+        <p class="reveal reveal--d2">I&#8217;m learning to be more open with it, too — to make room for other designers, to write down what I&#8217;ve figured out and give it away, and to let this craft stay a little joyful. <a href="https://codynheart.com" target="_blank" rel="noopener" class="hello__link">A reader&#8217;s atlas</a> is one of those for-the-joy-of-it projects, and I keep an hour a week free for any designer who wants to talk.</p>
       </div>
     </div>
   </section>
@@ -275,12 +268,13 @@
       </ul>
     </div>
     <div class="site-footer__colophon">
-      <span>© 2026 Cody Heart. Typeset in Petrona &amp; Inter Tight.</span>
+      <span>© 2026 Cody Heart. Typeset in Regards &amp; Petrona.</span>
       <span>Designed by me, coded with Claude.</span>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=10"></script>
+</div><!-- /.frame -->
+<script src="js/main.js?v=11"></script>
 </body>
 </html>

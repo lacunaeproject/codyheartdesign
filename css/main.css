@@ -4,7 +4,7 @@
    Editorial, but with teeth.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* Regards — modern retro serif, used for the hero display */
 @font-face {
@@ -62,7 +62,7 @@
   --display-brown: #3B2A1E;   /* deep brown for the Regards display headers */
 
   /* Type scale */
-  --fs-eyebrow:  0.72rem;
+  --fs-eyebrow:  0.82rem;
   --fs-body:     1.0625rem;
   --fs-lead:     1.2rem;
   --fs-h3:       1.6rem;
@@ -74,6 +74,98 @@
   --max:         1280px;
   --max-read:    680px;
   --gutter:      clamp(1.25rem, 5.5vw, 4rem);
+
+  /* ============================================================
+     Palette 4 — Antarctica banner. Declared last so it wins over
+     the legacy tokens above and shifts the whole system to one
+     cohesive expedition set: warm cream "field paper", ink-navy
+     type, navy display headers, orange as the pop, with
+     navy / cornflower / taupe carrying the variety across sections.
+     ============================================================ */
+  --white:      #FFFFFF;
+  --navy:       #31456F;
+  --sky-pale:   #C3DCEC;
+  --cream:      #F5EAD8;
+  --butter:     #FAE8A4;
+  --orange:     #E87E1E;
+  --cornflower: #92B4D4;
+  --black:      #0E1116;
+  --ink-navy:   #16212E;
+  --charcoal:   #3C3C3C;
+  --taupe:      #6E655C;
+  --stone-gray: #8A8577;
+  --silver:     #C9C7C2;
+
+  /* Palette 1 — Antarctica */
+  --navy-deep:   #14395F;
+  --ice-pale:    #B9D6E5;
+  --cyan-glacier:#3EA7C9;
+  --ocean-blue:  #2C6A9C;
+  --navy-deep-2: #123A60;
+
+  /* Palette 2 — Gentoo Penguin */
+  --blue-900:    #1E4B77;
+  --blue-700:    #3B74AE;
+  --blue-500:    #4A90E2;
+  --blue-300:    #6FB4F2;
+  --blue-100:    #A2D6F7;
+
+  /* Palette 3 — Penguin Portrait */
+  --slate-navy:  #3A4155;
+  --sand-tan:    #C8A67F;
+  --teal-blue:   #2384B0;
+  --deep-blue:   #164F8A;
+  --sage-green:  #7C9480;
+
+  /* Palette 5 — King Penguins */
+  --penguin-ink:   #222427;
+  --penguin-gray:  #707887;
+  --penguin-white: #F4F3F1;
+  --gold:          #EAB805;
+  --burnt-orange:  #C85F00;
+  --ocean:         #09598A;
+
+  /* Base surfaces & type */
+  --paper:       var(--white);
+  --paper-2:     #E9EEF2;          /* light cool tint for alternate panels */
+  --paper-pure:  var(--white);
+  --ink:         #1E2A38;
+  --ink-soft:    var(--charcoal);
+  --muted:       var(--taupe);
+  --rule:        var(--silver);
+  --rule-soft:   #E1DED3;
+  /* Arctic frost — a cool icy-white grain (snow/frost) for the dark sections */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.8 0 0 0 0 0.9 0 0 0 0 1 0 0 0 0.85 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  /* Neutral fine grain — greyscale noise compressed near mid-grey so it adds
+     tactile texture via soft-light blend without shifting a section's colour. */
+  --grain-fine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='gf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncG type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncB type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gf)'/%3E%3C/svg%3E");
+  /* Paper grain — mostly light with faint darker specks, for a MULTIPLY blend
+     on light (near-white) sections where overlay would show nothing. */
+  --grain-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='gp'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncG type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncB type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gp)'/%3E%3C/svg%3E");
+
+  /* Functional roles */
+  --accent:      var(--orange);
+  --accent-deep: #C4620F;
+  --secondary:   var(--navy);
+  --tertiary:    var(--cornflower);
+  --highlight:   var(--butter);
+  --display-brown: var(--navy);    /* Regards display headers → expedition navy */
+
+  /* Legacy tokens remapped onto the Antarctica set so no stray colors remain */
+  --portillos:   var(--orange);
+  --flag-red:    var(--orange);
+  --river:       var(--navy);
+  --lakemichigan:var(--navy);
+  --malibu:      var(--navy);
+  --bahama:      var(--ink-navy);
+  --flw:         var(--orange);
+  --grant:       var(--cornflower);
+  --drawbridge:  var(--taupe);
+  --flag-blue:   var(--cornflower);
+  --midnight:    var(--ink-navy);
+  --harbor:      var(--cornflower);
+  --ltrain:      var(--butter);
+  --skyscraper:  var(--ink-navy);
 }
 
 /* ---------- Reset ---------- */
@@ -81,10 +173,8 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  /* Pale glacial blue-grey — a nat-geo arctic tone that lets the icy hero
-     dissolve straight into the page. Cards/surfaces keep --paper (#FBFAF6)
-     and sit a touch lighter. */
-  background: #DEE6EA;
+  /* Mat colour — shows through the .frame margin like a matted print */
+  background: #C89577;
   color: var(--ink);
   font-family: 'Petrona', Georgia, serif;
   font-size: var(--fs-body);
@@ -111,42 +201,16 @@ body::before {
 }
 
 /* ---------- Header ---------- */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition:
-    background 320ms ease,
-    backdrop-filter 320ms ease,
-    -webkit-backdrop-filter 320ms ease,
-    border-color 320ms ease,
-    box-shadow 320ms ease;
-}
-/* Activated once the page scrolls past a threshold — liquid-glass treatment.
-   Strong blur + saturation, soft paper tint, inner top-highlight for specular
-   reflection, soft drop shadow below so the glass visibly floats over content. */
+/* Solid dark bar contained at the top of the sheet (owltastic-style). */
+.site-header,
 .site-header.is-scrolled {
-  background: rgba(251, 250, 246, 0.62);
-  backdrop-filter: saturate(180%) blur(22px);
-  -webkit-backdrop-filter: saturate(180%) blur(22px);
-  border-bottom-color: rgba(182, 219, 233, 0.65);  /* --sky tinted */
-  box-shadow:
-    0 1px 0 rgba(230, 244, 250, 0.7) inset,        /* sky-tinted specular */
-    0 8px 24px -12px rgba(15, 40, 50, 0.15);       /* --midnight-tinted shadow */
-}
-/* Gentle lift: the header itself inches down a hair so the shadow reads */
-.site-header.is-scrolled .site-header__inner {
-  padding-top: 1.2rem;
-  padding-bottom: 1.2rem;
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  /* Fallback for browsers without backdrop-filter */
-  .site-header.is-scrolled {
-    background: rgba(251, 250, 246, 0.95);
-  }
+  position: static;
+  z-index: 10;
+  background: var(--ink-navy);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 .site-header__inner {
   max-width: var(--max);
@@ -159,11 +223,11 @@ body::before {
   transition: padding 320ms ease;
 }
 .wordmark {
-  font-family: 'Petrona', serif;
-  font-weight: 500;
-  font-size: 1.35rem;
-  letter-spacing: -0.015em;
-  color: var(--ink);
+  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  color: var(--cream);
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -176,11 +240,15 @@ body::before {
   font-style: italic;
 }
 .wordmark__heart {
-  width: 24px;
-  height: 24px;
-  color: var(--accent);
+  width: 30px;
+  height: 30px;
+  color: var(--burnt-orange);
   flex-shrink: 0;
   display: block;
+  /* Optical nudge up — the heart glyph is bottom-heavy and sits low in its box
+     relative to the wordmark's cap height. */
+  position: relative;
+  top: -2px;
   transform-origin: center;
   animation: heartbeat 1.4s ease-in-out 1 both;
 }
@@ -204,20 +272,40 @@ body::before {
 
 .nav {
   display: flex;
-  gap: 2rem;
-  font-family: 'Petrona', Georgia, serif;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--ink);
+  gap: 1.75rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
 }
+/* Text selection uses the lightest penguin blue */
+::selection { background: var(--blue-100); color: var(--black); }
 .nav a {
   padding: 0.3rem 0;
+  position: relative;
   transition: color 180ms ease;
 }
-.nav a:hover { color: var(--accent); }
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(.2, .7, .2, 1);
+}
+.nav a:hover::after,
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+.nav a:hover { color: var(--gold); }
 .nav a[aria-current="page"] { color: var(--accent); }
 
-/* Small tablets / large phones — tighter header */
+/* Small tablets / large phones — tighter header. Nav keeps modest type so
+   all four mono links fit; touch target comes from vertical padding, not size. */
 @media (max-width: 720px) {
   .site-header__inner { gap: 1rem; padding: 1.1rem var(--gutter); }
   .site-header.is-scrolled .site-header__inner {
@@ -225,46 +313,61 @@ body::before {
     padding-bottom: 1rem;
   }
   .wordmark { font-size: 1.2rem; gap: 0.5rem; }
-  .wordmark__heart { width: 20px; height: 20px; }
-  .nav { gap: 1.25rem; font-size: 0.95rem; }
-  /* Larger touch targets for nav links on mobile */
+  .wordmark__heart { width: 22px; height: 22px; }
+  .nav { gap: 1rem; font-size: 0.82rem; letter-spacing: 0.1em; }
   .nav a { padding: 0.6rem 0; }
 }
-/* Narrow phones — wordmark text hides, heart carries identity */
-@media (max-width: 420px) {
-  .wordmark span { display: none; }
-  .nav { gap: 0.9rem; font-size: 0.88rem; }
-  .site-header__inner { gap: 0.75rem; padding: 1rem var(--gutter); }
+/* Phones — stack the header: logo centered on line one, nav links dropped to a
+   centered second line (wrapping if truly narrow). Full wordmark shows again. */
+@media (max-width: 560px) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: center;
+  }
+  .wordmark { justify-content: center; margin-left: 0; }
+  .nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    width: 100%;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+  .nav a { padding: 0.4rem 0; }
+}
+@media (max-width: 340px) {
+  .nav { gap: 0.5rem 0.8rem; font-size: 0.72rem; }
 }
 
-/* ---------- Home header ----------
-   On the homepage the nav overlays the full-bleed arctic hero: transparent,
-   not sticky, a touch smaller, and no scrolled-glass blue stroke. */
-body.home .site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+/* ---------- Frame (matted "poster") ----------
+   A thin mat of body colour shows through this margin on all sides; the
+   contained content (header + sections + footer) fills the rest. Square
+   corners, no shadow — like a matted print. */
+.frame {
+  margin: clamp(12px, 1.8vw, 24px);
+  border: 2px solid var(--ink-navy);
+  position: relative;
 }
-body.home .site-header,
-body.home .site-header.is-scrolled {
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom-color: transparent;
-  box-shadow: none;
-}
-body.home .site-header__inner,
-body.home .site-header.is-scrolled .site-header__inner {
-  padding-top: 1.05rem;
-  padding-bottom: 1.05rem;
-}
-body.home .wordmark { font-size: 1.15rem; }
-body.home .wordmark__heart { width: 21px; height: 21px; }
-body.home .nav { font-size: 0.9rem; gap: 1.6rem; }
 
 /* ---------- Shell ---------- */
 main { position: relative; z-index: 2; }
+
+/* Full-bleed icy band for Selected Work — the hero dissolves into it and the
+   white case cards lift off the sky-pale. */
+.work-band {
+  background-color: var(--ink-navy);
+  background-image: var(--grain-fine);
+  background-size: 200px 200px;
+  background-blend-mode: overlay;
+  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  position: relative;
+}
+.work-band > * { position: relative; z-index: 1; }
+.work-band .case-intro h2 { color: var(--cream); }
+.work-band .eyebrow { color: var(--gold); }
+.experience .eyebrow { color: var(--ocean); }
 .shell {
   max-width: var(--max);
   margin: 0 auto;
@@ -280,15 +383,16 @@ main { position: relative; z-index: 2; }
 .eyebrow {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: var(--fs-eyebrow);
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--muted);
   display: inline-block;
 }
 .eyebrow--red    { color: var(--accent); }
-.eyebrow--blue   { color: var(--malibu); }
-.eyebrow--lake   { color: var(--lakemichigan); }
-.eyebrow--gold   { color: var(--tertiary); }
+.eyebrow--blue   { color: var(--teal-blue); }
+.eyebrow--lake   { color: var(--sage-green); }
+.eyebrow--gold   { color: var(--sand-tan); }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -399,68 +503,179 @@ main { position: relative; z-index: 2; }
 
 /* ---------- Arctic hero ---------- */
 .hero--arctic {
-  /* Full-bleed: break out of the shell so the artwork runs edge to edge,
-     up behind the transparent nav */
   max-width: none;
   margin: 0;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-  padding-top: clamp(7.5rem, 15vw, 12rem);
-  padding-bottom: clamp(4.5rem, 12vw, 9rem);
-  /* Arctic artwork with a gradient layered on top that dissolves the bottom
-     of the image into the page's beige (#EDE4D5) — no hard section edge. */
-  background-image:
-    linear-gradient(to bottom, rgba(222, 230, 234, 0) 30%, #DEE6EA 92%),
-    url('../assets/hero/arctic.PNG');
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ice-pale);
+  border-radius: 0;
+}
+/* Plain arctic artwork on its own layer, slowly drifting (Ken Burns) */
+.hero--arctic::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  background-image: url('../assets/hero/background-2.PNG');
   background-size: cover;
   background-position: 72% center;
   background-repeat: no-repeat;
-  border-radius: 0;
+  transform: scale(1.05);
+  animation: heroDrift 28s ease-in-out infinite alternate;
+  z-index: 0;
+}
+/* Drifting snow over the arctic scene */
+.hero--arctic::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(3px 3px at 20px 40px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(2px 2px at 80px 100px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 140px 30px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(1.8px 1.8px at 200px 90px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(2.8px 2.8px at 260px 50px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2px 2px at 40px 160px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.4px 2.4px at 110px 200px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1.6px 1.6px at 175px 150px, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(2.6px 2.6px at 240px 190px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2px 2px at 300px 130px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.2px 2.2px at 60px 260px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1.8px 1.8px at 150px 290px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(2.5px 2.5px at 220px 250px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2px 2px at 300px 300px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(1.7px 1.7px at 120px 70px, rgba(255,255,255,0.72), transparent 60%),
+    radial-gradient(2.3px 2.3px at 250px 110px, rgba(255,255,255,0.85), transparent 60%);
+  background-size: 320px 320px;
+  animation: snowFall 9s linear infinite;
+}
+.hero--arctic > * { position: relative; z-index: 2; }
+/* Foreground snow — larger, faster flakes for parallax depth */
+.hero__snow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(3.5px 3.5px at 50px 80px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(4px 4px at 180px 210px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 330px 120px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(4.5px 4.5px at 260px 330px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(3.5px 3.5px at 420px 250px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 120px 390px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(4px 4px at 390px 430px, rgba(255,255,255,0.9), transparent 60%);
+  background-size: 480px 480px;
+  animation: snowFallFront 6s linear infinite;
+}
+@keyframes snowFallFront {
+  from { background-position: 0 0; }
+  to   { background-position: 0 480px; }
+}
+@keyframes heroDrift {
+  from { transform: scale(1.05) translate3d(0, 0, 0); }
+  to   { transform: scale(1.14) translate3d(-1.8%, -1.3%, 0); }
+}
+@keyframes snowFall {
+  from { background-position: 0 0; }
+  to   { background-position: 0 320px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--arctic::before,
+  .hero--arctic::after,
+  .hero__snow,
+  .hero__meta-pill::before { animation: none; }
 }
 .hero--arctic .hero__content {
-  max-width: 40ch;
+  max-width: 54rem;
   margin: 0 auto;
   text-align: center;
 }
 
 .hero--arctic .hero__name {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
-  font-size: clamp(3.2rem, 9vw, 7rem);
-  line-height: 0.98;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.03;
   letter-spacing: 0.005em;
-  color: var(--river);
-  margin: 0 0 1.5rem;
+  color: #24384D;
+  margin: 0 0 1.35rem;
 }
 
 .hero__meta {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.1rem;
   font-family: 'Petrona', Georgia, serif;
-  font-size: 1.28rem;
-  line-height: 1.45;
-  letter-spacing: -0.005em;
-  color: var(--midnight);
-  font-weight: 500;
-  /* Soft paper halo keeps the byline legible where it crosses the darker,
-     busier part of the artwork — readable at a glance. */
-  text-shadow: 0 1px 8px rgba(251, 250, 246, 0.85);
-  margin: 0 0 2.25rem;
+  font-size: 1.14rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-weight: 400;
+  margin: 1.75rem 0 0;
 }
-.hero__meta span:first-child { font-weight: 600; }
-.hero__meta span:last-child {
-  color: var(--river);
-  font-weight: 500;
+.hero__meta::before {
+  content: "";
+  width: 46px;
+  height: 2px;
+  background: var(--burnt-orange);
+  opacity: 1;
+  margin-bottom: 1.35rem;
 }
+.hero__meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: 0.7rem;
+  padding: 0.44rem 1.15rem 0.44rem 1rem;
+  border-radius: 999px;
+  background: var(--penguin-white);
+  border: 1px solid rgba(36, 56, 77, 0.16);
+  box-shadow: 0 1px 0 rgba(36, 56, 77, 0.06);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-style: normal;
+}
+.hero__meta-pill::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--burnt-orange);
+  flex: none;
+  animation: livePulse 2.8s ease-in-out infinite;
+}
+/* Gentle "currently working" status-light pulse */
+@keyframes livePulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.3); opacity: 0.6; }
+}
+.hero__meta-pill a {
+  color: var(--ink-navy);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: color 180ms ease;
+}
+.hero__meta-pill a:hover { color: var(--burnt-orange); }
+
 
 .hero--arctic .hero__actions {
   justify-content: center;
 }
 
 .hero h1 {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 500;
   font-size: var(--fs-hero);
   line-height: 1.08;
@@ -500,20 +715,20 @@ main { position: relative; z-index: 2; }
   align-items: center;
   gap: 0.55rem;
   padding: 0.95rem 1.5rem;
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.005em;
-  border: 1.5px solid var(--ink);
-  background: var(--ink);
+  border: 1.5px solid var(--blue-900);
+  background: var(--blue-900);
   color: var(--paper);
   cursor: pointer;
   border-radius: 12px;
   transition: transform 180ms ease, background 180ms ease, color 180ms ease, border-color 180ms ease;
 }
 .btn:hover {
-  background: var(--lakemichigan);
-  border-color: var(--lakemichigan);
+  background: var(--accent);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 .btn--ghost {
@@ -521,9 +736,9 @@ main { position: relative; z-index: 2; }
   color: var(--ink);
 }
 .btn--ghost:hover {
-  background: var(--lakemichigan);
+  background: var(--accent);
   color: var(--paper);
-  border-color: var(--lakemichigan);
+  border-color: var(--accent);
 }
 .btn .arrow {
   display: inline-block;
@@ -545,7 +760,7 @@ main { position: relative; z-index: 2; }
   .case-intro__grid { grid-template-columns: 1fr; gap: 1.5rem; align-items: start; }
 }
 .case-intro h2 {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
@@ -575,18 +790,19 @@ main { position: relative; z-index: 2; }
 
 .case-card {
   position: relative;
-  background: var(--paper-pure);
-  border: 1.5px solid var(--ink);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 15%, var(--white));
+  border: 2px solid var(--card-accent, var(--accent));
   border-radius: 14px;
   padding: 2.25rem;
   display: flex;
   flex-direction: column;
   min-height: 340px;
+  box-shadow: 7px 7px 0 var(--card-accent, var(--accent));
   transition: transform 300ms cubic-bezier(.2,.7,.2,1), box-shadow 300ms cubic-bezier(.2,.7,.2,1);
 }
 .case-card:hover {
-  transform: translate(-6px, -6px);
-  box-shadow: 10px 10px 0 var(--card-accent, var(--accent));
+  transform: translate(-5px, -5px);
+  box-shadow: 13px 13px 0 var(--card-accent, var(--accent));
 }
 
 /* Abstract illustration slot — sits in the top-right corner of each card.
@@ -620,19 +836,20 @@ main { position: relative; z-index: 2; }
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
-  color: var(--card-accent, var(--accent));
+  color: var(--ink);
   text-transform: uppercase;
   margin-bottom: 1.25rem;
   font-weight: 500;
   padding-right: 90px; /* room for the __viz illustration in the top-right */
 }
 .case-card__title {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 500;
   font-size: 2.25rem;
   line-height: 1.02;
   letter-spacing: -0.025em;
   margin: 0 0 0.8rem;
+  color: var(--penguin-ink);
 }
 .case-card__title em { font-style: italic; color: var(--card-accent, var(--accent)); }
 .case-card__desc {
@@ -648,9 +865,9 @@ main { position: relative; z-index: 2; }
   margin-top: auto;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.78rem;
-  color: var(--muted);
+  color: var(--ink-soft);
   flex-wrap: wrap;
   font-weight: 500;
 }
@@ -659,18 +876,22 @@ main { position: relative; z-index: 2; }
   font-weight: 600;
 }
 /* Per-card accent colors */
-.case-card--01 { --card-accent: var(--portillos); }
-.case-card--02 { --card-accent: var(--malibu); }
-.case-card--03 { --card-accent: var(--flw); }
-.case-card--04 { --card-accent: var(--grant); }
-.case-card--05 { --card-accent: var(--drawbridge); }
-.case-card--06 { --card-accent: var(--flag-blue); }
+.case-card--01 { --card-accent: var(--orange); }
+.case-card--02 { --card-accent: var(--teal-blue); }
+.case-card--03 { --card-accent: var(--sage-green); }
+.case-card--04 { --card-accent: var(--sand-tan); }
+.case-card--05 { --card-accent: var(--cyan-glacier); }
+.case-card--06 { --card-accent: var(--deep-blue); }
 
 /* ---------- Experience ---------- */
 .experience {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  background-color: var(--paper);
+  background-image: var(--grain-paper);
+  background-size: 160px 160px;
+  background-blend-mode: multiply;
 }
 .experience__head {
   margin-bottom: 3.5rem;
@@ -681,14 +902,14 @@ main { position: relative; z-index: 2; }
   margin-bottom: 1.25rem;
 }
 .experience h2 {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
   letter-spacing: -0.022em;
   margin: 0 0 1.25rem;
   max-width: 18ch;
-  color: var(--display-brown);
+  color: var(--ocean);
 }
 .experience h2 em { font-style: italic; color: var(--accent); }
 .experience__intro {
@@ -698,47 +919,57 @@ main { position: relative; z-index: 2; }
   margin: 0;
   max-width: 58ch;
 }
+/* Editorial "ledger" entries — company + role on the left, dates on the right,
+   a summary line, then achievements marked with small accent diamonds. */
 .job {
-  padding: 2.25rem 0;
+  padding: 2.5rem 0;
   border-top: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 2.5rem;
-  transition: background 280ms ease;
 }
-.job:hover {
-  background: linear-gradient(90deg, transparent, var(--paper-2) 30%, var(--paper-2) 100%);
+.job:last-of-type { padding-bottom: 0; }
+.job__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.4rem;
 }
-@media (max-width: 760px) {
-  .job { grid-template-columns: 1fr; gap: 0.75rem; }
-  .job:hover { background: none; }
-  /* Tighter line-height in the meta block so stacked rows read as a unit,
-     plus more space before the role heading to separate the two blocks */
-  .job__meta { line-height: 1.45; }
-  .job__meta strong { margin-bottom: 0.4rem; }
-  .job__role { margin-top: 1rem; }
+.job__id {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
-.job__meta {
-  font-family: 'Inter Tight', system-ui, sans-serif;
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.75;
-  font-weight: 500;
-}
-.job__meta strong {
-  display: block;
-  color: var(--job-accent, var(--ink));
+.job__company {
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 1.45rem;
   font-weight: 700;
-  margin-bottom: 0.2rem;
-  font-size: 0.95rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.job__title {
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.job__dates {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--job-accent, var(--accent));
+  font-weight: 500;
+  white-space: nowrap;
 }
 .job__role {
-  font-family: 'Petrona', serif;
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  line-height: 1.15;
-  margin: 0 0 1rem;
+  font-family: 'Petrona', Georgia, serif;
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.3;
   letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 1.15rem;
 }
 .job__role em { font-style: italic; color: var(--job-accent, var(--accent)); }
 .job__list {
@@ -747,35 +978,45 @@ main { position: relative; z-index: 2; }
   margin: 0;
   display: grid;
   gap: 0.8rem;
+  max-width: 72ch;
 }
 .job__list li {
   padding-left: 1.5rem;
   position: relative;
   color: var(--ink-soft);
+  line-height: 1.55;
 }
 .job__list li::before {
-  content: "→";
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--job-accent, var(--accent));
-  font-weight: 700;
+  left: 1px;
+  top: 0.58em;
+  width: 7px;
+  height: 7px;
+  background: var(--job-accent, var(--accent));
+  transform: rotate(45deg);
+  transition: transform 220ms cubic-bezier(.2, .7, .2, 1);
 }
+.job__list li:hover::before { transform: rotate(45deg) scale(1.4); }
 
 /* Per-job accent — mirrors the case-card accents so a company's work reads
    with the same color signature everywhere it appears on the page. */
-.job--lifestance-lead   { --job-accent: var(--portillos); }
-.job--lifestance-senior { --job-accent: var(--malibu); }
-.job--collective-health { --job-accent: var(--flw); }
+.job--lifestance-lead   { --job-accent: var(--ocean); }
+.job--lifestance-senior { --job-accent: var(--deep-blue); }
+.job--collective-health { --job-accent: var(--navy); }
 
 /* ---------- Hello / about ---------- */
 .hello {
   padding: 6rem 0;
-  background: var(--paper-2);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  background-color: #3C3C3C;
+  background-image: var(--grain-fine);
+  background-size: 200px 200px;
+  background-blend-mode: overlay;
+  border: none;
   position: relative;
+  color: var(--penguin-white);
 }
+.hello .eyebrow { color: var(--butter); }
 .hello__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -790,37 +1031,43 @@ main { position: relative; z-index: 2; }
   .hello__grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 .hello h2 {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
   letter-spacing: -0.022em;
   margin: 1rem 0 1.5rem;
   max-width: 16ch;
-  color: var(--display-brown);
+  color: var(--cream);
 }
-.hello h2 em { font-style: italic; color: var(--accent); }
+.hello h2 em { font-style: italic; color: var(--butter); }
 .hello p {
-  color: var(--ink-soft);
+  color: var(--penguin-white);
   margin-bottom: 1rem;
   font-size: 1.0625rem;
   line-height: 1.65;
 }
 .hello__link {
-  color: var(--accent);
-  border-bottom: 1.5px solid var(--accent);
-  font-weight: 500;
+  color: var(--penguin-white);
+  border-bottom: 1.5px solid var(--burnt-orange);
+  font-weight: 600;
 }
-.hello__link:hover { color: var(--accent-deep); border-color: var(--accent-deep); }
+.hello__link:hover { border-color: var(--penguin-white); }
 
 /* ---------- Footer ---------- */
 .site-footer {
-  border-top: 2px solid var(--ink);
+  border: none;
   padding: 4rem 0 3rem;
-  background: var(--paper);
+  /* Deeper navy than the nav/work band for a grounded base */
+  background-color: #0E1822;
+  background-image: var(--grain-fine);
+  background-size: 200px 200px;
+  background-blend-mode: overlay;
+  color: var(--penguin-white);
   position: relative;
   z-index: 2;
 }
+.site-footer p[style] { color: #C4D2DD !important; }
 .site-footer__inner {
   max-width: var(--max);
   margin: 0 auto;
@@ -833,16 +1080,17 @@ main { position: relative; z-index: 2; }
   .site-footer__inner { grid-template-columns: 1fr; gap: 2rem; }
 }
 .site-footer h3 {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--gold);
   margin: 0 0 1rem;
   font-weight: 600;
 }
+.site-footer ul a { color: var(--penguin-white); }
 .site-footer__sign {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: clamp(1.25rem, 2.5vw, 1.65rem);
   line-height: 1.2;
@@ -852,21 +1100,21 @@ main { position: relative; z-index: 2; }
 .site-footer__sign em { font-style: italic; color: var(--accent); }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
 .site-footer ul a {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.95rem;
   font-weight: 500;
   border-bottom: 1px solid transparent;
-  transition: border-color 180ms ease, color 180ms ease;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
   display: inline-block;
 }
-.site-footer ul a:hover { border-color: var(--accent); color: var(--accent); }
+.site-footer ul a:hover { border-color: var(--accent); color: var(--accent); transform: translateX(4px); }
 .site-footer__colophon {
   grid-column: 1 / -1;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   font-size: 0.875rem;
-  color: var(--muted);
+  color: #AEC0CE;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -905,7 +1153,7 @@ main { position: relative; z-index: 2; }
   margin-bottom: 0.5rem;
 }
 .lock h1 {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 500;
   font-size: clamp(1.9rem, 4.5vw, 2.8rem);
   line-height: 1.05;
@@ -921,7 +1169,7 @@ main { position: relative; z-index: 2; }
   max-width: 40ch;
 }
 .lock__access {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.88rem !important;
   color: var(--muted) !important;
   margin: 0 0 1.5rem !important;
@@ -961,7 +1209,7 @@ main { position: relative; z-index: 2; }
 }
 .lock__error {
   color: var(--accent);
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.75rem;
@@ -981,7 +1229,7 @@ main { position: relative; z-index: 2; }
 .lock__hint {
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   color: var(--muted);
   letter-spacing: 0.01em;
 }
@@ -1118,7 +1366,7 @@ main { position: relative; z-index: 2; }
   position: relative;
 }
 .cs-hero__nav {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.85rem;
   color: var(--muted);
   margin-bottom: 3rem;
@@ -1168,7 +1416,7 @@ main { position: relative; z-index: 2; }
 }
 .cs-hero-illustration__credit {
   display: block;
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.68rem;
   font-style: normal;
   text-transform: uppercase;
@@ -1267,48 +1515,8 @@ main { position: relative; z-index: 2; }
   color: var(--muted);
   margin-top: 0.35rem;
   letter-spacing: 0.01em;
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 500;
-}
-
-/* Continents counter — a small always-visible expedition tag in the
-   footer. Injected in JS after .site-footer__sign on every page. */
-.site-footer__continents {
-  margin-top: 0.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-.site-footer__continents-label {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  font-weight: 600;
-}
-.site-footer__continents-dots {
-  display: inline-flex;
-  gap: 5px;
-  align-items: center;
-}
-.site-footer__continent-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1px solid var(--muted);
-  display: inline-block;
-}
-.site-footer__continent-dot--filled {
-  background: var(--accent);
-  border-color: var(--accent);
-}
-.site-footer__continents-next {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
 }
 
 /* Word-by-word reveal on hero H1s. Each word starts opacity 0 and
@@ -1348,7 +1556,7 @@ main { position: relative; z-index: 2; }
   .reading-progress { display: none; }
 }
 .cs-hero h1 {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: clamp(2.1rem, 5.5vw, 3.6rem);
   line-height: 1.08;
@@ -1411,7 +1619,7 @@ main { position: relative; z-index: 2; }
   padding-top: 1.5rem;
 }
 .metric__num {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: clamp(3rem, 6.5vw, 5.5rem);
   line-height: 0.95;
@@ -1431,7 +1639,7 @@ main { position: relative; z-index: 2; }
   font-weight: 500;
 }
 .metric__label {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.9rem;
   color: rgba(251, 250, 246, 0.78);
   line-height: 1.45;
@@ -1455,7 +1663,7 @@ main { position: relative; z-index: 2; }
   padding-bottom: 0;
 }
 .cs-body h2 {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: 1.65rem;
   line-height: 1.15;
@@ -1467,7 +1675,7 @@ main { position: relative; z-index: 2; }
 .cs-body h2 em { font-style: italic; color: var(--accent); }
 .cs-body h2:first-child { margin-top: 0; }
 .cs-body h3 {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 700;
   font-size: 1.2rem;
   margin: 2rem 0 0.6rem;
@@ -1484,7 +1692,7 @@ main { position: relative; z-index: 2; }
 /* Drop cap on the first paragraph of the first narrative chapter —
    signals the start of the long-form read, like an NYT article. */
 .cs-body:not(.cs-body--overview) .cs-chapter:first-of-type > div > p:first-of-type::first-letter {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 700;
   font-size: 4rem;
   line-height: 0.85;
@@ -1562,7 +1770,7 @@ main { position: relative; z-index: 2; }
   margin: 3.5rem auto;
   padding: 0;
   border-left: none;
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-style: italic;
   font-weight: 400;
   font-size: 1.95rem;
@@ -1609,7 +1817,7 @@ main { position: relative; z-index: 2; }
   border-top: 1px solid var(--rule);
 }
 .cs-chapter__num {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1655,7 +1863,7 @@ main { position: relative; z-index: 2; }
   .cs-stat { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 .cs-stat__num {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   line-height: 0.9;
@@ -1708,12 +1916,12 @@ main { position: relative; z-index: 2; }
   color: var(--muted);
 }
 .cs-comparison__before {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   color: var(--ink-soft);
   line-height: 1.5;
 }
 .cs-comparison__after {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   color: var(--ink);
   line-height: 1.5;
   font-weight: 500;
@@ -1823,7 +2031,7 @@ main { position: relative; z-index: 2; }
   margin: 0 0 1rem;
 }
 .screens-gate__title {
-  font-family: 'Petrona', serif;
+  font-family: 'Petrona', Georgia, serif;
   font-weight: 500;
   font-size: clamp(1.6rem, 3vw, 2rem);
   line-height: 1.1;
@@ -1865,7 +2073,7 @@ main { position: relative; z-index: 2; }
 }
 .screens-gate__error {
   color: var(--accent);
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.5rem;
@@ -1920,7 +2128,7 @@ main { position: relative; z-index: 2; }
   gap: 2rem;
 }
 .cs-next__label {
-  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-family: 'Petrona', Georgia, serif;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1929,7 +2137,7 @@ main { position: relative; z-index: 2; }
   font-weight: 600;
 }
 .cs-next__title {
-  font-family: 'Regards', 'Petrona', serif;
+  font-family: 'Regards', 'Petrona', Georgia, serif;
   font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
@@ -2071,6 +2279,38 @@ main { position: relative; z-index: 2; }
 
   /* Reduce cs-body paragraph margin slightly */
   .cs-body p { margin-bottom: 1rem; }
+}
+
+/* ---- Homepage arctic hero (current .hero__name / .hero__meta-pill markup,
+   which the older .hero h1 / .btn rules above don't target) ---- */
+@media (max-width: 600px) {
+  .hero--arctic { min-height: 72vh; }
+  .hero--arctic .hero__name {
+    font-size: clamp(2rem, 7.6vw, 2.9rem);
+    line-height: 1.07;
+  }
+  .hero--arctic .hero__meta { margin-top: 1.4rem; }
+  /* Switch from flex (which orphans the dot) to inline text so the label wraps
+     to tidy centered lines with the dot leading the first line. */
+  .hero--arctic .hero__meta-pill {
+    display: inline-block;
+    text-align: center;
+    border-radius: 14px;
+    line-height: 1.75;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.55rem 1.05rem;
+    max-width: 100%;
+  }
+  .hero--arctic .hero__meta-pill::before {
+    display: inline-block;
+    vertical-align: middle;
+    margin: -0.15em 0.5em 0 0;
+  }
+}
+@media (max-width: 380px) {
+  .hero--arctic .hero__name { font-size: clamp(1.8rem, 8vw, 2.2rem); }
+  .hero--arctic .hero__meta-pill { font-size: 0.58rem; letter-spacing: 0.05em; }
 }
 
 /* iOS-safe viewport for the lock page: avoid the `vh` jump when the
