@@ -238,6 +238,13 @@ body {
      `clip` is preferred over `hidden` because it still allows position:sticky to work. */
   overflow-x: clip;
 }
+/* About page: a warm, sunlit sheet — the savanna counterpart to the home
+   page. The reading bands paint their own backgrounds over this base, so
+   any seam between hero, bands, and footer stays invisible. */
+body.about-page {
+  background: #F4E9D2;   /* warm beige-yellow */
+  color: var(--ink);
+}
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
@@ -798,6 +805,223 @@ main { position: relative; z-index: 2; }
   text-transform: uppercase;
   color: var(--muted);
   font-weight: 500;
+}
+
+/* ============================================================
+   SAVANNA HERO  ·  About page
+   The warm-continent sibling of the arctic hero. Same full-bleed
+   structure and slow Ken Burns drift; snow becomes golden dust
+   rising off the plain (heat-haze), navy becomes espresso.
+   ============================================================ */
+.hero--savanna {
+  max-width: none;
+  margin: 0;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--cream);
+  border-radius: 0;
+}
+/* Savanna artwork on its own layer, slowly drifting */
+.hero--savanna::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  background-image: url('../assets/hero/africa.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  animation: heroDrift 30s ease-in-out infinite alternate;
+  z-index: 0;
+}
+/* Fine warm dust drifting up off the plain — the heat-haze answer to
+   the arctic's falling snow. Amber + pale-gold motes, low opacity. */
+.hero--savanna::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2.5px 2.5px at 20px 40px, rgba(232,126,30,0.42), transparent 60%),
+    radial-gradient(1.8px 1.8px at 80px 100px, rgba(250,232,164,0.7), transparent 60%),
+    radial-gradient(2.2px 2.2px at 140px 30px, rgba(200,95,0,0.35), transparent 60%),
+    radial-gradient(1.6px 1.6px at 200px 90px, rgba(250,232,164,0.6), transparent 60%),
+    radial-gradient(2.6px 2.6px at 260px 50px, rgba(232,126,30,0.4), transparent 60%),
+    radial-gradient(1.8px 1.8px at 40px 160px, rgba(250,232,164,0.65), transparent 60%),
+    radial-gradient(2.2px 2.2px at 110px 200px, rgba(232,126,30,0.34), transparent 60%),
+    radial-gradient(1.5px 1.5px at 175px 150px, rgba(255,246,224,0.6), transparent 60%),
+    radial-gradient(2.4px 2.4px at 240px 190px, rgba(232,126,30,0.4), transparent 60%),
+    radial-gradient(1.8px 1.8px at 300px 130px, rgba(250,232,164,0.6), transparent 60%),
+    radial-gradient(2px 2px at 60px 260px, rgba(200,95,0,0.32), transparent 60%),
+    radial-gradient(1.6px 1.6px at 150px 290px, rgba(255,246,224,0.55), transparent 60%),
+    radial-gradient(2.3px 2.3px at 220px 250px, rgba(232,126,30,0.38), transparent 60%),
+    radial-gradient(1.7px 1.7px at 300px 300px, rgba(250,232,164,0.6), transparent 60%),
+    radial-gradient(1.6px 1.6px at 120px 70px, rgba(255,246,224,0.5), transparent 60%),
+    radial-gradient(2.1px 2.1px at 250px 110px, rgba(232,126,30,0.34), transparent 60%);
+  background-size: 340px 340px;
+  animation: dustRise 17s linear infinite;
+}
+.hero--savanna > * { position: relative; z-index: 2; }
+/* Foreground dust — larger, faster motes drifting up for parallax depth */
+.hero__dust {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(3.5px 3.5px at 50px 80px, rgba(232,126,30,0.4), transparent 60%),
+    radial-gradient(3px 3px at 180px 210px, rgba(250,232,164,0.55), transparent 60%),
+    radial-gradient(3px 3px at 330px 120px, rgba(200,95,0,0.3), transparent 60%),
+    radial-gradient(4px 4px at 260px 330px, rgba(232,126,30,0.36), transparent 60%),
+    radial-gradient(3.2px 3.2px at 420px 250px, rgba(250,232,164,0.5), transparent 60%),
+    radial-gradient(3px 3px at 120px 390px, rgba(255,246,224,0.5), transparent 60%),
+    radial-gradient(3.5px 3.5px at 390px 430px, rgba(232,126,30,0.34), transparent 60%);
+  background-size: 500px 500px;
+  animation: dustRiseFront 12s linear infinite;
+}
+@keyframes dustRise {
+  from { background-position: 0 0; }
+  to   { background-position: 44px -340px; }
+}
+@keyframes dustRiseFront {
+  from { background-position: 0 0; }
+  to   { background-position: -34px -500px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--savanna::before,
+  .hero--savanna::after,
+  .hero__dust { animation: none; }
+}
+.hero--savanna .hero__content {
+  max-width: 54rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero--savanna .hero__eyebrow {
+  justify-content: center;
+  color: var(--burnt-orange);
+}
+.hero--savanna .hero__name {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: 0.005em;
+  color: #3A2A1C;   /* deep espresso — strong readability over the warm sky */
+  margin: 0 0 1.35rem;
+}
+.hero--savanna .hero__dateline {
+  margin-top: 1.75rem;
+  color: #6B4F36;
+}
+
+/* ============================================================
+   SELF PHOTOS  ·  About page
+   Editorial figures woven through the reading column: rounded,
+   softly shadowed, with an italic serif caption in the site voice.
+   ============================================================ */
+.self-figure {
+  margin: 3rem 0;
+}
+.self-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  background: var(--paper-2);
+  box-shadow:
+    0 1px 2px rgba(59, 42, 30, 0.06),
+    0 22px 46px -16px rgba(59, 42, 30, 0.30);
+}
+.self-figure figcaption {
+  margin-top: 0.95rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+/* Two portraits side by side; caption spans both */
+.self-figure--pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  align-items: start;
+}
+.self-figure--pair figcaption { grid-column: 1 / -1; margin-top: 0.7rem; }
+/* Single portrait, kept modest so one face doesn't fill the column */
+.self-figure--sm {
+  width: min(100%, 380px);
+  margin-left: auto;
+  margin-right: auto;
+}
+.self-figure--sm figcaption { text-align: center; }
+/* Break out wider than the reading column for rhythm. Centered on the
+   viewport with margins only (no transform) so it coexists with the
+   .reveal fade, which drives transform: translateY on the same element. */
+.self-figure--wide {
+  width: min(92vw, 940px);
+  margin-left: calc(50% - min(92vw, 940px) / 2);
+  margin-right: auto;
+}
+@media (max-width: 640px) {
+  .self-figure--pair { grid-template-columns: 1fr; gap: 0.9rem; }
+  .self-figure--wide { width: 100%; margin-left: 0; }
+}
+
+/* ============================================================
+   ABOUT PAGE — nav, editorial section titles, alternating
+   colour bands, and a deep footer to echo index.html.
+   ============================================================ */
+
+/* Nav: float the header transparently over the savanna hero, exactly the
+   way the home page floats over the arctic hero. */
+.about-page .site-header,
+.about-page .site-header.is-scrolled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.about-page .wordmark { color: #223A52; }
+.about-page .nav { color: #2E4A66; }
+
+/* Section titles: Cheltenham Classic, in the hero's espresso brown. */
+.about-page .cs-body h2 {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: #3A2A1C;
+}
+
+/* Alternating bands down the page: beige-yellow, then a deep coffee brown,
+   then back to beige — the savanna answer to the home page's colour steps. */
+.about-band { position: relative; }
+.about-band--cream { background-color: #F4E9D2; }
+.about-band--brown { background-color: #2E211A; }
+
+/* The dark band inverts the reading colours (and its title). */
+.about-band--brown .cs-body h2 { color: #F3E4C9; }
+.about-band--brown .cs-body p { color: #E8DAC4; }
+.about-band--brown .cs-body p strong { color: #FBF3E4; }
+.about-band--brown .cs-body a,
+.about-band--brown .hello__link { color: #F3E4C9; }
+.about-band--brown .self-figure figcaption { color: #C6B295; }
+
+/* Footer: deep near-black, matching index.html's sea floor. */
+.about-page .site-footer {
+  background-color: #02070C;
 }
 
 /* ---------- Buttons ---------- */
@@ -2711,6 +2935,11 @@ body.sea .cs-hero::before {
 @media (max-width: 600px) {
   .hero--arctic { min-height: 72vh; }
   .hero--arctic .hero__name {
+    font-size: clamp(2rem, 7.6vw, 2.9rem);
+    line-height: 1.07;
+  }
+  .hero--savanna { min-height: 72vh; }
+  .hero--savanna .hero__name {
     font-size: clamp(2rem, 7.6vw, 2.9rem);
     line-height: 1.07;
   }
