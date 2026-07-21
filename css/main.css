@@ -4,7 +4,7 @@
    Editorial, but with teeth.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* Regards — modern retro serif, used for the hero display */
 @font-face {
@@ -13,6 +13,50 @@
        url('../assets/fonts/regards-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+/* Cheltenham Classic — NYT-style headline serif */
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassicItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassicMedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassicMediumltalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassicBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cheltenham Classic';
+  src: url('../assets/fonts/CheltenhamClassicBoldltalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -184,7 +228,7 @@ body {
     #3F6E97 100%);
   background-attachment: fixed;
   color: var(--ink);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: var(--fs-body);
   line-height: 1.6;
   font-feature-settings: "kern", "liga", "onum";
@@ -248,7 +292,7 @@ body::before {
   transition: padding 320ms ease;
 }
 .wordmark {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: 0.01em;
@@ -297,13 +341,21 @@ body::before {
 
 .nav {
   display: flex;
-  gap: 1.75rem;
+  gap: 2rem;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cream);
+}
+/* Laptop — step the mono nav up a touch as the header gains room. */
+@media (min-width: 1024px) {
+  .nav { gap: 2.25rem; font-size: 0.98rem; }
+}
+/* Desktop — largest nav type, most breathing room between links. */
+@media (min-width: 1440px) {
+  .nav { gap: 2.5rem; font-size: 1.05rem; }
 }
 /* Text selection uses the lightest penguin blue */
 ::selection { background: var(--blue-100); color: var(--black); }
@@ -422,14 +474,14 @@ main { position: relative; z-index: 2; }
 .eyebrow {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: var(--fs-eyebrow);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--muted);
+  letter-spacing: 0.16em;
+  color: #565D65;   /* darkened from --muted for legible small-caps contrast */
   display: inline-block;
 }
 .eyebrow--red    { color: var(--accent); }
-.eyebrow--blue   { color: var(--teal-blue); }
+.eyebrow--blue   { color: var(--ocean); }
 .eyebrow--lake   { color: var(--sage-green); }
 .eyebrow--gold   { color: var(--sand-tan); }
 
@@ -637,7 +689,7 @@ main { position: relative; z-index: 2; }
 }
 
 .hero--arctic .hero__name {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
   line-height: 1.03;
@@ -651,7 +703,7 @@ main { position: relative; z-index: 2; }
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.14rem;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -714,7 +766,7 @@ main { position: relative; z-index: 2; }
 }
 
 .hero h1 {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 500;
   font-size: var(--fs-hero);
   line-height: 1.08;
@@ -725,7 +777,7 @@ main { position: relative; z-index: 2; }
 .hero h1 em { font-style: italic; color: var(--accent); }
 
 .hero__lede {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: var(--fs-lead);
   line-height: 1.55;
   max-width: 48ch;
@@ -754,7 +806,7 @@ main { position: relative; z-index: 2; }
   align-items: center;
   gap: 0.55rem;
   padding: 0.95rem 1.5rem;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.005em;
@@ -799,7 +851,7 @@ main { position: relative; z-index: 2; }
   .case-intro__grid { grid-template-columns: 1fr; gap: 1.5rem; align-items: start; }
 }
 .case-intro h2 {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
@@ -826,9 +878,9 @@ main { position: relative; z-index: 2; }
 
 .case-card {
   position: relative;
-  background: color-mix(in srgb, var(--card-accent, var(--accent)) 15%, var(--white));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 18%, var(--white));
   border: 2px solid var(--card-accent, var(--accent));
-  border-radius: 14px;
+  border-radius: 20px;
   padding: clamp(1.75rem, 3vw, 2.75rem);
   /* Full-width feature row: text on one side, motif on the other. */
   display: flex;
@@ -883,8 +935,8 @@ main { position: relative; z-index: 2; }
   font-weight: 500;
 }
 .case-card__title {
-  font-family: 'Petrona', Georgia, serif;
-  font-weight: 500;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
   font-size: 2.25rem;
   line-height: 1.02;
   letter-spacing: -0.025em;
@@ -905,7 +957,7 @@ main { position: relative; z-index: 2; }
   margin-top: auto;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.78rem;
   color: var(--ink-soft);
   flex-wrap: wrap;
@@ -916,12 +968,243 @@ main { position: relative; z-index: 2; }
   font-weight: 600;
 }
 /* Per-card accent colors */
-.case-card--01 { --card-accent: var(--orange); }
-.case-card--02 { --card-accent: var(--teal-blue); }
-.case-card--03 { --card-accent: var(--sage-green); }
-.case-card--04 { --card-accent: var(--sand-tan); }
-.case-card--05 { --card-accent: var(--cyan-glacier); }
-.case-card--06 { --card-accent: var(--deep-blue); }
+/* Per-card accents — a saturated, cohesive spread so every card pops and
+   reads distinct from its neighbors: warm orange + gold, a pine green, then
+   three blues separated by lightness (mid teal / bright cyan / deep cobalt). */
+.case-card--01 { --card-accent: var(--orange); }   /* #E87E1E — signature orange */
+.case-card--02 { --card-accent: #0E8FA8; }          /* teal */
+.case-card--03 { --card-accent: #2E9C71; }          /* pine green (was muddy sage) */
+.case-card--04 { --card-accent: #E0A509; }          /* gold (was muddy tan) */
+.case-card--05 { --card-accent: #39B0D4; }          /* glacier cyan */
+.case-card--06 { --card-accent: #1E5DA8; }          /* deep cobalt */
+
+/* ---------- Writing ---------- */
+/* Deep-sea step between the work band and Experience: same descending navy
+   gradient, contour texture, and ocean-wave transition as its neighbors. */
+.writing {
+  padding-top: 5rem;
+  padding-bottom: 7.5rem;   /* room for the Experience wave below */
+  color: #BCCAD6;
+  background-color: #102A40;   /* deep-sea step 1.5 — between work band and experience */
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  position: relative;
+}
+.writing > * { position: relative; z-index: 1; }
+.writing::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -76px;
+  height: 78px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%23102A40'/%3E%3C/svg%3E");
+}
+.writing .eyebrow { color: var(--gold); }
+.writing__head {
+  margin: 0 auto 2.5rem;   /* centered column, text stays left-aligned within */
+  max-width: 72ch;
+}
+.writing__head .eyebrow { display: block; margin-bottom: 1.25rem; }
+.writing h2 {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  margin: 0 0 1.25rem;
+  color: var(--cream);
+}
+.writing__intro {
+  color: #BCCAD6;
+  font-size: 1.15rem;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 58ch;
+}
+.writing-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 72ch;
+  display: grid;
+  gap: 1.75rem;
+}
+/* Each entry is a "field dispatch" card — a lifted panel with a faint gold
+   frame and expedition stamps (coordinates, dispatch number) so it reads as a
+   note pinned over the deep water, not a plain list row. */
+.writing-entry { position: relative; }
+.writing-entry__link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.6rem, 3.5vw, 2.6rem);
+  color: inherit;
+  background-color: #DCE8F1;   /* light glacier paper — reads clearly on the deep-sea section */
+  /* Dot grid — a field-notebook texture, distinct from the section's waves */
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%2316395F' fill-opacity='0.16'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+  border: 1px solid rgba(20, 57, 95, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.75);
+  transition: transform 320ms cubic-bezier(.2, .7, .2, 1),
+              box-shadow 320ms cubic-bezier(.2, .7, .2, 1),
+              border-color 320ms ease;
+}
+.writing-entry__link:hover {
+  transform: translateY(-5px);
+  border-color: rgba(20, 57, 95, 0.55);
+  box-shadow: 0 30px 54px -26px rgba(0, 0, 0, 0.85);
+}
+.writing-entry__head,
+.writing-entry__title,
+.writing-entry__dek,
+.writing-entry__foot { position: relative; z-index: 1; }
+.writing-entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--burnt-orange);
+  padding-bottom: 0.95rem;
+  margin-bottom: 1.15rem;
+  border-bottom: 1px solid rgba(20, 57, 95, 0.16);
+}
+.writing-entry__read { color: #55636E; }
+.writing-entry__title {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--ink-navy);
+  margin: 0 0 0.7rem;
+  max-width: 24ch;
+  transition: color 200ms ease;
+}
+.writing-entry__dek {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0 0 1.6rem;
+  max-width: 54ch;
+}
+.writing-entry__foot {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(20, 57, 95, 0.16);
+}
+.writing-entry__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: var(--ocean);
+  padding: 0.55rem 1.05rem;
+  border: 1.5px solid var(--ocean);
+  border-radius: 999px;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+.writing-entry__cta .arrow {
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(.2, .7, .2, 1);
+}
+.writing-entry__link:hover .writing-entry__title { color: var(--ocean); }
+.writing-entry__link:hover .writing-entry__cta {
+  background-color: var(--navy-deep);
+  border-color: var(--navy-deep);
+  color: #FFFFFF;
+}
+.writing-entry__link:hover .arrow { transform: translateX(4px); }
+
+/* ============================================================
+   Expedition page transition (see js/rise.js)
+   A navy veil with a compass rose fades in to cover on exit and
+   fades away to reveal on entry, below the nav (top: var(--nav-h)).
+   Theme-agnostic — a compass, not the deep-sea water motif.
+   ============================================================ */
+.page-rise {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--nav-h, 84px);
+  bottom: 0;
+  z-index: 40;
+  overflow: hidden;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #13202E;   /* expedition ink-navy — reads over any page */
+  /* faint map graticule */
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0 H0 V40' fill='none' stroke='%23EAB805' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  opacity: 0;
+  visibility: hidden;
+}
+.page-rise__compass {
+  width: clamp(66px, 12vw, 116px);
+  height: auto;
+  color: var(--gold);
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.82);
+  will-change: transform, opacity;
+}
+/* Departure — veil fades in, compass settles onto its bearing */
+.rise-out .page-rise {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 460ms ease;
+}
+.rise-out .page-rise__compass {
+  opacity: 0.95;
+  transform: rotate(0deg) scale(1);
+  transition: opacity 400ms ease 60ms, transform 560ms cubic-bezier(.2, .7, .2, 1);
+}
+/* Arrival — cover instantly (rise-cover), then fade the veil away (rise-reveal) */
+.rise-cover .page-rise { opacity: 1; visibility: visible; }
+.rise-cover .page-rise__compass { opacity: 0.95; transform: rotate(0deg) scale(1); }
+.rise-reveal .page-rise {
+  opacity: 0;
+  transition: opacity 540ms ease;
+}
+.rise-reveal .page-rise__compass {
+  opacity: 0;
+  transform: rotate(24deg) scale(1.06);
+  transition: opacity 420ms ease, transform 600ms cubic-bezier(.2, .7, .2, 1);
+}
+/* Instant CSS cover on arrival, before the JS veil is ready (no flash) */
+.rise-in::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--nav-h, 84px);
+  bottom: 0;
+  z-index: 39;
+  background: #13202E;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-rise,
+  .rise-in::after { display: none; }
+}
 
 /* ---------- Experience ---------- */
 .experience {
@@ -948,15 +1231,15 @@ main { position: relative; z-index: 2; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%230B1D2E'/%3E%3C/svg%3E");
 }
 .experience__head {
-  margin-bottom: 3.5rem;
-  max-width: 62ch;
+  margin: 0 auto 3.5rem;   /* centered column, text stays left-aligned within */
+  max-width: 72ch;
 }
 .experience__head .eyebrow {
   display: block;
   margin-bottom: 1.25rem;
 }
 .experience h2 {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
@@ -994,7 +1277,7 @@ main { position: relative; z-index: 2; }
   gap: 0.3rem;
 }
 .job__company {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.1;
@@ -1002,7 +1285,7 @@ main { position: relative; z-index: 2; }
   color: var(--ink);
 }
 .job__title {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1rem;
   font-style: italic;
   color: var(--ink-soft);
@@ -1017,7 +1300,7 @@ main { position: relative; z-index: 2; }
   white-space: nowrap;
 }
 .job__role {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-size: 1.22rem;
   font-weight: 600;
   line-height: 1.3;
@@ -1060,7 +1343,7 @@ main { position: relative; z-index: 2; }
 .job--collective-health { --job-accent: var(--navy); }
 
 /* Experience sits on deep navy — light type + gold accents, no divider rules */
-.experience .job { border-top: none; padding: 2rem 0; }
+.experience .job { border-top: none; padding: 2rem 0; max-width: 72ch; margin: 0 auto; }
 .experience .job__company { color: #E8EFF4; }
 .experience .job__title { color: #9FB2C0; }
 .experience .job__role { color: #DCE6EC; }
@@ -1108,7 +1391,7 @@ main { position: relative; z-index: 2; }
   .hello__grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 .hello h2 {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: var(--fs-h2);
   line-height: 1.05;
@@ -1179,7 +1462,7 @@ main { position: relative; z-index: 2; }
   .site-footer__inner { grid-template-columns: 1fr; gap: 2rem; }
 }
 .site-footer h3 {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1189,7 +1472,7 @@ main { position: relative; z-index: 2; }
 }
 .site-footer ul a { color: var(--penguin-white); }
 .site-footer__sign {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(1.25rem, 2.5vw, 1.65rem);
   line-height: 1.2;
@@ -1199,7 +1482,7 @@ main { position: relative; z-index: 2; }
 .site-footer__sign em { font-style: italic; color: var(--accent); }
 .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
 .site-footer ul a {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.95rem;
   font-weight: 500;
   border-bottom: 1px solid transparent;
@@ -1295,7 +1578,7 @@ body.sea .cs-hero::before {
   margin-bottom: 0.5rem;
 }
 .lock h1 {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 500;
   font-size: clamp(1.9rem, 4.5vw, 2.8rem);
   line-height: 1.05;
@@ -1311,7 +1594,7 @@ body.sea .cs-hero::before {
   max-width: 40ch;
 }
 .lock__access {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.88rem !important;
   color: var(--muted) !important;
   margin: 0 0 1.5rem !important;
@@ -1334,7 +1617,7 @@ body.sea .cs-hero::before {
   border: 1.5px solid var(--ink);
   border-radius: 999px;
   background: var(--paper);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1rem;
   color: var(--ink);
   outline: none;
@@ -1351,7 +1634,7 @@ body.sea .cs-hero::before {
 }
 .lock__error {
   color: var(--accent);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.75rem;
@@ -1371,7 +1654,7 @@ body.sea .cs-hero::before {
 .lock__hint {
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   color: var(--muted);
   letter-spacing: 0.01em;
 }
@@ -1508,7 +1791,7 @@ body.sea .cs-hero::before {
   position: relative;
 }
 .cs-hero__nav {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.85rem;
   color: var(--muted);
   margin-bottom: 3rem;
@@ -1547,7 +1830,7 @@ body.sea .cs-hero::before {
   overflow: visible;
 }
 .cs-hero-illustration figcaption {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.95rem;
   font-style: italic;
   color: var(--ink-soft);
@@ -1558,7 +1841,7 @@ body.sea .cs-hero::before {
 }
 .cs-hero-illustration__credit {
   display: block;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.68rem;
   font-style: normal;
   text-transform: uppercase;
@@ -1644,7 +1927,7 @@ body.sea .cs-hero::before {
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   color: var(--ink);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 .cs-hero__byline-name {
   font-size: 1rem;
@@ -1657,7 +1940,7 @@ body.sea .cs-hero::before {
   color: var(--muted);
   margin-top: 0.35rem;
   letter-spacing: 0.01em;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-weight: 500;
 }
 
@@ -1698,7 +1981,7 @@ body.sea .cs-hero::before {
   .reading-progress { display: none; }
 }
 .cs-hero h1 {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(2.1rem, 5.5vw, 3.6rem);
   line-height: 1.08;
@@ -1709,7 +1992,7 @@ body.sea .cs-hero::before {
 }
 .cs-hero h1 em { font-style: italic; color: var(--accent); }
 .cs-hero__lede {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.25rem;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -1761,7 +2044,7 @@ body.sea .cs-hero::before {
   padding-top: 1.5rem;
 }
 .metric__num {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(3rem, 6.5vw, 5.5rem);
   line-height: 0.95;
@@ -1781,7 +2064,7 @@ body.sea .cs-hero::before {
   font-weight: 500;
 }
 .metric__label {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.9rem;
   color: rgba(251, 250, 246, 0.78);
   line-height: 1.45;
@@ -1805,7 +2088,7 @@ body.sea .cs-hero::before {
   padding-bottom: 0;
 }
 .cs-body h2 {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: 1.65rem;
   line-height: 1.15;
@@ -1817,7 +2100,7 @@ body.sea .cs-hero::before {
 .cs-body h2 em { font-style: italic; color: var(--accent); }
 .cs-body h2:first-child { margin-top: 0; }
 .cs-body h3 {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 700;
   font-size: 1.2rem;
   margin: 2rem 0 0.6rem;
@@ -1834,7 +2117,7 @@ body.sea .cs-hero::before {
 /* Drop cap on the first paragraph of the first narrative chapter —
    signals the start of the long-form read, like an NYT article. */
 .cs-body:not(.cs-body--overview) .cs-chapter:first-of-type > div > p:first-of-type::first-letter {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 700;
   font-size: 4rem;
   line-height: 0.85;
@@ -1912,7 +2195,7 @@ body.sea .cs-hero::before {
   margin: 3.5rem auto;
   padding: 0;
   border-left: none;
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-style: italic;
   font-weight: 400;
   font-size: 1.95rem;
@@ -1959,7 +2242,7 @@ body.sea .cs-hero::before {
   border-top: 1px solid var(--rule);
 }
 .cs-chapter__num {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2005,7 +2288,7 @@ body.sea .cs-hero::before {
   .cs-stat { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 .cs-stat__num {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(3.5rem, 8vw, 6.5rem);
   line-height: 0.9;
@@ -2014,7 +2297,7 @@ body.sea .cs-hero::before {
 }
 .cs-stat__num em { font-style: italic; }
 .cs-stat__label {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 1.15rem;
   color: var(--ink);
   line-height: 1.5;
@@ -2058,12 +2341,12 @@ body.sea .cs-hero::before {
   color: var(--muted);
 }
 .cs-comparison__before {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   color: var(--ink-soft);
   line-height: 1.5;
 }
 .cs-comparison__after {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   color: var(--ink);
   line-height: 1.5;
   font-weight: 500;
@@ -2173,7 +2456,7 @@ body.sea .cs-hero::before {
   margin: 0 0 1rem;
 }
 .screens-gate__title {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 500;
   font-size: clamp(1.6rem, 3vw, 2rem);
   line-height: 1.1;
@@ -2203,7 +2486,7 @@ body.sea .cs-hero::before {
   border: 1.5px solid var(--ink);
   border-radius: 999px;
   background: var(--paper);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.95rem;
   color: var(--ink);
   outline: none;
@@ -2215,7 +2498,7 @@ body.sea .cs-hero::before {
 }
 .screens-gate__error {
   color: var(--accent);
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: 0.5rem;
@@ -2270,7 +2553,7 @@ body.sea .cs-hero::before {
   gap: 2rem;
 }
 .cs-next__label {
-  font-family: 'Petrona', Georgia, serif;
+  font-family: Georgia, 'Times New Roman', serif;
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2279,7 +2562,7 @@ body.sea .cs-hero::before {
   font-weight: 600;
 }
 .cs-next__title {
-  font-family: 'Regards', 'Petrona', Georgia, serif;
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
