@@ -57,7 +57,12 @@
       "Bash(echo \"exit: $?\")",
       "Bash(git ls-tree *)",
       "Bash(git commit -m ' *)",
-      "Bash(pkill -f \"http.server 8777\")"
+      "Bash(pkill -f \"http.server 8777\")",
+      "Bash(git checkout *)",
+      "Bash(awk '/\\\\.cs-hero__eyebrow \\\\{/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)f=0}' css/main.css)",
+      "Bash(awk '/\\\\.about-hero__portrait-frame \\\\{/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)f=0}' css/main.css)",
+      "Bash(awk '/\\\\.cs-body blockquote \\\\{/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)f=0}' css/main.css)",
+      "Bash(awk '/\\\\.cs-hero__lede \\\\{/{f=1} f{print NR\": \"$0} /\\\\}/{if\\(f\\)f=0}' css/main.css)"
     ]
   }
 }

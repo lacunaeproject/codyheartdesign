@@ -220,6 +220,23 @@ body::before {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+
+/* Homepage: transparent nav bar floating over the arctic hero. */
+.home .site-header,
+.home .site-header.is-scrolled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* Dark glacier logo + links so they read over the light arctic image */
+.home .wordmark { color: #223A52; }
+.home .nav { color: #2E4A66; }
 .site-header__inner {
   max-width: var(--max);
   margin: 0 auto;
@@ -250,7 +267,7 @@ body::before {
 .wordmark__heart {
   width: 30px;
   height: 30px;
-  color: #F2C230;
+  color: #E8722A;   /* penguin orange */
   flex-shrink: 0;
   display: block;
   /* Optical nudge up — the heart glyph is bottom-heavy and sits low in its box
@@ -349,13 +366,10 @@ body::before {
   .nav { gap: 0.5rem 0.8rem; font-size: 0.72rem; }
 }
 
-/* ---------- Frame (matted "poster") ----------
-   A thin mat of body colour shows through this margin on all sides; the
-   contained content (header + sections + footer) fills the rest. Square
-   corners, no shadow — like a matted print. */
+/* ---------- Frame ----------
+   Full-bleed wrapper — the matted border/margin has been removed so
+   content runs edge to edge. */
 .frame {
-  margin: clamp(12px, 1.8vw, 24px);
-  border: 2px solid var(--ink-navy);
   position: relative;
 }
 
@@ -365,17 +379,34 @@ main { position: relative; z-index: 2; }
 /* Full-bleed icy band for Selected Work — the hero dissolves into it and the
    white case cards lift off the sky-pale. */
 .work-band {
-  background-color: #222427;
-  background-image: var(--grain-fine);
-  background-size: 200px 200px;
-  background-blend-mode: overlay;
-  padding-bottom: clamp(3.5rem, 7vw, 6rem);
+  background-color: #16344F;   /* deep glacier blue — echoes the arctic hero */
+  /* Topographic contour lines — soft map-like ripples (fade with depth per section) */
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  padding-bottom: clamp(6rem, 9vw, 8.5rem);   /* room for the Experience wave below */
   position: relative;
 }
 .work-band > * { position: relative; z-index: 1; }
-.work-band .case-intro h2 { color: var(--cream); }
+/* Ocean-wave transition — layered glacier-blue crests rise out of the band's
+   top edge into the bottom of the hero, with a thin white surface ripple. */
+.work-band::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -76px;
+  height: 78px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2316344F'/%3E%3C/svg%3E");
+}
+.work-band .case-intro { text-align: center; }
+.work-band .case-intro .eyebrow { font-size: 1rem; letter-spacing: 0.2em; }
+.work-band .case-intro h2 { color: var(--cream); margin-left: auto; margin-right: auto; }
 .work-band .eyebrow { color: var(--gold); }
-.experience .eyebrow { color: var(--ocean); }
+.experience .eyebrow { color: var(--gold); }
 .shell {
   max-width: var(--max);
   margin: 0 auto;
@@ -513,7 +544,7 @@ main { position: relative; z-index: 2; }
 .hero--arctic {
   max-width: none;
   margin: 0;
-  min-height: 86vh;
+  min-height: 94vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -528,9 +559,9 @@ main { position: relative; z-index: 2; }
   content: "";
   position: absolute;
   inset: -5%;
-  background-image: url('../assets/hero/background-2.PNG');
+  background-image: url('../assets/hero/arctic-7.png');
   background-size: cover;
-  background-position: 72% center;
+  background-position: center center;
   background-repeat: no-repeat;
   transform: scale(1.05);
   animation: heroDrift 28s ease-in-out infinite alternate;
@@ -611,7 +642,7 @@ main { position: relative; z-index: 2; }
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
   line-height: 1.03;
   letter-spacing: 0.005em;
-  color: #222427;
+  color: #16344F;   /* deep navy — strong readability over the arctic scene */
   margin: 0 0 1.35rem;
 }
 
@@ -895,12 +926,26 @@ main { position: relative; z-index: 2; }
 /* ---------- Experience ---------- */
 .experience {
   padding-top: 5rem;
-  padding-bottom: 5rem;
-  color: var(--ink-soft);
-  background-color: var(--paper);
-  background-image: var(--grain-paper);
-  background-size: 160px 160px;
-  background-blend-mode: multiply;
+  padding-bottom: 7.5rem;   /* room for the Hello wave below */
+  color: #BCCAD6;
+  background-color: #0B1D2E;   /* deep-sea step 2 */
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  position: relative;
+}
+.experience > * { position: relative; z-index: 1; }
+.experience::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -76px;
+  height: 78px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%230B1D2E'/%3E%3C/svg%3E");
 }
 .experience__head {
   margin-bottom: 3.5rem;
@@ -918,11 +963,11 @@ main { position: relative; z-index: 2; }
   letter-spacing: -0.022em;
   margin: 0 0 1.25rem;
   max-width: 18ch;
-  color: var(--ocean);
+  color: var(--cream);
 }
 .experience h2 em { font-style: italic; color: var(--accent); }
 .experience__intro {
-  color: var(--ink-soft);
+  color: #BCCAD6;
   font-size: 1.15rem;
   line-height: 1.55;
   margin: 0;
@@ -1014,16 +1059,39 @@ main { position: relative; z-index: 2; }
 .job--lifestance-senior { --job-accent: var(--deep-blue); }
 .job--collective-health { --job-accent: var(--navy); }
 
+/* Experience sits on deep navy — light type + gold accents, no divider rules */
+.experience .job { border-top: none; padding: 2rem 0; }
+.experience .job__company { color: #E8EFF4; }
+.experience .job__title { color: #9FB2C0; }
+.experience .job__role { color: #DCE6EC; }
+.experience .job__list li { color: #BCCAD6; }
+.experience .job__head { flex-direction: column; align-items: flex-start; }
+.experience .job--lifestance-lead,
+.experience .job--lifestance-senior,
+.experience .job--collective-health { --job-accent: var(--gold); }
+
 /* ---------- Hello / about ---------- */
 .hello {
-  padding: 6rem 0;
-  background-color: #3C3C3C;
-  background-image: var(--grain-fine);
-  background-size: 200px 200px;
-  background-blend-mode: overlay;
+  padding: 6rem 0 7.5rem;   /* extra bottom room for the Footer wave below */
+  background-color: #06121D;   /* deep-sea step 3 */
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.025' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
   border: none;
   position: relative;
   color: var(--penguin-white);
+}
+.hello::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -76px;
+  height: 78px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2306121D'/%3E%3C/svg%3E");
 }
 .hello .eyebrow { color: var(--butter); }
 .hello__grid {
@@ -1067,7 +1135,7 @@ main { position: relative; z-index: 2; }
 .site-footer {
   border: none;
   padding: 4rem 0 3rem;
-  /* Neutral charcoal — matches the header and work band */
+  /* Neutral charcoal — matches the header; homepage overrides to deep-sea navy below */
   background-color: #222427;
   background-image: var(--grain-fine);
   background-size: 200px 200px;
@@ -1075,6 +1143,28 @@ main { position: relative; z-index: 2; }
   color: var(--penguin-white);
   position: relative;
   z-index: 2;
+}
+.site-footer > * { position: relative; z-index: 1; }
+/* Homepage only — the deep-sea floor: darkest navy, contour texture, wave from Hello */
+.home .site-footer {
+  background-color: #02070C;   /* deep-sea step 4 — near-black sea floor */
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.012' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  background-blend-mode: normal;
+}
+.home .site-footer__colophon { border-top: none; }
+.home .site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -76px;
+  height: 78px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2302070C'/%3E%3C/svg%3E");
 }
 .site-footer p[style] { color: #C4D2DD !important; }
 .site-footer__inner {
@@ -1121,13 +1211,56 @@ main { position: relative; z-index: 2; }
   grid-column: 1 / -1;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);   /* homepage removes this below */
   font-size: 0.875rem;
   color: #AEC0CE;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+/* ============================================================
+   DEEP-SEA PAGE THEME  ·  add class="sea" to <body>
+   Carries the homepage's arctic / deep-sea philosophy onto the
+   rest of the site. Redefines the semantic tokens to a dark-navy
+   palette, so every component built on them inverts automatically.
+   ============================================================ */
+body.sea {
+  --paper:         #0F2A42;
+  --paper-2:       #0B1D2E;
+  --paper-pure:    #0F2A42;
+  --ink:           #EAF1F6;
+  --ink-soft:      #C4D2DD;
+  --muted:         #8598A8;
+  --rule:          rgba(255, 255, 255, 0.14);
+  --rule-soft:     rgba(255, 255, 255, 0.08);
+  --cream:         #EAF1F6;
+  --display-brown: #EAF1F6;
+  background: #0F2A42;
+  color: var(--ink-soft);
+}
+body.sea .btn { color: #EAF1F6; }
+body.sea .case-intro h2 { color: var(--cream); }
+/* Footer sinks to the near-black sea floor on every deep-sea page */
+body.sea .site-footer {
+  background-color: #061523;
+  background-image: none;
+}
+body.sea .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.12); }
+/* Arctic photo washes behind the page hero, dissolving down into the navy */
+body.sea .cs-hero { position: relative; isolation: isolate; }
+body.sea .cs-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(180deg, rgba(15, 42, 66, 0.55) 0%, rgba(15, 42, 66, 0.82) 62%, #0F2A42 100%),
+    url('../assets/hero/arctic-3.PNG');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
 }
 
 /* ---------- Lock page ---------- */
