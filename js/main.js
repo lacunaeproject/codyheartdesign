@@ -319,47 +319,50 @@ window.CH_AUTH = (function() {
   els.forEach(el => io.observe(el));
 })();
 
-/* ---------- Screens gate ----------
-   A per-page inline gate for a "Screens" section. Password is
-   sessionStorage-persisted so unlocking one page unlocks all screens
-   sections in the same tab session.
+/* ---------- Access gate ----------
+   ONE password for the whole site (CH_AUTH.PASSWORD), one gate component.
+   Unlocking any case study unlocks every gated section for the rest of the
+   browser-tab session.
 
-   === SCREENS PASSWORD — change SCREENS_PASSWORD below to your string ===
-   Location: this file, top of the CH_SCREENS IIFE.
+   Gated content lives in .cs-details, which is display:none by default in
+   CSS and revealed by the .cs-unlocked class on <body>. Defaulting to hidden
+   means a JS failure fails CLOSED — the NDA material never flashes.
+
+   NOTE: still client-side only. The gated HTML ships to anyone who views
+   source. For real protection put these pages behind server auth
+   (Netlify password protection, Cloudflare Access, etc.).
 */
-window.CH_SCREENS = (function() {
-  const SCREENS_PASSWORD = 'CHANGE_ME_SCREENS';
-  const STORAGE_KEY = 'ch_screens_unlock_session';
-
-  function isUnlocked() {
-    try { return sessionStorage.getItem(STORAGE_KEY) === '1'; }
-    catch (e) { return false; }
-  }
-  function unlock(pw) {
-    if (pw === SCREENS_PASSWORD) {
-      try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
-      return true;
-    }
-    return false;
-  }
-  return { isUnlocked, unlock };
-})();
-
-(function initScreensGate() {
+(function initAccessGate() {
   const gates = document.querySelectorAll('[data-screens-gate]');
+  const body = document.body;
+
+  function applyUnlocked() {
+    body.classList.add('cs-unlocked');
+    gates.forEach(g => g.classList.add('is-unlocked'));
+  }
+
+  if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) applyUnlocked();
   if (!gates.length) return;
+
   gates.forEach(gate => {
-    if (window.CH_SCREENS.isUnlocked()) gate.classList.add('is-unlocked');
     const form = gate.querySelector('.screens-gate__form');
     const input = gate.querySelector('.screens-gate__input');
     const err = gate.querySelector('.screens-gate__error');
-    if (!form) return;
+    if (!form || !input) return;
+
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const value = input.value.trim();
-      if (window.CH_SCREENS.unlock(value)) {
+      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
         if (err) err.classList.remove('is-visible');
-        gate.classList.add('is-unlocked');
+        applyUnlocked();
+        // Drop the reader straight into the material they just unlocked.
+        const details = document.querySelector('.cs-details');
+        if (details) {
+          requestAnimationFrame(() => {
+            details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        }
       } else {
         if (err) err.classList.add('is-visible');
         input.value = '';

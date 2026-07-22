@@ -32,24 +32,13 @@
 
 <!-- Theme color (mobile browser chrome) -->
 <meta name="theme-color" content="#FBFAF6">
-<link rel="stylesheet" href="../css/main.css?v=142">
+<link rel="stylesheet" href="../css/main.css?v=169">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
-<style>
-  /* Case study preview (hero, metrics, solution summary) is always visible.
-     The detail chapters — where visuals live — stay hidden behind the inline
-     password gate until body.is-unlocked is applied. */
-  main > .cs-details { display: none; }
-  body.is-unlocked main > .cs-details { display: block; }
-  body.is-unlocked main > .cs-lock { display: none; }
-</style>
-<noscript>
-  <meta http-equiv="refresh" content="0; url=../work.html">
-</noscript>
 <script src="../js/rise.js?v=1"></script>
 </head>
-<body>
+<body class="cs-theme--gold">
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -65,163 +54,210 @@
 
 <main class="cs">
 
-  <section class="cs-hero shell" data-coords="37.775°N · 122.418°W · SF → nationwide">
-    <div class="cs-hero__nav">
-      <a href="../work.html">← All case studies</a>
-      <span>·</span>
-      <span>№ 04 of 06</span>
-    </div>
-    <span class="eyebrow cs-hero__eyebrow">№ 04 · Claims</span>
-    <h1 class="reveal">Rebuilding the slowest screen in the building.</h1>
-    <p class="cs-hero__lede reveal reveal--d1">
-      At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: make it faster, and make it auditable.
-    </p>
-
-    <div class="cs-meta">
-      <div>
-        <div class="cs-meta__label">Role</div>
-        <div class="cs-meta__value">Senior Product Designer</div>
+  <section class="cs-band cs-band--hero cs-hero--media" style="--hero-img:url('../assets/hero/africa.png'); --hero-lift:0.46">
+    <div class="cs-hero__media" aria-hidden="true"></div>
+    <div class="cs-hero shell">
+      <div class="cs-hero__nav">
+        <a href="../work.html">← All case studies</a>
+        <span>·</span>
+        <span>№ 04 of 06</span>
       </div>
-      <div>
-        <div class="cs-meta__label">Team</div>
-        <div class="cs-meta__value">Platform Experience, CX</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">Timeline</div>
-        <div class="cs-meta__value">2018 – 2021</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">Focus</div>
-        <div class="cs-meta__value">Internal tools &amp; reporting</div>
+      <div class="cs-hero__content">
+        <span class="eyebrow cs-hero__eyebrow">№ 04 · Claims</span>
+        <h1 class="reveal">Rebuilding the slowest screen in the building.</h1>
       </div>
     </div>
+  </section>
 
-    <!-- Lead editorial illustration — the same transcription task on two
-         lanes: a long slow 'before' and a short fast 'after', both fed by
-         the source document pulled into the tool. -->
+  <section class="cs-band cs-band--light cs-tldr-band">
+    <div class="cs-tldr">
+
+      <header class="cs-tldr__head">
+        <p class="cs-tldr__eyebrow">The short version</p>
+        <h2 class="cs-tldr__claim">Took the slowest screen in the building and made it fast.</h2>
+        <p class="cs-tldr__deck">The internal claims-review tool the CX team used to answer member questions.</p>
+      </header>
+
+      <dl class="cs-tldr__list">
+        <div class="cs-tldr__row">
+          <dt>The problem</dt>
+          <dd>Reviewing one out-of-network claim took about twenty minutes across disconnected screens.</dd>
+        </div>
+        <div class="cs-tldr__row">
+          <dt>The solution</dt>
+          <dd>Put the source document inside the workflow &#8212; a split view of the claim and the evidence behind it.</dd>
+        </div>
+        <div class="cs-tldr__row">
+          <dt>My role</dt>
+          <dd>Senior designer on Platform Experience, sitting with the specialists who worked in it daily.</dd>
+        </div>
+        <div class="cs-tldr__row">
+          <dt>What I learned</dt>
+          <dd>Watch the document people keep switching away to. That document is the real interface.</dd>
+        </div>
+      </dl>
+
+      <section class="cs-tldr__figures">
+        <p class="cs-tldr__figures-label">Did it work</p>
+        <dl class="cs-tldr__list cs-tldr__list--figures">
+          <div class="cs-tldr__row cs-tldr__row--metric">
+            <dt>-60%</dt>
+            <dd>Time on task for out-of-network claim transcription.</dd>
+          </div>
+          <div class="cs-tldr__row cs-tldr__row--metric">
+            <dt>-50%</dt>
+            <dd>Time on task across adjacent CX workflows that shared the same data model.</dd>
+          </div>
+          <div class="cs-tldr__row cs-tldr__row--metric">
+            <dt>45+ ships</dt>
+            <dd>Features shipped across internal tools, member platform, and reporting infrastructure over the engagement.</dd>
+          </div>
+        </dl>
+      </section>
+
+
+      <footer class="cs-tldr__foot">
+        <div class="cs-glance__cta">
+        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Claims%20%E2%80%94%20let%E2%80%99s%20talk">Email me about this work <span class="cs-cta__arrow">&#8594;</span></a>
+        <a class="cs-cta" href="#access">Request the password</a>
+        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book 30 min</a>
+      </div>
+      </footer>
+
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--light">
+    <div class="cs-body shell--read">
+    
+      <p class="cs-lede reveal">
+        At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: make it faster, and make it auditable.
+      </p>
+<div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">01</span><p class="cs-q__t">The problem</p></div>
+      <h2 class="cs-answer reveal">Twenty minutes per claim.</h2>
+          <p class="reveal">An out-of-network (OON) claim is, by definition, one where the provider wasn&#8217;t in Collective&#8217;s network — so the paperwork lands in a stack of PDFs, scanned forms, and faxed itemizations. A CX specialist has to transcribe each one into our internal system, and every field matters: dates of service, procedure codes, modifiers, diagnosis codes, billed amounts, patient responsibility. A twenty-minute data-entry job, done by a human, on work that ultimately flows into a reimbursement decision.</p>
+          <p class="reveal">The existing screen had been built quickly, several years earlier, by an engineer who was no longer at the company. It was a literal top-to-bottom form with no contextual intelligence, no duplicate detection, and no way to keep a PDF open side-by-side without leaving the tool.</p>
+    </div>
+
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">02</span><p class="cs-q__t">The solution</p></div>
+      <h2 class="cs-answer reveal">Put the source document inside the workflow.</h2>
+          <p class="reveal">A split-screen transcription tool with the claim PDF on the left and the form on the right, field groupings that follow how information appears on the page, keyboard navigation, pre-filled high-confidence data, and a real field-level audit trail. Paired with reporting dashboards that finally made queue depth, claim age, and specialist throughput legible to the rest of the org.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--dark">
+    <div class="cs-body shell--read">
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">03</span><p class="cs-q__t">My role</p></div>
+      <h2 class="cs-answer reveal">Senior designer on Platform Experience, sitting with the people who used it.</h2>
+        <!-- DRAFT (written by Claude from material already on this page) - rewrite in your own voice -->
+        <p class="reveal">I partnered with the CX team who worked in this tool every day. I ran the research sessions, designed the split-screen workflow that came out of them, and built the reporting views that followed.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--light">
+    <div class="cs-body shell--read">
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">04</span><p class="cs-q__t">Did it work</p></div>
+      <h2 class="cs-answer reveal">Dashboards that made the next investment legible.</h2>
+          <p class="reveal">Reducing time-on-task was the headline. The second-order work was the reporting — the system-level views that let CX leadership, finance, and product see where claims work was piling up and why. I designed reporting dashboards that exposed queue depth, claim age, exception rate, and specialist throughput, with drill-downs to the individual claim. Those dashboards were later used to justify hiring, to prioritize engineering work, and to make the case for further automation.</p>
+          <blockquote class="reveal">A design team that can&#8217;t show you its numbers is, quietly, a design team you can cut.</blockquote>
+    </div>
+
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">05</span><p class="cs-q__t">What I learned</p></div>
+      <h2 class="cs-answer reveal">What I learned from the specialists.</h2>
+          <p class="reveal">The specialists who transcribed claims every day were the best product partners I&#8217;d worked with. They knew the edge cases, the weird-plan exceptions, the carriers whose PDFs were unreadable, the small lies that certain provider forms told. Most of the durable improvements on this project came from their corrections to my first drafts.</p>
+          <p class="reveal">The lesson I kept, and have kept using at LifeStance: when you&#8217;re designing an internal tool, the people using it for eight hours a day are not a research population to be synthesized. They are collaborators whose names should be in the commit history.</p>
+    </div>
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--light" style="padding-top:0">
     <figure class="cs-hero-illustration" aria-labelledby="hero-illust-04">
-      <div class="cs-hero-illustration__frame">
-        <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
-          <title id="hero-illust-04">The same task on two tracks — a long slow lane and a short fast one</title>
+        <div class="cs-hero-illustration__frame">
+          <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title id="hero-illust-04">The same task on two tracks — a long slow lane and a short fast one</title>
 
-          <!-- Source document, where both lanes begin -->
-          <rect x="30" y="120" width="44" height="58" rx="3" fill="var(--paper-pure)" stroke="currentColor" stroke-width="1.4"/>
-          <path d="M62 120 L74 132 L62 132 Z" fill="var(--rule)"/>
-          <g stroke="currentColor" stroke-width="1" opacity="0.4" stroke-linecap="round">
-            <line x1="38" y1="140" x2="66" y2="140"/><line x1="38" y1="150" x2="66" y2="150"/><line x1="38" y1="160" x2="58" y2="160"/>
-          </g>
-          <text x="52" y="198" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="1.5">SOURCE</text>
+            <!-- Source document, where both lanes begin -->
+            <rect x="30" y="120" width="44" height="58" rx="3" fill="var(--paper-pure)" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M62 120 L74 132 L62 132 Z" fill="var(--rule)"/>
+            <g stroke="currentColor" stroke-width="1" opacity="0.4" stroke-linecap="round">
+              <line x1="38" y1="140" x2="66" y2="140"/><line x1="38" y1="150" x2="66" y2="150"/><line x1="38" y1="160" x2="58" y2="160"/>
+            </g>
+            <text x="52" y="198" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="1.5">SOURCE</text>
 
-          <!-- Faint feeders from the document into each lane -->
-          <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" stroke-dasharray="2 5">
-            <path d="M76 138 Q 96 120 110 120"/>
-            <path d="M76 160 Q 96 202 110 202"/>
-          </g>
+            <!-- Faint feeders from the document into each lane -->
+            <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" stroke-dasharray="2 5">
+              <path d="M76 138 Q 96 120 110 120"/>
+              <path d="M76 160 Q 96 202 110 202"/>
+            </g>
 
-          <!-- BEFORE lane: long, slow -->
-          <text x="110" y="96" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="10" fill="var(--muted)" letter-spacing="2">BEFORE</text>
-          <text x="744" y="96" text-anchor="end" font-family="'Petrona', serif" font-size="20" fill="currentColor">20 min / claim</text>
-          <line x1="110" y1="120" x2="744" y2="120" stroke="currentColor" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
-          <g stroke="currentColor" stroke-width="1" opacity="0.28">
-            <line x1="173" y1="115" x2="173" y2="125"/><line x1="236" y1="115" x2="236" y2="125"/><line x1="299" y1="115" x2="299" y2="125"/><line x1="362" y1="115" x2="362" y2="125"/><line x1="425" y1="115" x2="425" y2="125"/><line x1="488" y1="115" x2="488" y2="125"/><line x1="551" y1="115" x2="551" y2="125"/><line x1="614" y1="115" x2="614" y2="125"/><line x1="677" y1="115" x2="677" y2="125"/>
-          </g>
-          <g transform="translate(110, 120)">
-            <circle cx="0" cy="0" r="6" fill="currentColor" class="illust-travel illust-travel--slow" style="--travel: 634px"/>
-          </g>
+            <!-- BEFORE lane: long, slow -->
+            <text x="110" y="96" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="10" fill="var(--muted)" letter-spacing="2">BEFORE</text>
+            <text x="744" y="96" text-anchor="end" font-family="'Petrona', serif" font-size="20" fill="currentColor">20 min / claim</text>
+            <line x1="110" y1="120" x2="744" y2="120" stroke="currentColor" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
+            <g stroke="currentColor" stroke-width="1" opacity="0.28">
+              <line x1="173" y1="115" x2="173" y2="125"/><line x1="236" y1="115" x2="236" y2="125"/><line x1="299" y1="115" x2="299" y2="125"/><line x1="362" y1="115" x2="362" y2="125"/><line x1="425" y1="115" x2="425" y2="125"/><line x1="488" y1="115" x2="488" y2="125"/><line x1="551" y1="115" x2="551" y2="125"/><line x1="614" y1="115" x2="614" y2="125"/><line x1="677" y1="115" x2="677" y2="125"/>
+            </g>
+            <g transform="translate(110, 120)">
+              <circle cx="0" cy="0" r="6" fill="currentColor" class="illust-travel illust-travel--slow" style="--travel: 634px"/>
+            </g>
 
-          <!-- AFTER lane: short, fast -->
-          <text x="110" y="178" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="10" fill="var(--accent)" letter-spacing="2">AFTER</text>
-          <text x="392" y="207" font-family="'Petrona', serif" font-size="20" fill="var(--accent)">≈8 min <tspan font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12">(&#8722;60%)</tspan></text>
-          <line x1="110" y1="202" x2="372" y2="202" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
-          <g stroke="var(--accent)" stroke-width="1" opacity="0.3">
-            <line x1="172" y1="197" x2="172" y2="207"/><line x1="234" y1="197" x2="234" y2="207"/><line x1="296" y1="197" x2="296" y2="207"/>
-          </g>
-          <g transform="translate(110, 202)">
-            <circle cx="0" cy="0" r="6" fill="var(--accent)" class="illust-travel illust-travel--fast" style="--travel: 262px"/>
-          </g>
-        </svg>
-      </div>
-      <figcaption>
-        The same twenty-minute transcription, before and after. Pulling the source document into the tool and letting the form follow the reader&#8217;s eye cut time on task by roughly sixty percent.
-        <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
-      </figcaption>
-    </figure>
-
+            <!-- AFTER lane: short, fast -->
+            <text x="110" y="178" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="10" fill="var(--accent)" letter-spacing="2">AFTER</text>
+            <text x="392" y="207" font-family="'Petrona', serif" font-size="20" fill="var(--accent)">≈8 min <tspan font-family="'JetBrains Mono', ui-monospace, monospace" font-size="12">(&#8722;60%)</tspan></text>
+            <line x1="110" y1="202" x2="372" y2="202" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+            <g stroke="var(--accent)" stroke-width="1" opacity="0.3">
+              <line x1="172" y1="197" x2="172" y2="207"/><line x1="234" y1="197" x2="234" y2="207"/><line x1="296" y1="197" x2="296" y2="207"/>
+            </g>
+            <g transform="translate(110, 202)">
+              <circle cx="0" cy="0" r="6" fill="var(--accent)" class="illust-travel illust-travel--fast" style="--travel: 262px"/>
+            </g>
+          </svg>
+        </div>
+        <figcaption>
+          The same twenty-minute transcription, before and after. Pulling the source document into the tool and letting the form follow the reader&#8217;s eye cut time on task by roughly sixty percent.
+          <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
+        </figcaption>
+      </figure>
   </section>
 
-  <section class="metrics">
-    <div class="metrics__grid">
-      <div class="metric reveal">
-        <p class="metric__num">-60%</p>
-        <p class="metric__label">Time on task for out-of-network claim transcription.</p>
+  <section class="cs-band cs-band--dark" id="access">
+    <div class="cs-gate" data-screens-gate>
+      <svg class="cs-gate__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <p class="cs-gate__eyebrow">Protected</p>
+      <h2 class="cs-gate__title">How I got from the problem to the solution.</h2>
+      <p class="cs-gate__copy">Everything between the problem and the solution &#8212; the research, the options I ruled out, the reasoning behind each call, and the screens themselves &#8212; was done under NDA. Ask and I&#8217;ll send the password, or I&#8217;ll walk you through it live, which is usually the better version anyway.</p>
+      <div class="cs-gate__actions">
+        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Password%20request%20%E2%80%94%20Claims">Request the password</a>
+        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
-      <div class="metric reveal reveal--d1">
-        <p class="metric__num">-50%</p>
-        <p class="metric__label">Time on task across adjacent CX workflows that shared the same data model.</p>
-      </div>
-      <div class="metric reveal reveal--d2">
-        <p class="metric__num">45+ ships</p>
-        <p class="metric__label">Features shipped across internal tools, member platform, and reporting infrastructure over the engagement.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cs-body cs-body--overview shell--read">
-    <div class="cs-chapter">
-      <div class="cs-chapter__num cs-chapter__num--plain">Solution</div>
-      <div>
-        <h2 class="reveal">Put the source document inside the workflow.</h2>
-        <p class="reveal">A split-screen transcription tool with the claim PDF on the left and the form on the right, field groupings that follow how information appears on the page, keyboard navigation, pre-filled high-confidence data, and a real field-level audit trail. Paired with reporting dashboards that finally made queue depth, claim age, and specialist throughput legible to the rest of the org.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOCK — inline gate for the detailed case study + visuals -->
-  <section class="lock cs-lock cs-lock--inline" id="cs-lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">№ 03 · Design detail</span>
-      <h1>See the full case study.</h1>
-      <p class="lock__access">The high-level story is above. Enter the password to see the process, decisions, and screens behind it. Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
-        <label for="cs-lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="cs-lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
+      <p class="cs-gate__or">or</p>
+      <form class="cs-gate__form screens-gate__form" autocomplete="off" novalidate>
+        <label class="visually-hidden" for="gate-claims">Password</label>
+        <input class="cs-gate__input screens-gate__input" id="gate-claims" type="password" placeholder="Password" spellcheck="false" autocapitalize="off" autocorrect="off" required>
+        <button class="cs-gate__submit" type="submit">Enter</button>
       </form>
-      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+      <p class="cs-gate__error screens-gate__error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</p>
+      <p class="cs-gate__unlocked">Unlocked &#8212; the reasoning is below.</p>
     </div>
   </section>
 
   <div class="cs-details">
-
-  <section class="cs-body shell--read">
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">01 / The screen</div>
-      <div>
-        <h2 class="reveal">Twenty minutes per claim.</h2>
-        <p class="reveal">An out-of-network (OON) claim is, by definition, one where the provider wasn&#8217;t in Collective&#8217;s network — so the paperwork lands in a stack of PDFs, scanned forms, and faxed itemizations. A CX specialist has to transcribe each one into our internal system, and every field matters: dates of service, procedure codes, modifiers, diagnosis codes, billed amounts, patient responsibility. A twenty-minute data-entry job, done by a human, on work that ultimately flows into a reimbursement decision.</p>
-        <p class="reveal">The existing screen had been built quickly, several years earlier, by an engineer who was no longer at the company. It was a literal top-to-bottom form with no contextual intelligence, no duplicate detection, and no way to keep a PDF open side-by-side without leaving the tool.</p>
-      </div>
-    </div>
-
+    <section class="cs-band cs-band--light">
+      <div class="cs-body shell--read">
+        <p class="cs-unlocked-note">The reasoning between problem and solution</p>
     <div class="cs-chapter">
       <div class="cs-chapter__num">02 / Research</div>
       <div>
         <h2 class="reveal">The source document is the interface.</h2>
-        <p class="reveal">After shadowing the CX team for several weeks, I realized the real interface wasn&#8217;t the form. It was the PDF. Specialists spent most of their time scanning back and forth between the document and the form, losing their place, re-reading lines. The form field you were filling in had to match the region of the document you were reading, or the work got slow and error-prone.</p>
-        <p class="reveal">The design insight, once it clicked, felt obvious: put the document in the tool, not next to it. Make the form follow the reader&#8217;s eye.</p>
+          <p class="reveal">After shadowing the CX team for several weeks, I realized the real interface wasn&#8217;t the form. It was the PDF. Specialists spent most of their time scanning back and forth between the document and the form, losing their place, re-reading lines. The form field you were filling in had to match the region of the document you were reading, or the work got slow and error-prone.</p>
+          <p class="reveal">The design insight, once it clicked, felt obvious: put the document in the tool, not next to it. Make the form follow the reader&#8217;s eye.</p>
       </div>
     </div>
 
@@ -229,48 +265,31 @@
       <div class="cs-chapter__num">03 / Design</div>
       <div>
         <h2 class="reveal">A split that actually works.</h2>
-        <p class="reveal">We shipped a split-screen transcription tool with the PDF on the left and the form on the right. Fields were grouped to match the way information typically appears on a claim form — patient identifiers up top, service lines in the middle, totals at the bottom. We added keyboard navigation between fields, auto-advance on known field lengths (like date of service), and a running total that the specialist could sanity-check against the document.</p>
-        <p class="reveal">On the data side, I worked with engineering to pre-fill any field we already had high-confidence data for — provider NPI, member ID, plan details — leaving only the novel fields for manual entry. Duplicate-claim detection flagged likely re-submissions before the specialist had to find them.</p>
-        <h3 class="reveal">Small details that mattered</h3>
-        <ul class="reveal">
-          <li>A persistent note field on every claim, for specialists to leave context for the next reviewer. The line between &#8220;can I process this?&#8221; and &#8220;I need help&#8221; used to live in Slack; we brought it into the record.</li>
-          <li>Field-level audit: who entered each value, when, and what it was changed from. Compliance loved it; specialists were surprised how often they referred back to it themselves.</li>
-          <li>Undo. A real undo, not a refresh-and-cry undo.</li>
-        </ul>
+          <p class="reveal">We shipped a split-screen transcription tool with the PDF on the left and the form on the right. Fields were grouped to match the way information typically appears on a claim form — patient identifiers up top, service lines in the middle, totals at the bottom. We added keyboard navigation between fields, auto-advance on known field lengths (like date of service), and a running total that the specialist could sanity-check against the document.</p>
+          <p class="reveal">On the data side, I worked with engineering to pre-fill any field we already had high-confidence data for — provider NPI, member ID, plan details — leaving only the novel fields for manual entry. Duplicate-claim detection flagged likely re-submissions before the specialist had to find them.</p>
+          <h3 class="reveal">Small details that mattered</h3>
+          <ul class="reveal">
+            <li>A persistent note field on every claim, for specialists to leave context for the next reviewer. The line between &#8220;can I process this?&#8221; and &#8220;I need help&#8221; used to live in Slack; we brought it into the record.</li>
+            <li>Field-level audit: who entered each value, when, and what it was changed from. Compliance loved it; specialists were surprised how often they referred back to it themselves.</li>
+            <li>Undo. A real undo, not a refresh-and-cry undo.</li>
+          </ul>
       </div>
     </div>
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">04 / Reporting</div>
-      <div>
-        <h2 class="reveal">Dashboards that made the next investment legible.</h2>
-        <p class="reveal">Reducing time-on-task was the headline. The second-order work was the reporting — the system-level views that let CX leadership, finance, and product see where claims work was piling up and why. I designed reporting dashboards that exposed queue depth, claim age, exception rate, and specialist throughput, with drill-downs to the individual claim. Those dashboards were later used to justify hiring, to prioritize engineering work, and to make the case for further automation.</p>
-        <blockquote class="reveal">A design team that can&#8217;t show you its numbers is, quietly, a design team you can cut.</blockquote>
       </div>
-    </div>
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">05 / Reflection</div>
-      <div>
-        <h2 class="reveal">What I learned from the specialists.</h2>
-        <p class="reveal">The specialists who transcribed claims every day were the best product partners I&#8217;d worked with. They knew the edge cases, the weird-plan exceptions, the carriers whose PDFs were unreadable, the small lies that certain provider forms told. Most of the durable improvements on this project came from their corrections to my first drafts.</p>
-        <p class="reveal">The lesson I kept, and have kept using at LifeStance: when you&#8217;re designing an internal tool, the people using it for eight hours a day are not a research population to be synthesized. They are collaborators whose names should be in the commit history.</p>
-      </div>
-    </div>
-
-  </section>
-
+    </section>
   </div><!-- /.cs-details -->
 
-  <section class="cs-next">
-    <div class="cs-next__inner">
-      <div>
-        <div class="cs-next__label">Next Case Study · № 05</div>
+  <section class="cs-band cs-next-v2" style="background:#0C1F33; --n-accent:#2C74B3; --t-on-dark:#BACDE0; --t-on-dark-hi:#E9F1F9;">
+    <a href="billing.html">
+      <div class="cs-next-v2__inner">
+        <div>
+          <p class="cs-next-v2__label">Next case study &#183; &#8470; 05</p>
+          <h2 class="cs-next-v2__title">Billing</h2>
+          <p class="cs-next-v2__desc">Replaced three disconnected finance tools with one state-aware workspace, and automated the boring half.</p>
+        </div>
+        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
       </div>
-      <a href="billing.html">
-        <h2 class="cs-next__title">Billing →</h2>
-      </a>
-    </div>
+    </a>
   </section>
 
 </main>
@@ -304,47 +323,6 @@
   </div>
 </footer>
 
-<script src="../js/main.js?v=10"></script>
-<script>
-  (function() {
-    // If already unlocked, reveal content immediately
-    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
-      document.body.classList.add('is-unlocked');
-      return;
-    }
-
-    const lock  = document.getElementById('cs-lock');
-    const form  = document.getElementById('cs-lock-form');
-    const input = document.getElementById('cs-lock-input');
-    const err   = document.getElementById('cs-lock-error');
-    if (!form || !input || !lock) return;
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const value = input.value.trim();
-      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
-        err.classList.remove('is-visible');
-        lock.classList.remove('is-error');
-        lock.classList.add('is-success');
-        // Let the unlock animation play, then reveal content
-        setTimeout(() => {
-          document.body.classList.add('is-unlocked');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 850);
-      } else {
-        err.classList.add('is-visible');
-        lock.classList.remove('is-error');
-        // Force reflow so the animation can re-trigger
-        void lock.offsetWidth;
-        lock.classList.add('is-error');
-        input.value = '';
-        input.focus();
-      }
-    });
-
-    // Autofocus the input so visitors can just start typing
-    window.addEventListener('load', () => input.focus());
-  })();
-</script>
+<script src="../js/main.js?v=13"></script>
 </body>
 </html>

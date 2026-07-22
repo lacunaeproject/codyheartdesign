@@ -1422,12 +1422,12 @@ main { position: relative; z-index: 2; }
 /* Per-card accents — a saturated, cohesive spread so every card pops and
    reads distinct from its neighbors: warm orange + gold, a pine green, then
    three blues separated by lightness (mid teal / bright cyan / deep cobalt). */
-.case-card--01 { --card-accent: var(--orange); }   /* #E87E1E — signature orange */
-.case-card--02 { --card-accent: #0E8FA8; }          /* teal */
-.case-card--03 { --card-accent: #2E9C71; }          /* pine green (was muddy sage) */
-.case-card--04 { --card-accent: #E0A509; }          /* gold (was muddy tan) */
-.case-card--05 { --card-accent: #39B0D4; }          /* glacier cyan */
-.case-card--06 { --card-accent: #1E5DA8; }          /* deep cobalt */
+.case-card--01 { --card-accent: #E87E1E; }   /* signature orange */
+.case-card--02 { --card-accent: #0E8FA8; }   /* teal */
+.case-card--03 { --card-accent: #2E9C71; }   /* pine green */
+.case-card--04 { --card-accent: #E0A509; }   /* gold */
+.case-card--05 { --card-accent: #1E5DA8; }   /* billing blue */
+.case-card--06 { --card-accent: #D93318; }   /* design-roi red */
 
 /* ---------- Paired case cards ----------
    Two square cards side by side — same card anatomy as the full-width
@@ -2687,7 +2687,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
 }
 /* Drop cap on the first paragraph of the first narrative chapter —
    signals the start of the long-form read, like an NYT article. */
-.cs-body:not(.cs-body--overview) .cs-chapter:first-of-type > div > p:first-of-type::first-letter {
+.cs-body:not(.cs-body--overview) .cs-chapter:first-of-type > div > p:first-of-type:not(.cs-q__t):not(.cs-lede)::first-letter {
   font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
   font-weight: 700;
   font-size: 4rem;
@@ -3341,4 +3341,1149 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
     overflow: visible;
   }
   .lock__card { max-width: 100%; }
+}
+
+/* ============================================================
+   CASE STUDY v3 — banded, themed, scannable
+   ------------------------------------------------------------
+   Every case study runs light -> dark -> light -> dark -> light -> dark,
+   full-bleed, in one project colour. The rhythm does the work the
+   screenshots can't: it tells you where you are in the story and
+   makes the page feel authored rather than dumped.
+
+   Each study sets ONE class on <body> (cs-theme--orange, --teal,
+   --green, --gold, --blue, --red). Everything below reads from the
+   theme tokens, so nothing is hard-coded per page.
+
+   Tokens
+     --t-accent      vivid brand colour — rules, fills, marks on dark
+     --t-accent-ink  darkened for TEXT on light bands (contrast)
+     --t-light       light band background
+     --t-light-2     second light tone, for insets on light bands
+     --t-dark        dark band background
+     --t-on-dark     body text on dark
+     --t-on-dark-hi  headings on dark
+   ============================================================ */
+
+body.cs-theme--orange {
+  --t-accent: #E87E1E; --t-accent-ink: #9E4A0F;
+  --t-light: #FDF4EC;  --t-light-2: #F7E7D8;
+  --t-dark: #2A1509;   --t-on-dark: #E6CFBB; --t-on-dark-hi: #FBF0E5;
+}
+body.cs-theme--teal {
+  --t-accent: #0E8FA8; --t-accent-ink: #0B5A6B;
+  --t-light: #EEF6F8;  --t-light-2: #DCEBF0;
+  --t-dark: #0C2630;   --t-on-dark: #B9D4DD; --t-on-dark-hi: #EAF5F8;
+}
+body.cs-theme--green {
+  --t-accent: #2E9C71; --t-accent-ink: #1C6039;
+  --t-light: #EFF6F1;  --t-light-2: #DDEBE1;
+  --t-dark: #0D2417;   --t-on-dark: #B7D2C1; --t-on-dark-hi: #E9F5EC;
+}
+body.cs-theme--gold {
+  --t-accent: #E0A509; --t-accent-ink: #8A6218;
+  --t-light: #FBF5E7;  --t-light-2: #F2E6C9;
+  --t-dark: #2A2008;   --t-on-dark: #E2D0A6; --t-on-dark-hi: #FAF2DE;
+}
+body.cs-theme--blue {
+  --t-accent: #1E5DA8; --t-accent-ink: #16406F;
+  --t-light: #EEF3FA;  --t-light-2: #DBE6F3;
+  --t-dark: #0C1F33;   --t-on-dark: #BACDE0; --t-on-dark-hi: #E9F1F9;
+}
+body.cs-theme--red {
+  --t-accent: #D93318; --t-accent-ink: #A8240F;
+  --t-light: #FCF1EE;  --t-light-2: #F5DED7;
+  --t-dark: #2B0F0A;   --t-on-dark: #E5C3B9; --t-on-dark-hi: #FBEAE5;
+}
+
+/* ---------- Bands ----------
+   The hero band carries the header's clearance itself, so the band
+   colour runs edge-to-edge underneath the floating nav rather than
+   leaving a strip of paper above it. */
+body[class*="cs-theme--"] .cs { padding-top: 0; }
+
+.cs-band {
+  position: relative;
+  padding: 5.5rem 0;
+}
+.cs-band--light { background: var(--t-light); }
+.cs-band--dark  { background: var(--t-dark); }
+.cs-band--hero  { padding-top: max(var(--nav-h, 0px), 108px); padding-bottom: 3.5rem; }
+@media (max-width: 560px) {
+  .cs-band { padding: 3.5rem 0; }
+  .cs-band--hero { padding-top: max(var(--nav-h, 0px), 158px); }
+}
+/* A hairline of the project colour rides the top of every dark band —
+   the seam that makes the alternation feel deliberate. */
+.cs-band--dark::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--t-accent);
+}
+
+/* Type inversion inside dark bands. Mirrors .about-band--brown, but
+   driven by the theme tokens so all six studies stay in step. */
+.cs-band--dark h1,
+.cs-band--dark h2,
+.cs-band--dark h3,
+.cs-band--dark .cs-body h2 { color: var(--t-on-dark-hi); }
+.cs-band--dark p,
+.cs-band--dark li,
+.cs-band--dark .cs-body p,
+.cs-band--dark .cs-body ul li { color: var(--t-on-dark); }
+.cs-band--dark .cs-body p strong,
+.cs-band--dark strong { color: var(--t-on-dark-hi); }
+.cs-band--dark .cs-body ul li::before { background: var(--t-accent); }
+.cs-band--dark .cs-chapter { border-top-color: rgba(255,255,255,0.14); }
+.cs-band--dark .cs-chapter__num { color: var(--t-accent); }
+.cs-band--dark .cs-chapter__num::before { background: var(--t-accent); }
+.cs-band--dark .cs-body blockquote {
+  color: var(--t-on-dark-hi);
+  border-left-color: var(--t-accent);
+}
+.cs-band--dark .cs-body blockquote::before { color: var(--t-accent); }
+.cs-band--dark .cs-body a { color: var(--t-accent); border-bottom-color: var(--t-accent); }
+.cs-band--dark .eyebrow { color: var(--t-accent); }
+
+/* Light bands take the theme's ink for accents so links and chapter
+   numbers stay legible against the tint. */
+.cs-band--light .cs-chapter__num { color: var(--t-accent-ink); }
+.cs-band--light .cs-chapter__num::before { background: var(--t-accent); }
+.cs-band--light .cs-body ul li::before { background: var(--t-accent); }
+.cs-band--light .cs-body blockquote { border-left-color: var(--t-accent); }
+.cs-band--light .cs-body blockquote::before { color: var(--t-accent); }
+.cs-band--light .cs-body a { color: var(--t-accent-ink); border-bottom-color: var(--t-accent); }
+.cs-band--light .eyebrow,
+.cs-band--light .cs-hero__eyebrow { color: var(--t-accent-ink); }
+.cs-band--light .cs-body h2 em,
+.cs-band--light .cs-hero h1 em { color: var(--t-accent-ink); }
+
+/* Bands own the vertical rhythm, so the sections inside them stop
+   adding their own. */
+.cs-band .cs-body { padding-top: 0; padding-bottom: 0; }
+.cs-band .cs-hero { padding-top: 0; border-bottom: none; }
+
+/* ---------- Hero, themed ---------- */
+body[class*="cs-theme--"] .cs-hero { max-width: var(--max-read); }
+body[class*="cs-theme--"] .cs-hero__nav a:hover { color: var(--t-accent-ink); }
+body[class*="cs-theme--"] .cs-hero-illustration__frame { background: transparent; }
+body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
+
+/* ============================================================
+   AT A GLANCE — the thirty-second block
+   The whole point of the page for a first-time visitor: the claim,
+   the numbers, the facts, and the three things they can do next,
+   all in one dark band directly under the hero.
+   ============================================================ */
+.cs-glance { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.cs-glance__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 1rem;
+}
+.cs-glance__claim {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.4vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--t-on-dark-hi);
+  margin: 0 0 3rem;
+  max-width: 22ch;
+}
+.cs-glance__claim em { font-style: italic; color: var(--t-accent); }
+
+/* Metric row — reuses the existing .metric markup, restyled for the band. */
+.cs-glance .metrics { background: none; padding: 0; overflow: visible; }
+.cs-glance .metrics::before { display: none; }
+.cs-glance .metrics__grid { padding: 0; max-width: none; }
+.cs-glance .metric { border-top-color: rgba(255,255,255,0.22); }
+.cs-glance .metric__num {
+  color: var(--t-accent);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+}
+.cs-glance .metric__label {
+  color: var(--t-on-dark);
+  border-top-color: rgba(255,255,255,0.14);
+}
+.cs-glance .metric__eyebrow { color: rgba(255,255,255,0.5); }
+
+/* Facts strip — role, team, timeline, scope. Mono, quiet, scannable. */
+.cs-glance__facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+@media (max-width: 900px) { .cs-glance__facts { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; } }
+@media (max-width: 480px) { .cs-glance__facts { grid-template-columns: 1fr; } }
+.cs-glance__fact-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin: 0 0 0.5rem;
+}
+.cs-glance__fact-value {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: var(--t-on-dark-hi);
+  margin: 0;
+}
+
+/* CTA row — the decision. Three doors, one obvious. */
+.cs-glance__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.75rem;
+  align-items: center;
+}
+.cs-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: var(--t-on-dark-hi);
+  transition: background-color 200ms ease, border-color 200ms ease,
+              color 200ms ease, transform 200ms cubic-bezier(.2,.7,.2,1);
+}
+.cs-cta:hover { transform: translateY(-2px); border-color: var(--t-accent); }
+.cs-cta--primary {
+  background: var(--t-accent);
+  border-color: var(--t-accent);
+  color: #FFF;
+}
+.cs-cta--primary:hover { filter: brightness(1.08); color: #FFF; }
+.cs-cta__arrow { transition: transform 200ms ease; }
+.cs-cta:hover .cs-cta__arrow { transform: translateX(3px); }
+@media (max-width: 560px) {
+  .cs-glance__cta { flex-direction: column; align-items: stretch; }
+  .cs-cta { justify-content: center; }
+}
+
+/* ============================================================
+   ACCESS GATE v2 — request on the left, unlock on the right
+   Two explicit doors so nobody has to guess how to get in.
+   ============================================================ */
+.cs-access { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.cs-access__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 860px) { .cs-access__grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+.cs-access__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cs-access__lock { width: 15px; height: 15px; flex-shrink: 0; }
+.cs-access__title {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--t-on-dark-hi);
+  margin: 0 0 1.1rem;
+  max-width: 20ch;
+}
+.cs-access__copy {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--t-on-dark);
+  margin: 0 0 1.75rem;
+  max-width: 46ch;
+}
+.cs-access__actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+/* Right column — the unlock card */
+.cs-access__card {
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 6px;
+  padding: 2rem;
+  background: rgba(255,255,255,0.035);
+}
+.cs-access__card-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 1rem;
+}
+.cs-access__form { display: flex; gap: 0.5rem; }
+.cs-access__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1.15rem;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.25);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.98rem;
+  color: var(--t-on-dark-hi);
+  outline: none;
+  text-align: center;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.cs-access__input::placeholder { color: rgba(255,255,255,0.4); }
+.cs-access__input:focus {
+  border-color: var(--t-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 28%, transparent);
+}
+.cs-access__submit {
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--t-accent);
+  background: var(--t-accent);
+  color: #FFF;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: filter 180ms ease;
+}
+.cs-access__submit:hover { filter: brightness(1.1); }
+.cs-access__error {
+  color: var(--t-accent);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.75rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease;
+}
+.cs-access__error.is-visible { opacity: 1; visibility: visible; }
+.cs-access__hint {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  margin: 1rem 0 0;
+  line-height: 1.5;
+}
+.cs-access.is-unlocked .cs-access__form,
+.cs-access.is-unlocked .cs-access__error { display: none; }
+.cs-access__unlocked { display: none; }
+.cs-access.is-unlocked .cs-access__unlocked {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+}
+
+/* ============================================================
+   NEXT CASE STUDY — the nudge
+   Full-bleed card that borrows the NEXT study's colour, so the
+   handoff is visible before you click.
+   ============================================================ */
+.cs-next-v2 { position: relative; overflow: hidden; padding: 0; }
+.cs-next-v2 a {
+  display: block;
+  padding: 5rem 0;
+  transition: background-color 320ms ease;
+}
+.cs-next-v2 a:hover { background: rgba(255,255,255,0.04); }
+.cs-next-v2__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .cs-next-v2__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cs-next-v2 a { padding: 3.5rem 0; }
+}
+.cs-next-v2__label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--n-accent, var(--t-accent));
+  margin: 0 0 1rem;
+}
+.cs-next-v2__title {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.9rem;
+  color: var(--t-on-dark-hi);
+}
+.cs-next-v2__desc {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--t-on-dark);
+  margin: 0;
+  max-width: 52ch;
+}
+/* The arrow disc picks up the next study's colour */
+.cs-next-v2__arrow {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 1.5px solid var(--n-accent, var(--t-accent));
+  color: var(--n-accent, var(--t-accent));
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  transition: background-color 260ms ease, color 260ms ease, transform 260ms cubic-bezier(.2,.7,.2,1);
+}
+.cs-next-v2 a:hover .cs-next-v2__arrow {
+  background: var(--n-accent, var(--t-accent));
+  color: #FFF;
+  transform: translateX(6px);
+}
+@media (max-width: 760px) { .cs-next-v2__arrow { width: 58px; height: 58px; font-size: 1.3rem; } }
+
+/* Gated material. Hidden by default so a JS failure fails closed —
+   the NDA content must never flash before the gate initialises. */
+.cs-details { display: none; }
+body.cs-unlocked .cs-details { display: block; }
+
+/* Hero headline takes the theme's darkest tone rather than the global navy,
+   so the orange studies don't run navy-on-peach and the blue ones don't
+   run navy-on-blue. */
+.cs-band--light .cs-hero h1 { color: var(--t-dark); }
+.cs-band--light .cs-hero__lede { color: color-mix(in srgb, var(--t-dark) 78%, transparent); }
+.cs-band--light .cs-hero__byline-name { color: var(--t-dark); }
+.cs-band--light .cs-body h2 { color: var(--t-dark); }
+.cs-band--light .cs-hero-illustration figcaption { color: color-mix(in srgb, var(--t-dark) 70%, transparent); }
+
+/* The reading-progress bar rides the study's own colour. */
+body[class*="cs-theme--"] .reading-progress { background: var(--t-accent); }
+
+/* Work index: each card carries its study's colour, so the index and the
+   case studies read as one system. */
+.case-card[class*="case-card--0"] .case-card__num { color: var(--card-accent); }
+.case-card[class*="case-card--0"] .case-card__viz { color: var(--card-accent); }
+.case-card[class*="case-card--0"]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 3px;
+  background: var(--card-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms cubic-bezier(.2,.7,.2,1);
+}
+.case-card[class*="case-card--0"]:hover::after { transform: scaleX(1); }
+
+/* ============================================================
+   CASE STUDY v4 — the hiring-manager read
+   ------------------------------------------------------------
+   Public page answers five questions in order: what was the
+   problem, what was the solution, what was my role, did it work,
+   what did I learn. Everything between problem and solution —
+   the reasoning, the alternatives, the screens — sits behind the
+   password, because that is the part that is actually under NDA.
+   ============================================================ */
+
+/* ---------- Hero with artwork, full bleed ----------
+   Matches the homepage and About heroes: the section IS the picture,
+   edge to edge, with the type sitting on it. Set --hero-img on the band:
+
+     <section class="cs-band cs-band--hero cs-hero--media"
+              style="--hero-img:url('../assets/hero/sanfran.PNG')">
+
+   Accessibility:
+     - Exactly one <h1>, always real text, never baked into the art.
+     - The art is an aria-hidden layer, so screen readers get the words
+       and skip the picture entirely.
+     - A gradient scrim ramps to near-solid across the bottom half, where
+       all the type actually sits, so contrast holds even if a brighter
+       photo gets swapped in later.
+     - prefers-reduced-motion stops the drift; prefers-contrast and
+       forced-colors flatten the scrim to a solid wash.
+   ============================================================ */
+.cs-hero--media {
+  padding: 0;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--t-light);
+  min-height: min(78vh, 720px);
+  display: flex;
+}
+.cs-hero--media::before { display: none; }   /* no accent hairline on the photo */
+
+.cs-hero--media .cs-hero__media {
+  position: absolute;
+  inset: -4%;
+  z-index: 0;
+  background-image: var(--hero-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+  animation: heroDrift 28s ease-in-out infinite alternate;
+}
+.cs-hero--media .cs-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* No darkening. These heroes are bright, hazy landscapes and they read
+     better untinted, like the arctic hero on the homepage - so the type
+     goes dark instead of white.
+
+     What is here is a LIFT, not a scrim: a soft white veil centred on the
+     headline. On the bright images (SF, Africa, arctic ~0.75 luminance) it
+     is barely perceptible. On the two with dark passages (Franklin 0.29,
+     Chicago 0.46, with patches down to 0.03) it is what keeps dark type
+     above 5:1 instead of dropping to 2:1 over a shadow. It fades out well
+     before the edges, so the artwork stays crisp at the borders and the
+     seam into the TL;DR band stays a visible edge. */
+  background:
+    radial-gradient(ellipse 78% 62% at 50% 56%,
+      rgb(255 255 255 / var(--hero-lift, 0.36)) 0%,
+      rgb(255 255 255 / var(--hero-lift, 0.36)) 40%,
+      rgb(255 255 255 / calc(var(--hero-lift, 0.36) * 0.62)) 74%,
+      rgb(255 255 255 / 0) 100%);
+}
+
+/* Nav pinned top, headline block pinned bottom — same shape as the
+   homepage hero, and it keeps the type in the darkest part of the ramp. */
+body[class*="cs-theme--"] .cs-hero--media .cs-hero {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: max(var(--nav-h, 0px), 108px) var(--gutter) clamp(2.5rem, 5vw, 4rem);
+  /* Breadcrumb on its own row up top, headline centred in what's left —
+     the same composition as the arctic hero on the homepage. */
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+  border-bottom: none;
+}
+.cs-hero--media .cs-hero__content {
+  max-width: 54rem;
+  margin: 0 auto;
+  align-self: center;
+  text-align: center;
+}
+.cs-hero--media .cs-hero__nav {
+  margin-bottom: 0;
+  justify-content: center;
+  color: color-mix(in srgb, var(--t-dark) 62%, transparent);
+}
+.cs-hero--media .cs-hero__nav a { color: var(--t-dark); }
+.cs-hero--media .cs-hero__nav a:hover { color: var(--t-accent-ink); }
+.cs-hero--media .cs-hero__eyebrow {
+  color: color-mix(in srgb, var(--t-dark) 88%, transparent);
+  margin-bottom: 1rem;
+}
+.cs-hero--media .cs-hero h1 {
+  color: var(--t-dark);
+  margin: 0 auto;
+  max-width: 20ch;
+}
+.cs-hero--media .cs-hero__byline { display: none; }
+
+@media (max-width: 760px) {
+  .cs-hero--media { min-height: min(80vh, 620px); }
+  .cs-hero--media .cs-hero { gap: 2rem; }
+  .cs-hero--media .cs-hero h1 { max-width: none; }
+  .cs-hero--media .cs-hero__lede { font-size: 1.02rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-hero--media .cs-hero__media { animation: none; transform: none; inset: 0; }
+}
+@media (prefers-contrast: more) {
+  .cs-hero--media .cs-hero__media::after { background: rgba(255,255,255,0.62); }
+}
+@media (forced-colors: active) {
+  .cs-hero--media .cs-hero__media { background-image: none; animation: none; }
+  .cs-hero--media .cs-hero__media::after { display: none; }
+}
+
+/* The five public sections reuse .cs-chapter as their wrapper but let
+   the .cs-q rule be the divider, so we don't stack two hairlines. */
+.cs-qa { border-top: none; padding-top: 0; }
+.cs-qa:first-child { margin-top: 0; }
+
+/* ---------- Section headers for the five public questions ----------
+   Bigger and more declarative than the old chapter numbers: a hiring
+   manager should be able to find "was it a success" by scanning. */
+.cs-q {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 1.75rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid currentColor;
+  color: inherit;
+}
+.cs-band--light .cs-q { border-bottom-color: color-mix(in srgb, var(--t-dark) 18%, transparent); }
+.cs-band--dark  .cs-q { border-bottom-color: rgba(255,255,255,0.18); }
+.cs-q__n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.cs-band--light .cs-q__n { color: var(--t-accent-ink); }
+.cs-band--dark  .cs-q__n { color: var(--t-accent); }
+.cs-q__t {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin: 0;
+}
+.cs-band--light .cs-q__t { color: color-mix(in srgb, var(--t-dark) 55%, transparent); }
+.cs-band--dark  .cs-q__t { color: rgba(255,255,255,0.5); }
+
+/* The answer headline under each question label. */
+/* Cheltenham, not Regards. The display serif is reserved for the few big
+   moments - the hero, the short-version claim, the next-study handoff -
+   so the section titles use the text serif at headline weight instead. */
+.cs-answer {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: clamp(1.55rem, 2.9vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  margin: 0 0 1.25rem;
+  max-width: 24ch;
+}
+.cs-band--light .cs-answer { color: var(--t-dark); }
+.cs-band--dark  .cs-answer { color: var(--t-on-dark-hi); }
+
+/* ---------- Password section, rebuilt minimal ----------
+   Centred, quiet, one column. A rule, a mark, a sentence, two
+   actions, and a field. Nothing else. */
+.cs-gate {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+.cs-gate__mark {
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 1.5rem;
+  display: block;
+  color: var(--t-accent);
+}
+.cs-gate__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 1.1rem;
+}
+.cs-gate__title {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--t-on-dark-hi);
+  margin: 0 auto 1.1rem;
+  max-width: 22ch;
+}
+.cs-gate__copy {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--t-on-dark);
+  margin: 0 auto 2.25rem;
+  max-width: 46ch;
+}
+.cs-gate__actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/* Hairline "or" divider between requesting access and entering it. */
+.cs-gate__or {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.25rem auto 1.5rem;
+  max-width: 300px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.cs-gate__or::before,
+.cs-gate__or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.16);
+}
+.cs-gate__form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.cs-gate__input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.24);
+  border-radius: 999px;
+  background: transparent;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.95rem;
+  color: var(--t-on-dark-hi);
+  outline: none;
+  text-align: center;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+.cs-gate__input::placeholder { color: rgba(255,255,255,0.35); }
+.cs-gate__input:focus-visible {
+  border-color: var(--t-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-accent) 30%, transparent);
+}
+.cs-gate__submit {
+  padding: 0.8rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--t-accent);
+  background: transparent;
+  color: var(--t-accent);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+.cs-gate__submit:hover { background: var(--t-accent); color: #FFF; }
+.cs-gate__error {
+  color: var(--t-accent);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.85rem;
+  margin-top: 0.85rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease;
+}
+.cs-gate__error.is-visible { opacity: 1; visibility: visible; }
+.cs-gate.is-unlocked .cs-gate__form,
+.cs-gate.is-unlocked .cs-gate__or,
+.cs-gate.is-unlocked .cs-gate__actions,
+.cs-gate.is-unlocked .cs-gate__error { display: none; }
+.cs-gate__unlocked { display: none; }
+.cs-gate.is-unlocked .cs-gate__unlocked {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+}
+/* Quiet ghost button used inside the gate. */
+.cs-gate .cs-cta {
+  border-color: rgba(255,255,255,0.28);
+  font-size: 0.72rem;
+  padding: 0.75rem 1.3rem;
+}
+.cs-gate .cs-cta--primary { border-color: var(--t-accent); }
+
+/* Marker introducing the unlocked material. */
+.cs-unlocked-note {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 2.5rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--t-dark) 18%, transparent);
+}
+
+/* ============================================================
+   TL;DR — the twenty-second block
+   Sits immediately under the hero. A recruiter scrolls once and
+   has the entire project: what it is, my role, the problem, the
+   solution, the result, the lesson, the numbers, and the three
+   things they can do next. Everything below this is optional
+   reading. Sized to land inside one laptop viewport, so the type
+   steps down and the padding tightens rather than letting it
+   spill into a second screen.
+   ============================================================ */
+.cs-tldr-band { padding: 3.5rem 0 3.75rem; }
+.cs-tldr { max-width: var(--max-read); margin: 0 auto; padding: 0 var(--gutter); }
+.cs-tldr__eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 0.9rem;
+}
+.cs-tldr__claim {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.9vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--t-on-dark-hi);
+  margin: 0 0 2rem;
+  max-width: 26ch;
+}
+.cs-tldr__claim em { font-style: italic; color: var(--t-accent); }
+
+
+/* Numbers step down here — the metric strip is supporting evidence in
+   the TL;DR, not the headline it was when it had a band to itself. */
+.cs-tldr__metrics { background: none; padding: 0; overflow: visible; }
+.cs-tldr__metrics::before { display: none; }
+.cs-tldr__metrics .metrics__grid { padding: 0; max-width: none; gap: 2rem; }
+.cs-tldr__metrics .metric { border-top-color: rgba(255,255,255,0.22); padding-top: 1.1rem; }
+.cs-tldr__metrics .metric__num {
+  color: var(--t-accent);
+  font-size: clamp(1.9rem, 3.2vw, 2.9rem);
+  margin-bottom: 0.4rem;
+}
+.cs-tldr__metrics .metric__label {
+  color: var(--t-on-dark);
+  border-top: none;
+  padding-top: 0;
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+.cs-tldr__metrics .metric__eyebrow { color: rgba(255,255,255,0.5); margin-bottom: 0.35rem; }
+.cs-tldr .cs-glance__cta { margin-top: 2.25rem; }
+.cs-tldr .cs-cta { padding: 0.75rem 1.35rem; font-size: 0.73rem; }
+
+/* Photo heroes run tight, because everything above the TL;DR is time a
+   recruiter spends not reading the TL;DR. The banner shrinks, the rules
+   close up, and the injected byline card goes away entirely - role and
+   timeline are both in the TL;DR one screen down, so it was saying the
+   same thing twice and costing a hundred vertical pixels to do it. */
+.cs-band--hero { padding-bottom: 2.25rem; }
+.cs-hero--media .cs-hero__nav { margin-bottom: 1.4rem; }
+.cs-hero--media .cs-hero__eyebrow { margin-bottom: 0.9rem; }
+.cs-hero--media .cs-hero__byline { display: none; }
+.cs-hero--media .cs-hero__lede {
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+@media (max-width: 560px) {
+  .cs-band--hero { padding-bottom: 1.75rem; }
+}
+
+/* The hero now carries only the eyebrow and the headline, so the content
+   block sits in the bottom of the scrim where contrast is strongest. The
+   lede moved below the artwork, into the top of the long-form read. */
+.cs-lede {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.1rem, 1.9vw, 1.3rem);
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--t-dark) 82%, transparent);
+  margin: 0 0 2.75rem;
+  padding-bottom: 2.25rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--t-dark) 14%, transparent);
+  max-width: 62ch;
+}
+
+
+/* Case-study body headings follow the same rule as .cs-answer. Scoped to the
+   themed pages so the About page's Regards headings are untouched. */
+body[class*="cs-theme--"] .cs-body h2 {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+}
+/* The gate is a quiet, centred moment - medium weight rather than bold. */
+.cs-gate__title {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  font-size: clamp(1.45rem, 2.7vw, 1.95rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.cs-access__title {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+/* The drop cap is for narrative prose only. The question labels are <p> and
+   sit first inside .cs-q, so the chapter drop-cap selector was matching them
+   and rendering "THE PROBLEM" with a four-rem T. */
+.cs-q__t::first-letter,
+.cs-lede::first-letter {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  float: none;
+  margin: 0;
+  color: inherit;
+}
+/* A little more presence against the body text - these are section titles,
+   not lead-ins. */
+.cs-answer { font-size: clamp(1.7rem, 3vw, 2.3rem); }
+
+/* The short-version claim and its Design-ROI equivalent move to Cheltenham
+   too. That leaves the display serif on exactly two things per page - the
+   hero headline and the next-study handoff - which is the point.
+
+   Sized up so the hierarchy still reads top-down:
+     hero 69px  >  claim 45px  >  section titles 36px  >  chapter h2 24px */
+.cs-tldr__claim,
+.cs-glance__claim {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: clamp(1.85rem, 3.5vw, 2.8rem);
+  line-height: 1.14;
+  letter-spacing: -0.022em;
+}
+
+/* ============================================================
+   SHORT VERSION — editorial, not a slide
+   ------------------------------------------------------------
+   Six equal cells read as a deck because nothing tells you where
+   to begin. Same six facts, but now each zone gets its own
+   treatment, so the eye is handed an order:
+
+     head      claim + deck (what this actually is)
+     spine     problem -> solution, the narrative pair
+     evidence  the numbers, labelled as the answer to "did it work"
+     close     role, and the lesson set off as a pull quote
+     foot      byline strip + the three actions
+   ============================================================ */
+.cs-tldr__head { max-width: none; }
+.cs-tldr__deck {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+  line-height: 1.55;
+  color: var(--t-on-dark);
+  margin: 1.1rem 0 0;
+  max-width: 54ch;
+}
+
+/* Shared label + text so every zone speaks the same language */
+.cs-tldr__label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  margin: 0 0 0.7rem;
+  font-weight: 500;
+}
+.cs-tldr__text {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--t-on-dark-hi);
+  margin: 0;
+}
+
+
+
+/* --- One vertical list, not a grid of cells ------------------
+   The 3x2 grid read like a slide; splitting it into paired columns
+   read like a busier slide. So: a single top-to-bottom list, label
+   in a fixed left gutter, answer in the reading column. One entry
+   per line, hairline between. Nothing to scan across - you just
+   read down it. The numbers are the one row that earns being a row. */
+.cs-tldr__foot {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.cs-tldr .cs-glance__cta { margin: 0; }
+@media (max-width: 560px) {
+  .cs-tldr__foot { flex-direction: column; align-items: stretch; }
+}
+
+
+/* --- The numbers, in the same single column ------------------
+   A four-across grid made the numbers a separate object sitting
+   inside the list. They're now rows of the same list: the figure
+   takes the left gutter where a label would go, the explanation
+   takes the reading column. One spine down the whole block, and
+   the numbers still get to be the biggest thing in it. */
+.cs-tldr__row--metric:last-child { border-bottom: none; }
+/* "Modeled" rides at the end of the explanation as a qualifier. */
+.cs-tldr__note {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  opacity: 0.85;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+/* --- One column, read like an article ------------------------
+   No label gutter, no grid, no tiles. The block sits in the same
+   centred --max-read measure as the prose below it, so the whole
+   page runs down a single column. Each beat is a small mono
+   standfirst with its answer underneath, separated by space
+   rather than rules. */
+.cs-tldr__list { margin: 2.25rem 0 0; }
+.cs-tldr__row { display: block; margin: 0 0 1.9rem; }
+.cs-tldr__row dt {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+.cs-tldr__row dd {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--t-on-dark-hi);
+}
+
+/* "Did it work" introduces the figures, so it gets a rule above it
+   and a little more air - the one structural break in the column. */
+
+/* Figures: number on its own line, explanation beneath it. */
+.cs-tldr__row--metric { margin: 0 0 1.6rem; }
+.cs-tldr__row--metric dt {
+  font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  color: var(--t-accent);
+  margin: 0 0 0.4rem;
+}
+.cs-tldr__row--metric dd {
+  font-size: 0.98rem;
+  color: rgba(255,255,255,0.66);
+}
+.cs-tldr__note {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent);
+  opacity: 0.85;
+  margin-left: 0.5rem;
+  white-space: nowrap;
+}
+.cs-tldr__foot { margin-top: 2.5rem; display: block; }
+.cs-tldr .cs-glance__cta { margin: 0; }
+
+/* ============================================================
+   SHORT VERSION — light, poured-cement surface
+   ------------------------------------------------------------
+   A dark band immediately under the artwork made the top of the
+   page feel like a shutter coming down. This is the complementary
+   light tone instead - the deeper of the two theme lights, so it
+   still separates from the plain prose band below it - carrying
+   the same cement texture the work page uses. The long-form read
+   below keeps its light/dark alternation; what changed is that the
+   page no longer drops to black the instant you leave the artwork.
+   ============================================================ */
+.cs-tldr-band {
+  background-color: var(--t-light-2);
+  background-image: var(--cement);
+  background-size: 200px 200px;
+  background-blend-mode: multiply;
+}
+
+.cs-tldr__eyebrow { color: var(--t-accent-ink); }
+.cs-tldr__claim   { color: var(--t-dark); }
+.cs-tldr__deck    { color: color-mix(in srgb, var(--t-dark) 76%, transparent); }
+.cs-tldr__row dt  { color: var(--t-accent-ink); }
+.cs-tldr__row dd  { color: color-mix(in srgb, var(--t-dark) 90%, transparent); }
+
+/* --- The figures, in a panel of their own --------------------
+   Inset, on the paler light tone, with the project colour running
+   down the edge. It reads as a distinct object rather than more
+   list, and the margin underneath keeps it from butting straight
+   into whatever band comes next. */
+.cs-tldr__figures {
+  margin: 2.75rem 0 0;
+  padding: 1.9rem 2rem 1.6rem;
+  background: color-mix(in srgb, var(--t-light) 82%, #FFFFFF);
+  border-left: 3px solid var(--t-accent);
+  border-radius: 0 3px 3px 0;
+}
+.cs-tldr__figures-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t-accent-ink);
+  font-weight: 500;
+  margin: 0 0 1.4rem;
+}
+.cs-tldr__list--figures { margin: 0; }
+.cs-tldr__row--metric { margin: 0 0 1.35rem; }
+.cs-tldr__row--metric:last-child { margin-bottom: 0; }
+.cs-tldr__row--metric dt { color: var(--t-accent-ink); }
+.cs-tldr__row--metric dd { color: color-mix(in srgb, var(--t-dark) 72%, transparent); }
+.cs-tldr__note { color: var(--t-accent-ink); opacity: 1; }
+
+/* Actions sit clear of the panel. */
+.cs-tldr__foot { margin-top: 2.5rem; }
+.cs-tldr .cs-cta {
+  border-color: color-mix(in srgb, var(--t-dark) 28%, transparent);
+  color: var(--t-dark);
+}
+.cs-tldr .cs-cta:hover { border-color: var(--t-accent-ink); }
+.cs-tldr .cs-cta--primary {
+  background: var(--t-accent-ink);
+  border-color: var(--t-accent-ink);
+  color: #FFFFFF;
+}
+.cs-tldr .cs-cta--primary:hover { color: #FFFFFF; }
+@media (max-width: 560px) {
+  .cs-tldr__figures { padding: 1.5rem 1.25rem 1.25rem; }
 }

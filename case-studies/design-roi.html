@@ -32,24 +32,13 @@
 
 <!-- Theme color (mobile browser chrome) -->
 <meta name="theme-color" content="#FBFAF6">
-<link rel="stylesheet" href="../css/main.css?v=142">
+<link rel="stylesheet" href="../css/main.css?v=169">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
-<style>
-  /* Case study preview (hero, metrics, solution summary) is always visible.
-     The detail chapters — where visuals live — stay hidden behind the inline
-     password gate until body.is-unlocked is applied. */
-  main > .cs-details { display: none; }
-  body.is-unlocked main > .cs-details { display: block; }
-  body.is-unlocked main > .cs-lock { display: none; }
-</style>
-<noscript>
-  <meta http-equiv="refresh" content="0; url=../work.html">
-</noscript>
 <script src="../js/rise.js?v=1"></script>
 </head>
-<body>
+<body class="cs-theme--red">
 
 <header class="site-header">
   <div class="site-header__inner">
@@ -65,90 +54,28 @@
 
 <main class="cs">
 
-  <section class="cs-hero shell" data-coords="35.925°N · 86.868°W · Remote → boardroom">
-    <div class="cs-hero__nav">
-      <a href="../work.html">← All case studies</a>
-      <span>·</span>
-      <span>№ 06 of 06</span>
-    </div>
-    <span class="eyebrow cs-hero__eyebrow">№ 04 · Strategy &amp; ROI</span>
-    <h1 class="reveal">Design as a revenue lever, not a cost center.</h1>
-    <p class="cs-hero__lede reveal reveal--d1">
-      Most design teams get discussed in cost terms — headcount, burn, allocation. Late last year, with a new CTO coming in and a resource-planning cycle opening up, I decided to stop arguing that design was valuable and start showing it. I built a financial model of the design team&#8217;s ROI, grounded in the shipped projects we could point to, and walked it into the room. It changed the conversation.
-    </p>
-
-    <div class="cs-meta">
-      <div>
-        <div class="cs-meta__label">Role</div>
-        <div class="cs-meta__value">Lead Designer / modeler</div>
+  <section class="cs-band cs-band--hero cs-hero--media" style="--hero-img:url('../assets/hero/chicago-2.png'); --hero-lift:0.48">
+    <div class="cs-hero__media" aria-hidden="true"></div>
+    <div class="cs-hero shell">
+      <div class="cs-hero__nav">
+        <a href="../work.html">← All case studies</a>
+        <span>·</span>
+        <span>№ 06 of 06</span>
       </div>
-      <div>
-        <div class="cs-meta__label">Audience</div>
-        <div class="cs-meta__value">CTO, Product, Finance</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">Timeline</div>
-        <div class="cs-meta__value">2024 – 2025</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">Output</div>
-        <div class="cs-meta__value">Model + prioritization framework</div>
+      <div class="cs-hero__content">
+        <span class="eyebrow cs-hero__eyebrow">№ 06 · Strategy &amp; ROI</span>
+        <h1 class="reveal">Design as a revenue lever, not a cost center.</h1>
       </div>
     </div>
-
-    <!-- Lead editorial illustration — a lever balanced on a fulcrum: the
-         cost weight on the low end, design leverage lifting the far end
-         into the realized and scoped revenue multiples. -->
-    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-06">
-      <div class="cs-hero-illustration__frame">
-        <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
-          <title id="hero-illust-06">A cost weight on one end of a lever, lifted into revenue on the other</title>
-
-          <!-- Ground / axis -->
-          <line x1="70" y1="232" x2="746" y2="232" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-
-          <!-- Fulcrum -->
-          <polygon points="380,190 362,232 398,232" fill="currentColor"/>
-          <circle cx="380" cy="190" r="12" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.5" class="illust-pulse"/>
-
-          <!-- The lever beam, balanced on the fulcrum: cost down-left, value up-right -->
-          <line x1="150" y1="224" x2="610" y2="156" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-
-          <!-- Left: the cost weight -->
-          <rect x="135" y="210" width="30" height="20" rx="2" fill="var(--muted)"/>
-          <text x="150" y="252" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="1.5">COST CENTER</text>
-
-          <!-- Right: the value end, drifting up -->
-          <g class="illust-rise">
-            <circle cx="610" cy="156" r="7" fill="var(--accent)"/>
-          </g>
-          <text x="610" y="138" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--accent)" letter-spacing="1.5">REVENUE LEVER</text>
-
-          <!-- Two projections off the value end — realized and scoped upside -->
-          <g fill="none" stroke="var(--accent)" stroke-width="1.4">
-            <line x1="618" y1="153" x2="712" y2="126" class="illust-flow illust-flow--fast"/>
-            <line x1="618" y1="153" x2="712" y2="84" class="illust-flow illust-flow--fast" opacity="0.75"/>
-          </g>
-          <g font-family="'Petrona', serif">
-            <text x="720" y="130" font-size="17" fill="var(--accent)">9&#8211;11×</text>
-            <text x="720" y="88" font-size="17" fill="var(--accent)" opacity="0.85">40&#8211;100×</text>
-          </g>
-          <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="8" letter-spacing="1" fill="var(--muted)">
-            <text x="720" y="142">REALIZED</text>
-            <text x="720" y="100">SCOPED</text>
-          </g>
-        </svg>
-      </div>
-      <figcaption>
-        Design as a lever, not a line item. Priced on the ledger against fully-loaded cost, the shipped work carried a realized 9&#8211;11× — with a scoped 40&#8211;100× on the far end of the same beam.
-        <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
-      </figcaption>
-    </figure>
-
   </section>
 
-  <section class="metrics">
-    <div class="metrics__grid">
+  <section class="cs-band cs-band--dark">
+    <div class="cs-glance">
+      <p class="cs-glance__eyebrow">At a glance &#183; 30 seconds</p>
+      <h2 class="cs-glance__claim">Modeled what design was worth &#8212; and defended it.</h2>
+
+      <div class="metrics">
+        <div class="metrics__grid">
       <div class="metric reveal">
         <p class="metric__num">9–11×</p>
         <p class="metric__label">Realized ROI of the current design team, modeled against fully-loaded cost.</p>
@@ -162,116 +89,154 @@
         <p class="metric__label">A shared prioritization model product, design, and engineering now use to plan the next quarter.</p>
       </div>
     </div>
-  </section>
+      </div>
 
-  <section class="cs-body cs-body--overview shell--read">
-    <div class="cs-chapter">
-      <div class="cs-chapter__num cs-chapter__num--plain">Solution</div>
-      <div>
-        <h2 class="reveal">Build the model on the ledger, not the mood board.</h2>
-        <p class="reveal">For each shipped project, wrote down the directly-attributable savings, the reasonable inferred upside, and the assumptions behind both — so finance could redline the numbers instead of arguing with the designer. It became the new CTO's working document for resource planning, and the shared prioritization framework product, design, and engineering now use every quarter.</p>
+      <div class="cs-glance__facts">
+        <div>
+          <p class="cs-glance__fact-label">Role</p>
+          <p class="cs-glance__fact-value">Lead Designer / modeler</p>
+        </div>
+        <div>
+          <p class="cs-glance__fact-label">Audience</p>
+          <p class="cs-glance__fact-value">CTO, Product, Finance</p>
+        </div>
+        <div>
+          <p class="cs-glance__fact-label">Timeline</p>
+          <p class="cs-glance__fact-value">2024 – 2025</p>
+        </div>
+        <div>
+          <p class="cs-glance__fact-label">Output</p>
+          <p class="cs-glance__fact-value">Model + prioritization framework</p>
+        </div>
+      </div>
+
+      <div class="cs-glance__cta">
+        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Design%20ROI%20%E2%80%94%20let%E2%80%99s%20talk">Email me about this work <span class="cs-cta__arrow">&#8594;</span></a>
+        <a class="cs-cta" href="#access">Request the password</a>
+        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book 30 min</a>
       </div>
     </div>
   </section>
 
-  <!-- LOCK — inline gate for the detailed case study + visuals -->
-  <section class="lock cs-lock cs-lock--inline" id="cs-lock">
-    <div class="lock__card">
-      <svg class="lock__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <rect class="lock__icon-body" x="4" y="11" width="16" height="10" rx="1"/>
-        <path class="lock__icon-shackle" d="M8 11V7a4 4 0 0 1 8 0v4"/>
-      </svg>
-      <span class="eyebrow">№ 05 · Design detail</span>
-      <h1>See the full case study.</h1>
-      <p class="lock__access">The high-level story is above. Enter the password to see the process, decisions, and screens behind it. Email <a href="mailto:hello@codyheart.design?subject=Portfolio%20access">hello@codyheart.design</a> for access.</p>
-      <form class="lock__form" id="cs-lock-form" autocomplete="off" novalidate>
-        <label for="cs-lock-input" class="visually-hidden">Password</label>
-        <input
-          class="lock__input"
-          id="cs-lock-input"
-          type="password"
-          placeholder="Password"
-          spellcheck="false"
-          autocapitalize="off"
-          autocorrect="off"
-          required>
-        <button class="btn" type="submit">Enter <span class="arrow">→</span></button>
-      </form>
-      <div class="lock__error" id="cs-lock-error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</div>
+  <section class="cs-band cs-band--light">
+    <div class="cs-body shell--read">
+    
+      <p class="cs-lede reveal">
+        Most design teams get discussed in cost terms — headcount, burn, allocation. Late last year, with a new CTO coming in and a resource-planning cycle opening up, I decided to stop arguing that design was valuable and start showing it. I built a financial model of the design team&#8217;s ROI, grounded in the shipped projects we could point to, and walked it into the room. It changed the conversation.
+      </p>
+<div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">01</span><p class="cs-q__t">Why I did it</p></div>
+      <h2 class="cs-answer reveal">Design without a number on it.</h2>
+          <p class="reveal">Every design leader I&#8217;ve worked with has some version of the same conversation with their CFO: &#8220;We know you&#8217;re doing good work, but we can&#8217;t quite see the impact in the model.&#8221; That&#8217;s a fair critique, and the response most teams reach for — a deck of before/after screenshots, a few testimonial quotes from product partners — doesn&#8217;t really answer it.</p>
+          <p class="reveal">I wanted to answer it. Not with vibes. With a model a finance team could redline.</p>
+    </div>
+
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">02</span><p class="cs-q__t">How I built it</p></div>
+      <h2 class="cs-answer reveal">Build it on the ledger, not the mood board.</h2>
+          <p class="reveal">I started with the shipped work the team could clearly claim an outcome on. For each project, I wrote down three things: the directly-attributable savings or revenue (the hard number), the reasonable inferred upside (the softer but defensible one), and the assumptions behind both — so anyone reading the model could argue with them instead of with me.</p>
+          <h3 class="reveal">The big entries</h3>
+          <ul class="reveal">
+            <li><strong>Matching tool time savings</strong> — a measured 39-second per-call handle-time reduction across a 33-state rollout, isolated by a natural control group. Modeled downstream two ways, both shown: reclaimed coordinator labor at fully-loaded cost, and the booking capacity that time opens up at average visit revenue. The dollar figures are potential, not booked; the assumptions are on the same page as the number. The largest single input to the model. (See <a href="matching-tool.html" style="color:var(--accent); border-bottom:1px solid var(--accent);">Matching Tool</a>.)</li>
+            <li><strong>Matching framework lift</strong> — estimated conversion gains on specific funnel stages attributable to design interventions at each gate.</li>
+            <li><strong>Operational unlocks</strong> — capacity returned to care coordinators, clinicians, and call-center agents from tool consolidation, priced at fully-loaded labor.</li>
+            <li><strong>Avoided build</strong> — engineering work the team didn&#8217;t have to do because a design iteration ruled it out before the commit.</li>
+          </ul>
+          <p class="reveal">On the cost side: fully-loaded comp, tooling, and a fair share of managerial overhead. No thumb on the scale.</p>
+    </div>
     </div>
   </section>
 
-  <div class="cs-details">
-
-  <section class="cs-body shell--read">
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">01 / Why</div>
-      <div>
-        <h2 class="reveal">Design without a number on it.</h2>
-        <p class="reveal">Every design leader I&#8217;ve worked with has some version of the same conversation with their CFO: &#8220;We know you&#8217;re doing good work, but we can&#8217;t quite see the impact in the model.&#8221; That&#8217;s a fair critique, and the response most teams reach for — a deck of before/after screenshots, a few testimonial quotes from product partners — doesn&#8217;t really answer it.</p>
-        <p class="reveal">I wanted to answer it. Not with vibes. With a model a finance team could redline.</p>
-      </div>
+  <section class="cs-band cs-band--dark">
+    <div class="cs-body shell--read">
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">03</span><p class="cs-q__t">What came of it</p></div>
+      <h2 class="cs-answer reveal">A realized 9–11×, and a scoped 40–100×.</h2>
+          <p class="reveal">The realized ROI — the number the current team, at the current headcount, against the current cost, could point to in shipped work — came out to 9–11×. That&#8217;s a real multiple, and it isn&#8217;t a rounding error on the P&amp;L.</p>
+          <p class="reveal">The scoped upside was the more interesting number. With two senior hires (a platform designer and a second researcher) and a shift in what the team worked on — away from incremental feature polish, toward the structural internal-tools and routing work that historically had the highest ROI — the model supported a 40–100× multiple. Not tomorrow. Over the investment horizon the CTO was planning against.</p>
+          <blockquote class="reveal">A design team that can show its work on a spreadsheet is a design team that gets invested in.</blockquote>
     </div>
 
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">02 / Method</div>
-      <div>
-        <h2 class="reveal">Build it on the ledger, not the mood board.</h2>
-        <p class="reveal">I started with the shipped work the team could clearly claim an outcome on. For each project, I wrote down three things: the directly-attributable savings or revenue (the hard number), the reasonable inferred upside (the softer but defensible one), and the assumptions behind both — so anyone reading the model could argue with them instead of with me.</p>
-        <h3 class="reveal">The big entries</h3>
-        <ul class="reveal">
-          <li><strong>Matching tool time savings</strong> — a measured 39-second per-call handle-time reduction across a 33-state rollout, isolated by a natural control group. Modeled downstream two ways, both shown: reclaimed coordinator labor at fully-loaded cost, and the booking capacity that time opens up at average visit revenue. The dollar figures are potential, not booked; the assumptions are on the same page as the number. The largest single input to the model. (See <a href="matching-tool.html" style="color:var(--accent); border-bottom:1px solid var(--accent);">Matching Tool</a>.)</li>
-          <li><strong>Matching framework lift</strong> — estimated conversion gains on specific funnel stages attributable to design interventions at each gate.</li>
-          <li><strong>Operational unlocks</strong> — capacity returned to care coordinators, clinicians, and call-center agents from tool consolidation, priced at fully-loaded labor.</li>
-          <li><strong>Avoided build</strong> — engineering work the team didn&#8217;t have to do because a design iteration ruled it out before the commit.</li>
-        </ul>
-        <p class="reveal">On the cost side: fully-loaded comp, tooling, and a fair share of managerial overhead. No thumb on the scale.</p>
-      </div>
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">04</span><p class="cs-q__t">How it got used</p></div>
+      <h2 class="cs-answer reveal">It became the planning tool.</h2>
+          <p class="reveal">The model landed during the new CTO&#8217;s first resource-planning cycle. It didn&#8217;t just get looked at once and filed — it became the working document, the thing the CTO and I referenced when deciding which design initiatives to staff, which to defer, and where engineering capacity should flow against them.</p>
+          <p class="reveal">More importantly, it became a shared vocabulary between product, design, and engineering leadership. A prioritization framework fell out of it almost accidentally: for any new initiative, we asked three questions — what&#8217;s the direct financial lift, what&#8217;s the operational unlock, and which design capacity does it require — and ranked the portfolio against those. That framework now runs quarterly planning across all three functions.</p>
     </div>
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">03 / Result</div>
-      <div>
-        <h2 class="reveal">A realized 9–11×, and a scoped 40–100×.</h2>
-        <p class="reveal">The realized ROI — the number the current team, at the current headcount, against the current cost, could point to in shipped work — came out to 9–11×. That&#8217;s a real multiple, and it isn&#8217;t a rounding error on the P&amp;L.</p>
-        <p class="reveal">The scoped upside was the more interesting number. With two senior hires (a platform designer and a second researcher) and a shift in what the team worked on — away from incremental feature polish, toward the structural internal-tools and routing work that historically had the highest ROI — the model supported a 40–100× multiple. Not tomorrow. Over the investment horizon the CTO was planning against.</p>
-        <blockquote class="reveal">A design team that can show its work on a spreadsheet is a design team that gets invested in.</blockquote>
-      </div>
     </div>
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">04 / Use</div>
-      <div>
-        <h2 class="reveal">It became the planning tool.</h2>
-        <p class="reveal">The model landed during the new CTO&#8217;s first resource-planning cycle. It didn&#8217;t just get looked at once and filed — it became the working document, the thing the CTO and I referenced when deciding which design initiatives to staff, which to defer, and where engineering capacity should flow against them.</p>
-        <p class="reveal">More importantly, it became a shared vocabulary between product, design, and engineering leadership. A prioritization framework fell out of it almost accidentally: for any new initiative, we asked three questions — what&#8217;s the direct financial lift, what&#8217;s the operational unlock, and which design capacity does it require — and ranked the portfolio against those. That framework now runs quarterly planning across all three functions.</p>
-      </div>
-    </div>
-
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">05 / Reflection</div>
-      <div>
-        <h2 class="reveal">What I took away from it.</h2>
-        <p class="reveal">Two things, both of which I&#8217;d carry into any future design leadership role.</p>
-        <p class="reveal">First: the model doesn&#8217;t have to be perfect. It has to be inspectable. The assumptions being visible is what makes a finance team trust it — not the sophistication of the math. The first draft I walked in with had plenty of numbers people argued with, and that was fine. The argument itself moved design closer to the center of resource planning, not further from it.</p>
-        <p class="reveal">Second: most of the highest-leverage design work in a healthcare-operations org looks boring from the outside. Routing rules. Reconciliation dashboards. A single screen where an agent enters a claim. The ROI conversation pushed me to be more honest about which projects I wanted to staff next — and the answer was almost always the less glamorous one.</p>
-      </div>
-    </div>
-
   </section>
 
-  </div><!-- /.cs-details -->
-
-  <section class="cs-next">
-    <div class="cs-next__inner">
-      <div>
-        <div class="cs-next__label">Back to the index</div>
-      </div>
-      <a href="../work.html">
-        <h2 class="cs-next__title">All case studies →</h2>
-      </a>
+  <section class="cs-band cs-band--light">
+    <div class="cs-body shell--read">
+    <div class="cs-chapter cs-qa">
+      <div class="cs-q"><span class="cs-q__n">05</span><p class="cs-q__t">What I learned</p></div>
+      <h2 class="cs-answer reveal">What I took away from it.</h2>
+          <p class="reveal">Two things, both of which I&#8217;d carry into any future design leadership role.</p>
+          <p class="reveal">First: the model doesn&#8217;t have to be perfect. It has to be inspectable. The assumptions being visible is what makes a finance team trust it — not the sophistication of the math. The first draft I walked in with had plenty of numbers people argued with, and that was fine. The argument itself moved design closer to the center of resource planning, not further from it.</p>
+          <p class="reveal">Second: most of the highest-leverage design work in a healthcare-operations org looks boring from the outside. Routing rules. Reconciliation dashboards. A single screen where an agent enters a claim. The ROI conversation pushed me to be more honest about which projects I wanted to staff next — and the answer was almost always the less glamorous one.</p>
     </div>
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--light" style="padding-top:0">
+    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-06">
+        <div class="cs-hero-illustration__frame">
+          <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
+            <title id="hero-illust-06">A cost weight on one end of a lever, lifted into revenue on the other</title>
+
+            <!-- Ground / axis -->
+            <line x1="70" y1="232" x2="746" y2="232" stroke="currentColor" stroke-width="1" opacity="0.25"/>
+
+            <!-- Fulcrum -->
+            <polygon points="380,190 362,232 398,232" fill="currentColor"/>
+            <circle cx="380" cy="190" r="12" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.5" class="illust-pulse"/>
+
+            <!-- The lever beam, balanced on the fulcrum: cost down-left, value up-right -->
+            <line x1="150" y1="224" x2="610" y2="156" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Left: the cost weight -->
+            <rect x="135" y="210" width="30" height="20" rx="2" fill="var(--muted)"/>
+            <text x="150" y="252" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--muted)" letter-spacing="1.5">COST CENTER</text>
+
+            <!-- Right: the value end, drifting up -->
+            <g class="illust-rise">
+              <circle cx="610" cy="156" r="7" fill="var(--accent)"/>
+            </g>
+            <text x="610" y="138" text-anchor="middle" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="9" fill="var(--accent)" letter-spacing="1.5">REVENUE LEVER</text>
+
+            <!-- Two projections off the value end — realized and scoped upside -->
+            <g fill="none" stroke="var(--accent)" stroke-width="1.4">
+              <line x1="618" y1="153" x2="712" y2="126" class="illust-flow illust-flow--fast"/>
+              <line x1="618" y1="153" x2="712" y2="84" class="illust-flow illust-flow--fast" opacity="0.75"/>
+            </g>
+            <g font-family="'Petrona', serif">
+              <text x="720" y="130" font-size="17" fill="var(--accent)">9&#8211;11×</text>
+              <text x="720" y="88" font-size="17" fill="var(--accent)" opacity="0.85">40&#8211;100×</text>
+            </g>
+            <g font-family="'JetBrains Mono', ui-monospace, monospace" font-size="8" letter-spacing="1" fill="var(--muted)">
+              <text x="720" y="142">REALIZED</text>
+              <text x="720" y="100">SCOPED</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>
+          Design as a lever, not a line item. Priced on the ledger against fully-loaded cost, the shipped work carried a realized 9&#8211;11× — with a scoped 40&#8211;100× on the far end of the same beam.
+          <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
+        </figcaption>
+      </figure>
+  </section>
+
+  <section class="cs-band cs-next-v2" style="background:#2B0F0A; --n-accent:#D93318; --t-on-dark:#E5C3B9; --t-on-dark-hi:#FBEAE5;">
+    <a href="../work.html">
+      <div class="cs-next-v2__inner">
+        <div>
+          <p class="cs-next-v2__label">That&#8217;s the last one</p>
+          <h2 class="cs-next-v2__title">All case studies</h2>
+          <p class="cs-next-v2__desc">Six projects, and what changed in each. Back to the index.</p>
+        </div>
+        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
+      </div>
+    </a>
   </section>
 
 </main>
@@ -305,47 +270,6 @@
   </div>
 </footer>
 
-<script src="../js/main.js?v=10"></script>
-<script>
-  (function() {
-    // If already unlocked, reveal content immediately
-    if (window.CH_AUTH && window.CH_AUTH.isUnlocked()) {
-      document.body.classList.add('is-unlocked');
-      return;
-    }
-
-    const lock  = document.getElementById('cs-lock');
-    const form  = document.getElementById('cs-lock-form');
-    const input = document.getElementById('cs-lock-input');
-    const err   = document.getElementById('cs-lock-error');
-    if (!form || !input || !lock) return;
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const value = input.value.trim();
-      if (window.CH_AUTH && window.CH_AUTH.unlock(value)) {
-        err.classList.remove('is-visible');
-        lock.classList.remove('is-error');
-        lock.classList.add('is-success');
-        // Let the unlock animation play, then reveal content
-        setTimeout(() => {
-          document.body.classList.add('is-unlocked');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 850);
-      } else {
-        err.classList.add('is-visible');
-        lock.classList.remove('is-error');
-        // Force reflow so the animation can re-trigger
-        void lock.offsetWidth;
-        lock.classList.add('is-error');
-        input.value = '';
-        input.focus();
-      }
-    });
-
-    // Autofocus the input so visitors can just start typing
-    window.addEventListener('load', () => input.focus());
-  })();
-</script>
+<script src="../js/main.js?v=13"></script>
 </body>
 </html>
