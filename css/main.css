@@ -169,6 +169,15 @@
   --burnt-orange:  #C85F00;
   --ocean:         #09598A;
 
+  /* Palette 6 — Chicago concrete · the work page's light-then-dark steps.
+     Poured surfaces: light cement, then wet asphalt, then tar. All three
+     carry the same aggregate grain, so the page reads as one material
+     getting darker rather than three unrelated colours. */
+  --chi-cement:    #DCDCD8;   /* light poured concrete — LifeStance band */
+  --chi-asphalt:   #2B2B27;   /* wet asphalt — Collective Health band */
+  --chi-tar:       #181816;   /* tar — footer */
+  --chi-ink:       #123746;   /* lake slate — hero display type, from the photo */
+
   /* Base surfaces & type */
   --paper:       var(--white);
   --paper-2:     #E9EEF2;          /* light cool tint for alternate panels */
@@ -183,6 +192,26 @@
   /* Neutral fine grain — greyscale noise compressed near mid-grey so it adds
      tactile texture via soft-light blend without shifting a section's colour. */
   --grain-fine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='gf'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncG type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncB type='linear' slope='0.85' intercept='0.08'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gf)'/%3E%3C/svg%3E");
+  /* Poured concrete — fine sand grain with aggregate showing through it:
+     dark flecks and pale quartz, scattered evenly. No broad tonal blotching,
+     which is what makes a texture read as smudged rather than as a surface.
+     Two variants so it works on light or dark ground. */
+  --cement: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='cm'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.29 0 0 0 0 0.29 0 0 0 0 0.28 0 0 0 0.20 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cm)'/%3E%3Cg fill='%236B6B64'%3E%3Ccircle cx='14' cy='22' r='1.2' opacity='.14'/%3E%3Ccircle cx='52' cy='31' r='1.5' opacity='.11'/%3E%3Ccircle cx='96' cy='27' r='1.1' opacity='.15'/%3E%3Ccircle cx='139' cy='34' r='1.0' opacity='.12'/%3E%3Ccircle cx='184' cy='30' r='1.4' opacity='.13'/%3E%3Ccircle cx='29' cy='64' r='1.3' opacity='.14'/%3E%3Ccircle cx='72' cy='70' r='1.6' opacity='.11'/%3E%3Ccircle cx='115' cy='72' r='1.2' opacity='.13'/%3E%3Ccircle cx='159' cy='75' r='1.0' opacity='.15'/%3E%3Ccircle cx='18' cy='92' r='1.4' opacity='.12'/%3E%3Ccircle cx='62' cy='88' r='1.1' opacity='.15'/%3E%3Ccircle cx='106' cy='95' r='.9' opacity='.13'/%3E%3Ccircle cx='150' cy='99' r='1.3' opacity='.14'/%3E%3Ccircle cx='193' cy='92' r='1.1' opacity='.12'/%3E%3Ccircle cx='34' cy='143' r='1.5' opacity='.13'/%3E%3Ccircle cx='79' cy='148' r='1.1' opacity='.14'/%3E%3Ccircle cx='124' cy='150' r='1.0' opacity='.15'/%3E%3Ccircle cx='168' cy='152' r='1.4' opacity='.12'/%3E%3Ccircle cx='22' cy='172' r='1.1' opacity='.14'/%3E%3Ccircle cx='70' cy='168' r='.9' opacity='.13'/%3E%3Ccircle cx='117' cy='175' r='1.4' opacity='.12'/%3E%3Ccircle cx='163' cy='178' r='1.2' opacity='.14'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='33' cy='11' r='1.0' opacity='.22'/%3E%3Ccircle cx='74' cy='17' r='.9' opacity='.20'/%3E%3Ccircle cx='118' cy='13' r='1.3' opacity='.18'/%3E%3Ccircle cx='162' cy='21' r='1.1' opacity='.22'/%3E%3Ccircle cx='9' cy='52' r='.9' opacity='.20'/%3E%3Ccircle cx='50' cy='55' r='1.1' opacity='.18'/%3E%3Ccircle cx='94' cy='58' r='.9' opacity='.22'/%3E%3Ccircle cx='137' cy='61' r='1.4' opacity='.19'/%3E%3Ccircle cx='181' cy='64' r='1.2' opacity='.20'/%3E%3Ccircle cx='40' cy='104' r='1.0' opacity='.21'/%3E%3Ccircle cx='84' cy='108' r='1.5' opacity='.18'/%3E%3Ccircle cx='128' cy='110' r='1.2' opacity='.20'/%3E%3Ccircle cx='172' cy='112' r='1.0' opacity='.19'/%3E%3Ccircle cx='11' cy='130' r='1.2' opacity='.20'/%3E%3Ccircle cx='57' cy='133' r='.9' opacity='.22'/%3E%3Ccircle cx='101' cy='136' r='1.3' opacity='.18'/%3E%3Ccircle cx='146' cy='139' r='1.2' opacity='.21'/%3E%3Ccircle cx='190' cy='141' r='.9' opacity='.20'/%3E%3Ccircle cx='46' cy='183' r='1.3' opacity='.19'/%3E%3Ccircle cx='93' cy='186' r='1.1' opacity='.21'/%3E%3Ccircle cx='140' cy='190' r='1.0' opacity='.20'/%3E%3Ccircle cx='186' cy='188' r='1.3' opacity='.18'/%3E%3C/g%3E%3C/svg%3E");
+  /* Sand and dirt — the savanna counterpart to the work page's concrete,
+     and deliberately a different KIND of texture: a faint mountain
+     topographic. The contour lines are not drawn by hand — they are traced
+     with marching squares from a height field built out of sines on integer
+     frequencies, so the field is genuinely periodic and every contour meets
+     itself exactly across the tile seam. Ridge-and-valley structure, tight
+     where the ground is steep, the way a survey map reads. Kept as files
+     rather than data URIs because of their size. */
+  --sand: url('../assets/textures/topo-sand.svg');
+  --dirt: url('../assets/textures/topo-dirt.svg');
+  /* A coarser second pass, layered over --cement to bring the surface up
+     where it needs to read more. Bigger, sparser aggregate at a lower
+     frequency, so it adds presence rather than just more fine grain. */
+  --cement-coarse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='cc'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.28 0 0 0 0 0.28 0 0 0 0 0.27 0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cc)'/%3E%3Cg fill='%2363635C'%3E%3Ccircle cx='28' cy='34' r='1.8' opacity='.18'/%3E%3Ccircle cx='118' cy='44' r='2.1' opacity='.16'/%3E%3Ccircle cx='207' cy='39' r='1.6' opacity='.19'/%3E%3Ccircle cx='16' cy='96' r='1.5' opacity='.17'/%3E%3Ccircle cx='104' cy='88' r='2.2' opacity='.16'/%3E%3Ccircle cx='196' cy='101' r='1.7' opacity='.18'/%3E%3Ccircle cx='35' cy='168' r='2.0' opacity='.17'/%3E%3Ccircle cx='126' cy='159' r='1.5' opacity='.19'/%3E%3Ccircle cx='215' cy='173' r='1.4' opacity='.16'/%3E%3Ccircle cx='52' cy='232' r='1.6' opacity='.18'/%3E%3Ccircle cx='145' cy='224' r='1.9' opacity='.17'/%3E%3Ccircle cx='232' cy='229' r='1.7' opacity='.19'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='72' cy='19' r='1.5' opacity='.26'/%3E%3Ccircle cx='163' cy='28' r='1.3' opacity='.28'/%3E%3Ccircle cx='245' cy='52' r='1.4' opacity='.24'/%3E%3Ccircle cx='58' cy='110' r='1.9' opacity='.25'/%3E%3Ccircle cx='149' cy='118' r='1.4' opacity='.27'/%3E%3Ccircle cx='238' cy='126' r='1.6' opacity='.23'/%3E%3Ccircle cx='80' cy='182' r='1.3' opacity='.26'/%3E%3Ccircle cx='171' cy='190' r='1.8' opacity='.24'/%3E%3Ccircle cx='252' cy='196' r='1.5' opacity='.25'/%3E%3Ccircle cx='98' cy='246' r='1.4' opacity='.26'/%3E%3Ccircle cx='190' cy='241' r='1.3' opacity='.24'/%3E%3C/g%3E%3C/svg%3E");
+  --cement-inv: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='ci'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 0.97 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ci)'/%3E%3Cg fill='%23000000'%3E%3Ccircle cx='14' cy='22' r='1.2' opacity='.16'/%3E%3Ccircle cx='52' cy='31' r='1.5' opacity='.13'/%3E%3Ccircle cx='96' cy='27' r='1.1' opacity='.17'/%3E%3Ccircle cx='139' cy='34' r='1.0' opacity='.14'/%3E%3Ccircle cx='184' cy='30' r='1.4' opacity='.15'/%3E%3Ccircle cx='29' cy='64' r='1.3' opacity='.16'/%3E%3Ccircle cx='72' cy='70' r='1.6' opacity='.13'/%3E%3Ccircle cx='115' cy='72' r='1.2' opacity='.15'/%3E%3Ccircle cx='159' cy='75' r='1.0' opacity='.17'/%3E%3Ccircle cx='18' cy='92' r='1.4' opacity='.14'/%3E%3Ccircle cx='62' cy='88' r='1.1' opacity='.17'/%3E%3Ccircle cx='106' cy='95' r='.9' opacity='.15'/%3E%3Ccircle cx='150' cy='99' r='1.3' opacity='.16'/%3E%3Ccircle cx='193' cy='92' r='1.1' opacity='.14'/%3E%3Ccircle cx='34' cy='143' r='1.5' opacity='.15'/%3E%3Ccircle cx='79' cy='148' r='1.1' opacity='.16'/%3E%3Ccircle cx='124' cy='150' r='1.0' opacity='.17'/%3E%3Ccircle cx='168' cy='152' r='1.4' opacity='.14'/%3E%3Ccircle cx='22' cy='172' r='1.1' opacity='.16'/%3E%3Ccircle cx='70' cy='168' r='.9' opacity='.15'/%3E%3Ccircle cx='117' cy='175' r='1.4' opacity='.14'/%3E%3Ccircle cx='163' cy='178' r='1.2' opacity='.16'/%3E%3C/g%3E%3Cg fill='%23FFFFFF'%3E%3Ccircle cx='33' cy='11' r='1.0' opacity='.13'/%3E%3Ccircle cx='74' cy='17' r='.9' opacity='.11'/%3E%3Ccircle cx='118' cy='13' r='1.3' opacity='.10'/%3E%3Ccircle cx='162' cy='21' r='1.1' opacity='.13'/%3E%3Ccircle cx='9' cy='52' r='.9' opacity='.11'/%3E%3Ccircle cx='50' cy='55' r='1.1' opacity='.10'/%3E%3Ccircle cx='94' cy='58' r='.9' opacity='.13'/%3E%3Ccircle cx='137' cy='61' r='1.4' opacity='.11'/%3E%3Ccircle cx='181' cy='64' r='1.2' opacity='.12'/%3E%3Ccircle cx='40' cy='104' r='1.0' opacity='.12'/%3E%3Ccircle cx='84' cy='108' r='1.5' opacity='.10'/%3E%3Ccircle cx='128' cy='110' r='1.2' opacity='.12'/%3E%3Ccircle cx='172' cy='112' r='1.0' opacity='.11'/%3E%3Ccircle cx='11' cy='130' r='1.2' opacity='.12'/%3E%3Ccircle cx='57' cy='133' r='.9' opacity='.13'/%3E%3Ccircle cx='101' cy='136' r='1.3' opacity='.10'/%3E%3Ccircle cx='146' cy='139' r='1.2' opacity='.12'/%3E%3Ccircle cx='190' cy='141' r='.9' opacity='.11'/%3E%3Ccircle cx='46' cy='183' r='1.3' opacity='.11'/%3E%3Ccircle cx='93' cy='186' r='1.1' opacity='.12'/%3E%3Ccircle cx='140' cy='190' r='1.0' opacity='.11'/%3E%3Ccircle cx='186' cy='188' r='1.3' opacity='.10'/%3E%3C/g%3E%3C/svg%3E");
   /* Paper grain — mostly light with faint darker specks, for a MULTIPLY blend
      on light (near-white) sections where overlay would show nothing. */
   --grain-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='gp'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncG type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncB type='linear' slope='0.28' intercept='0.72'/%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gp)'/%3E%3C/svg%3E");
@@ -259,35 +288,32 @@ body::before {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 }
 
-/* ---------- Header ---------- */
-/* Solid dark bar contained at the top of the sheet (owltastic-style). */
+/* ---------- Header ----------
+   ONE header, every page. A transparent bar floating over the top of the
+   sheet in dark glacier type, positioned absolutely so the hero pages can
+   run their artwork to the very top of the viewport.
+
+   Do NOT add page-scoped variants of this. Pages with no hero to float over
+   (main.cs — the case studies and writing) hold the space open instead,
+   using the bar's live measured height. */
 .site-header,
 .site-header.is-scrolled {
-  position: static;
-  z-index: 10;
-  background: #222427;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-
-/* Homepage: transparent nav bar floating over the arctic hero. */
-.home .site-header,
-.home .site-header.is-scrolled {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 10;
   background: transparent;
   border: none;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-/* Dark glacier logo + links so they read over the light arctic image */
-.home .wordmark { color: #223A52; }
-.home .nav { color: #2E4A66; }
+/* --nav-h is measured and kept current by rise.js on load and on resize, but
+   it can be captured before the webfonts settle and come back short — so take
+   whichever is larger, the live measurement or a known-good floor. */
+.cs { padding-top: max(var(--nav-h, 0px), 102px); }
+@media (max-width: 560px) { .cs { padding-top: max(var(--nav-h, 0px), 152px); } }
 .site-header__inner {
   max-width: var(--max);
   margin: 0 auto;
@@ -303,7 +329,7 @@ body::before {
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: 0.01em;
-  color: var(--cream);
+  color: #223A52;   /* dark glacier — reads over every page's light top */
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -354,7 +380,7 @@ body::before {
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cream);
+  color: #2E4A66;   /* dark glacier — reads over every page's light top */
 }
 /* Laptop — step the mono nav up a touch as the header gains room. */
 @media (min-width: 1024px) {
@@ -626,8 +652,10 @@ main { position: relative; z-index: 2; }
   animation: heroDrift 28s ease-in-out infinite alternate;
   z-index: 0;
 }
-/* Drifting snow over the arctic scene */
-.hero--arctic::after {
+/* Drifting snow over the arctic scene — shared with the Chicago hero on
+   the work page, which snows the same way over the skyline. */
+.hero--arctic::after,
+.hero--chicago::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -653,7 +681,8 @@ main { position: relative; z-index: 2; }
   background-size: 320px 320px;
   animation: snowFall 9s linear infinite;
 }
-.hero--arctic > * { position: relative; z-index: 2; }
+.hero--arctic > *,
+.hero--chicago > * { position: relative; z-index: 2; }
 /* Foreground snow — larger, faster flakes for parallax depth */
 .hero__snow {
   position: absolute;
@@ -686,6 +715,8 @@ main { position: relative; z-index: 2; }
 @media (prefers-reduced-motion: reduce) {
   .hero--arctic::before,
   .hero--arctic::after,
+  .hero--chicago::before,
+  .hero--chicago::after,
   .hero__snow,
   .hero__meta-pill::before { animation: none; }
 }
@@ -699,7 +730,10 @@ main { position: relative; z-index: 2; }
   font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-  line-height: 1.03;
+  /* Matches the savanna hero. Regards has a long g/p descender, and over a
+     multi-line headline 1.03 let it run into the ascenders below. The 600px
+     rule keeps phones tighter. */
+  line-height: 1.28;
   letter-spacing: 0.005em;
   color: #16344F;   /* deep navy — strong readability over the arctic scene */
   margin: 0 0 1.35rem;
@@ -911,7 +945,11 @@ main { position: relative; z-index: 2; }
   font-family: 'Regards', Georgia, 'Times New Roman', serif;
   font-weight: 400;
   font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-  line-height: 1.03;
+  /* Looser than its arctic sibling: Regards has a long descender on the g,
+     and this headline runs to three lines, so 1.03 let it clash with the
+     line below — the g descender met the l ascender underneath it. The
+     600px rule keeps phones tighter. */
+  line-height: 1.28;
   letter-spacing: 0.005em;
   color: #3A2A1C;   /* deep espresso — strong readability over the warm sky */
   margin: 0 0 1.35rem;
@@ -919,6 +957,195 @@ main { position: relative; z-index: 2; }
 .hero--savanna .hero__dateline {
   margin-top: 1.75rem;
   color: #6B4F36;
+}
+
+/* ============================================================
+   CHICAGO HERO  ·  Work page
+   The third sibling of the arctic / savanna heroes — same
+   full-bleed structure, height, centered type, slow Ken Burns
+   drift, and the arctic's two-layer snowfall over the skyline.
+   Flat-edged like the savanna hero: it meets the band below it
+   with a clean colour change, not a wave.
+   ============================================================ */
+.hero--chicago {
+  max-width: none;
+  margin: 0;
+  min-height: 94vh;           /* matches the arctic hero on the homepage */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Extra bottom padding lifts the centered block up into the open sky, so
+     the type sits above the skyline rather than across it. The top padding
+     has to clear the floating header, which takes no layout space and grows
+     to two rows on phones — without the max() the lifted block rides up
+     underneath the nav. */
+  padding: max(clamp(3rem, 6vw, 5rem), var(--nav-h, 0px)) var(--gutter) 28vh;
+  position: relative;
+  /* Contain the hero's own layers, so the snow and the light wash can never
+     paint over whatever section follows. */
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--chi-cement);
+  border-radius: 0;
+}
+/* Chicago artwork on its own layer, slowly drifting. The soft light wash
+   rides on the same layer so the centered navy type keeps its contrast
+   where it crosses the skyline. */
+.hero--chicago::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+  background-image:
+    radial-gradient(115% 78% at 50% 44%, rgba(255,252,246,0.34) 0%, rgba(255,252,246,0.12) 46%, rgba(255,252,246,0) 74%),
+    url('../assets/hero/chicago-3.png');
+  background-size: cover, cover;
+  background-position: center center, center center;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  animation: heroDrift 32s ease-in-out infinite alternate;
+  z-index: 0;
+}
+/* Narrower than the arctic/savanna heroes on purpose: this artwork is busy
+   right across the middle, so the type is held to a compact centred block
+   over the open sky rather than spanning the full skyline. */
+.hero--chicago .hero__content {
+  max-width: 38rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero--chicago .hero__eyebrow {
+  justify-content: center;
+  color: var(--burnt-orange);
+}
+.hero--chicago .hero__name {
+  font-family: 'Regards', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.03;
+  letter-spacing: 0.005em;
+  color: var(--chi-ink);   /* lake slate — the tower and the deep water */
+  margin: 0 0 1.35rem;
+}
+
+/* ============================================================
+   WIRE GLOBE  ·  About page
+   A slowly turning sphere drawn only in line: eight meridians
+   rotated around the Y axis and five parallels laid flat, all in
+   one preserve-3d space, so the rotation is real perspective
+   rather than a flat animation pretending to be one.
+   ============================================================ */
+.globe {
+  display: flex;
+  justify-content: center;
+  /* Sits at the foot of the band now, leading into the geography section —
+     so the breathing room belongs above it, not below. */
+  padding-top: clamp(3rem, 6vw, 4.5rem);
+}
+/* Perspective lives on the stage, not on .globe, so the spinning cage is
+   still a direct child of the perspective origin. */
+.globe__stage {
+  position: relative;
+  width: 224px;
+  height: 224px;
+  perspective: 1000px;
+}
+/* The ocean. Deep sea blue — dark enough that the warm sand landmasses and
+   the amber markers both carry, and cool against the warm band so the globe
+   reads as an object sitting on the page rather than part of it. */
+.globe__disc {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: #17364F;
+  box-shadow: 0 18px 38px -20px rgba(18, 38, 56, 0.75);
+}
+/* The continents. A 2:1 equirectangular map twice as wide as the sphere, so
+   half the world is in view at once; scrolling it exactly one map-width per
+   cycle is a full rotation, and it repeats seamlessly because the tile edge
+   falls in the mid-Pacific where no landmass crosses. */
+.globe__map {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: url('../assets/textures/world.svg');
+  background-repeat: repeat-x;
+  background-size: 436px 218px;
+  background-position: 0 50%;
+  animation: globeDrift 44s linear infinite;
+}
+/* Lighting sits above the map and below the cage: a highlight up and to the
+   left, limb darkening around the edge. Fixed, so the light stays put while
+   the world turns under it — which is what sells it as a lit sphere rather
+   than a scrolling picture. */
+.globe__shade {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 33% 27%,
+    rgba(226, 243, 255, 0.28) 0%,
+    rgba(226, 243, 255, 0.10) 32%,
+    rgba(0, 0, 0, 0.00) 58%,
+    rgba(4, 14, 24, 0.28) 86%,
+    rgba(2, 10, 18, 0.50) 100%);
+}
+.globe__sphere {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: globeSpin 44s linear infinite;
+}
+@keyframes globeDrift {
+  from { background-position: 0 50%; }
+  to   { background-position: -436px 50%; }
+}
+/* Meridians — eight rings stepped 22.5° apart around the pole */
+.globe__sphere i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(216, 236, 250, 0.30);
+  border-radius: 50%;
+  transform: rotateY(calc(var(--i) * 22.5deg));
+}
+/* Parallels — laid flat, each with the radius (--r) and height (--z)
+   its latitude gives it on the sphere */
+.globe__sphere b {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(224px * var(--r));
+  height: calc(224px * var(--r));
+  margin-left: calc(-112px * var(--r));
+  margin-top: calc(-112px * var(--r));
+  border: 1px solid rgba(216, 236, 250, 0.22);
+  border-radius: 50%;
+  transform: rotateX(90deg) translateZ(calc(112px * var(--z)));
+}
+/* The equator carries a touch more weight, as it would on a globe */
+.globe__sphere b:nth-of-type(3) { border-color: rgba(216, 236, 250, 0.42); }
+@keyframes globeSpin {
+  from { transform: rotateX(-14deg) rotateY(0deg); }
+  to   { transform: rotateX(-14deg) rotateY(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .globe__sphere { animation: none; transform: rotateX(-14deg) rotateY(-18deg); }
+  .globe__map { animation: none; background-position: -178px 50%; }
+}
+@media (max-width: 640px) {
+  .globe__stage { width: 176px; height: 176px; }
+  .globe__map { background-size: 344px 172px; }
+  .globe__sphere b {
+    width: calc(176px * var(--r));
+    height: calc(176px * var(--r));
+    margin-left: calc(-88px * var(--r));
+    margin-top: calc(-88px * var(--r));
+    transform: rotateX(90deg) translateZ(calc(88px * var(--z)));
+  }
+  @keyframes globeDrift {
+    from { background-position: 0 50%; }
+    to   { background-position: -344px 50%; }
+  }
 }
 
 /* ============================================================
@@ -980,23 +1207,6 @@ main { position: relative; z-index: 2; }
    colour bands, and a deep footer to echo index.html.
    ============================================================ */
 
-/* Nav: float the header transparently over the savanna hero, exactly the
-   way the home page floats over the arctic hero. */
-.about-page .site-header,
-.about-page .site-header.is-scrolled {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-.about-page .wordmark { color: #223A52; }
-.about-page .nav { color: #2E4A66; }
-
 /* Section titles: Cheltenham Classic, in the hero's espresso brown. */
 .about-page .cs-body h2 {
   font-family: 'Cheltenham Classic', Georgia, 'Times New Roman', serif;
@@ -1008,8 +1218,18 @@ main { position: relative; z-index: 2; }
 /* Alternating bands down the page: beige-yellow, then a deep coffee brown,
    then back to beige — the savanna answer to the home page's colour steps. */
 .about-band { position: relative; }
-.about-band--cream { background-color: #F4E9D2; }
-.about-band--brown { background-color: #2E211A; }
+/* Mineral grain on the reading bands, so the savanna hero's ground carries
+   down through the page: sand on the cream, dirt on the brown. */
+.about-band--cream {
+  background-color: #F4E9D2;
+  background-image: var(--sand);
+  background-size: 900px 900px;
+}
+.about-band--brown {
+  background-color: #2E211A;
+  background-image: var(--dirt);
+  background-size: 900px 900px;
+}
 
 /* The dark band inverts the reading colours (and its title). */
 .about-band--brown .cs-body h2 { color: #F3E4C9; }
@@ -1102,6 +1322,13 @@ main { position: relative; z-index: 2; }
 
 .case-card {
   position: relative;
+  /* The card keeps its light paper on every page, including the deep-sea
+     theme — so pin the ink tokens locally instead of inheriting the
+     inverted ones from body.sea, which would bleach the copy out. */
+  --ink:       #141518;
+  --ink-soft:  #2E3036;
+  --muted:     #6A6E76;
+  --rule:      #D8D3C3;
   background: color-mix(in srgb, var(--card-accent, var(--accent)) 18%, var(--white));
   border: 2px solid var(--card-accent, var(--accent));
   border-radius: 20px;
@@ -1201,6 +1428,72 @@ main { position: relative; z-index: 2; }
 .case-card--04 { --card-accent: #E0A509; }          /* gold (was muddy tan) */
 .case-card--05 { --card-accent: #39B0D4; }          /* glacier cyan */
 .case-card--06 { --card-accent: #1E5DA8; }          /* deep cobalt */
+
+/* ---------- Paired case cards ----------
+   Two square cards side by side — same card anatomy as the full-width
+   feature rows, just stacked vertically inside a 1:1 box. Used for the
+   Collective Health pair (Claims / Billing) on the work page.
+
+   The square is only viable while each column is wide enough to hold a
+   description without the ratio being outgrown — below roughly 1140px the
+   cards would go portrait instead — so the whole treatment is scoped there.
+   Under it the cards inherit the standard full-width row anatomy untouched,
+   exactly like the LifeStance three. */
+.case-grid--pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+}
+@media (min-width: 1140px) {
+  .case-grid--pair { grid-template-columns: 1fr 1fr; }
+  .case-grid--pair .case-card {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 2.4vw, 2.25rem);
+    /* A floor, not a cap. The base card's explicit min-height would suppress
+       the grid item's automatic minimum size and let the ratio clip the
+       content off the bottom, so reset it to auto — a long description then
+       grows the card taller than square instead of spilling out.
+       min-width: 0 is load-bearing: without it that same content-based
+       minimum transfers back through the 1:1 ratio into a minimum *width*,
+       inflating both 1fr tracks past the container and overflowing the page
+       horizontally at mid widths. */
+    aspect-ratio: 1 / 1;
+    min-height: auto;
+    min-width: 0;
+  }
+  /* The motif is a corner mark here rather than half of a row — keep it
+     small so the square has room for the description. */
+  .case-grid--pair .case-card__viz {
+    width: clamp(80px, 6.5vw, 104px);
+    height: clamp(80px, 6.5vw, 104px);
+  }
+  .case-grid--pair .case-card__body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+  }
+  .case-grid--pair .case-card__desc { max-width: none; }
+}
+
+/* ---------- Collective Health band  ·  Work page ----------
+   The dark step below the light LifeStance band. Flat-edged like the
+   about-page bands — no wave transition, just a clean colour change. */
+.ch-band {
+  background-color: var(--chi-asphalt);
+  background-image: var(--cement-inv);
+  background-size: 200px 200px;
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+  position: relative;
+}
+.ch-band > * { position: relative; z-index: 1; }
+.ch-band .case-intro { text-align: center; }
+.ch-band .case-intro .eyebrow { font-size: 1rem; letter-spacing: 0.2em; color: var(--gold); }
+.ch-band .case-intro h2 { color: var(--cream); margin-left: auto; margin-right: auto; }
+.ch-band .case-grid { padding-bottom: 0; }
 
 /* ---------- Writing ---------- */
 /* Deep-sea step between the work band and Experience: same descending navy
@@ -1769,6 +2062,60 @@ body.sea .cs-hero::before {
   background-position: center;
   pointer-events: none;
 }
+
+/* ============================================================
+   CHICAGO PAGE THEME  ·  add class="work-page" to <body>
+   Light, then dark. The pale lake the skyline sits on carries
+   straight out of the hero into the LifeStance band, then the page
+   steps down into the deep water for the Collective Health work —
+   the same light-band / dark-band structure the about page uses.
+   Flat-edged throughout: bands meet with a clean colour change,
+   never a wave.
+
+   Unlike body.sea, this is NOT an inverted theme — the page stays
+   light and only .ch-band goes dark, scoping its own type.
+   ============================================================ */
+body.work-page {
+  background: var(--chi-cement);
+  color: var(--ink);
+}
+/* The shared work band drops its deep-sea navy, its contour ripples and its
+   wave crest — a water motif on a page that is now park and pavement. It
+   picks up the aggregate speckle instead. (index.html keeps all three.) */
+body.work-page .work-band {
+  background-color: var(--chi-cement);
+  /* Two passes here, one on the bands below — this is the section that sits
+     directly under the hero photograph, so the surface needs to be a touch
+     more present to hold its own. */
+  background-image: var(--cement-coarse), var(--cement);
+  background-size: 260px 260px, 200px 200px;
+  padding-bottom: clamp(4rem, 7vw, 6rem);
+}
+body.work-page .work-band::before { content: none; }
+/* ...and its heading and eyebrow flip back to dark-on-light, since the band
+   they were written for is no longer dark. */
+body.work-page .work-band .case-intro h2 { color: var(--chi-asphalt); }
+/* Deep rust rather than --burnt-orange: at 16px the eyebrow needs 4.5:1, and
+   burnt orange only manages 2.6:1 on a band this deep. This clears it at
+   4.8:1 and still reads as the warm accent against the green. */
+body.work-page .work-band .eyebrow { color: #8A3D00; }
+
+/* Collective Health crosses the drive onto the asphalt. Only this band
+   inverts, so it carries its own type colours the way .about-band--brown
+   does — and the same speckle, flipped to read on dark. */
+body.work-page .ch-band {
+  background-color: var(--chi-asphalt);
+  background-image: var(--cement-inv);
+  background-size: 200px 200px;
+}
+/* Footer settles into the tar */
+body.work-page .site-footer {
+  background-color: var(--chi-tar);
+  background-image: var(--cement-inv);
+  background-size: 200px 200px;
+  background-blend-mode: normal;
+}
+body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.12); }
 
 /* ---------- Lock page ---------- */
 .lock {
@@ -2943,6 +3290,16 @@ body.sea .cs-hero::before {
     font-size: clamp(2rem, 7.6vw, 2.9rem);
     line-height: 1.07;
   }
+  /* Less lift on phones — the crop is tighter and the header is taller, so
+     28vh would squeeze the block against the nav. */
+  .hero--chicago { min-height: 72vh; padding-bottom: 12vh; }
+  .hero--chicago .hero__name {
+    font-size: clamp(2rem, 7.6vw, 2.9rem);
+    line-height: 1.07;
+  }
+  /* Skyline sits far right in the art — bias the crop so the centered type
+     keeps a calmer patch of sky behind it in a narrow portrait frame. */
+  .hero--chicago::before { background-position: center center, 68% center; }
   .hero--arctic .hero__meta { margin-top: 1.4rem; }
   /* Switch from flex (which orphans the dot) to inline text so the label wraps
      to tidy centered lines with the dot leading the first line. */
@@ -2963,7 +3320,8 @@ body.sea .cs-hero::before {
   }
 }
 @media (max-width: 380px) {
-  .hero--arctic .hero__name { font-size: clamp(1.8rem, 8vw, 2.2rem); }
+  .hero--arctic .hero__name,
+  .hero--chicago .hero__name { font-size: clamp(1.8rem, 8vw, 2.2rem); }
   .hero--arctic .hero__meta-pill { font-size: 0.58rem; letter-spacing: 0.05em; }
 }
 
