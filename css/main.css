@@ -312,12 +312,12 @@ body::before {
 /* --nav-h is measured and kept current by rise.js on load and on resize, but
    it can be captured before the webfonts settle and come back short — so take
    whichever is larger, the live measurement or a known-good floor. */
-.cs { padding-top: max(var(--nav-h, 0px), 102px); }
+.cs { padding-top: max(var(--nav-h, 0px), 84px); }
 @media (max-width: 560px) { .cs { padding-top: max(var(--nav-h, 0px), 152px); } }
 .site-header__inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 1.4rem var(--gutter);
+  padding: 0.9rem var(--gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -329,7 +329,10 @@ body::before {
   font-weight: 400;
   font-size: 1.5rem;
   letter-spacing: 0.01em;
-  color: #223A52;   /* dark glacier — reads over every page's light top */
+  color: #222427;   /* penguin charcoal */
+  /* Regards ships a single weight only, so thicken the real letterforms with a
+     hairline stroke rather than faux-bold (which distorts the thin serifs). */
+  -webkit-text-stroke: 0.4px currentColor;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -344,13 +347,13 @@ body::before {
 .wordmark__heart {
   width: 30px;
   height: 30px;
-  color: #E8722A;   /* penguin orange */
+  color: #E4002B;   /* chicago flag red */
   flex-shrink: 0;
   display: block;
   /* Optical nudge up — the heart glyph is bottom-heavy and sits low in its box
      relative to the wordmark's cap height. */
   position: relative;
-  top: -2px;
+  top: -4px;
   transform-origin: center;
   animation: heartbeat 1.4s ease-in-out 1 both;
 }
@@ -396,6 +399,16 @@ body::before {
   padding: 0.3rem 0;
   position: relative;
   transition: color 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+/* Nav icons — sized in em so they track the link type down each breakpoint.
+   Stroke inherits currentColor, so they pick up hover gold + active red too. */
+.nav__icon {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
 }
 .nav a::after {
   content: "";
@@ -410,9 +423,19 @@ body::before {
   transition: transform 260ms cubic-bezier(.2, .7, .2, 1);
 }
 .nav a:hover::after,
-.nav a[aria-current="page"]::after { transform: scaleX(1); }
+.nav a[aria-current]::after { transform: scaleX(1); }
 .nav a:hover { color: var(--gold); }
-.nav a[aria-current="page"] { color: var(--accent); }
+/* Active state — [aria-current="page"] on the exact page, [aria-current="true"]
+   on the section link (Work, while inside a case study). Both read as current.
+   Uses the wordmark heart's Chicago red so the two reds read as one system. */
+.nav a[aria-current] { color: #E4002B; }
+/* External-link arrow (Resume → Google Drive). Small and muted so it signals
+   "opens elsewhere" without breaking the mono nav rhythm; follows link color. */
+.nav__ext-icon {
+  font-size: 0.8em;
+  opacity: 0.55;
+  margin-left: -0.15em;   /* pull back — the link's flex gap already spaces it */
+}
 
 /* Small tablets / large phones — tighter header. Nav keeps modest type so
    all four mono links fit; touch target comes from vertical padding, not size. */
@@ -461,6 +484,27 @@ body::before {
 /* ---------- Shell ---------- */
 main { position: relative; z-index: 2; }
 
+/* The wave-crest silhouette, shared by every section transition (and the footer,
+   which lives outside <main> — hence :root, so it inherits everywhere). Used as
+   a MASK (not a fill) so each section's ::before can be painted with that
+   section's own colour + contour texture and then clipped to this shape — the
+   crest reads as the section's material rising, texture included. */
+:root {
+  --wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 60.00 60 60.00 36 120 36 C 180.00 36 180.00 60 240 60 C 300.00 60 300.00 36 360 36 C 420.00 36 420.00 60 480 60 C 540.00 60 540.00 36 600 36 C 660.00 36 660.00 60 720 60 C 780.00 60 780.00 36 840 36 C 900.00 36 900.00 60 960 60 C 1020.00 60 1020.00 36 1080 36 C 1140.00 36 1140.00 60 1200 60 C 1260.00 60 1260.00 36 1320 36 C 1380.00 36 1380.00 60 1440 60 L1440 100 L0 100 Z' fill='%23000'/%3E%3C/svg%3E");
+}
+/* The wave path is stretched to the viewport width (preserveAspectRatio: none),
+   so a fixed hump count gets squished on narrow screens. Drop humps as width
+   falls so each swell keeps roughly the desktop wavelength. */
+@media (max-width: 1000px) {
+  :root { --wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 90.00 60 90.00 36 180 36 C 270.00 36 270.00 60 360 60 C 450.00 60 450.00 36 540 36 C 630.00 36 630.00 60 720 60 C 810.00 60 810.00 36 900 36 C 990.00 36 990.00 60 1080 60 C 1170.00 60 1170.00 36 1260 36 C 1350.00 36 1350.00 60 1440 60 L1440 100 L0 100 Z' fill='%23000'/%3E%3C/svg%3E"); }
+}
+@media (max-width: 640px) {
+  :root { --wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 120.00 60 120.00 36 240 36 C 360.00 36 360.00 60 480 60 C 600.00 60 600.00 36 720 36 C 840.00 36 840.00 60 960 60 C 1080.00 60 1080.00 36 1200 36 C 1320.00 36 1320.00 60 1440 60 L1440 100 L0 100 Z' fill='%23000'/%3E%3C/svg%3E"); }
+}
+@media (max-width: 400px) {
+  :root { --wave-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 60 C 180.00 60 180.00 36 360 36 C 540.00 36 540.00 60 720 60 C 900.00 60 900.00 36 1080 36 C 1260.00 36 1260.00 60 1440 60 L1440 100 L0 100 Z' fill='%23000'/%3E%3C/svg%3E"); }
+}
+
 /* Full-bleed icy band for Selected Work — the hero dissolves into it and the
    white case cards lift off the sky-pale. */
 .work-band {
@@ -483,9 +527,16 @@ main { position: relative; z-index: 2; }
   height: 78px;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2316344F'/%3E%3C/svg%3E");
+  /* Paint the section's own surface, then clip it to the wave crest. */
+  background-color: #16344F;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  -webkit-mask-image: var(--wave-mask);
+  mask-image: var(--wave-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 .work-band .case-intro { text-align: center; }
 .work-band .case-intro .eyebrow { font-size: 1rem; letter-spacing: 0.2em; }
@@ -662,24 +713,24 @@ main { position: relative; z-index: 2; }
   z-index: 1;
   pointer-events: none;
   background-image:
-    radial-gradient(3px 3px at 20px 40px, rgba(255,255,255,0.95), transparent 60%),
-    radial-gradient(2px 2px at 80px 100px, rgba(255,255,255,0.8), transparent 60%),
-    radial-gradient(2.5px 2.5px at 140px 30px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(1.8px 1.8px at 200px 90px, rgba(255,255,255,0.75), transparent 60%),
-    radial-gradient(2.8px 2.8px at 260px 50px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(2px 2px at 40px 160px, rgba(255,255,255,0.8), transparent 60%),
-    radial-gradient(2.4px 2.4px at 110px 200px, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(1.6px 1.6px at 175px 150px, rgba(255,255,255,0.7), transparent 60%),
-    radial-gradient(2.6px 2.6px at 240px 190px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(2px 2px at 300px 130px, rgba(255,255,255,0.8), transparent 60%),
-    radial-gradient(2.2px 2.2px at 60px 260px, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(1.8px 1.8px at 150px 290px, rgba(255,255,255,0.75), transparent 60%),
-    radial-gradient(2.5px 2.5px at 220px 250px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(2px 2px at 300px 300px, rgba(255,255,255,0.8), transparent 60%),
-    radial-gradient(1.7px 1.7px at 120px 70px, rgba(255,255,255,0.72), transparent 60%),
-    radial-gradient(2.3px 2.3px at 250px 110px, rgba(255,255,255,0.85), transparent 60%);
+    radial-gradient(4.2px 4.2px at 20px 40px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(3px 3px at 80px 100px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.6px 3.6px at 140px 30px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2.6px 2.6px at 200px 90px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(4px 4px at 260px 50px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 40px 160px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.4px 3.4px at 110px 200px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(2.4px 2.4px at 175px 150px, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(3.7px 3.7px at 240px 190px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 300px 130px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.2px 3.2px at 60px 260px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(2.6px 2.6px at 150px 290px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(3.6px 3.6px at 220px 250px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 300px 300px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 120px 70px, rgba(255,255,255,0.72), transparent 60%),
+    radial-gradient(3.3px 3.3px at 250px 110px, rgba(255,255,255,0.85), transparent 60%);
   background-size: 320px 320px;
-  animation: snowFall 9s linear infinite;
+  animation: snowFall 20s linear infinite;
 }
 .hero--arctic > *,
 .hero--chicago > * { position: relative; z-index: 2; }
@@ -690,15 +741,15 @@ main { position: relative; z-index: 2; }
   z-index: 1;
   pointer-events: none;
   background-image:
-    radial-gradient(3.5px 3.5px at 50px 80px, rgba(255,255,255,0.95), transparent 60%),
-    radial-gradient(4px 4px at 180px 210px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(3px 3px at 330px 120px, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(4.5px 4.5px at 260px 330px, rgba(255,255,255,0.95), transparent 60%),
-    radial-gradient(3.5px 3.5px at 420px 250px, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(3px 3px at 120px 390px, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(4px 4px at 390px 430px, rgba(255,255,255,0.9), transparent 60%);
+    radial-gradient(5.5px 5.5px at 50px 80px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(6.5px 6.5px at 180px 210px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(5px 5px at 330px 120px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(7px 7px at 260px 330px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(5.5px 5.5px at 420px 250px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(5px 5px at 120px 390px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(6.5px 6.5px at 390px 430px, rgba(255,255,255,0.9), transparent 60%);
   background-size: 480px 480px;
-  animation: snowFallFront 6s linear infinite;
+  animation: snowFallFront 14s linear infinite;
 }
 @keyframes snowFallFront {
   from { background-position: 0 0; }
@@ -735,8 +786,14 @@ main { position: relative; z-index: 2; }
      rule keeps phones tighter. */
   line-height: 1.28;
   letter-spacing: 0.005em;
-  color: #16344F;   /* deep navy — strong readability over the arctic scene */
+  color: #16344F;   /* deep glacier navy */
   margin: 0 0 1.35rem;
+  /* Letterpress: the light lip below each stroke + a faint dark press above make
+     the type read as printed *into* the surface — ink on a page, not floating on
+     top of the photo. */
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65),
+    0 -1px 1px rgba(18, 32, 46, 0.16);
 }
 
 .hero__meta {
@@ -1517,9 +1574,16 @@ main { position: relative; z-index: 2; }
   height: 78px;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%23102A40'/%3E%3C/svg%3E");
+  /* Paint the section's own surface, then clip it to the wave crest. */
+  background-color: #102A40;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  -webkit-mask-image: var(--wave-mask);
+  mask-image: var(--wave-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 .writing .eyebrow { color: var(--gold); }
 .writing__head {
@@ -1743,9 +1807,16 @@ main { position: relative; z-index: 2; }
   height: 78px;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%230B1D2E'/%3E%3C/svg%3E");
+  /* Paint the section's own surface, then clip it to the wave crest. */
+  background-color: #0B1D2E;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  -webkit-mask-image: var(--wave-mask);
+  mask-image: var(--wave-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 .experience__head {
   margin: 0 auto 3.5rem;   /* centered column, text stays left-aligned within */
@@ -1889,9 +1960,16 @@ main { position: relative; z-index: 2; }
   height: 78px;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2306121D'/%3E%3C/svg%3E");
+  /* Paint the section's own surface, then clip it to the wave crest. */
+  background-color: #06121D;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.025' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  -webkit-mask-image: var(--wave-mask);
+  mask-image: var(--wave-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 .hello .eyebrow { color: var(--butter); }
 .hello__grid {
@@ -1962,9 +2040,16 @@ main { position: relative; z-index: 2; }
   height: 78px;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0 62 C 80 62 160 30 240 30 C 320 30 400 62 480 62 C 560 62 640 30 720 30 C 800 30 880 62 960 62 C 1040 62 1120 30 1200 30 C 1280 30 1360 62 1440 62 L1440 100 L0 100 Z' fill='%2302070C'/%3E%3C/svg%3E");
+  /* Paint the section's own surface, then clip it to the wave crest. */
+  background-color: #02070C;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='34' viewBox='0 0 120 34' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 17 Q30 4 60 17 T120 17' fill='none' stroke='%23ffffff' stroke-opacity='0.012' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 150px 42px;
+  -webkit-mask-image: var(--wave-mask);
+  mask-image: var(--wave-mask);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 .site-footer p[style] { color: #C4D2DD !important; }
 .site-footer__inner {
