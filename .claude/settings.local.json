@@ -162,7 +162,20 @@
       "Bash(python -c \"import sys;d=sys.stdin.buffer.read\\(\\);print\\('  index.html CRLF:',d.count\\(b'\\\\r\\\\n'\\)\\)\")",
       "Bash(python -c \"import sys;d=sys.stdin.buffer.read\\(\\);print\\('  main.css CRLF:',d.count\\(b'\\\\r\\\\n'\\),'\\(0 = LF, correct\\)'\\)\")",
       "Bash(git merge *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(awk '/<a href=\"index.html\" class=\"wordmark\">/{print; exit}' index.html)",
+      "Bash(awk '/<section class=\"hero/,/<\\\\/section>/' index.html)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(awk '/class=\"wordmark\"/{print substr\\($0,1,220\\); exit}' index.html)",
+      "Bash(awk '/^\\\\.nav \\\\{/{f=1} f{print NR\": \"$0} /^\\\\}/{if\\(f\\){exit}}' css/main.css)",
+      "Bash(awk '/^\\\\.nav a \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.hero--arctic \\\\.hero__name \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\.hero--arctic \\\\.hero__tagline/{t=1} t&&/^\\\\}/{print NR\": \"$0; exit}' css/main.css)",
+      "Bash(awk '/^\\\\.wordmark__badge \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.wordmark__heart \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.hero--arctic \\\\.hero__content \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.hero--arctic \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.hero__greeting \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "Bash(awk '/^\\\\.hero--arctic \\\\.hero__name \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)"
     ]
   }
 }

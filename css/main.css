@@ -4,7 +4,7 @@
    Editorial, but with teeth.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600&family=Shantell+Sans:wght@400;500;600;700&display=swap');
 
 /* Regards — modern retro serif, used for the hero display */
 @font-face {
@@ -57,6 +57,23 @@
   src: url('../assets/fonts/CheltenhamClassicBoldltalic.woff2') format('woff2');
   font-weight: 700;
   font-style: italic;
+  font-display: swap;
+}
+/* Wild Tale — playful hand-crafted duo (block = chunky caps, script = signature) */
+@font-face {
+  font-family: 'Wild Tale Block';
+  src: url('../assets/fonts/wildtale-block-webfont.woff2') format('woff2'),
+       url('../assets/fonts/wildtale-block-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Wild Tale Script';
+  src: url('../assets/fonts/wildtale-script-webfont.woff2') format('woff2'),
+       url('../assets/fonts/wildtale-script-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -344,23 +361,26 @@ body::before {
   align-items: center;
   gap: 0.6rem;
   line-height: 1;
-  /* Nudge the heart so its visible left edge aligns with body content below.
-     The SVG has ~2px of internal whitespace on the left. */
-  margin-left: -2px;
 }
 .wordmark em {
   font-style: italic;
 }
-.wordmark__heart {
-  /* Circular avatar-style badge sized to match the nav pill / buttons
-     (--control-h). box-sizing:border-box so the padding insets the glyph. */
+.wordmark__badge {
+  /* Just the heart in a white circular badge — same height as the nav / buttons. */
   width: var(--control-h);
   height: var(--control-h);
   box-sizing: border-box;
-  padding: 0.55rem;
   border-radius: 50%;
   background: #fff;
   border: 1.5px solid rgba(228, 0, 43, 0.22);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.wordmark__heart {
+  width: 1.5rem;
+  height: 1.5rem;
   color: #E4002B;   /* chicago flag red */
   flex-shrink: 0;
   display: block;
@@ -368,7 +388,6 @@ body::before {
   animation: heartbeat 1.4s ease-in-out 1 both;
 }
 .wordmark:hover .wordmark__heart {
-  /* Continuous gentle pulse on hover */
   animation: heartbeat 1.1s ease-in-out infinite;
 }
 @keyframes heartbeat {
@@ -402,9 +421,9 @@ body::before {
   box-shadow: 0 8px 24px -14px rgba(20, 57, 95, 0.5);
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.92rem;
-  font-weight: 500;   /* Libre Franklin Medium */
+  font-family: 'Wild Tale Script', 'Libre Franklin', sans-serif;
+  font-size: 1.18rem;   /* script runs small, so bump it up */
+  font-weight: 400;
   letter-spacing: 0;
   color: #2E4A66;   /* dark glacier — reads over every page's light top */
 }
@@ -422,15 +441,16 @@ body::before {
 }
 /* Laptop / desktop — step the nav up a touch as the header gains room. */
 @media (min-width: 1024px) {
-  .nav { font-size: 0.98rem; }
+  .nav { font-size: 1.24rem; }
 }
 @media (min-width: 1440px) {
-  .nav { font-size: 1.02rem; }
+  .nav { font-size: 1.3rem; }
 }
 /* Text selection uses the lightest penguin blue */
 ::selection { background: var(--blue-100); color: var(--black); }
 .nav a {
-  padding: 0.5rem 0.95rem;
+  padding: 0.3rem 0.9rem;
+  line-height: 1;   /* pin the box so the active/hover pill fits inside the nav's height */
   border-radius: 999px;
   position: relative;
   white-space: nowrap;
@@ -494,6 +514,32 @@ body::before {
 .btn-linkedin:hover { background: var(--navy-deep); transform: translateY(-1px); }
 .btn-hello svg { width: 1.05em; height: 1.05em; flex-shrink: 0; }
 .btn-linkedin svg { width: 1.2rem; height: 1.2rem; }
+/* Homepage only — hide the contact buttons (the big CODY HEART hero carries
+   that job). The logo stays: upper-left on tablet/desktop (its default brand
+   grid area), centred on mobile. Inner pages keep everything. */
+.home .site-header__cta { display: none; }
+@media (max-width: 780px) {
+  .home .site-header__inner {
+    grid-template-columns: 1fr;
+    grid-template-areas: "brand";
+    justify-items: center;
+  }
+}
+/* Homepage logo: no circle — just a large white heart with weight against the
+   big hero type and the nav. (Inner pages keep the red heart-in-circle.) */
+.home .wordmark__badge {
+  width: auto;
+  height: auto;
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+.home .wordmark__heart {
+  width: 2.9rem;
+  height: 2.9rem;
+  color: #ffffff;
+}
 
 /* Tablets / phones — the header top row keeps just the wordmark (left) and
    Say Hello / LinkedIn (right); the nav pill detaches and floats fixed at the
@@ -510,7 +556,7 @@ body::before {
     padding-bottom: 1rem;
   }
   .wordmark { font-size: 1.2rem; gap: 0.5rem; }
-  .wordmark__heart { padding: 0.5rem; }   /* keeps the --control-h badge size */
+  .wordmark__heart { width: 1.35rem; height: 1.35rem; }
 
   /* Detached bottom nav — pinned to the viewport, centered, floating above
      page content with a lifted shadow. Sits clear of the iOS home indicator. */
@@ -530,17 +576,20 @@ body::before {
 }
 /* Narrow phones — let the pill shrink so all four links stay on one line. */
 @media (max-width: 480px) {
-  .nav { font-size: 0.72rem; letter-spacing: 0; gap: 0.1rem; padding: 0.28rem; }
-  .nav a { padding: 0.5rem 0.65rem; gap: 0.4em; }
+  .nav { font-size: 0.9rem; letter-spacing: 0; gap: 0.14rem; padding: 0.32rem; }
+  .nav a { padding: 0.62rem 0.85rem; gap: 0.4em; }
   .btn-hello, .btn-linkedin { height: 2.5rem; }
   .btn-hello { padding: 0 0.9rem; font-size: 0.78rem; }
   .btn-linkedin { width: 2.5rem; }
 }
 /* Very small — drop the Say Hello label to its icon so the top row never
-   crowds; keep the bottom-nav icons since there's room down there. */
+   crowds, and step the bottom nav down just enough to keep all four links
+   on one line. */
 @media (max-width: 360px) {
   .btn-hello span { display: none; }
   .btn-hello { padding: 0; width: 2.5rem; }
+  .nav { font-size: 0.8rem; gap: 0.05rem; padding: 0.26rem; }
+  .nav a { padding: 0.55rem 0.6rem; }
 }
 
 /* ---------- Frame ----------
@@ -752,8 +801,9 @@ main { position: relative; z-index: 2; }
   min-height: 94vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+  justify-content: flex-start;
+  align-items: center;
+  padding: clamp(4.5rem, 13vh, 9rem) var(--gutter) clamp(3rem, 6vw, 5rem);
   position: relative;
   overflow: hidden;
   background-color: var(--ice-pale);
@@ -763,13 +813,11 @@ main { position: relative; z-index: 2; }
 .hero--arctic::before {
   content: "";
   position: absolute;
-  inset: -5%;
-  background-image: url('../assets/hero/arctic-7.png');
+  inset: 0;
+  background-image: url('../assets/hero/antarctica-6.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  transform: scale(1.05);
-  animation: heroDrift 28s ease-in-out infinite alternate;
   z-index: 0;
 }
 /* Drifting snow over the arctic scene — shared with the Chicago hero on
@@ -841,29 +889,144 @@ main { position: relative; z-index: 2; }
   .hero__meta-pill::before { animation: none; }
 }
 .hero--arctic .hero__content {
-  max-width: 54rem;
+  max-width: 42rem;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 2;   /* above the photo and the snow layer */
 }
 
-.hero--arctic .hero__name {
-  font-family: 'Regards', Georgia, 'Times New Roman', serif;
-  font-weight: 400;
-  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-  /* Matches the savanna hero. Regards has a long g/p descender, and over a
-     multi-line headline 1.03 let it run into the ascenders below. The 600px
-     rule keeps phones tighter. */
-  line-height: 1.28;
-  letter-spacing: 0.005em;
-  color: #16344F;   /* deep glacier navy */
-  margin: 0 0 1.35rem;
-  /* Letterpress: the light lip below each stroke + a faint dark press above make
-     the type read as printed *into* the surface — ink on a page, not floating on
-     top of the photo. */
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.65),
-    0 -1px 1px rgba(18, 32, 46, 0.16);
+.hero--arctic .hero__eyebrow {
+  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #2A2018;   /* warm expedition ink */
+  margin: 0 0 1.1rem;
 }
+/* "Hey, I'm" script greeting → big block CODY HEART → script tagline. */
+.hero__greeting {
+  font-family: 'Wild Tale Script', cursive;
+  font-size: clamp(1.7rem, 4vw, 3rem);
+  line-height: 1;
+  color: #14708A;   /* water teal, from the illustration */
+  margin: 0 0 0.05em;
+  transform: rotate(-4deg);   /* hand-placed, playful */
+}
+.hero--arctic .hero__name {
+  font-family: 'Wild Tale Block', 'Libre Franklin', sans-serif;
+  font-weight: 400;
+  font-size: clamp(3.4rem, 11vw, 8rem);
+  line-height: 0.82;
+  letter-spacing: 0.01em;
+  color: #1E2E3A;   /* penguin navy — high contrast on the yellow sky */
+  margin: 0;
+}
+.hero__role {
+  font-family: 'Wild Tale Script', cursive;
+  font-size: clamp(1.7rem, 4vw, 3rem);   /* same size as "Hey, I'm" */
+  color: #14708A;   /* water teal, matching the greeting */
+  margin: -0.15rem 0 0;
+}
+/* Little speech bubble off the swimming penguin (bottom-centre). */
+.hero__quip {
+  position: absolute;
+  left: 41%;
+  bottom: 16%;
+  z-index: 3;
+  background: #fff;
+  color: #1E2E3A;
+  font-family: 'Wild Tale Script', cursive;
+  font-size: clamp(1rem, 1.8vw, 1.45rem);
+  line-height: 1;
+  padding: 0.35rem 0.85rem 0.45rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px -8px rgba(20, 40, 50, 0.45);
+}
+.hero__quip::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: -7px;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+  border-right: 0;
+}
+.hero--arctic .hero__name span { display: block; }   /* stack CODY over HEART */
+
+/* Circular seal — "Hey, I'm" arcs over the top, "CODY HEART" in the centre,
+   "Product Designer in Chicago, IL" arcs along the bottom. */
+.hero__seal-wrap { margin: 0; }
+.hero__seal {
+  display: block;
+  width: clamp(250px, 44vw, 440px);
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+.hero__seal text { text-anchor: middle; }
+.hero__seal-top {
+  font-family: 'Wild Tale Script', cursive;
+  font-size: 34px;
+  fill: #A34D00;
+}
+.hero__seal-name {
+  font-family: 'Wild Tale Block', 'Libre Franklin', sans-serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+  fill: #C85F00;
+}
+.hero__seal-bottom {
+  font-family: 'Wild Tale Script', cursive;
+  font-size: 16px;
+  letter-spacing: 0;
+  fill: #A34D00;
+}
+.hero--arctic .hero__tagline {
+  font-family: 'Wild Tale Script', cursive;
+  font-size: clamp(1.1rem, 2.1vw, 1.6rem);
+  line-height: 1.25;
+  color: #2A2018;
+  max-width: 26ch;
+  margin: 1.1rem auto 0;
+}
+/* Interactive hero links — hover draws an underline and shifts to Chicago red. */
+.hero--arctic .hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin: 1.6rem 0 0;
+  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero--arctic .hero__cta a {
+  color: #2A2018;
+  position: relative;
+  padding-bottom: 3px;
+  transition: color 180ms ease;
+}
+.hero--arctic .hero__cta a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms cubic-bezier(.2,.7,.2,1);
+}
+.hero--arctic .hero__cta a:hover { color: #E4002B; }
+.hero--arctic .hero__cta a:hover::after { transform: scaleX(1); }
+.hero--arctic .hero__cta span { opacity: 0.4; }
 
 .hero__meta {
   display: flex;
@@ -3435,10 +3598,9 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
    which the older .hero h1 / .btn rules above don't target) ---- */
 @media (max-width: 600px) {
   .hero--arctic { min-height: 72vh; }
-  .hero--arctic .hero__name {
-    font-size: clamp(2rem, 7.6vw, 2.9rem);
-    line-height: 1.07;
-  }
+  .hero--arctic .hero__name { line-height: 0.9; }
+  .hero--arctic .hero__eyebrow { font-size: 0.68rem; letter-spacing: 0.1em; }
+  .hero--arctic .hero__cta { gap: 1.1rem; font-size: 0.74rem; }
   .hero--savanna { min-height: 72vh; }
   .hero--savanna .hero__name {
     font-size: clamp(2rem, 7.6vw, 2.9rem);
