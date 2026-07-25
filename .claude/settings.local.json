@@ -142,7 +142,27 @@
       "Bash(command -v npx)",
       "Bash(node server.js)",
       "Bash(sed -i 's/P=13/P=6/' wave.js)",
-      "Bash(node wave.js)"
+      "Bash(node wave.js)",
+      "Bash(awk '/:root/{f=1} f{print} /}/{if\\(f\\)c++} c>0 && f && /}/{f=0}' css/main.css)",
+      "Bash(python -m http.server 8899 --bind 127.0.0.1)",
+      "Bash(kill %1)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(sed -i \"s#font-family: 'JetBrains Mono', ui-monospace, monospace;#font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;#g\" css/main.css)",
+      "Bash(sed -i \"s#color: var\\(--muted\\); font-family: 'JetBrains Mono', ui-monospace, monospace;#color: var\\(--muted\\); font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;#g; s#color: var\\(--accent\\); font-family: 'JetBrains Mono', ui-monospace, monospace;#color: var\\(--accent\\); font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;#g\" css/main.css)",
+      "Bash(awk '/<nav class=\"nav\"/,/<\\\\/nav>/' index.html)",
+      "Bash(git restore *)",
+      "Bash(git commit -q -m '@ *)",
+      "Bash(git commit *)",
+      "Bash(git config *)",
+      "Bash(echo \"autocrlf: $\\(git config core.autocrlf\\)\")",
+      "Bash(python -c \"d=open\\('index.html','rb'\\).read\\(\\); print\\('CRLF count:', d.count\\(b'\\\\r\\\\n'\\), ' bare LF:', d.count\\(b'\\\\n'\\)-d.count\\(b'\\\\r\\\\n'\\)\\)\")",
+      "Bash(python -c \"import sys;d=sys.stdin.buffer.read\\(\\);print\\('  CRLF:',d.count\\(b'\\\\r\\\\n'\\),'bare LF:',d.count\\(b'\\\\n'\\)-d.count\\(b'\\\\r\\\\n'\\)\\)\")",
+      "Bash(git -c core.autocrlf=false add about.html index.html work.html writing/design-as-a-revenue-lever.html case-studies/*.html)",
+      "Bash(git -c core.autocrlf=false commit -q --amend --no-edit)",
+      "Bash(python -c \"import sys;d=sys.stdin.buffer.read\\(\\);print\\('  index.html CRLF:',d.count\\(b'\\\\r\\\\n'\\)\\)\")",
+      "Bash(python -c \"import sys;d=sys.stdin.buffer.read\\(\\);print\\('  main.css CRLF:',d.count\\(b'\\\\r\\\\n'\\),'\\(0 = LF, correct\\)'\\)\")",
+      "Bash(git merge *)",
+      "Bash(git push *)"
     ]
   }
 }
