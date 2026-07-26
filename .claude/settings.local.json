@@ -209,7 +209,25 @@
       "Bash(sed -n '/hero shell hero--arctic/,/<\\\\/section>/p' index.html)",
       "Bash(echo \"exit=$?\")",
       "Bash(git diff *)",
-      "Bash(git status *)"
+      "Bash(git status *)",
+      "Bash(grep -v '^$')",
+      "PowerShell(Add-Content *)",
+      "Bash(python \"C:/Users/codyj/AppData/Local/Temp/claude/C--Users-codyj-Documents-codyheartdesign/f8ac68a5-e6f2-46fc-a384-e539dc40f74a/scratchpad/retarget.py\")",
+      "Bash(python tools/build-landscape.py)",
+      "Bash(set -e)",
+      "Bash(rm -f css/landscape.css js/scenery.js)",
+      "Bash(rm -rf tools)",
+      "Bash(git branch *)",
+      "Bash(python tools/build-africa.py)",
+      "Bash(rm -f css/africa.css js/africa.js)",
+      "Bash(python tools/build-assets.py)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{size_download}\\\\n\" \"http://127.0.0.1:8899/assets/Video/Desert.mp4\" -r 0-1000)",
+      "Bash(npx --yes http-server -p 8901 --silent)",
+      "Bash(curl -s -o /dev/null -w \"range test: %{http_code}\\\\n\" -r 0-100 \"http://127.0.0.1:8901/assets/Video/Desert.mp4\")",
+      "WebFetch(domain:www.pearl-sequeira.com)",
+      "Bash(grep -n \"^\\\\/\\\\* ============================================================$\" -A1 css/field.css)",
+      "Bash(grep -v \"^--$\")",
+      "Bash(awk '{print $1, $3, $4, $5}')"
     ]
   }
 }
