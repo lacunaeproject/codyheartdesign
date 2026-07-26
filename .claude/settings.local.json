@@ -199,7 +199,17 @@
       "Bash(grep -ioE \"\\([0-9]+[%+]?|[0-9]+\\\\.[0-9]+%\\)[^<]{0,40}\" work.html)",
       "Bash(curl -s http://localhost:8777/index.html)",
       "Bash(curl -s \"http://localhost:8777/css/main.css\")",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8777/assets/self/chicago-us.jpg\")"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8777/assets/self/chicago-us.jpg\")",
+      "Bash(pip install *)",
+      "Read(//c/Users/codyj/AppData/Local/Temp/claude/**)",
+      "Bash(rm charcheck.txt)",
+      "Read(//c/Users/codyj/Downloads/KlimTestFonts/**)",
+      "Bash(cp test-geograph-vf-roman.woff2 test-geograph-vf-italic.woff2 \"C:/Users/codyj/Documents/codyheartdesign/assets/fonts/\")",
+      "Bash(cp *.woff2 \"C:/Users/codyj/Documents/codyheartdesign/assets/fonts/\")",
+      "Bash(sed -n '/hero shell hero--arctic/,/<\\\\/section>/p' index.html)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(git diff *)",
+      "Bash(git status *)"
     ]
   }
 }

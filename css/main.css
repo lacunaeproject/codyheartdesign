@@ -2674,7 +2674,10 @@ body.home {
 .home .totals__num {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  /* Down from clamp(2.5rem, 6vw, 4.6rem) — ~73px, which crowded its tile and
+     left the label beneath it looking like an afterthought. ~54px still makes
+     the figure the first thing read in each tile without filling it. */
+  font-size: clamp(1.9rem, 4.5vw, 3.4rem);
   letter-spacing: -0.02em;
   line-height: 0.9;
   color: var(--foam);
