@@ -1,2 +1,14 @@
 # Raw, unoptimized source photos — the web-optimized *.web.jpg versions ship instead
 assets/self/originals/
+
+# Raw artwork masters (~1.7 GB of 4000px paintings, SVG packs, video and
+# photography) — far past what GitHub Pages will serve. Only the derivatives
+# in assets/art/ and assets/marks/ are committed; regenerate them from these
+# masters with: python tools/build-assets.py
+assets/Backgrounds/
+assets/Clouds/
+assets/Gradient Shapes/
+assets/Shapes/
+assets/Video/
+assets/textureanimals/
+assets/quietmotion/
