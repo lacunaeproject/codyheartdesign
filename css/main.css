@@ -4,7 +4,7 @@
    Editorial, but with teeth.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600&family=Shantell+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Libre+Franklin:wght@400;500;600&family=Shantell+Sans:wght@400;500;600;700&display=swap');
 
 /* Regards — modern retro serif, used for the hero display */
 @font-face {
@@ -194,6 +194,48 @@
   --chi-asphalt:   #2B2B27;   /* wet asphalt — Collective Health band */
   --chi-tar:       #181816;   /* tar — footer */
   --chi-ink:       #123746;   /* lake slate — hero display type, from the photo */
+
+  /* ============================================================
+     Type roles. Four faces, four jobs — nothing else gets to be
+     decorative:
+       display · Wild Tale Block, ALWAYS uppercase (name, section
+                 headings, project titles)
+       script  · Wild Tale Script, one per block, never a paragraph
+       sans    · Outfit — a geometric sans whose round, even
+                 letterforms echo the display faces' construction.
+                 Carries all UI, labels, body copy and the nav.
+       serif   · Cheltenham — long-form reading voice only
+     ============================================================ */
+  --font-display: 'Wild Tale Block', 'Libre Franklin', sans-serif;
+  --font-script:  'Wild Tale Script', cursive;
+  --font-sans:    'Outfit', 'Helvetica Neue', Arial, sans-serif;
+  --font-serif:   'Cheltenham Classic', Georgia, 'Times New Roman', serif;
+
+  /* ============================================================
+     Palette 7 — Sunset expedition. Sampled from the homepage
+     artwork (assets/hero/antarctica-6.png): a coral-to-amber sky
+     over petrol-blue water, with the penguins' ink as the darkest
+     note. The home page descends this palette from sky to sea
+     floor; see the HOME block near the bottom of this file.
+     ============================================================ */
+  --sky-coral:   #FD7B5D;   /* top of the sky */
+  --sky-amber:   #FDA35E;   /* the band the hero type sits on */
+  --cloud:       #FDC583;   /* lit cloud — the warm light accent */
+  --sun:         #FD7025;   /* the sun disc */
+  --sun-deep:    #C0521A;   /* the supply boat — deepest warm */
+  --foam:        #FFF6E8;   /* warm ice white */
+  --ink-sea:     #0B3D57;   /* penguin ink — darkest type colour */
+  /* The descent: surface water down to the sea floor. The ramp starts at the
+     hero's own ink and darkens in even PERCEPTUAL steps — L* 24, 19.8, 15.5,
+     11.3, 7.0, about 4.25 apart each time. Even steps in raw luminance would
+     bunch up down here, where the eye is most sensitive to small differences;
+     these were derived by scaling --sea-1 in linear light to hit each L*, so
+     every step keeps the same hue and only drops in lightness. */
+  --sea-1:       #0B3D57;   /* L* 24.0 — the hero's ink */
+  --sea-2:       #08334A;   /* L* 19.8 */
+  --sea-3:       #052A3D;   /* L* 15.5 */
+  --sea-4:       #032030;   /* L* 11.3 */
+  --sea-5:       #021825;   /* L*  7.0 — sea floor */
 
   /* Base surfaces & type */
   --paper:       var(--white);
@@ -404,53 +446,62 @@ body::before {
   }
 }
 
-/* Center nav — a floating pill capsule (logo left · nav center · CTAs right).
-   The container carries a soft translucent backing so the links read over any
-   page's light hero; the active link sits in a filled ocean pill. */
+/* Center nav — a floating pill capsule. The container carries a soft
+   translucent backing so the links read over whatever they pass, and the
+   active link sits in a filled ocean pill.
+
+   Detached and pinned to the BOTTOM of the viewport at every width — the
+   treatment that used to be phones-only. It leaves the entire top of the page
+   to the artwork, and keeps the pill in thumb reach on a phone. Clears the iOS
+   home indicator through the safe-area inset. */
 .nav {
   grid-area: nav;
-  justify-self: center;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  z-index: 100;
+  max-width: calc(100vw - 2rem);
   display: inline-flex;
-  align-items: center;
+  /* stretch, not center: the links are the pills, so they have to fill the
+     capsule's inner height. Centred, they sized to their own text and the
+     hover/active pill came out as a thin lozenge floating inside the bar. */
+  align-items: stretch;
   height: var(--control-h);
   gap: 0.2rem;
   padding: 0.32rem;
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(9, 89, 138, 0.12);
   border-radius: 999px;
-  box-shadow: 0 8px 24px -14px rgba(20, 57, 95, 0.5);
+  box-shadow: 0 10px 30px -8px rgba(20, 57, 95, 0.45);   /* lifted off the page */
   backdrop-filter: blur(10px) saturate(1.1);
   -webkit-backdrop-filter: blur(10px) saturate(1.1);
-  font-family: 'Wild Tale Script', 'Libre Franklin', sans-serif;
-  font-size: 1.18rem;   /* script runs small, so bump it up */
-  font-weight: 400;
-  letter-spacing: 0;
-  color: #2E4A66;   /* dark glacier — reads over every page's light top */
-}
-/* Desktop — the nav pill sticks to the top of the viewport and stays put as the
-   page scrolls; the wordmark + CTA cluster remain in the (absolute) header and
-   scroll away, leaving the centered pill floating. */
-@media (min-width: 781px) {
-  .nav {
-    position: fixed;
-    top: 0.9rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 60;
-  }
+  /* The sans, not the script. Four words at pill size is exactly where a
+     hand-drawn face costs the most legibility for the least character — and
+     the nav is the one thing on the page that has to be read at a glance.
+     The sizes step DOWN from the script's, which ran large to compensate for
+     how small it sets; a geometric sans needs none of that. */
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #24405C;   /* dark glacier — 8.4:1 on the pill's translucent white */
 }
 /* Laptop / desktop — step the nav up a touch as the header gains room. */
 @media (min-width: 1024px) {
-  .nav { font-size: 1.24rem; }
+  .nav { font-size: 1rem; }
 }
 @media (min-width: 1440px) {
-  .nav { font-size: 1.3rem; }
+  .nav { font-size: 1.05rem; }
 }
 /* Text selection uses the lightest penguin blue */
 ::selection { background: var(--blue-100); color: var(--black); }
 .nav a {
-  padding: 0.3rem 0.9rem;
-  line-height: 1;   /* pin the box so the active/hover pill fits inside the nav's height */
+  /* No vertical padding — the link stretches to the capsule's inner height, so
+     padding here would only fight it. Horizontal padding still sets the pill's
+     width, and the flex centring holds the label on the optical middle. */
+  padding: 0 0.95rem;
+  line-height: 1;
   border-radius: 999px;
   position: relative;
   white-space: nowrap;
@@ -459,14 +510,20 @@ body::before {
   align-items: center;
   gap: 0.5em;
 }
-.nav a:hover { color: #A34D00; background: rgba(200, 95, 0, 0.10); }   /* a deeper shade of the penguin orange */
+/* Hover takes the brick red out of the Chicago artwork. The ink has to clear
+   4.5:1 on every ground the translucent pill composites over — the hero sky,
+   the navy work band, and the light limestone card are the extremes. This
+   deep red reads 5.2:1 on the darkest of them and 8.4:1 on the lightest. */
+.nav a:hover { color: #6E1F14; background: rgba(196, 55, 42, 0.14); }
 /* Active state — [aria-current="page"] on the exact page, [aria-current="true"]
    on the section link (Work, while inside a case study). Both read as current,
    sitting in a filled ocean pill with white type — Ben's segmented-nav pattern. */
 .nav a[aria-current] {
-  background: #C85F00;   /* penguin orange (--burnt-orange from the King Penguins palette) */
+  /* The artwork's brick red, the same one the cards use. White on it is
+     5.3:1, which the 21px sans needs in full — the old orange only made 4.2. */
+  background: #C4372A;
   color: #fff;
-  box-shadow: 0 2px 10px -3px rgba(200, 95, 0, 0.55);
+  box-shadow: 0 2px 10px -3px rgba(196, 55, 42, 0.55);
 }
 .nav a[aria-current]:hover { color: #fff; }
 /* External-link arrow (Resume → Google Drive). Small and muted so it signals
@@ -496,7 +553,7 @@ body::before {
   color: #fff;
   border-radius: 999px;   /* full pill */
   height: var(--control-h);   /* exact same height as the nav pill */
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: 0.01em;
   box-shadow: 0 8px 20px -12px rgba(14, 17, 22, 0.8);
@@ -558,26 +615,11 @@ body::before {
   .wordmark { font-size: 1.2rem; gap: 0.5rem; }
   .wordmark__heart { width: 1.35rem; height: 1.35rem; }
 
-  /* Detached bottom nav — pinned to the viewport, centered, floating above
-     page content with a lifted shadow. Sits clear of the iOS home indicator. */
-  .nav {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: max(1rem, env(safe-area-inset-bottom, 0px));
-    z-index: 100;
-    max-width: calc(100vw - 2rem);
-    justify-self: unset;
-    box-shadow: 0 10px 30px -8px rgba(20, 57, 95, 0.45);
-  }
-  /* Keep footer content from hiding behind the floating nav (footer bg still
-     fills the space, so no gap shows). */
-  .site-footer { padding-bottom: 6rem; }
 }
 /* Narrow phones — let the pill shrink so all four links stay on one line. */
 @media (max-width: 480px) {
-  .nav { font-size: 0.9rem; letter-spacing: 0; gap: 0.14rem; padding: 0.32rem; }
-  .nav a { padding: 0.62rem 0.85rem; gap: 0.4em; }
+  .nav { font-size: 0.84rem; letter-spacing: 0; gap: 0.14rem; padding: 0.32rem; }
+  .nav a { padding: 0 0.8rem; gap: 0.4em; }
   .btn-hello, .btn-linkedin { height: 2.5rem; }
   .btn-hello { padding: 0 0.9rem; font-size: 0.78rem; }
   .btn-linkedin { width: 2.5rem; }
@@ -588,8 +630,8 @@ body::before {
 @media (max-width: 360px) {
   .btn-hello span { display: none; }
   .btn-hello { padding: 0; width: 2.5rem; }
-  .nav { font-size: 0.8rem; gap: 0.05rem; padding: 0.26rem; }
-  .nav a { padding: 0.55rem 0.6rem; }
+  .nav { font-size: 0.76rem; gap: 0.05rem; padding: 0.26rem; }
+  .nav a { padding: 0 0.58rem; }
 }
 
 /* ---------- Frame ----------
@@ -674,7 +716,7 @@ main { position: relative; z-index: 2; }
 
 /* ---------- Eyebrows ---------- */
 .eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: var(--fs-eyebrow);
   font-weight: 600;
   text-transform: uppercase;
@@ -798,23 +840,26 @@ main { position: relative; z-index: 2; }
 .hero--arctic {
   max-width: none;
   margin: 0;
-  min-height: 94vh;
+  min-height: 100vh;
+  min-height: 100svh;   /* phones: discount the collapsing browser chrome */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  padding: clamp(4.5rem, 13vh, 9rem) var(--gutter) clamp(3rem, 6vw, 5rem);
+  /* Much heavier bottom padding than top: it's what lifts the centred block
+     up into the open sky, clear of the skyline and the lakefront. */
+  padding: clamp(3rem, 8vh, 5rem) var(--gutter) clamp(16rem, 42vh, 28rem);
   position: relative;
   overflow: hidden;
-  background-color: var(--ice-pale);
+  background-color: #E9B58E;   /* the artwork's sky — what shows before it loads */
   border-radius: 0;
 }
-/* Plain arctic artwork on its own layer, slowly drifting (Ken Burns) */
+/* The hero artwork on its own layer, slowly drifting (Ken Burns) */
 .hero--arctic::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../assets/hero/antarctica-6.png');
+  background-image: url('../assets/hero/chicago-4.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -897,7 +942,7 @@ main { position: relative; z-index: 2; }
 }
 
 .hero--arctic .hero__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.13em;
@@ -905,56 +950,40 @@ main { position: relative; z-index: 2; }
   color: #2A2018;   /* warm expedition ink */
   margin: 0 0 1.1rem;
 }
-/* "Hey, I'm" script greeting → big block CODY HEART → script tagline. */
+/* Type colours come out of the Chicago artwork. Quantising the skyline gives
+   #0D406F as its darkest tone with real coverage — that's the buildings' blue.
+   The name takes it deepened: at #0D406F itself the 200px name would sit at
+   4.6:1, LIGHTER than the 52px script lines above and below it, which is what
+   made it read as a leftover from the arctic art it was tuned for. Deepened,
+   it leads at 6.4:1 and the three lines finally belong to one family. */
 .hero__greeting {
   font-family: 'Wild Tale Script', cursive;
-  font-size: clamp(1.7rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
   line-height: 1;
-  color: #14708A;   /* water teal, from the illustration */
-  margin: 0 0 0.05em;
-  transform: rotate(-4deg);   /* hand-placed, playful */
+  /* Deeper than the old #0E5470. That read 4.2:1 on the arctic sky but only
+     2.62:1 on the Chicago artwork, where this line lands on mid-blue rather
+     than amber — the greeting sits highest, so it gets the coolest ground. */
+  color: #0A2E42;
+  margin: 0 0 0.45em;
 }
 .hero--arctic .hero__name {
   font-family: 'Wild Tale Block', 'Libre Franklin', sans-serif;
   font-weight: 400;
-  font-size: clamp(3.4rem, 11vw, 8rem);
+  font-size: clamp(4rem, 13.5vw, 10rem);
   line-height: 0.82;
   letter-spacing: 0.01em;
-  color: #1E2E3A;   /* penguin navy — high contrast on the yellow sky */
+  color: #0A2A45;   /* the skyline's blue, deepened · 6.4:1 */
   margin: 0;
 }
+/* The two script lines stand off the name rather than hugging it. The name's
+   0.82 line-height already swallows some space above and below, so these
+   margins run larger than the visible gap they produce. */
 .hero__role {
   font-family: 'Wild Tale Script', cursive;
-  font-size: clamp(1.7rem, 4vw, 3rem);   /* same size as "Hey, I'm" */
-  color: #14708A;   /* water teal, matching the greeting */
-  margin: -0.15rem 0 0;
-}
-/* Little speech bubble off the swimming penguin (bottom-centre). */
-.hero__quip {
-  position: absolute;
-  left: 41%;
-  bottom: 16%;
-  z-index: 3;
-  background: #fff;
-  color: #1E2E3A;
-  font-family: 'Wild Tale Script', cursive;
-  font-size: clamp(1rem, 1.8vw, 1.45rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);   /* long line — sized to stay on one row */
   line-height: 1;
-  padding: 0.35rem 0.85rem 0.45rem;
-  border-radius: 14px;
-  box-shadow: 0 6px 16px -8px rgba(20, 40, 50, 0.45);
-}
-.hero__quip::after {
-  content: "";
-  position: absolute;
-  left: 15px;
-  bottom: -7px;
-  width: 0;
-  height: 0;
-  border: 8px solid transparent;
-  border-top-color: #fff;
-  border-bottom: 0;
-  border-right: 0;
+  color: #0A2E42;   /* matches the greeting — 8.0:1 on the warm band it sits over */
+  margin: 0.35em 0 0;
 }
 .hero--arctic .hero__name span { display: block; }   /* stack CODY over HEART */
 
@@ -1000,7 +1029,7 @@ main { position: relative; z-index: 2; }
   align-items: center;
   gap: 1.4rem;
   margin: 1.6rem 0 0;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -1058,7 +1087,7 @@ main { position: relative; z-index: 2; }
   background: var(--penguin-white);
   border: 1px solid rgba(36, 56, 77, 0.16);
   box-shadow: 0 1px 0 rgba(36, 56, 77, 0.06);
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.74rem;
@@ -1122,7 +1151,7 @@ main { position: relative; z-index: 2; }
 }
 .hero__dateline {
   margin-top: 3rem;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1666,7 +1695,7 @@ main { position: relative; z-index: 2; }
   .case-card__viz { width: 56px; height: 56px; top: 1.5rem; right: 1.5rem; }
 }
 .case-card__num {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   color: var(--ink);
@@ -1882,7 +1911,7 @@ main { position: relative; z-index: 2; }
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1923,7 +1952,7 @@ main { position: relative; z-index: 2; }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2111,7 +2140,7 @@ main { position: relative; z-index: 2; }
   color: var(--ink-soft);
 }
 .job__dates {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2182,7 +2211,14 @@ main { position: relative; z-index: 2; }
   border: none;
   position: relative;
   color: var(--penguin-white);
+  /* Full viewport, like the hero and the project panels — its grid centres in
+     whatever height is left over. */
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
 }
+.hello__grid { width: 100%; }
 .hello::before {
   content: "";
   position: absolute;
@@ -2244,7 +2280,10 @@ main { position: relative; z-index: 2; }
 /* ---------- Footer ---------- */
 .site-footer {
   border: none;
-  padding: 4rem 0 3rem;
+  /* The bottom reserve holds space for the floating nav pill, which is fixed
+     to the bottom of the viewport on every breakpoint. The footer background
+     still fills that space, so no gap shows. */
+  padding: 4rem 0 6rem;
   /* Neutral charcoal — matches the header; homepage overrides to deep-sea navy below */
   background-color: #222427;
   background-image: var(--grain-fine);
@@ -2425,6 +2464,12 @@ body.work-page .ch-band {
   background-image: var(--cement-inv);
   background-size: 200px 200px;
 }
+/* Experience moved here from the home page. It drops its wave crest the same
+   way .work-band does — a water motif has no business on a page that is park
+   and pavement. Its own dark band and light type carry over unchanged. */
+body.work-page .experience::before { content: none; }
+body.work-page .experience { padding-top: clamp(3.5rem, 6vw, 5rem); }
+
 /* Footer settles into the tar */
 body.work-page .site-footer {
   background-color: var(--chi-tar);
@@ -2433,6 +2478,711 @@ body.work-page .site-footer {
   background-blend-mode: normal;
 }
 body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.12); }
+
+/* ============================================================
+   HOME — SUNSET EXPEDITION  ·  body class="home"
+   ============================================================
+   The hero artwork sets the whole page: a coral-to-amber sky over
+   petrol water. The page then reads as a single descent — you start
+   at the surface in the sunset and sink, band by band, to the sea
+   floor in the footer. Every colour below is sampled from the
+   artwork (see Palette 7 in :root), so no band introduces a hue the
+   illustration doesn't already contain.
+
+   Typographically each section opens the way the hero does: a Wild
+   Tale Script line, then Wild Tale Block in caps. The script is
+   rationed to one line per block — kicker, hero role, footer
+   sign-off — and never sets a sentence. Everything that has to be
+   read rather than looked at is Outfit.
+
+   Scoped to .home on purpose: work.html and about.html share these
+   components and keep their own treatments untouched.
+   ============================================================ */
+
+/* The mat behind the full-bleed frame — same descent, so any sliver
+   showing at the edges belongs to the page. */
+body.home {
+  background: linear-gradient(170deg,
+    var(--sky-coral) 0%,
+    var(--sky-amber) 18%,
+    var(--sea-1) 52%,
+    var(--sea-5) 100%);
+  font-family: var(--font-sans);
+  --accent: var(--sun);
+}
+
+/* ---- Section openers ---------------------------------------
+   Script kicker → block-caps headline. The pairing is the hero's,
+   repeated at a quarter of the size. */
+.home .eyebrow {
+  font-family: var(--font-script);
+  font-size: clamp(1.45rem, 2.6vw, 1.95rem);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
+  color: var(--cloud);   /* 6.1:1 on the darkest band it lands on */
+}
+.home .work-band .case-intro .eyebrow { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: 0; }
+.home .work-band .case-intro h2,
+.home .writing h2,
+.home .experience h2,
+.home .hello h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  color: var(--foam);
+}
+/* The block face has no italic, so the em accents switch to colour alone. */
+.home .experience h2 em,
+.home .hello h2 em,
+.home .case-intro h2 em { font-style: normal; color: var(--cloud); }
+
+/* ---- Flat colour blocks, no water -------------------------
+   The descent, the contour ripples and the wave crests are all gone.
+   Every section is now one saturated Wild Tale field meeting the next
+   at a hard edge — the change of colour is the transition.
+
+   Hello and the footer close the run on the two darkest pairs so the
+   page still settles, but they do it with brown rather than navy. */
+/* The two sections below THE WORK stay in its family instead of jumping to
+   brown. Same hue as the work band, stepped down twice — the page closes by
+   getting deeper rather than by changing material. The warm cream type is
+   what keeps them from reading cold. */
+.home .hello {
+  background-color: #0D2033;          /* a shade under the work band */
+  background-image: none;
+  color: #FFF3D6;                     /* warm cream · 14.2:1 */
+}
+.home .site-footer {
+  background-color: #07131F;          /* deepest — the page's floor */
+  background-image: none;
+  background-blend-mode: normal;
+}
+/* Nothing rises into anything any more. */
+.home .hello::before,
+.home .site-footer::before { content: none; }
+
+/* ---- Featured work: one card per project -------------------
+   Each project is a card carrying its own flat Wild Tale colour
+   pair. The section is just the ground; the colour lives in the
+   card, so three saturated blocks sit on one calm field rather
+   than taking a viewport each.
+
+   The specimen pairs as-shipped don't survive contact with a real
+   page, so each is adapted rather than copied — same two hues,
+   lightness pulled apart until small type holds. What the
+   references actually measure:
+       #FFEC5A on #FF6226   2.48:1
+       #4ED2B5 on #007853   2.94:1
+   Both fail even the 3:1 large-text floor. */
+/* Pairs drawn from the Chicago artwork rather than the Wild Tale specimens —
+   quantising chicago-4 gives steel blues (#5988B8, #265886), warm limestone
+   and sunset tones (#FBC88E, #E8B48D) and a brick red. Same idea as before:
+   flat, striking, two colours per card. Type contrast in the comments. */
+/* --mq-dark is whichever of the two is the darker — the ink on the light
+   cards, the band on the red one. The filled metric pill needs it: its cream
+   fill is near-white, so it can't just use --mq-ink, which on the red card IS
+   the cream and would vanish. */
+.home .mq-card--matching      { --band: #7FB3D5; --mq-ink: #0A2A45; --mq-dark: #0A2A45; }  /* lake blue · 6.5:1 */
+/* The limestone card is already cream-adjacent, so the frosted pill needs to
+   go cooler and brighter there or it disappears into the card. */
+.home .mq-card--consolidation { --band: #EBD4B4; --mq-ink: #8C3A1E; --mq-dark: #8C3A1E;
+                                --mq-frost: #FDFAF4; }                                     /* limestone · 5.3:1 */
+/* Frost has to go opaque on the red card: at 92% enough brick bleeds through
+   to drag the brick-on-frost text down to 4.3:1, under the floor. */
+.home .mq-card--pilot         { --band: #C4372A; --mq-ink: #FFF1DE; --mq-dark: #C4372A;
+                                --mq-frost: #FFF6E8; }                                     /* brick red · 4.8:1 */
+
+/* Dark navy field. No wave crest, no contour ripples — the water motif is
+   gone; the cards carry the section on colour alone. This navy is the hero's
+   name colour (#0A2A45) taken a shade deeper, so the section still reads as a
+   continuation of the artwork above without borrowing its shapes. */
+.home .work-cards {
+  position: relative;
+  background-color: #0A2233;
+  background-image: none;
+  padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 6rem);
+}
+.home .work-cards > * { position: relative; z-index: 2; }
+/* Section title. Set well below the card names so it introduces them rather
+   than competing — and in cream rather than any one card's ink, so it doesn't
+   look like it belongs to the first card. */
+.home .work-cards__title {
+  margin: 0 auto clamp(1.4rem, 3vw, 2.4rem);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  color: var(--foam);            /* 14.5:1 on the navy */
+}
+.home .mq-cards {
+  list-style: none;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+.home .mq-card__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.1rem, 2.5vw, 1.9rem);
+  padding: clamp(2.4rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  background: var(--band);
+  color: var(--mq-ink);
+  border-radius: 26px;
+  text-align: center;
+  transition: transform 280ms cubic-bezier(.2, .7, .2, 1);
+}
+/* Hover: the card tilts off the grid and throws a hard-edged shadow in the
+   Chicago red — no blur, matching the flat language everywhere else.
+   The shadow has to be LIGHT against this ground: a dark one was invisible on
+   navy, which is the whole reason the first attempt didn't read. Red carries
+   on all three cards and ties to the nav's active pill. The red card takes
+   cream instead, since red-on-red would just look like it grew. */
+.home .mq-card__link {
+  --mq-shadow: #C4372A;
+  box-shadow: 0 0 0 var(--mq-shadow);
+  transition: transform 300ms cubic-bezier(.2, .7, .2, 1),
+              box-shadow 300ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .mq-card--pilot .mq-card__link { --mq-shadow: #FFF1DE; }
+.home .mq-card__link:hover {
+  transform: translate(-10px, -10px) rotate(-0.7deg);
+  box-shadow: 20px 20px 0 var(--mq-shadow);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home .mq-card__link,
+  .home .mq-card__link:hover { transform: none; transition: none; }
+}
+/* Card-width type, not viewport-width type: the lines now have to fit inside
+   a padded box, so they're set well below the full-bleed panel sizes. */
+/* Three facts under each name: when, what I was, what moved. Outlined rather
+   than filled — the card's ink is already carrying a very large title, and
+   three solid chips under it would fight for the same weight. currentColor
+   means each set inherits its own card's ink, so contrast matches the title's
+   exactly (6.5:1, 5.3:1, 4.8:1). */
+.home .mq-card__pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+/* All three carry the frosted fill — cream at 92%, which lets a little of the
+   card colour bleed through instead of sitting on it as a hard white chip.
+   Text is --mq-dark, not --mq-ink: on the red card the ink IS the cream and
+   would disappear into its own fill. */
+.home .mq-card__pills li {
+  padding: 0.5rem 1.05rem 0.52rem;
+  border: 2px solid var(--mq-frost, rgba(255, 241, 222, 0.92));
+  border-radius: 999px;
+  background: var(--mq-frost, rgba(255, 241, 222, 0.92));
+  color: var(--mq-dark);
+  /* Blur only — a saturate() here pushes the backdrop redder under the pill
+     and quietly eats contrast the declared colours don't account for. */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-sans);
+  font-size: clamp(0.68rem, 0.92vw, 0.8rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+/* ---- Squiggle break -----------------------------------------
+   A tiled SVG rather than one stretched path, so the wave keeps its
+   amplitude at every viewport width instead of flattening out on wide
+   screens. The tile is four half-waves, an even count, so it repeats
+   seamlessly. */
+.home .squiggle-rule {
+  height: clamp(3.5rem, 8vw, 5.5rem);
+  background-color: #0A2233;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='60' viewBox='0 0 168 60'%3E%3Cpath d='M0 30 q21 -20 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.home .mq-card .marquee__block  { font-size: clamp(2.4rem, 8vw, 6.5rem); }
+.home .mq-card .marquee__script { font-size: clamp(2.9rem, 9.8vw, 8rem); }
+.home .mq-card--consolidation .marquee__script { font-size: clamp(2.3rem, 7.6vw, 6.2rem); }
+/* ---- Panel metadata ----------------------------------------
+   Modelled on the Wild Tale chocolate-bar specimen, where the facts
+   sit under the name as small caps with the figure set larger than
+   the words describing it. All of it in the sans: the two display
+   faces are doing enough work already, and this is the part that
+   has to be read rather than looked at.
+
+   Every tier is the panel's one ink at full strength — the specimens
+   are strictly two colours, and tinting these down put the year at
+   3.7:1 and the captions at 4.3:1 on the vermilion panel. Hierarchy
+   comes from size and weight instead, which is plenty: 55px/700 for
+   a figure against 17px/600 for its caption. */
+.home .marquee__year {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.home .marquee__stats {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.6rem clamp(2.4rem, 6vw, 5.5rem);
+}
+.home .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 15ch;
+}
+/* The figures carry real weight — against a 258px title, the old 35px read as
+   a footnote. Full ink, heavy, and roughly a fifth of the display size. */
+.home .stat__num {
+  font-family: var(--font-sans);
+  font-size: clamp(1.7rem, 3.4vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1;
+}
+/* Denominators ride smaller so the quantity reads first. */
+.home .stat__num span { font-size: 0.55em; font-weight: 500; opacity: 0.75; }
+.home .stat__cap {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1.05vw, 0.88rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+/* The specimen's caption lines, top and bottom. */
+.home .marquee__meta {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.72rem, 1.15vw, 0.95rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+/* The outcomes ride in tags rather than floating as loose text. Solid white
+   with navy type, so they read as objects laid on the water rather than as
+   more of the yellow lettering. */
+.home .marquee__meta--figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem clamp(0.6rem, 1.5vw, 1rem);
+}
+.home .marquee__meta--figures > span {
+  padding: 0.66rem 1.2rem 0.68rem;
+  background: var(--mq-tag);
+  color: var(--mq-tag-ink);
+  border-radius: 999px;
+  line-height: 1;
+}
+.home .marquee__link:hover .marquee__title { opacity: 0.92; }
+/* The name at specimen scale: block over script, the script set larger so the
+   two lines carry roughly the same width despite the shorter word. */
+.home .marquee__title {
+  margin: 0;
+  font-weight: 400;
+  line-height: 0.82;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home .marquee__block {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 16vw, 15rem);
+  text-transform: uppercase;
+  letter-spacing: 0.005em;
+}
+.home .marquee__script {
+  font-family: var(--font-script);
+  font-size: clamp(3.9rem, 19.5vw, 18rem);
+  line-height: 0.9;
+  margin-top: -0.06em;    /* tuck the script up under the block line */
+}
+
+/* ---- Featured work: illustrated cards (superseded) ---------
+   The illustration is the imagery this work can't supply itself,
+   so it takes half the card and bleeds to three edges — the text
+   sits beside it rather than under a decorated header.
+
+   Everything the entry doesn't need is gone: no index number, no
+   category label, no summary paragraph, no dates, no client line.
+   What's left is what it was, what it moved, and the way in.
+
+   The accent stays warm against a cool illustration, which the art
+   sets up itself: the penguin's beak and feet are the same orange.
+   These are the DEEP tints, because the type sits on light paper —
+   the pale versions used on the band would measure 1.7:1 here. */
+.home .project--01 { --p-accent: #A8480C; }   /* sun     · 5.0:1 on paper */
+.home .project--02 { --p-accent: #0E5470; }   /* water   · 7.2:1 */
+.home .project--03 { --p-accent: #8A5A0B; }   /* horizon · 5.1:1 */
+
+.home .projects {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 clamp(3rem, 6vw, 5rem);
+  display: grid;
+  /* One card while the illustrated treatment is settled. Goes back to
+     repeat(3, minmax(0,1fr)) — or auto-fit — when the other two return. */
+  grid-template-columns: 1fr;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+.home .project__link {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0;               /* the plate bleeds — the text side supplies it */
+  overflow: hidden;
+  background: color-mix(in srgb, var(--sun) 8%, var(--foam));
+  border: 3px solid var(--ink-sea);
+  border-radius: 20px;
+  color: var(--ink-sea);
+  transition: transform 280ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .project__link:hover { transform: translateY(-4px); }
+/* Cropped rather than fitted, so the artwork's soft outer border is trimmed
+   and the scene runs right up to the card's edge. */
+.home .project__art {
+  flex: 0 0 clamp(240px, 46%, 620px);
+  display: block;
+  overflow: hidden;
+  border-right: 3px solid var(--ink-sea);
+  background: #BFE0EF;      /* the art's own pale water, in case it letterboxes */
+}
+.home .project__art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 600ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .project__link:hover .project__art img { transform: scale(1.03); }
+.home .project__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.6rem, 3vw, 2.8rem);
+}
+.home .project__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  color: var(--ink-sea);
+  margin: 0;
+}
+/* The outcomes do the work a summary paragraph used to. */
+.home .figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  margin: clamp(1.3rem, 2.2vw, 1.8rem) 0 0;
+}
+.home .figure { max-width: 20ch; }
+.home .figure__num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  color: var(--p-accent);
+}
+/* Units and denominators ride smaller so the quantity reads first. */
+.home .figure__num span { font-size: 0.5em; letter-spacing: 0.02em; }
+.home .figure__cap {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ink-sea) 80%, transparent);
+}
+.home .project__foot {
+  margin-top: clamp(1.4rem, 2.5vw, 2rem);
+  padding-top: clamp(1rem, 1.8vw, 1.3rem);
+  border-top: 2px dashed color-mix(in srgb, var(--ink-sea) 26%, transparent);
+}
+.home .project__cta {
+  font-family: var(--font-script);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1;
+  color: var(--p-accent);
+}
+.home .project__cta .arrow {
+  display: inline-block;
+  transition: transform 220ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .project__link:hover .arrow { transform: translateX(5px); }
+/* Below this the plate and the text are both too narrow side by side, so the
+   illustration takes the top of the card and the text runs full width under it. */
+@media (max-width: 780px) {
+  .home .project__link { flex-direction: column; }
+  .home .project__art {
+    flex: none;
+    border-right: none;
+    border-bottom: 3px solid var(--ink-sea);
+  }
+  .home .project__art img { height: clamp(180px, 44vw, 280px); min-height: 0; }
+}
+/* ---- The field note ticket ---------------------------------
+   The essay keeps the ticket treatment: it's one item, it's a
+   different kind of thing from a case study, and a ticket is what
+   you'd hold to go read something. */
+.home .writing-entry__link { --card-accent: #F2A24E; }
+
+.home .writing-entry__link {
+  /* One warm paper for every card, not a tint of each accent: mixing the cool
+     teal into warm cream desaturated it to a grey-green, and the set stopped
+     reading as one sticker sheet. The accent still lands in three places. */
+  background: color-mix(in srgb, var(--sun) 9%, var(--foam));
+  background-image: none;   /* the field-note dot grid — flat colour only now */
+  border: 3px solid var(--ink-sea);
+  border-radius: 22px;
+  --ink:      var(--ink-sea);
+  --ink-soft: #33454F;
+  --rule:     rgba(11, 61, 87, 0.2);
+  /* Two circles punched out of the card where the stub tears off. The mask
+     removes real pixels — border included — so the bite is genuine rather
+     than a coloured dot laid on top. --stub-w drives both the stub's width
+     and the notch position, so they can never drift apart.
+
+     Note for anyone adding a shadow back here: a mask clips an element's
+     box-shadow away entirely, and CSS applies filter BEFORE mask, so a
+     drop-shadow set on this element is masked away too. It would have to
+     live on a wrapper outside the masked box. */
+  --stub-w: clamp(88px, 18%, 172px);
+  --notch: 13px;
+  --mask-notches:
+    radial-gradient(circle at var(--stub-w) 0,    #0000 calc(var(--notch) - 1px), #000 var(--notch)),
+    radial-gradient(circle at var(--stub-w) 100%, #0000 calc(var(--notch) - 1px), #000 var(--notch));
+  -webkit-mask-image: var(--mask-notches);
+          mask-image: var(--mask-notches);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+  box-shadow: none;
+  transition: transform 260ms cubic-bezier(.2, .7, .2, 1);
+}
+/* No offset shadow, at rest or on hover — the stub is already a full block of
+   the accent, so a second copy of that colour behind it just read as a
+   doubled edge. The lift alone carries the hover. */
+.home .writing-entry__link:hover { transform: translate(-5px, -5px); }
+/* The stub bleeds to the ticket's edges, which is why the ticket carries no
+   padding of its own; the body supplies it. */
+.home .writing-entry__link {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.home .writing-entry__body {
+  flex: 1;
+  min-width: 0;
+  align-self: center;
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+}
+/* The stub — the part you'd tear off. Torn along a dashed perforation, and
+   stamped with the number, so the card reads as a ticket to the project
+   rather than a panel with a figure on it. */
+.home .writing-entry__stub {
+  flex: none;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.35rem;
+  width: var(--stub-w);
+  padding: 1.2rem 0.5rem;
+  background: var(--card-accent);
+  border-right: 3px dashed var(--ink-sea);   /* the perforation */
+  color: var(--ink-sea);
+  transition: transform 400ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .stub__label {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.9;   /* it's 0.62rem — don't wash it out */
+}
+.home .stub__num {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+/* A stamped code strip, the way a real stub carries one. */
+.home .stub__code {
+  width: min(64%, 74px);
+  height: 20px;
+  margin-top: 0.15rem;
+  background-image: repeating-linear-gradient(90deg,
+    var(--ink-sea) 0 2px, transparent 2px 5px,
+    var(--ink-sea) 5px 6px, transparent 6px 11px);
+  opacity: 0.8;
+}
+.home .writing-entry__link:hover .writing-entry__stub { transform: scale(1.04); }
+
+/* Stacked, the stub becomes the ticket's header band and the perforation
+   runs across it — so the notches move to the left and right edges. */
+@media (max-width: 760px) {
+  .home .writing-entry__link {
+    flex-direction: column;
+    align-items: stretch;
+    --mask-notches:
+      radial-gradient(circle at 0 var(--stub-h), #0000 calc(var(--notch) - 1px), #000 var(--notch)),
+      radial-gradient(circle at 100% var(--stub-h), #0000 calc(var(--notch) - 1px), #000 var(--notch));
+    --stub-h: 96px;
+  }
+  .home .writing-entry__stub {
+    width: 100%;
+    height: var(--stub-h);
+    padding: 0;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 0.7rem;
+    border-right: none;
+    border-bottom: 3px dashed var(--ink-sea);
+  }
+  .home .stub__code { width: 60px; margin-top: 0; }
+}
+/* Labels ride in a pill. A saturated chip would fail contrast at this size —
+   4.5:1 is a lot to ask of 0.7rem text on orange — so the pill is a light
+   tint of the accent carrying ink type, which measures 7.7:1. */
+.home .writing-entry__kicker {
+  display: inline-block;
+  background: color-mix(in srgb, var(--card-accent) 32%, var(--foam));
+  color: var(--ink-sea);
+  border: 2px solid var(--ink-sea);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem 0.34rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+/* The head row loses its divider — the kicker is a pill now, and a rule under
+   it would fight the dashed one above the CTA. */
+.home .writing-entry__head {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 1.15rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.home .writing-entry__read {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #55636E;
+}
+/* Same face as the project titles — on the card this is a headline, not
+   prose, and Cheltenham was the one serif left sitting among the block caps.
+   The essay page itself keeps the reading serif. */
+.home .writing-entry__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: 0.012em;
+  color: var(--ink-sea);
+}
+.home .writing-entry__dek  { font-family: var(--font-sans); color: #33454F; }
+.home .writing-entry__foot {
+  border-top: 2px dashed rgba(11, 61, 87, 0.28);
+  padding-top: 1.15rem;
+}
+/* A pressable button, drawn the same way as the card: ink outline, hard
+   shadow, flat fill. White on this orange is 4.7:1. */
+.home .writing-entry__cta {
+  background-color: var(--sun-deep);
+  border: 2.5px solid var(--ink-sea);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--ink-sea);
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.6rem 1.15rem;
+  transition: transform 180ms cubic-bezier(.2, .7, .2, 1),
+              box-shadow 180ms cubic-bezier(.2, .7, .2, 1),
+              background-color 180ms ease;
+}
+.home .writing-entry__link:hover .writing-entry__title { color: var(--sun-deep); }
+.home .writing-entry__link:hover .writing-entry__cta {
+  background-color: var(--ink-sea);
+  border-color: var(--ink-sea);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink-sea);
+}
+
+/* ---- Experience --------------------------------------------
+   Three warm-to-cool accents off the artwork instead of one flat
+   gold, so each employer still reads as its own entry. */
+.home .experience .job--lifestance-lead   { --job-accent: #F2A03A; }
+.home .experience .job--lifestance-senior { --job-accent: var(--cloud); }
+.home .experience .job--collective-health { --job-accent: #7FC0D6; }
+.home .job__title { font-family: var(--font-sans); font-style: italic; }
+.home .job__list li { font-family: var(--font-sans); }
+
+/* ---- Hello -------------------------------------------------- */
+.home .hello__link { border-bottom-color: var(--sun); }
+.home .hello__link:hover { border-bottom-color: var(--foam); }
+
+/* ---- Footer ------------------------------------------------
+   The sign-off line is a place, exactly like the hero's role line —
+   so it gets the page's last script line. */
+.home .site-footer h3 {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--cloud);
+}
+.home .site-footer__sign {
+  font-family: var(--font-script);
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--cloud);
+}
+.home .site-footer ul a { font-family: var(--font-sans); font-size: 0.9rem; }
+.home .site-footer ul a:hover { color: var(--sun); border-color: var(--sun); }
+.home .site-footer__colophon { font-family: var(--font-sans); color: #9FB6C4; }
 
 /* ---------- Lock page ---------- */
 .lock {
@@ -2943,7 +3693,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
 /* Small "Modeled" / "Validated" tag above a metric — separates first-person
    modeled projections from manager-validated outcomes. */
 .metric__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3054,7 +3804,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   margin-top: 1rem;
   padding-top: 0.7rem;
   border-top: 1px solid var(--rule);
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3206,7 +3956,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   padding: 1rem 0 0.5rem;
 }
 .cs-comparison__col-label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3222,7 +3972,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   align-items: baseline;
 }
 .cs-comparison__header {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3246,8 +3996,8 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
     gap: 0.4rem;
   }
   .cs-comparison__col-labels { display: none; }
-  .cs-comparison__before::before { content: "Before — "; color: var(--muted); font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
-  .cs-comparison__after::before  { content: "After — ";  color: var(--accent); font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
+  .cs-comparison__before::before { content: "Before — "; color: var(--muted); font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
+  .cs-comparison__after::before  { content: "After — ";  color: var(--accent); font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; margin-right: 0.35rem; }
 }
 
 /* ---------- Case-study diagram (animated SVG systems visual) ---------- */
@@ -3270,7 +4020,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   overflow: visible;
 }
 .cs-diagram figcaption {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3336,7 +4086,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   .screens-gate__frame { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
 }
 .screens-gate__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -3408,7 +4158,7 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   padding: 3rem;
   text-align: center;
   color: var(--muted);
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -3562,11 +4312,17 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   /* Buttons stack vertically and fill width — easier thumb targets */
   .hero__actions .btn { flex: 1 1 100%; justify-content: center; }
 
-  /* Arctic hero — keep the light, warm left of the image behind the text
-     when the landscape is cropped to a narrow portrait frame */
+  /* Hero — the block sits high here, the same as on desktop, because cropping
+     a landscape into a narrow portrait frame raises the buildings in the
+     frame. But 46vh of bottom padding overshot and pinned the type to the top
+     edge; 34vh drops it ~40–54px depending on handset. Measured against the
+     artwork at 375/390/414 wide, the block still lands entirely in sky — the
+     skyline doesn't start until ~78% down the frame — and worst-case contrast
+     on the name actually improves as it descends into the warmer band
+     (4.32:1 → 4.91:1 on a 375×667). */
   .hero--arctic {
-    padding-top: clamp(6rem, 20vw, 8rem);
-    padding-bottom: clamp(3.5rem, 12vw, 5rem);
+    padding-top: clamp(2rem, 6vh, 3.5rem);
+    padding-bottom: clamp(10rem, 34vh, 20rem);
     background-position: center;
   }
 
@@ -3597,7 +4353,9 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
 /* ---- Homepage arctic hero (current .hero__name / .hero__meta-pill markup,
    which the older .hero h1 / .btn rules above don't target) ---- */
 @media (max-width: 600px) {
-  .hero--arctic { min-height: 72vh; }
+  /* No min-height override here any more — it was pinning the hero to 72vh,
+     which took away the very room the type needs to clear the skyline. The
+     base 100svh applies instead. */
   .hero--arctic .hero__name { line-height: 0.9; }
   .hero--arctic .hero__eyebrow { font-size: 0.68rem; letter-spacing: 0.1em; }
   .hero--arctic .hero__cta { gap: 1.1rem; font-size: 0.74rem; }
@@ -3636,7 +4394,10 @@ body.work-page .site-footer__colophon { border-top-color: rgba(255, 255, 255, 0.
   }
 }
 @media (max-width: 380px) {
-  .hero--arctic .hero__name,
+  /* .hero--arctic dropped from this rule. It capped the name at 2.2rem, which
+     matched an older hero but flattens the current one — the block name is the
+     whole idea, and 44px on a 375px phone isn't it. Its own
+     clamp(4rem, 13.5vw, 10rem) already floors at a size that fits. */
   .hero--chicago .hero__name { font-size: clamp(1.8rem, 8vw, 2.2rem); }
   .hero--arctic .hero__meta-pill { font-size: 0.58rem; letter-spacing: 0.05em; }
 }
@@ -3795,7 +4556,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
    ============================================================ */
 .cs-glance { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 .cs-glance__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -3841,7 +4602,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
 @media (max-width: 900px) { .cs-glance__facts { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; } }
 @media (max-width: 480px) { .cs-glance__facts { grid-template-columns: 1fr; } }
 .cs-glance__fact-label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.66rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3870,7 +4631,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
   gap: 0.55rem;
   padding: 0.85rem 1.5rem;
   border-radius: 999px;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -3907,7 +4668,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
 }
 @media (max-width: 860px) { .cs-access__grid { grid-template-columns: 1fr; gap: 2.5rem; } }
 .cs-access__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -3946,7 +4707,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
   background: rgba(255,255,255,0.035);
 }
 .cs-access__card-label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -3979,7 +4740,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
   border: 1.5px solid var(--t-accent);
   background: var(--t-accent);
   color: #FFF;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.76rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -4011,7 +4772,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
 .cs-access__unlocked { display: none; }
 .cs-access.is-unlocked .cs-access__unlocked {
   display: block;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.76rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -4044,7 +4805,7 @@ body[class*="cs-theme--"] .cs-hero__byline { border-color: rgba(0,0,0,0.14); }
   .cs-next-v2 a { padding: 3.5rem 0; }
 }
 .cs-next-v2__label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4270,7 +5031,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
 .cs-band--light .cs-q { border-bottom-color: color-mix(in srgb, var(--t-dark) 18%, transparent); }
 .cs-band--dark  .cs-q { border-bottom-color: rgba(255,255,255,0.18); }
 .cs-q__n {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   font-weight: 500;
@@ -4279,7 +5040,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
 .cs-band--light .cs-q__n { color: var(--t-accent-ink); }
 .cs-band--dark  .cs-q__n { color: var(--t-accent); }
 .cs-q__t {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4322,7 +5083,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
   color: var(--t-accent);
 }
 .cs-gate__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -4360,7 +5121,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
   gap: 1rem;
   margin: 2.25rem auto 1.5rem;
   max-width: 300px;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.64rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -4404,7 +5165,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
   border: 1px solid var(--t-accent);
   background: transparent;
   color: var(--t-accent);
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -4429,7 +5190,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
 .cs-gate__unlocked { display: none; }
 .cs-gate.is-unlocked .cs-gate__unlocked {
   display: block;
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -4445,7 +5206,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
 
 /* Marker introducing the unlocked material. */
 .cs-unlocked-note {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4468,7 +5229,7 @@ body[class*="cs-theme--"] .cs-hero--media .cs-hero {
 .cs-tldr-band { padding: 3.5rem 0 3.75rem; }
 .cs-tldr { max-width: var(--max-read); margin: 0 auto; padding: 0 var(--gutter); }
 .cs-tldr__eyebrow {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -4622,7 +5383,7 @@ body[class*="cs-theme--"] .cs-body h2 {
 
 /* Shared label + text so every zone speaks the same language */
 .cs-tldr__label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.64rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4669,7 +5430,7 @@ body[class*="cs-theme--"] .cs-body h2 {
 .cs-tldr__row--metric:last-child { border-bottom: none; }
 /* "Modeled" rides at the end of the explanation as a qualifier. */
 .cs-tldr__note {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4687,7 +5448,7 @@ body[class*="cs-theme--"] .cs-body h2 {
 .cs-tldr__list { margin: 2.25rem 0 0; }
 .cs-tldr__row { display: block; margin: 0 0 1.9rem; }
 .cs-tldr__row dt {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.64rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4723,7 +5484,7 @@ body[class*="cs-theme--"] .cs-body h2 {
   color: rgba(255,255,255,0.66);
 }
 .cs-tldr__note {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.58rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -4772,7 +5533,7 @@ body[class*="cs-theme--"] .cs-body h2 {
   border-radius: 0 3px 3px 0;
 }
 .cs-tldr__figures-label {
-  font-family: 'Libre Franklin', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.64rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;

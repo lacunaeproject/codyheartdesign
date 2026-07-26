@@ -175,7 +175,25 @@
       "Bash(awk '/^\\\\.hero--arctic \\\\.hero__content \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
       "Bash(awk '/^\\\\.hero--arctic \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
       "Bash(awk '/^\\\\.hero__greeting \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
-      "Bash(awk '/^\\\\.hero--arctic \\\\.hero__name \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)"
+      "Bash(awk '/^\\\\.hero--arctic \\\\.hero__name \\\\{/{f=1} f{print NR\": \"$0} f&&/^\\\\}/{exit}' css/main.css)",
+      "PowerShell(git *)",
+      "PowerShell(Select-String -Path C:\\\\Users\\\\codyj\\\\Documents\\\\codyheartdesign\\\\css\\\\main.css -Pattern '^\\(body|h1|h2|h3|\\\\.eyebrow|\\\\.work-band|\\\\.case-intro|\\\\.case-grid|\\\\.case-card|\\\\.writing|\\\\.writing-|\\\\.experience|\\\\.job|\\\\.hello|\\\\.site-footer|\\\\.site-header|\\\\.nav|\\\\.btn-|\\\\.shell|\\\\.frame|\\\\.wordmark\\)' | ForEach-Object { \"{0,5}  {1}\" -f $_.LineNumber, $_.Line })",
+      "PowerShell(Get-Process *)",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\resize.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\sample.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\check_encoding.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\fix_encoding.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\rename_nav.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\fix_eol.py\" --apply)",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\trim_matching1.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\sample_pairs.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\tower.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\chicago_pairs.py\")",
+      "PowerShell(python \"C:\\\\Users\\\\codyj\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-codyj-Documents-codyheartdesign\\\\6e8e1d78-3065-4eb0-836d-726006712945\\\\scratchpad\\\\finalize.py\")",
+      "Bash(python fix_eol.py --apply)",
+      "Bash(git log *)",
+      "Bash(grep -n '^\\\\\\\\\\\\\\\\\\\\*' css/main.css)",
+      "Bash(python mobile_hero.py)"
     ]
   }
 }
