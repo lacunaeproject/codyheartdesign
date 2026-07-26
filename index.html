@@ -43,7 +43,7 @@
     <a href="index.html" class="wordmark"><span class="wordmark__badge"><svg class="wordmark__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></svg></span></a>
     <nav class="nav" aria-label="Primary">
       <a href="index.html" aria-current="page">Work</a>
-      <a href="work.html">Metrics</a>
+      <a href="work.html">Hobbies</a>
       <a href="about.html">About</a>
       <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener" class="nav__ext">Resume<span class="nav__ext-icon" aria-hidden="true">↗</span></a>
 
@@ -52,6 +52,7 @@
       <a href="mailto:hello@codyheart.design" class="btn-hello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.2 8.5 5.8 8.5-5.8"/></svg><span>Say Hello</span></a>
       <a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener" class="btn-linkedin" aria-label="Cody Heart on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.2 9h3.6v12H3.2zM9.5 9h3.45v1.64h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9.5z"/></svg></a>
     </div>
+    <a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener" class="linkedin-fab" aria-label="Cody Heart on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.2 9h3.6v12H3.2zM9.5 9h3.45v1.64h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9.5z"/></svg></a>
   </div>
 </header>
 
@@ -69,12 +70,41 @@
   </section>
 
   <!-- ============================================================
+       BY THE NUMBERS — aggregate impact, leading into the case studies
+       ============================================================ -->
+  <section class="totals">
+    <div class="totals__inner shell">
+      <span class="eyebrow reveal">By the numbers</span>
+      <h2 class="totals__title reveal reveal--d1">Five years, totaled.</h2>
+
+      <ol class="totals__grid reveal reveal--d1">
+        <li class="totals__stat">
+          <span class="totals__num"><span class="totals__unit">$</span>500<span class="totals__unit">K</span></span>
+          <span class="totals__label">Annual operating<br>savings</span>
+        </li>
+        <li class="totals__stat">
+          <span class="totals__num"><span class="totals__unit">$</span>3.5<span class="totals__unit">M</span></span>
+          <span class="totals__label">Revenue capacity<br>unlocked</span>
+        </li>
+        <li class="totals__stat">
+          <span class="totals__num">16<span class="totals__unit">K+</span></span>
+          <span class="totals__label">Weekly intake<br>calls</span>
+        </li>
+        <li class="totals__stat">
+          <span class="totals__num">97<span class="totals__unit">%</span></span>
+          <span class="totals__label">Coordinator<br>satisfaction</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================================
        FEATURED WORK — one card per project, each carrying its own
        flat Wild Tale colour pair. The section is the ground; the
        colour lives in the card.
        ============================================================ -->
   <section class="work-cards">
-    <h2 class="work-cards__title shell">The Work</h2>
+    <h2 class="work-cards__title shell">How I did it</h2>
     <ol class="mq-cards shell">
 
       <li class="mq-card mq-card--matching reveal">
@@ -86,7 +116,7 @@
           <ul class="mq-card__pills">
             <li>2025</li>
             <li>Lead designer</li>
-            <li>24.1% fewer rematches</li>
+            <li class="metric">32% fewer rematches</li>
           </ul>
         </a>
       </li>
@@ -100,7 +130,7 @@
           <ul class="mq-card__pills">
             <li>2024</li>
             <li>Lead designer</li>
-            <li>50+ tools &#8594; 6 jobs</li>
+            <li class="metric">50+ tools &#8594; 6 jobs</li>
           </ul>
         </a>
       </li>
@@ -114,40 +144,7 @@
           <ul class="mq-card__pills">
             <li>2023 &#8211; 2024</li>
             <li>Lead designer &amp; acting PO</li>
-            <li>100% national adoption</li>
-          </ul>
-        </a>
-      </li>
-
-    </ol>
-
-    <h2 class="work-cards__title work-cards__title--past shell">Past Work</h2>
-    <ol class="mq-cards mq-cards--past shell">
-
-      <li class="mq-card mq-card--claims reveal reveal--d3">
-        <a class="mq-card__link" href="case-studies/claims.html">
-          <h3 class="marquee__title">
-            <span class="marquee__block">Claims</span>
-            <span class="marquee__script">Engine</span>
-          </h3>
-          <ul class="mq-card__pills">
-            <li>2021</li>
-            <li>Lead designer</li>
-            <li>60% less time-on-task</li>
-          </ul>
-        </a>
-      </li>
-
-      <li class="mq-card mq-card--billing reveal reveal--d4">
-        <a class="mq-card__link" href="case-studies/billing.html">
-          <h3 class="marquee__title">
-            <span class="marquee__block">Self</span>
-            <span class="marquee__script">Billing</span>
-          </h3>
-          <ul class="mq-card__pills">
-            <li>2020</li>
-            <li>Lead designer</li>
-            <li>40% less manual work</li>
+            <li class="metric">100% national adoption</li>
           </ul>
         </a>
       </li>
@@ -164,22 +161,17 @@
        Tool Consolidation  50+ regional intake tools inventoried · 6 underlying jobs
        Admin Pilot       99% national adoption · 147 of 178 rated it "much better" -->
 
-
-
-  <!-- Squiggle break — the two sections sit on near-identical navies, so the
-       seam between them needs a mark to read as a change of subject. -->
-  <div class="squiggle-rule" role="presentation"></div>
-
   <!-- ============================================================
        HELLO / SHORT ABOUT
        ============================================================ -->
   <section class="hello">
     <div class="hello__grid">
-      <div>
-        <span class="eyebrow reveal">Hello</span>
-        <h2 class="reveal reveal--d1">Work that&#8217;s mine — and does some good.</h2>
-      </div>
-      <div>
+      <span class="eyebrow hello__brow reveal">Hello</span>
+      <h2 class="hello__title reveal reveal--d1">Work that&#8217;s mine — and does some good.</h2>
+      <figure class="hello__photo reveal reveal--d1">
+        <img src="assets/self/chicago-us.jpg" alt="Cody in Chicago" loading="lazy" decoding="async">
+      </figure>
+      <div class="hello__body">
         <p class="reveal">I&#8217;m Cody. I came to product design through illustration and a few years in operations at Postmates and Twitter, and I&#8217;ve spent the last seven years designing tools for healthcare.</p>
         <p class="reveal reveal--d1">For a while I let the work be measured by what it handed back to me — the title, the raise, the approval. I chased those, got them, and found they don&#8217;t add up to much on their own. What pulls at me now is different: work that&#8217;s unmistakably mine, that includes more people than it leaves out, and that treats the person on the other side of the screen with real care.</p>
         <p class="reveal reveal--d2">I&#8217;m learning to be more open with it, too — to make room for other designers, to write down what I&#8217;ve figured out and give it away, and to let this craft stay a little joyful. <a href="https://codynheart.com" target="_blank" rel="noopener" class="hello__link">A reader&#8217;s atlas</a> is one of those for-the-joy-of-it projects, and I keep an hour a week free for any designer who wants to talk.</p>
@@ -194,31 +186,35 @@
      ============================================================ -->
 <footer class="site-footer">
   <div class="site-footer__inner">
-    <div>
-      <h3>Elsewhere</h3>
-      <p class="site-footer__sign">Remote · Franklin, TN → Chicago, IL 2027</p>
-      <p style="color: var(--muted); margin: 0;">hello@codyheart.design</p>
+    <div class="site-footer__lead">
+      <p class="site-footer__place">Remote &middot; Chicago</p>
+      <h2 class="site-footer__cta">Let&#8217;s make something that moves a number.</h2>
+      <a class="site-footer__email" href="mailto:hello@codyheart.design">hello@codyheart.design</a>
     </div>
-    <div>
-      <h3>Links</h3>
-      <ul>
-        <li><a href="work.html">Case studies</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Find me</h3>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads ↗</a></li>
-        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
-        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas ↗</a></li>
-      </ul>
-    </div>
+
+    <nav class="site-footer__cols" aria-label="Footer">
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="work.html">Case studies</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Find me</h3>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads ↗</a></li>
+          <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
+          <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas ↗</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="site-footer__colophon">
-      <span>© 2026 Cody Heart. Typeset in Wild Tale &amp; Outfit.</span>
-      <span>Designed by me, coded with Claude.</span>
+      <span>© 2026 Cody Heart &middot; Remote from Chicago</span>
+      <span>Typeset in Wild Tale &amp; Outfit &middot; Coded with Claude</span>
     </div>
   </div>
 </footer>

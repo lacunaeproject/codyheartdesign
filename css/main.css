@@ -359,7 +359,7 @@ body::before {
 .site-header.is-scrolled {
   /* Shared height for the nav pill and the two buttons so all three controls
      match exactly (change this one value to resize them together). */
-  --control-h: 3rem;
+  --control-h: 3.7rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -482,17 +482,34 @@ body::before {
      The sizes step DOWN from the script's, which ran large to compensate for
      how small it sets; a geometric sans needs none of that. */
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 1.28rem;
   font-weight: 500;
   letter-spacing: 0.01em;
   color: #24405C;   /* dark glacier — 8.4:1 on the pill's translucent white */
 }
 /* Laptop / desktop — step the nav up a touch as the header gains room. */
 @media (min-width: 1024px) {
-  .nav { font-size: 1rem; }
+  .nav { font-size: 1.45rem; }
 }
 @media (min-width: 1440px) {
-  .nav { font-size: 1.05rem; }
+  .nav { font-size: 1.55rem; }
+}
+/* Mobile — the pill stretches full width so its ends line up with the heart
+   logo (upper-left) and the LinkedIn circle (upper-right): same left inset as
+   the header gutter, same right inset as the fab. Four links have to fit that
+   fixed width, so the type steps down and the padding tightens here — the big
+   sizes above are for the roomy centred pill on tablet and up. */
+@media (max-width: 780px) {
+  .home .nav {
+    left: var(--gutter);
+    right: max(clamp(1rem, 2.2vw, 1.75rem), env(safe-area-inset-right, 0px));
+    transform: none;
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(0.9rem, 2.2vw + 0.42rem, 1.05rem);
+  }
+  .home .nav a { padding: 0 0.5rem; gap: 0.3em; }
 }
 /* Text selection uses the lightest penguin blue */
 ::selection { background: var(--blue-100); color: var(--black); }
@@ -500,7 +517,7 @@ body::before {
   /* No vertical padding — the link stretches to the capsule's inner height, so
      padding here would only fight it. Horizontal padding still sets the pill's
      width, and the flex centring holds the label on the optical middle. */
-  padding: 0 0.95rem;
+  padding: 0 1.4rem;
   line-height: 1;
   border-radius: 999px;
   position: relative;
@@ -575,11 +592,46 @@ body::before {
    that job). The logo stays: upper-left on tablet/desktop (its default brand
    grid area), centred on mobile. Inner pages keep everything. */
 .home .site-header__cta { display: none; }
+
+/* Floating circular LinkedIn button, pinned to the upper-right — homepage only
+   (inner pages carry LinkedIn in the header CTA). Mirrors the floating nav
+   pill: translucent white, blurred, lifted off the page; the glacier-dark mark
+   warms to the Chicago red on hover, exactly like the nav links. */
+.linkedin-fab { display: none; }
+.home .linkedin-fab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: max(clamp(1rem, 2.2vw, 1.75rem), env(safe-area-inset-top, 0px));
+  right: max(clamp(1rem, 2.2vw, 1.75rem), env(safe-area-inset-right, 0px));
+  z-index: 100;
+  width: var(--control-h);
+  height: var(--control-h);
+  border-radius: 50%;
+  color: #24405C;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(9, 89, 138, 0.12);
+  box-shadow: 0 10px 30px -8px rgba(20, 57, 95, 0.45);
+  backdrop-filter: blur(10px) saturate(1.1);
+  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  transition: color 180ms ease, background-color 180ms ease, transform 160ms ease;
+}
+.home .linkedin-fab:hover {
+  color: #6E1F14;
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-1px);
+}
+.home .linkedin-fab svg { width: 1.2rem; height: 1.2rem; }
+@media (prefers-reduced-motion: reduce) {
+  .home .linkedin-fab { transition: color 180ms ease, background-color 180ms ease; }
+  .home .linkedin-fab:hover { transform: none; }
+}
 @media (max-width: 780px) {
   .home .site-header__inner {
     grid-template-columns: 1fr;
     grid-template-areas: "brand";
-    justify-items: center;
+    justify-items: start;
   }
 }
 /* Homepage logo: no circle — just a large white heart with weight against the
@@ -958,7 +1010,7 @@ main { position: relative; z-index: 2; }
    it leads at 6.4:1 and the three lines finally belong to one family. */
 .hero__greeting {
   font-family: 'Wild Tale Script', cursive;
-  font-size: clamp(1.5rem, 3.4vw, 2.6rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
   line-height: 1;
   /* Deeper than the old #0E5470. That read 4.2:1 on the arctic sky but only
      2.62:1 on the Chicago artwork, where this line lands on mid-blue rather
@@ -969,7 +1021,7 @@ main { position: relative; z-index: 2; }
 .hero--arctic .hero__name {
   font-family: 'Wild Tale Block', 'Libre Franklin', sans-serif;
   font-weight: 400;
-  font-size: clamp(4rem, 13.5vw, 10rem);
+  font-size: clamp(6rem, 16vw, 13rem);
   line-height: 0.82;
   letter-spacing: 0.01em;
   color: #0A2A45;   /* the skyline's blue, deepened · 6.4:1 */
@@ -980,8 +1032,8 @@ main { position: relative; z-index: 2; }
    margins run larger than the visible gap they produce. */
 .hero__role {
   font-family: 'Wild Tale Script', cursive;
-  font-size: clamp(1.4rem, 3.2vw, 2.4rem);   /* long line — sized to stay on one row */
-  line-height: 1;
+  font-size: clamp(1.9rem, 3.8vw, 3rem);   /* long line — may wrap at the largest sizes */
+  line-height: 1.05;
   color: #0A2E42;   /* matches the greeting — 8.0:1 on the warm band it sits over */
   margin: 0.35em 0 0;
 }
@@ -2540,6 +2592,8 @@ body.home {
 .home .experience h2 em,
 .home .hello h2 em,
 .home .case-intro h2 em { font-style: normal; color: var(--cloud); }
+/* On the warm terracotta Hello, the amber accent goes lighter to hold contrast. */
+.home .hello h2 em { color: var(--butter); }
 
 /* ---- Flat colour blocks, no water -------------------------
    The descent, the contour ripples and the wave crests are all gone.
@@ -2552,14 +2606,150 @@ body.home {
    brown. Same hue as the work band, stepped down twice — the page closes by
    getting deeper rather than by changing material. The warm cream type is
    what keeps them from reading cold. */
-.home .hello {
-  background-color: #0D2033;          /* a shade under the work band */
-  background-image: none;
-  color: #FFF3D6;                     /* warm cream · 14.2:1 */
+/* ---- By the numbers ----------------------------------------
+   An aggregate stat band between the work and the hello. Stays in the cool
+   navy family (a step under the work band) with the same wave texture, so it
+   reads as the close of the work run before the page turns warm at Hello. */
+.home .totals {
+  position: relative;
+  overflow: hidden;
+  background-color: #16344F;
+  /* This band now sits directly under the hero, so it carries the glacier-blue
+     top (#16344F, the arctic echo) fading into the deep sea — greeting the hero
+     above and handing the descent down to the work cards below. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='42' viewBox='0 0 168 42'%3E%3Cpath d='M0 21 q21 -9 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-opacity='0.05' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #16344F 0%, #0A2233 100%);
+  background-size: 168px 42px, 100% 100%;
+  background-position: center top, center top;
+  background-repeat: repeat, no-repeat;
+  padding: clamp(3.5rem, 8vw, 6rem) 0;
+  color: #FFF3D6;
 }
+.home .totals__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  text-align: center;
+}
+.home .totals .eyebrow { color: var(--sky-amber, #FDA35E); }   /* ties to THE WORK stars */
+.home .totals__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin: 0.6rem 0 clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--foam);
+}
+.home .totals__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.home .totals__stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: clamp(1.7rem, 3.2vw, 2.4rem) clamp(0.8rem, 2vw, 1.4rem) clamp(1.4rem, 2.5vw, 1.9rem);
+  background: #12324B;
+  border: 1px solid rgba(255, 246, 232, 0.14);
+  border-radius: 22px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+  transition: border-color 220ms ease, background-color 220ms ease,
+              box-shadow 220ms ease, transform 220ms cubic-bezier(.2, .7, .2, 1);
+}
+.home .totals__stat:hover {
+  background: #16405E;
+  border-color: rgba(255, 246, 232, 0.28);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px);
+}
+.home .totals__num {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+  color: var(--foam);
+  white-space: nowrap;
+}
+.home .totals__unit { color: inherit; }
+.home .totals__label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: rgba(255, 243, 214, 0.82);
+}
+/* Supporting facts — smaller, dot-separated, one quiet line under the tiles. */
+.home .totals__notes {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 243, 214, 0.7);
+}
+.home .totals__notes li { position: relative; }
+.home .totals__notes li + li::before {
+  content: "";
+  position: absolute;
+  left: -0.78rem;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--sky-amber, #FDA35E);
+  transform: translateY(-50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home .totals__stat { transition: none; }
+  .home .totals__stat:hover { transform: none; }
+}
+@media (max-width: 720px) {
+  .home .totals__grid { grid-template-columns: repeat(2, 1fr); gap: clamp(0.9rem, 2.5vw, 1.5rem); }
+}
+
+/* The page turns warm here: after the cool work section, Hello lands on a
+   sunset terracotta pulled from the hero sky (sun-deep → a deeper brick),
+   closing the run in the artwork's warm key rather than more navy. The same
+   faint wave texture from the work section carries straight down over it. */
+.home .hello {
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  background-color: #B0491F;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='42' viewBox='0 0 168 42'%3E%3Cpath d='M0 21 q21 -9 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-opacity='0.05' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #C0521A 0%, #7C3216 100%);
+  background-size: 168px 42px, 100% 100%;
+  background-position: center top, center top;
+  background-repeat: repeat, no-repeat;
+  color: #FFF3D6;                     /* warm cream */
+}
+/* Footer settles onto the deepest warm brown — the page's floor, and the wave
+   texture keeps going right to the bottom. */
 .home .site-footer {
-  background-color: #07131F;          /* deepest — the page's floor */
-  background-image: none;
+  background-color: #26120A;          /* deep brown — the page's floor */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='42' viewBox='0 0 168 42'%3E%3Cpath d='M0 21 q21 -9 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-opacity='0.04' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 168px 42px;
+  background-repeat: repeat;
   background-blend-mode: normal;
 }
 /* Nothing rises into anything any more. */
@@ -2596,12 +2786,6 @@ body.home {
    to drag the brick-on-frost text down to 4.3:1, under the floor. */
 .home .mq-card--pilot         { --band: #C4372A; --mq-ink: #FFF1DE; --mq-dark: #C4372A;
                                 --mq-frost: #FFF6E8; }                                     /* brick red · 4.8:1 */
-/* Two light-band cards, so the filled metric pill (--mq-dark) contrasts on its
-   own — no darker override needed as on the red card. No matching texture asset
-   yet, so these read as flat colour until one's made. */
-.home .mq-card--claims        { --band: #A7C4A0; --mq-ink: #234A2C; --mq-dark: #234A2C; } /* sage green */
-.home .mq-card--billing       { --band: #E6C15A; --mq-ink: #5F3E12; --mq-dark: #5F3E12;
-                                --mq-frost: #FFF6E8; }                                     /* goldenrod */
 
 /* Dark navy field. No wave crest, no contour ripples — the water motif is
    gone; the cards carry the section on colour alone. This navy is the hero's
@@ -2611,14 +2795,13 @@ body.home {
   position: relative;
   overflow: hidden;
   background-color: #0A2233;
-  /* Cohesion with the arctic hero: the navy is a glacier blue up top (the same
-     #16344F used elsewhere to echo the hero) settling into the deep sea below,
-     so this section reads as the water beneath the hero rather than a separate
-     dark panel. Faint cream wave-lines ride on top — the same current/contour
-     motif as the squiggle divider, reading as water rather than a dot grid. */
+  /* Picks up where the totals band leaves off — starting at the same deep navy
+     and settling deeper still, so the glacier→sea descent runs unbroken from
+     the hero, through the numbers, into the cards. Faint cream wave-lines ride
+     on top — the same current/contour motif, reading as water. */
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='42' viewBox='0 0 168 42'%3E%3Cpath d='M0 21 q21 -9 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-opacity='0.04' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #16344F 0%, #0A2233 55%);
+    linear-gradient(180deg, #0A2233 0%, #081826 100%);
   background-size: 168px 42px, 100% 100%;
   background-position: center top, center top;
   background-repeat: repeat, no-repeat;
@@ -2690,14 +2873,6 @@ body.home {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
 }
-/* Past Work stays a quiet subhead — no stars, smaller — so it reads as
-   secondary to the main title above. */
-.home .work-cards__title--past {
-  font-size: clamp(1.3rem, 2.6vw, 2rem);
-  letter-spacing: 0.04em;
-}
-.home .work-cards__title--past::before,
-.home .work-cards__title--past::after { display: none; }
 .home .mq-cards {
   list-style: none;
   margin: 0 auto;
@@ -2733,14 +2908,16 @@ body.home {
    cream instead, since red-on-red would just look like it grew. */
 .home .mq-card__link {
   --mq-shadow: #C4372A;
-  box-shadow: 0 0 0 var(--mq-shadow);
+  /* At rest the card lifts off the water with a soft drop shadow, like the
+     metric tiles. Hover adds the signature hard-edged colour offset on top. */
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.32);
   transition: transform 300ms cubic-bezier(.2, .7, .2, 1),
               box-shadow 300ms cubic-bezier(.2, .7, .2, 1);
 }
 .home .mq-card--pilot .mq-card__link { --mq-shadow: #FFF1DE; }
 .home .mq-card__link:hover {
-  transform: translate(-6px, -6px) rotate(-0.7deg);
-  box-shadow: 10px 10px 0 var(--mq-shadow);
+  transform: translateY(-8px) rotate(-0.6deg);
+  box-shadow: 0 28px 52px rgba(0, 0, 0, 0.45);
 }
 @media (prefers-reduced-motion: reduce) {
   .home .mq-card__link,
@@ -2791,7 +2968,7 @@ body.home {
    pill (the figure) real weight: a solid fill in the card's dark ink with cream
    text, set larger than the two frosted context chips beside it, so the number
    is the first thing the eye lands on. */
-.home .mq-card__pills li:last-child {
+.home .mq-card__pills li.metric {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
@@ -2805,13 +2982,16 @@ body.home {
 }
 /* The red card's --mq-dark is the band colour itself, so its metric pill barely
    separates from the card. Darken just that pill's fill. */
-.home .mq-card--pilot .mq-card__pills li:last-child {
+.home .mq-card--pilot .mq-card__pills li.metric {
   border-color: #6E1D13;
   background: #6E1D13;
 }
+/* When a card carries two metrics, only the first wears the star — a second one
+   on a small tile just reads as clutter. */
+.home .mq-card__pills li.metric ~ li.metric::before { display: none; }
 /* A single Chicago six-pointed star reads as the metric icon, in the pill's
    cream text colour via mask so it always matches. */
-.home .mq-card__pills li:last-child::before {
+.home .mq-card__pills li.metric::before {
   content: "";
   flex: none;
   width: 1em;
@@ -2837,28 +3017,6 @@ body.home {
 .home .mq-card .marquee__script { font-size: clamp(2.9rem, 9.8vw, 8rem); }
 .home .mq-card--consolidation .marquee__script { font-size: clamp(2.3rem, 7.6vw, 6.2rem); }
 
-/* ---- Past Work ---------------------------------------------
-   A secondary group below the current work: two square tiles side by side,
-   smaller than the full-width rectangles above so they read as archive. */
-.home .work-cards__title--past {
-  margin-top: clamp(2.75rem, 6vw, 4.5rem);
-}
-.home .mq-cards--past {
-  grid-template-columns: repeat(2, 1fr);
-}
-.home .mq-cards--past .mq-card__link {
-  aspect-ratio: 1 / 1;
-  justify-content: center;
-  gap: clamp(0.8rem, 2vw, 1.3rem);
-}
-.home .mq-cards--past .marquee__block  { font-size: clamp(1.5rem, 4.2vw, 3rem); }
-.home .mq-cards--past .marquee__script { font-size: clamp(1.9rem, 5.2vw, 3.8rem); }
-/* On narrow screens the squares get too small to hold three pills — stack them
-   and let height follow content again. */
-@media (max-width: 560px) {
-  .home .mq-cards--past { grid-template-columns: 1fr; }
-  .home .mq-cards--past .mq-card__link { aspect-ratio: auto; }
-}
 /* ---- Panel metadata ----------------------------------------
    Modelled on the Wild Tale chocolate-bar specimen, where the facts
    sit under the name as small caps with the figure set larger than
@@ -3305,29 +3463,146 @@ body.home {
 .home .job__list li { font-family: var(--font-sans); }
 
 /* ---- Hello -------------------------------------------------- */
-.home .hello__link { border-bottom-color: var(--sun); }
+.home .hello__link { border-bottom-color: var(--butter); }
 .home .hello__link:hover { border-bottom-color: var(--foam); }
+
+/* ---- Hello photo + layout ----------------------------------
+   The "Hello" eyebrow gets its own row; the heading and the photo start on the
+   next row, so the PHOTO TOP LINES UP WITH THE TOP OF THE HEADING. The photo
+   spans down alongside the paragraphs on the left.
+   The grid keeps the same gutter as the cards, so on mobile the photo holds
+   that margin instead of running edge to edge. */
+.home .hello__grid {
+  grid-template-areas:
+    "brow   ."
+    "title  photo"
+    "body   photo";
+  align-items: start;
+  column-gap: clamp(2rem, 4vw, 4rem);
+  row-gap: clamp(1rem, 2.4vw, 1.4rem);
+}
+.home .hello__brow  { grid-area: brow; margin: 0; }
+.home .hello__title { grid-area: title; margin: 0; }
+.home .hello__photo { grid-area: photo; margin: 0; max-width: 100%; }
+.home .hello__body  { grid-area: body; margin-top: clamp(0.4rem, 1vw, 0.8rem); }
+@media (max-width: 860px) {
+  .home .hello__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "brow" "title" "body" "photo";
+  }
+}
+.home .hello__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+}
 
 /* ---- Footer ------------------------------------------------
    The sign-off line is a place, exactly like the hero's role line —
    so it gets the page's last script line. */
+/* Redesigned to close the warm run: a big display call-to-action and email on
+   the left, two link columns on the right, an amber Chicago-starred location,
+   and a colophon underneath — cream on the brown floor, amber on hover. */
+.home .site-footer { padding: clamp(3.5rem, 7vw, 5.5rem) 0 6rem; }
+.home .site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.home .site-footer__lead { max-width: 32rem; }
+/* Location tag with a Chicago six-pointed star, in the hero amber. */
+.home .site-footer__place {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sky-amber, #FDA35E);
+}
+.home .site-footer__place::before {
+  content: "";
+  width: 0.95em;
+  height: 0.95em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.home .site-footer__cta {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(1.7rem, 3.6vw, 2.9rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--foam);
+  margin: 0 0 1.5rem;
+}
+.home .site-footer__email {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-weight: 600;
+  color: #FFF3D6;
+  border-bottom: 2px solid rgba(253, 163, 94, 0.6);
+  padding-bottom: 2px;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+.home .site-footer__email:hover { color: var(--sky-amber, #FDA35E); border-color: var(--sky-amber, #FDA35E); }
+.home .site-footer__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
 .home .site-footer h3 {
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--cloud);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 243, 214, 0.55);
+  margin: 0 0 1rem;
 }
-.home .site-footer__sign {
-  font-family: var(--font-script);
-  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
-  line-height: 1.15;
-  letter-spacing: 0;
-  color: var(--cloud);
+.home .site-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.7rem; }
+.home .site-footer ul a {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #FFF3D6;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
-.home .site-footer ul a { font-family: var(--font-sans); font-size: 0.9rem; }
-.home .site-footer ul a:hover { color: var(--sun); border-color: var(--sun); }
-.home .site-footer__colophon { font-family: var(--font-sans); color: #9FB6C4; }
+.home .site-footer ul a:hover {
+  color: var(--sky-amber, #FDA35E);
+  border-color: var(--sky-amber, #FDA35E);
+  transform: translateX(3px);
+}
+.home .site-footer__colophon {
+  grid-column: 1 / -1;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255, 241, 222, 0.12);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem 1.5rem;
+  flex-wrap: wrap;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: rgba(255, 243, 214, 0.5);
+}
+@media (max-width: 760px) {
+  .home .site-footer__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .home .site-footer__cols { grid-template-columns: 1fr; gap: 1.8rem; }
+}
 
 /* ---------- Lock page ---------- */
 .lock {

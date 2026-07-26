@@ -193,7 +193,13 @@
       "Bash(python fix_eol.py --apply)",
       "Bash(git log *)",
       "Bash(grep -n '^\\\\\\\\\\\\\\\\\\\\*' css/main.css)",
-      "Bash(python mobile_hero.py)"
+      "Bash(python mobile_hero.py)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8777/index.html)",
+      "Bash(node *)",
+      "Bash(grep -ioE \"\\([0-9]+[%+]?|[0-9]+\\\\.[0-9]+%\\)[^<]{0,40}\" work.html)",
+      "Bash(curl -s http://localhost:8777/index.html)",
+      "Bash(curl -s \"http://localhost:8777/css/main.css\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" \"http://localhost:8777/assets/self/chicago-us.jpg\")"
     ]
   }
 }
