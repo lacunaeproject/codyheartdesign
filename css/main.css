@@ -2596,6 +2596,12 @@ body.home {
    to drag the brick-on-frost text down to 4.3:1, under the floor. */
 .home .mq-card--pilot         { --band: #C4372A; --mq-ink: #FFF1DE; --mq-dark: #C4372A;
                                 --mq-frost: #FFF6E8; }                                     /* brick red · 4.8:1 */
+/* Two light-band cards, so the filled metric pill (--mq-dark) contrasts on its
+   own — no darker override needed as on the red card. No matching texture asset
+   yet, so these read as flat colour until one's made. */
+.home .mq-card--claims        { --band: #A7C4A0; --mq-ink: #234A2C; --mq-dark: #234A2C; } /* sage green */
+.home .mq-card--billing       { --band: #E6C15A; --mq-ink: #5F3E12; --mq-dark: #5F3E12;
+                                --mq-frost: #FFF6E8; }                                     /* goldenrod */
 
 /* Dark navy field. No wave crest, no contour ripples — the water motif is
    gone; the cards carry the section on colour alone. This navy is the hero's
@@ -2603,25 +2609,95 @@ body.home {
    continuation of the artwork above without borrowing its shapes. */
 .home .work-cards {
   position: relative;
+  overflow: hidden;
   background-color: #0A2233;
-  background-image: none;
+  /* Cohesion with the arctic hero: the navy is a glacier blue up top (the same
+     #16344F used elsewhere to echo the hero) settling into the deep sea below,
+     so this section reads as the water beneath the hero rather than a separate
+     dark panel. Faint cream wave-lines ride on top — the same current/contour
+     motif as the squiggle divider, reading as water rather than a dot grid. */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='42' viewBox='0 0 168 42'%3E%3Cpath d='M0 21 q21 -9 42 0 t42 0 t42 0 t42 0' fill='none' stroke='%23FFF1DE' stroke-opacity='0.04' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #16344F 0%, #0A2233 55%);
+  background-size: 168px 42px, 100% 100%;
+  background-position: center top, center top;
+  background-repeat: repeat, no-repeat;
   padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(3rem, 7vw, 6rem);
+}
+/* Drifting snow lifted straight from the hero, so the same Chicago winter
+   carries down into this section. Kept faint and set above the cards (like the
+   hero snows over its content), pointer-events off so hovers still land. */
+.home .work-cards::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.45;
+  background-image:
+    radial-gradient(4.2px 4.2px at 20px 40px, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(3px 3px at 80px 100px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.6px 3.6px at 140px 30px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2.6px 2.6px at 200px 90px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(4px 4px at 260px 50px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 40px 160px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.4px 3.4px at 110px 200px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(2.4px 2.4px at 175px 150px, rgba(255,255,255,0.7), transparent 60%),
+    radial-gradient(3.7px 3.7px at 240px 190px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 300px 130px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(3.2px 3.2px at 60px 260px, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(2.6px 2.6px at 150px 290px, rgba(255,255,255,0.75), transparent 60%),
+    radial-gradient(3.6px 3.6px at 220px 250px, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(3px 3px at 300px 300px, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 120px 70px, rgba(255,255,255,0.72), transparent 60%),
+    radial-gradient(3.3px 3.3px at 250px 110px, rgba(255,255,255,0.85), transparent 60%);
+  background-size: 320px 320px;
+  animation: snowFall 24s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home .work-cards::before { animation: none; }
 }
 .home .work-cards > * { position: relative; z-index: 2; }
 /* Section title. Set well below the card names so it introduces them rather
    than competing — and in cream rather than any one card's ink, so it doesn't
    look like it belongs to the first card. */
 .home .work-cards__title {
-  margin: 0 auto clamp(1.4rem, 3vw, 2.4rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.9rem, 2.8vw, 1.9rem);
+  width: fit-content;
+  margin: 0 auto clamp(1.8rem, 3.5vw, 2.8rem);
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-size: clamp(1.9rem, 4vw, 3.3rem);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   line-height: 1;
   text-align: center;
   color: var(--foam);            /* 14.5:1 on the navy */
 }
+/* Flank the section title with a Chicago star on each side, in the brick red
+   that carries across the cards and the nav's active pill — so the heading
+   announces the group instead of just labelling it. */
+.home .work-cards__title::before,
+.home .work-cards__title::after {
+  content: "";
+  flex: none;
+  width: clamp(1.3rem, 3vw, 2.1rem);
+  height: clamp(1.3rem, 3vw, 2.1rem);
+  background-color: var(--sky-amber, #FDA35E);   /* the hero's warm amber */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+/* Past Work stays a quiet subhead — no stars, smaller — so it reads as
+   secondary to the main title above. */
+.home .work-cards__title--past {
+  font-size: clamp(1.3rem, 2.6vw, 2rem);
+  letter-spacing: 0.04em;
+}
+.home .work-cards__title--past::before,
+.home .work-cards__title--past::after { display: none; }
 .home .mq-cards {
   list-style: none;
   margin: 0 auto;
@@ -2634,12 +2710,21 @@ body.home {
   align-items: center;
   gap: clamp(1.1rem, 2.5vw, 1.9rem);
   padding: clamp(2.4rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
-  background: var(--band);
+  background-color: var(--band);
+  background-image: var(--mq-texture, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--mq-ink);
   border-radius: 26px;
+  overflow: hidden;
   text-align: center;
   transition: transform 280ms cubic-bezier(.2, .7, .2, 1);
 }
+/* Each card carries the matching card texture over its band colour. */
+.home .mq-card--matching .mq-card__link      { --mq-texture: url("../assets/textures/blue-card.PNG"); }
+.home .mq-card--consolidation .mq-card__link { --mq-texture: url("../assets/textures/beige-card.PNG"); }
+.home .mq-card--pilot .mq-card__link         { --mq-texture: url("../assets/textures/red-card.PNG"); }
 /* Hover: the card tilts off the grid and throws a hard-edged shadow in the
    Chicago red — no blur, matching the flat language everywhere else.
    The shadow has to be LIGHT against this ground: a dark one was invisible on
@@ -2654,8 +2739,8 @@ body.home {
 }
 .home .mq-card--pilot .mq-card__link { --mq-shadow: #FFF1DE; }
 .home .mq-card__link:hover {
-  transform: translate(-10px, -10px) rotate(-0.7deg);
-  box-shadow: 20px 20px 0 var(--mq-shadow);
+  transform: translate(-6px, -6px) rotate(-0.7deg);
+  box-shadow: 10px 10px 0 var(--mq-shadow);
 }
 @media (prefers-reduced-motion: reduce) {
   .home .mq-card__link,
@@ -2682,6 +2767,9 @@ body.home {
    Text is --mq-dark, not --mq-ink: on the red card the ink IS the cream and
    would disappear into its own fill. */
 .home .mq-card__pills li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1.05rem 0.52rem;
   border: 2px solid var(--mq-frost, rgba(255, 241, 222, 0.92));
   border-radius: 999px;
@@ -2692,11 +2780,45 @@ body.home {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   font-family: var(--font-sans);
-  font-size: clamp(0.68rem, 0.92vw, 0.8rem);
+  font-size: clamp(0.82rem, 1.15vw, 1rem);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1;
+  text-align: center;
+}
+/* The metric is the point of each card — when/role are context. Give the last
+   pill (the figure) real weight: a solid fill in the card's dark ink with cream
+   text, set larger than the two frosted context chips beside it, so the number
+   is the first thing the eye lands on. */
+.home .mq-card__pills li:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.62rem 1.25rem 0.64rem;
+  border-color: var(--mq-dark);
+  background: var(--mq-dark);
+  color: #FFF1DE;
+  font-size: clamp(0.82rem, 1.15vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+/* The red card's --mq-dark is the band colour itself, so its metric pill barely
+   separates from the card. Darken just that pill's fill. */
+.home .mq-card--pilot .mq-card__pills li:last-child {
+  border-color: #6E1D13;
+  background: #6E1D13;
+}
+/* A single Chicago six-pointed star reads as the metric icon, in the pill's
+   cream text colour via mask so it always matches. */
+.home .mq-card__pills li:last-child::before {
+  content: "";
+  flex: none;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 2 L60 32.68 L91.57 26 L70 50 L91.57 74 L60 67.32 L50 98 L40 67.32 L8.43 74 L30 50 L8.43 26 L40 32.68 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 /* ---- Squiggle break -----------------------------------------
    A tiled SVG rather than one stretched path, so the wave keeps its
@@ -2714,6 +2836,29 @@ body.home {
 .home .mq-card .marquee__block  { font-size: clamp(2.4rem, 8vw, 6.5rem); }
 .home .mq-card .marquee__script { font-size: clamp(2.9rem, 9.8vw, 8rem); }
 .home .mq-card--consolidation .marquee__script { font-size: clamp(2.3rem, 7.6vw, 6.2rem); }
+
+/* ---- Past Work ---------------------------------------------
+   A secondary group below the current work: two square tiles side by side,
+   smaller than the full-width rectangles above so they read as archive. */
+.home .work-cards__title--past {
+  margin-top: clamp(2.75rem, 6vw, 4.5rem);
+}
+.home .mq-cards--past {
+  grid-template-columns: repeat(2, 1fr);
+}
+.home .mq-cards--past .mq-card__link {
+  aspect-ratio: 1 / 1;
+  justify-content: center;
+  gap: clamp(0.8rem, 2vw, 1.3rem);
+}
+.home .mq-cards--past .marquee__block  { font-size: clamp(1.5rem, 4.2vw, 3rem); }
+.home .mq-cards--past .marquee__script { font-size: clamp(1.9rem, 5.2vw, 3.8rem); }
+/* On narrow screens the squares get too small to hold three pills — stack them
+   and let height follow content again. */
+@media (max-width: 560px) {
+  .home .mq-cards--past { grid-template-columns: 1fr; }
+  .home .mq-cards--past .mq-card__link { aspect-ratio: auto; }
+}
 /* ---- Panel metadata ----------------------------------------
    Modelled on the Wild Tale chocolate-bar specimen, where the facts
    sit under the name as small caps with the figure set larger than
