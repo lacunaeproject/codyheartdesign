@@ -262,7 +262,15 @@
       "Bash(npm i *)",
       "Bash(grep -A2 \"^$\")",
       "Bash(git rm *)",
-      "Bash(npx --yes http-server -p 8901 -c-1 --silent)"
+      "Bash(npx --yes http-server -p 8901 -c-1 --silent)",
+      "Bash(git reset *)",
+      "PowerShell($c = Get-NetTCPConnection -LocalPort 8741 -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { Stop-Process -Id $c[0].OwningProcess -Force -Confirm:$false; \"server stopped\" } else { \"not running\" })",
+      "WebSearch",
+      "WebFetch(domain:dribbble.com)",
+      "WebFetch(domain:craftwork.design)",
+      "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b3.webp'\\)|--hero-img:url\\('/assets/art/oliver/no01.svg'\\)|\" case-studies/matching-tool.html)",
+      "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b8.webp'\\)|--hero-img:url\\('/assets/art/oliver/no02.svg'\\)|\" case-studies/tool-consolidation.html)",
+      "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b20.webp'\\)|--hero-img:url\\('/assets/art/oliver/no03.svg'\\)|; s|style=\\\\\"background-position:center 78%\\\\\"||\" case-studies/matching-logic.html)"
     ]
   }
 }

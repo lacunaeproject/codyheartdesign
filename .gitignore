@@ -12,3 +12,7 @@ assets/Shapes/
 assets/Video/
 assets/textureanimals/
 assets/quietmotion/
+
+# Purchased illustration pack - keep the license-restricted source files
+# out of the repo; the site uses the derived SVGs in assets/art/oliver/
+assets/Oliver Illustrations/
