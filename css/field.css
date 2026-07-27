@@ -429,6 +429,119 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 
 /* ============================================================
+   WRITING — the case blocks are painted at full bleed; the essay
+   answers them in paper and type. One wide card: the argument
+   itself standing on a night panel at the left, the piece set on
+   white beside it. No sixth painting — the page has enough.
+   ============================================================ */
+/* No padding of its own — the section rules above and below
+   carry the air, the same way they do for the case blocks. */
+.writing__head {
+  display: grid;
+  gap: 1.1rem;
+  margin-bottom: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+.writing__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0;
+}
+
+.wr-card {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--lift-1);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+/* The plates' hover, at a smaller amplitude — this card is a
+   footnote to the three above it, not a fourth project. */
+.wr-card:hover {
+  transform: translateY(-9px);
+  box-shadow: var(--lift-2);
+}
+
+/* The ledger panel: the essay's argument as a staircase. Each rung
+   sits a little louder and a little wider than the one above it,
+   so the escalation is legible before a word is read. */
+.wr-card__ledger {
+  background: var(--night);
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  display: grid;
+  align-content: center;
+  gap: clamp(.85rem, 1.8vw, 1.15rem);
+}
+.wr-card__rung {
+  display: grid;
+  gap: .5rem;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: var(--sz, .7rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, var(--o, .6));
+}
+/* The widening hairline under each rung — the same "drawn to
+   scale" idea as .tot-bars, at a whisper. */
+.wr-card__rung::after {
+  content: "";
+  height: 1px;
+  width: var(--w, 30%);
+  background: rgba(255, 255, 255, .16);
+}
+/* The landing: the only warm thing on the panel. */
+.wr-card__rung--end {
+  font-size: .95rem;
+  color: var(--sand);
+}
+.wr-card__rung--end::after { background: var(--sand); opacity: .55; }
+
+.wr-card__body {
+  padding: clamp(1.6rem, 3.2vw, 2.6rem);
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: .85rem;
+}
+/* Cheltenham, like the case titles — Regards stays with the hero
+   and the section heads. */
+.wr-card__title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin: 0;
+}
+.wr-card__dek {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: 1.68;
+  color: var(--ink-soft);
+  max-width: 62ch;
+  /* Keeps the last line from stranding a single word. */
+  text-wrap: pretty;
+}
+.wr-card__more {
+  margin-top: .5rem;
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.wr-card__more .arrow { display: inline-block; transition: transform .35s var(--ease); }
+.wr-card:hover .wr-card__more .arrow { transform: translateX(5px); }
+
+/* ============================================================
    TOTALS — five years in four numbers, an editorial ledger on
    paper between the hero and the work: here are the numbers;
    the case blocks below are the stories of how.
@@ -887,6 +1000,10 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   .tot-card--hero { min-height: 250px; }
   .tot-card--wide { grid-template-columns: 1fr; row-gap: .8rem; }
   .tot-ticks i { height: 26px; }
+
+  /* The essay card stacks: the ledger runs across the top, its
+     rules re-scaling to the full width. */
+  .wr-card { grid-template-columns: 1fr; }
 
   /* Hello stacks: photo above the text, held to a friendly size. */
   /* Stacked: the portrait and pack span the full shell width. */
