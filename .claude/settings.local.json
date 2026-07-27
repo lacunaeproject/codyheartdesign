@@ -237,7 +237,17 @@
       "Bash(rm -f assets/art/plate/footer-field.webp)",
       "Bash(rm -rf assets/art/critters previewtmp)",
       "Bash(sed -i 's|css/field.css?v=48|css/field.css?v=49|' index.html)",
-      "Bash(curl -sL \"https://www.pearl-sequeira.com\" -A \"Mozilla/5.0\" -o scratch-pearl.html)"
+      "Bash(curl -sL \"https://www.pearl-sequeira.com\" -A \"Mozilla/5.0\" -o scratch-pearl.html)",
+      "Bash(grep -n \"^\\\\.\\\\|^/\\\\* =\\\\|^  --\" \"C:/Users/Owner/Documents/codyheartdesign/css/field.css\")",
+      "Bash(curl -s -o /dev/null -w \"index %{http_code}\\\\n\" http://localhost:8899/index.html)",
+      "Bash(curl -s -o /dev/null -w \"essay %{http_code}\\\\n\" http://localhost:8899/writing/design-as-a-revenue-lever.html)",
+      "Bash(curl -s -o /dev/null -w \"b24  %{http_code}\\\\n\" http://localhost:8899/assets/art/bg/b24.webp)",
+      "Bash(curl -s -o /dev/null -w \"css  %{http_code}\\\\n\" \"http://localhost:8899/css/field.css?v=59\")",
+      "Bash(py --version)",
+      "PowerShell($paths = @\\(\"$env:ProgramFiles\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"$env:ProgramFiles\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\); foreach \\($p in $paths\\) { if \\(Test-Path $p\\) { $p } })",
+      "Bash(git rev-list *)",
+      "Bash(git ls-remote *)",
+      "Bash(grep -v '\\\\.sample$')"
     ]
   }
 }
