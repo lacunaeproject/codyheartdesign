@@ -543,14 +543,6 @@ body::before {
   box-shadow: 0 2px 10px -3px rgba(196, 55, 42, 0.55);
 }
 .nav a[aria-current]:hover { color: #fff; }
-/* External-link arrow (Resume → Google Drive). Small and muted so it signals
-   "opens elsewhere" without breaking the mono nav rhythm; follows link color. */
-.nav__ext-icon {
-  font-size: 0.8em;
-  opacity: 0.55;
-  margin-left: -0.15em;   /* pull back — the link's flex gap already spaces it */
-}
-
 /* Right cluster — Say Hello (email) + LinkedIn, in penguin-ink like Ben's
    black buttons, tuned to this palette. */
 .site-header__cta {

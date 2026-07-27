@@ -227,7 +227,17 @@
       "WebFetch(domain:www.pearl-sequeira.com)",
       "Bash(grep -n \"^\\\\/\\\\* ============================================================$\" -A1 css/field.css)",
       "Bash(grep -v \"^--$\")",
-      "Bash(awk '{print $1, $3, $4, $5}')"
+      "Bash(awk '{print $1, $3, $4, $5}')",
+      "Bash(xargs sed -i 's|Resume<span class=\"nav__ext-icon\" aria-hidden=\"true\">↗</span>|Resume|; s|Resume ↗</a>|Resume</a>|')",
+      "PowerShell(python -m http.server 8321)",
+      "Bash(magick -version)",
+      "Bash(python *)",
+      "Bash(curl -sL \"https://framerusercontent.com/images/QQbtRZgHf2NRfRN8CYIXp1XIk.png?width=960&height=394\" -o \"C:/Users/codyj/AppData/Local/Temp/claude/C--Users-codyj-Documents-codyheartdesign/ccc10037-c3b4-4f68-b6ef-2d3b6999776b/scratchpad/pearl-footer.png\")",
+      "Bash(sed -i 's|css/field.css?v=44|css/field.css?v=45|; s|js/field.js?v=3|js/field.js?v=4|' index.html)",
+      "Bash(rm -f assets/art/plate/footer-field.webp)",
+      "Bash(rm -rf assets/art/critters previewtmp)",
+      "Bash(sed -i 's|css/field.css?v=48|css/field.css?v=49|' index.html)",
+      "Bash(curl -sL \"https://www.pearl-sequeira.com\" -A \"Mozilla/5.0\" -o scratch-pearl.html)"
     ]
   }
 }

@@ -34,15 +34,15 @@
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/regards-webfont.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/CheltenhamClassic.woff2" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=28">
+<link rel="stylesheet" href="css/field.css?v=58">
 </head>
 <body class="home">
 
 <nav class="nav" aria-label="Primary">
       <a href="index.html" aria-current="page">Work</a>
-      <a href="work.html">Case studies</a>
       <a href="about.html">About</a>
-      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume<span class="nav__ext-icon" aria-hidden="true">↗</span></a>
+      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+      <a href="#contact">Contact</a>
     </nav>
 
 <main>
@@ -61,92 +61,195 @@
   </section>
 
   <!-- ============================================================
-       THE WORK — one project per block, outcome-sentence titles,
-       one metric each, one bright plate each.
+       TOTALS — five years in four numbers, a night ledger band
+       between the hero and the work: this is the success; the
+       case blocks below are how it happened.
        ============================================================ -->
-  <a class="cs-block" href="case-studies/matching-logic.html">
+  <section class="totals" aria-labelledby="totals-title">
     <div class="shell">
-      <header class="cs-block__head">
-        <span class="label label--accent reveal">No 01<span class="sep" aria-hidden="true"></span>Care Matching</span>
-        <h2 class="cs-block__title reveal reveal--d1">Turned a black-box matching funnel into a measurable four-gate system across 33 states.</h2>
+      <header class="totals__head">
+        <span class="label label--accent reveal">By the numbers</span>
+        <h2 class="totals__title reveal reveal--d1" id="totals-title">Five years, totaled.</h2>
+        <p class="totals__lede reveal reveal--d1">Four numbers a finance team could argue with &#8212; and below them, the stories of how each one happened.</p>
       </header>
-      <div class="cs-block__plate reveal reveal--d1">
-        <!-- this painting's interest is its lower third: surf edge on sand -->
-        <img src="assets/art/plate/b20.webp" alt="" style="object-position:center 80%" loading="lazy" decoding="async">
-        <span class="cs-block__metric">24.1% fewer rematches</span>
+
+      <div class="totals__mosaic">
+        <!-- A — the headline figure, standing on its own painting -->
+        <article class="tot-card tot-card--hero reveal">
+          <img class="tot-card__art" src="assets/art/plate/stat-sky.webp" alt="" width="1400" height="2100" loading="lazy" decoding="async">
+          <div class="tot-card__scrim" aria-hidden="true"></div>
+          <div class="tot-card__body">
+            <span class="tot-card__num">$3.5M</span>
+            <span class="tot-card__label label">Revenue capacity unlocked</span>
+            <p class="tot-card__note">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
+          </div>
+        </article>
+
+        <!-- B — savings, drawn to scale against the capacity figure -->
+        <article class="tot-card reveal reveal--d1">
+          <span class="tot-card__num">$500K</span>
+          <span class="tot-card__label label">Annual operating savings</span>
+          <div class="tot-bars" role="img" aria-label="Drawn to scale: $500K saved outright each year beside $3.5M in unlocked capacity">
+            <div class="tot-bars__row"><i style="--w:14.3%"></i><span class="tot-bars__tag">Saved</span></div>
+            <div class="tot-bars__row"><i style="--w:100%"></i><span class="tot-bars__tag">Unlocked</span></div>
+          </div>
+          <p class="tot-card__note">Hard savings &#8212; the floor under the capacity story, drawn to scale.</p>
+        </article>
+
+        <!-- C — satisfaction, the bar drawn at its true 97% -->
+        <article class="tot-card reveal reveal--d2">
+          <span class="tot-card__num">97%</span>
+          <span class="tot-card__label label">Coordinator satisfaction</span>
+          <div class="tot-meter" role="img" aria-label="97 percent of coordinators satisfied"><i style="width:97%"></i></div>
+          <p class="tot-card__note">The people running intake, once the tools stopped fighting them.</p>
+        </article>
+
+        <!-- D — weekly volume as a unit chart: one mark per thousand calls -->
+        <article class="tot-card tot-card--wide reveal reveal--d3">
+          <div class="tot-card__stack">
+            <span class="tot-card__num">16K+</span>
+            <span class="tot-card__label label">Weekly intake calls</span>
+          </div>
+          <div class="tot-ticks" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <p class="tot-card__note">Each mark is a thousand calls riding these systems every week.</p>
+        </article>
       </div>
-      <p class="cs-block__cta label reveal">Read the case study <span class="arrow" aria-hidden="true">&#8594;</span></p>
+    </div>
+  </section>
+
+  <hr class="section-rule" aria-hidden="true">
+
+  <!-- ============================================================
+       THE WORK — one project per plate, all the text living on the
+       painting itself, the same treatment as the totals hero card.
+       ============================================================ -->
+  <div class="shell work-head">
+    <span class="label label--accent reveal">The stories</span>
+    <h2 class="work-head__title reveal reveal--d1">Case studies</h2>
+  </div>
+
+  <a class="cs-block" href="case-studies/matching-tool.html">
+    <div class="shell">
+      <div class="cs-block__plate reveal">
+        <img src="assets/art/plate/b3.webp" alt="" loading="lazy" decoding="async">
+        <div class="cs-block__scrim" aria-hidden="true"></div>
+        <div class="cs-block__body">
+          <span class="label">No 01<span class="sep" aria-hidden="true"></span>Admin Pilot</span>
+          <h3 class="cs-block__title">Took an internal booking platform from a two-state pilot to 99% national adoption.</h3>
+        </div>
+      </div>
     </div>
   </a>
 
   <a class="cs-block" href="case-studies/tool-consolidation.html">
     <div class="shell">
-      <header class="cs-block__head">
-        <span class="label label--accent reveal">No 02<span class="sep" aria-hidden="true"></span>Tool Consolidation</span>
-        <h2 class="cs-block__title reveal reveal--d1">Mapped 50+ regional intake tools and proved they reduce to six underlying jobs.</h2>
-      </header>
-      <div class="cs-block__plate reveal reveal--d1">
+      <div class="cs-block__plate reveal">
         <img src="assets/art/plate/b8.webp" alt="" loading="lazy" decoding="async">
-        <span class="cs-block__metric">50+ tools &#8594; 6 jobs</span>
+        <div class="cs-block__scrim" aria-hidden="true"></div>
+        <div class="cs-block__body">
+          <span class="label">No 02<span class="sep" aria-hidden="true"></span>Tool Consolidation</span>
+          <h3 class="cs-block__title">Mapped 50+ regional intake tools and proved they reduce to six underlying jobs.</h3>
+        </div>
       </div>
-      <p class="cs-block__cta label reveal">Read the case study <span class="arrow" aria-hidden="true">&#8594;</span></p>
     </div>
   </a>
 
-  <a class="cs-block" href="case-studies/matching-tool.html">
+  <a class="cs-block" href="case-studies/matching-logic.html">
     <div class="shell">
-      <header class="cs-block__head">
-        <span class="label label--accent reveal">No 03<span class="sep" aria-hidden="true"></span>Admin Pilot</span>
-        <h2 class="cs-block__title reveal reveal--d1">Took an internal booking platform from a two-state pilot to 99% national adoption.</h2>
-      </header>
-      <div class="cs-block__plate reveal reveal--d1">
-        <img src="assets/art/plate/b3.webp" alt="" loading="lazy" decoding="async">
-        <span class="cs-block__metric">$500K annual savings</span>
+      <div class="cs-block__plate reveal">
+        <!-- this painting's interest is its lower third: surf edge on sand -->
+        <img src="assets/art/plate/b20.webp" alt="" style="object-position:center 80%" loading="lazy" decoding="async">
+        <div class="cs-block__scrim" aria-hidden="true"></div>
+        <div class="cs-block__body">
+          <span class="label">No 03<span class="sep" aria-hidden="true"></span>Care Matching</span>
+          <h3 class="cs-block__title">Turned a black-box matching funnel into a measurable four-gate system across 33 states.</h3>
+        </div>
       </div>
-      <p class="cs-block__cta label reveal">Read the case study <span class="arrow" aria-hidden="true">&#8594;</span></p>
     </div>
   </a>
+
+  <hr class="section-rule" aria-hidden="true">
+
+  <!-- ============================================================
+       HELLO — the person behind the numbers: one photo, a few
+       warm lines, a pointer to the longer story. A beat of
+       warmth before the big Let's talk below.
+       ============================================================ -->
+  <section class="hello" aria-labelledby="hello-title">
+    <div class="shell hello__inner">
+      <div class="hello__text">
+        <span class="label label--accent reveal">Hello</span>
+        <h2 class="hello__title reveal reveal--d1" id="hello-title">I&#8217;m Cody.</h2>
+
+        <div class="hello__block reveal reveal--d1">
+          <span class="hello__kicker label">The work</span>
+          <p class="hello__copy">Seven years in product design, almost all of it in healthcare. I designed member tools, claims software, and billing workflows at Collective Health, and now lead design at LifeStance Health for a national booking platform running across 33 states. The work I&#8217;m proudest of shows up as a number on a P&amp;L &#8212; and every one of those numbers came from sitting with the people behind the workflow.</p>
+        </div>
+
+        <div class="hello__block reveal reveal--d2">
+          <span class="hello__kicker label">The life</span>
+          <p class="hello__copy">I started as an art-school illustration kid in Los Angeles, drifted into operations at Postmates and Twitter, and taught myself design on the side. Since then: a decade in the Bay Area, two years in Manhattan, a few outside Nashville &#8212; and, in 2027, Chicago. Most of the best of it happens with Laura.</p>
+        </div>
+
+        <div class="hello__block reveal reveal--d2">
+          <span class="hello__kicker label">The hobbies</span>
+          <p class="hello__copy">Fifty books a year and a reader&#8217;s atlas to keep track of them, boxing, and travel built around wildlife photography &#8212; the cheetah, grizzly, orangutan, and panda here are all mine. Four continents down, with plans to finish all seven in the next five years.</p>
+        </div>
+
+        <p class="hello__more reveal reveal--d3"><a href="about.html">The longer story <span class="arrow" aria-hidden="true">&#8594;</span></a></p>
+      </div>
+
+      <div class="hello__media">
+        <div class="hello__photo reveal">
+          <img src="assets/self/me-monet.web.jpg" alt="Cody Heart in Monet&#8217;s garden at Giverny" width="1200" height="1600" loading="lazy" decoding="async">
+        </div>
+        <ul class="hello__pack" aria-label="Wildlife photography by Cody Heart">
+          <li><img class="reveal reveal--d1" src="assets/photography/web/cheetah.webp" alt="A cheetah looking straight into the lens" loading="lazy" decoding="async"></li>
+          <li><img class="reveal reveal--d2" src="assets/photography/web/grizzly.webp" alt="A grizzly bear in profile" loading="lazy" decoding="async"></li>
+          <li><img class="reveal reveal--d2" src="assets/photography/web/orangutan-3.webp" alt="An orangutan gazing out from its shaggy coat" loading="lazy" decoding="async"></li>
+          <li><img class="reveal reveal--d3" src="assets/photography/web/panda.webp" alt="A giant panda eating bamboo" loading="lazy" decoding="async"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- ============================================================
      FOOTER
      ============================================================ -->
-<footer class="site-footer">
-  <div class="site-footer__inner shell">
+<!-- The hero's painting again, flipped vertically — the page ends
+     in the mirror of how it began. Pearl's move, in this palette. -->
+<footer class="site-footer" id="contact">
+  <div class="shell site-footer__inner">
     <div class="site-footer__lead">
-      <span class="label">Remote from Chicago</span>
-      <h2 class="site-footer__cta">Let&#8217;s make something that moves a number.</h2>
-      <a class="site-footer__email" href="mailto:hello@codyheart.design">hello@codyheart.design</a>
+      <p class="site-footer__statement reveal">Internal tools, measurable outcomes, and the people behind the numbers.</p>
+      <a class="site-footer__talk reveal reveal--d1" href="mailto:hello@codyheart.design">
+        <span class="talk__fill" aria-hidden="true"></span>
+        <span class="talk__arrow" aria-hidden="true">&#8594;</span>
+        <span class="talk__text">Let&#8217;s talk</span>
+      </a>
+      <p class="site-footer__addr reveal reveal--d1"><a href="mailto:hello@codyheart.design">hello@codyheart.design</a></p>
     </div>
 
-    <nav class="site-footer__cols" aria-label="Footer">
-      <div>
-        <h3 class="label">Explore</h3>
-        <ul>
-          <li><a href="work.html">Case studies</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a></li>
-        </ul>
+    <div class="site-footer__cols reveal reveal--d1">
+      <ul class="site-footer__links">
+        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly</a></li>
+        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads</a></li>
+        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas</a></li>
+        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+      </ul>
+      <div class="site-footer__meta">
+        <span>Chicago</span>
+        <span id="footer-clock" class="site-footer__clock">--.--.--</span>
+        <span class="site-footer__copy">© 2026 Cody Heart</span>
       </div>
-      <div>
-        <h3 class="label">Find me</h3>
-        <ul>
-          <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-          <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads ↗</a></li>
-          <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
-          <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas ↗</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="site-footer__colophon">
-      <span>© 2026 Cody Heart &middot; Remote from Chicago</span>
-      <img class="mark mark--light" src="assets/marks/penguin.svg" alt="" aria-hidden="true" loading="lazy">
-      <span>Typeset in Regards &amp; Cheltenham Classic</span>
     </div>
   </div>
 </footer>
 
-<script src="js/field.js?v=3"></script>
+<script src="js/field.js?v=4"></script>
 </body>
 </html>

@@ -31,6 +31,22 @@
     items.forEach(function (el) { io.observe(el); });
   })();
 
+  /* ---------- Chicago clock ----------
+     The footer signs off with home time. Period separators, not
+     colons — the Geograph trial cut carries digits and . but no : */
+  (function clock() {
+    var el = document.getElementById('footer-clock');
+    if (!el) return;
+    function tick() {
+      var t = new Date().toLocaleTimeString('en-GB', {
+        timeZone: 'America/Chicago', hour12: false
+      });
+      el.textContent = t.replace(/:/g, '.');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
   /* ---------- Inertial scroll ----------
      The Lenis-style glide: wheel input feeds a target position and
      a rAF loop eases the real scroll toward it, so the page keeps
