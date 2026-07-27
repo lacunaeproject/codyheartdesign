@@ -247,7 +247,22 @@
       "PowerShell($paths = @\\(\"$env:ProgramFiles\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\", \"$env:ProgramFiles\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\", \"${env:ProgramFiles\\(x86\\)}\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe\"\\); foreach \\($p in $paths\\) { if \\(Test-Path $p\\) { $p } })",
       "Bash(git rev-list *)",
       "Bash(git ls-remote *)",
-      "Bash(grep -v '\\\\.sample$')"
+      "Bash(grep -v '\\\\.sample$')",
+      "Bash(sed -i 's|css/field.css?v=60|css/field.css?v=61|; s|js/field.js?v=4|js/field.js?v=5|' index.html)",
+      "Bash(sed -i 's|field.css?v=60|field.css?v=61|' about.html work.html case-studies/*.html writing/*.html)",
+      "Bash(npx --yes http-server -p 8899 -c-1 --silent)",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --hide-scrollbars --window-size=1440,1000 --screenshot=shot-about.png --virtual-time-budget=4000 \"http://localhost:8899/about.html\")",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless=new --disable-gpu --no-sandbox --user-data-dir=\"C:/Users/Owner/AppData/Local/Temp/claude/C--Users-Owner-Documents-codyheartdesign/b2612517-000a-4992-bfc8-1644c9988544/scratchpad/cprof\" --hide-scrollbars --window-size=1440,1000 --screenshot=\"C:/Users/Owner/AppData/Local/Temp/claude/C--Users-Owner-Documents-codyheartdesign/b2612517-000a-4992-bfc8-1644c9988544/scratchpad/shot-about.png\" --virtual-time-budget=5000 \"http://localhost:8899/about.html\")",
+      "Bash(curl -s -o /dev/null -w \"b24: %{http_code} %{size_download}\\\\n\" http://localhost:8899/assets/art/bg/b24.webp)",
+      "Bash(curl -s -o /dev/null -w \"b3: %{http_code} %{size_download}\\\\n\" http://localhost:8899/assets/art/plate/b3.webp)",
+      "Bash(curl -s -o /dev/null -w \"hero: %{http_code} %{size_download}\\\\n\" http://localhost:8899/assets/art/bg/hero.webp)",
+      "Bash(sed -i \"s|--hero-img:url\\('\\\\.\\\\./assets/|--hero-img:url\\('/assets/|g\" case-studies/*.html)",
+      "Bash(sed -i \"s|--hero-img:url\\('assets/|--hero-img:url\\('/assets/|g\" about.html work.html)",
+      "Bash(npm init *)",
+      "Bash(npm i *)",
+      "Bash(grep -A2 \"^$\")",
+      "Bash(git rm *)",
+      "Bash(npx --yes http-server -p 8901 -c-1 --silent)"
     ]
   }
 }
