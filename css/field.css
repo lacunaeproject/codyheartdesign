@@ -2,10 +2,15 @@
    Cody Heart — Product Design Portfolio
    "Field notes"
 
-   One page, four moves: a full-viewport saturated painting with
-   the masthead centered on it, three case blocks on near-white
-   air, a floating pill nav on the bottom edge, and a night
-   footer. Regards for display, Cheltenham for everything read.
+   One stylesheet for the whole site. The home page is four
+   moves — a full-viewport saturated painting with the masthead
+   centered on it, the totals mosaic, three case blocks on
+   near-white air, a night footer — and every interior page
+   (about, the six case studies, the essay) is built from the
+   same parts: a painted plate for the title, paper air for the
+   reading, night for the turns, a floating pill nav on the
+   bottom edge. Regards for display, Cheltenham for everything
+   read. The interior layer starts at INTERIOR PAGES, below.
 
    Type note: Regards and Cheltenham Classic are both complete cuts
    (401 and 118 glyphs) so they can carry anything. Geograph is a
@@ -372,6 +377,19 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   color: var(--ink);
   margin: 0;
 }
+/* The three plates below are the featured cut; this is the door to
+   all six and the résumé behind them. */
+.work-head__more { margin: 0; }
+.work-head__more a {
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ember);
+}
+.work-head__more .arrow { display: inline-block; transition: transform .35s var(--ease); }
+.work-head__more a:hover .arrow { transform: translateX(5px); }
 
 .cs-block__plate {
   position: relative;
@@ -1021,15 +1039,1435 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 
 /* ============================================================
+   ============================================================
+   INTERIOR PAGES — about, the case studies, the essay
+
+   Everything below extends the home page's vocabulary rather
+   than inventing a second one. The rules of the system:
+
+     · Air is the ground. Paper, wide gutters, one idea per band.
+     · Colour arrives as a PLATE — a painting under a scrim with
+       cream type on it — or as NIGHT. Never as a flat swatch.
+     · Regards speaks at page and section level. Cheltenham does
+       all the reading. Geograph does micro-labels only.
+     · Terracotta is the pointer: labels, rules, numerals, marks.
+     · Every card is white, 22px, hairline, --lift-1, and lifts
+       on hover with the same easing as the case plates.
+   ============================================================
+   ============================================================ */
+
+/* Interior pages don't have the home hero's 100svh of art at the
+   top, so the fixed pill needs a floor under the last content. */
+.site-footer { padding-bottom: clamp(7.5rem, 14vh, 9.5rem); }
+
+/* The narrow measure for prose. Matches --max-read plus gutters,
+   so a reading column and a full shell share the same left edge
+   at narrow widths and centre against each other at wide ones. */
+.shell--read {
+  width: 100%;
+  max-width: calc(var(--max-read) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Legacy label class from the old system — folded into .label so
+   existing markup keeps its voice without a rewrite. */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
+/* The old system's section eyebrows carried their own hues; kept,
+   sampled from this palette so the work page still reads by era. */
+.eyebrow--blue { color: var(--cobalt); }
+.eyebrow--lake { color: var(--harbor); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Per-case accent ----------
+   Each case study carries one hue out of the painted palette. It
+   only ever touches labels, numerals, rules and marks — never a
+   background — so six studies still read as one site. */
+body { --accent: var(--terracotta); --accent-deep: var(--ember); }
+.cs-theme--orange { --accent: #B0653A; --accent-deep: #8A4A26; }
+.cs-theme--teal   { --accent: #4E6B78; --accent-deep: #33505C; }
+.cs-theme--green  { --accent: #5E6B4E; --accent-deep: #45503A; }
+.cs-theme--blue   { --accent: #2A5A9C; --accent-deep: #1D3F70; }
+.cs-theme--gold   { --accent: #A07A3C; --accent-deep: #7A5A26; }
+.cs-theme--red    { --accent: #A2513C; --accent-deep: #7C3A29; }
+
+/* ============================================================
+   READING PROGRESS — a terracotta hairline across the very top.
+   The only chrome an interior page gets; the nav is at the foot.
+   ============================================================ */
+.cs-progress {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 130;
+  height: 2px;
+  width: 100%;
+  transform: scaleX(var(--p, 0));
+  transform-origin: 0 50%;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+/* ============================================================
+   BANDS — the interior page's unit of rhythm. Light bands are
+   paper; dark bands are night with a warm bloom behind the type.
+   Consecutive light bands collapse their shared padding so two
+   paper sections read as one continuous field of air.
+   ============================================================ */
+.cs-band {
+  position: relative;
+  padding: clamp(3.5rem, 9vh, 6.5rem) 0;
+}
+.cs-band--light { background: var(--paper); }
+.cs-band--light + .cs-band--light { padding-top: 0; }
+
+/* Night: a vertical gradient rather than a flat fill, with one
+   soft ember bloom off the upper left — the same trick the hero
+   painting plays, drawn instead of photographed. */
+.cs-band--dark {
+  isolation: isolate;
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(176, 101, 58, .22), transparent 62%),
+    linear-gradient(to bottom, var(--night) 0%, var(--night-deep) 100%);
+  color: rgba(255, 255, 255, .84);
+  padding: clamp(4.5rem, 11vh, 8rem) 0;
+}
+/* Compounded past .cs-body's own heading colour, which is more
+   specific than a bare element selector would be. */
+.cs-band--dark h2, .cs-band--dark .cs-body h2,
+.cs-band--dark h3, .cs-band--dark .cs-body h3,
+.cs-band--dark strong, .cs-band--dark .cs-body strong { color: var(--white); }
+.cs-band--dark .label,
+.cs-band--dark .eyebrow { color: var(--sand); }
+
+/* ============================================================
+   PAGE HERO — the interior sibling of the home hero. One
+   painting, held to a plate's proportions rather than the full
+   viewport, the title in cream riding the bottom scrim. The
+   breadcrumb sits at the top edge in label type.
+   ============================================================ */
+.cs-band--hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: end;
+  gap: 2rem;
+  min-height: clamp(460px, 78vh, 720px);
+  padding: clamp(4rem, 10vh, 6.5rem) 0 clamp(3.5rem, 8vh, 5.5rem);
+  color: var(--white);
+  background: var(--night);
+}
+.cs-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: var(--hero-img) center 45% / cover no-repeat;
+  /* A slow settle on arrival: the painting eases back to true
+     while the type fades up over it. */
+  animation: plate-settle 1.6s var(--ease) both;
+}
+@keyframes plate-settle {
+  from { transform: scale(1.06); }
+  to   { transform: none; }
+}
+/* Ink at both ends: the breadcrumb clears the top, the title
+   clears the bottom, and the painting keeps the middle. */
+.cs-band--hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom,
+    rgba(31, 36, 32, .40) 0%,
+    rgba(31, 36, 32, .04) 28%,
+    rgba(31, 36, 32, .22) 62%,
+    rgba(31, 36, 32, .78) 100%);
+}
+
+/* The night hero: for the two pieces that argue on a ledger
+   rather than illustrate. Same geometry, drawn light instead of
+   photographed — a warm bloom and a ruled grid. */
+.cs-hero--night { background: var(--night-deep); }
+.cs-hero--night .cs-hero__media {
+  background:
+    radial-gradient(90% 70% at 78% 18%, rgba(217, 191, 152, .20), transparent 60%),
+    radial-gradient(110% 80% at 10% 92%, rgba(176, 101, 58, .26), transparent 62%),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 68px),
+    linear-gradient(to bottom, #1B1E19, #12150F);
+  animation: none;
+}
+.cs-hero--night::after { background: none; }
+
+/* Breadcrumb, eyebrow and title all ride the bottom scrim in one
+   stack — the same anchoring the home page's case plates use. */
+.cs-hero {
+  position: relative;
+  display: grid;
+  gap: 1.4rem;
+  justify-items: start;
+}
+.cs-hero__nav {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .72);
+}
+.cs-hero__nav a {
+  color: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid rgba(255, 255, 255, .3);
+  padding-bottom: 2px;
+  transition: border-color .25s var(--ease);
+}
+.cs-hero__nav a:hover { border-color: var(--white); }
+
+.cs-hero__content { display: grid; gap: 1.15rem; justify-items: start; }
+.cs-hero__eyebrow { color: rgba(255, 255, 255, .88); }
+.cs-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.4vw, 4.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  max-width: 17ch;
+  margin: 0;
+}
+.cs-hero__lede {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .88);
+  max-width: 52ch;
+  margin: 0;
+}
+/* On a hero that stands on paper rather than a plate — the essay's
+   opening, where the type is the only thing on the page. */
+.cs-hero--paper { color: var(--ink); background: var(--paper); }
+
+/* The essay's meta strip: three facts on a hairline. */
+.cs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem clamp(2rem, 5vw, 4rem);
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, .22);
+}
+.cs-meta__label {
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+  margin-bottom: .35rem;
+}
+.cs-meta__value {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: rgba(255, 255, 255, .95);
+}
+
+/* ============================================================
+   PROSE — the reading voice. Cheltenham on paper, one measure,
+   generous leading. Headings step down in Regards.
+   ============================================================ */
+.cs-body {
+  font-size: 1.075rem;
+  line-height: 1.78;
+  color: var(--ink-soft);
+}
+.cs-body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 .85em;
+}
+/* A heading that follows prose directly — the About page's rhythm —
+   takes its air above; inside a chapter the chapter carries it. */
+.cs-body > h2 { margin-top: 1.9em; }
+.cs-body > h2:first-child { margin-top: 0; }
+.cs-body h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 1.9em 0 .65em;
+}
+.cs-body p { margin: 0 0 1.3em; }
+.cs-body p:last-child { margin-bottom: 0; }
+.cs-body strong { font-weight: 500; color: var(--ink); }
+.cs-body em { font-style: italic; }
+.cs-body a:not(.cs-cta) {
+  color: var(--accent-deep);
+  border-bottom: 1px solid rgba(138, 74, 38, .35);
+  transition: border-color .25s var(--ease), color .25s var(--ease);
+}
+.cs-body a:not(.cs-cta):hover { border-color: currentColor; }
+
+/* The lede: one size up, ink rather than soft ink — the sentence
+   that has to hold someone at the top of a long page. */
+.cs-lede {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 clamp(2.5rem, 5vw, 3.5rem);
+  text-wrap: pretty;
+}
+
+/* Lists: no bullets. A short terracotta rule in the margin, so a
+   list reads as a set of drawn entries rather than dots. */
+.cs-body ul,
+.cs-body ol {
+  margin: 0 0 1.3em;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .85rem;
+}
+.cs-body ul li {
+  position: relative;
+  padding-left: 2.1rem;
+}
+.cs-body ul li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .85em;
+  width: 1.1rem;
+  height: 1px;
+  background: var(--accent);
+  opacity: .8;
+}
+.cs-body ol { counter-reset: n; }
+.cs-body ol li {
+  position: relative;
+  padding-left: 2.4rem;
+  counter-increment: n;
+}
+.cs-body ol li::before {
+  content: counter(n, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: .1em;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  color: var(--accent);
+}
+
+/* The pull quote. Cheltenham italic at lede scale, standing on a
+   terracotta hairline — the totals section's "drawn" device again,
+   turned on its side. No quotation marks; the setting does it. */
+.cs-body blockquote {
+  margin: clamp(2rem, 4vw, 2.8rem) 0;
+  padding: 1.4rem 0 0;
+  border-top: 2px solid var(--accent);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.42;
+  color: var(--ink);
+  max-width: 30ch;
+}
+.cs-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .88em;
+  background: var(--paper-2);
+  border-radius: 4px;
+  padding: .12em .38em;
+}
+
+/* Prose on night */
+.cs-band--dark .cs-body { color: rgba(255, 255, 255, .8); }
+.cs-band--dark .cs-body a:not(.cs-cta) { color: var(--sand); border-bottom-color: rgba(217, 191, 152, .4); }
+.cs-band--dark .cs-body blockquote { color: var(--white); border-top-color: var(--sand); }
+.cs-band--dark .cs-body ul li::before { background: var(--sand); }
+.cs-band--dark .cs-lede { color: var(--white); }
+.cs-band--dark .cs-body code { background: rgba(255, 255, 255, .1); }
+
+/* ============================================================
+   CHAPTERS — a numbered section head. At wide widths the number
+   hangs in the left margin against a hairline; the answer sits
+   in the measure. Below 900px it stacks above the heading.
+   ============================================================ */
+.cs-chapter { margin: clamp(2.75rem, 6vw, 4.5rem) 0; }
+.cs-chapter:first-child { margin-top: 0; }
+.cs-chapter:last-child { margin-bottom: 0; }
+.cs-chapter h2 { margin-top: 0; }
+
+.cs-chapter__num {
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+}
+.cs-chapter__num::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.cs-band--dark .cs-chapter__num { color: var(--sand); }
+.cs-band--dark .cs-chapter__num::after { background: rgba(255, 255, 255, .16); }
+
+/* The Q/A form: a big terracotta numeral, the question in label
+   type beside it, the answer as an H2 underneath. */
+.cs-qa .cs-q {
+  display: flex;
+  align-items: baseline;
+  gap: .85rem;
+  margin-bottom: .85rem;
+}
+.cs-q__n {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+.cs-q__t {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cs-band--dark .cs-q__n { color: var(--sand); }
+.cs-band--dark .cs-q__t { color: rgba(255, 255, 255, .6); }
+/* In the Q/A form the answer heading is a direct child of the
+   chapter rather than nested, so it sets its own floor. */
+.cs-answer { margin-bottom: 1.2rem; }
+
+/* ============================================================
+   THE SHORT VERSION — the at-a-glance card. A white plate on
+   paper carrying the claim, a ruled list of four facts, and the
+   figures in a mosaic that borrows the home page's stat tiles.
+   ============================================================ */
+.cs-tldr-band { padding-top: clamp(3rem, 7vh, 5rem); }
+.cs-tldr {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.cs-tldr__head {
+  display: grid;
+  gap: 1rem;
+  max-width: 40ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.cs-tldr__eyebrow {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cs-tldr__claim {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  line-height: 1.06;
+  color: var(--ink);
+  margin: 0;
+}
+.cs-tldr__deck {
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* Four facts, each on its own hairline row: term in label type on
+   the left, the answer in Cheltenham on the right. */
+.cs-tldr__list {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+}
+.cs-tldr__row {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: .4rem clamp(1.5rem, 4vw, 3rem);
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.cs-tldr__row dt {
+  font-family: var(--font-label);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: .3em;
+}
+.cs-tldr__row dd {
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.cs-tldr__row dd a { color: var(--accent-deep); border-bottom: 1px solid rgba(138, 74, 38, .35); }
+
+/* The figures: four tiles, the numbers in Cheltenham bold, sized
+   the way the home page sizes its totals. */
+.cs-tldr__figures { margin-top: clamp(2.25rem, 5vw, 3.25rem); }
+.cs-tldr__figures-label {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cs-tldr__list--figures {
+  border-top: 0;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(.9rem, 1.6vw, 1.4rem);
+}
+.cs-tldr__row--metric {
+  display: block;
+  border: 1px solid var(--rule-soft);
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: var(--lift-1);
+  padding: clamp(1.3rem, 2.2vw, 1.75rem);
+  transition: transform .45s var(--ease), box-shadow .45s var(--ease);
+}
+.cs-tldr__row--metric:hover { transform: translateY(-5px); box-shadow: var(--lift-2); }
+.cs-tldr__row--metric dt {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 3.2vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+  padding: 0;
+  margin-bottom: .7rem;
+}
+.cs-tldr__row--metric dd {
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+/* The honesty tag: "Modeled", not measured. Small, terracotta,
+   and never hidden — it belongs beside the number it qualifies. */
+.cs-tldr__note {
+  display: inline-block;
+  margin-left: .45rem;
+  padding: .18em .6em;
+  border-radius: 999px;
+  background: rgba(176, 101, 58, .12);
+  color: var(--accent-deep);
+  font-family: var(--font-label);
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.cs-tldr__foot { margin-top: clamp(2rem, 4vw, 3rem); }
+
+/* The design-ROI variant of the same block, on night. */
+.cs-glance {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.cs-glance__eyebrow {
+  margin: 0 0 1rem;
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.cs-glance__claim {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  line-height: 1.06;
+  color: var(--white);
+  max-width: 22ch;
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+.cs-glance__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem clamp(1.5rem, 4vw, 3rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+.cs-glance__fact-label {
+  margin: 0 0 .4rem;
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+.cs-glance__fact-value {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--white);
+}
+.cs-glance__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+}
+
+/* ---------- Metric tiles (design ROI) ---------- */
+.metrics__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(.9rem, 1.6vw, 1.4rem);
+}
+.metric {
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .05);
+  padding: clamp(1.3rem, 2.2vw, 1.75rem);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.metric__num {
+  margin: 0 0 .7rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 3.2vw, 2.7rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+.metric__label {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, .72);
+}
+
+/* ============================================================
+   BUTTONS — the footer's Let's-talk pill, at body scale. The
+   primary fills; the ghosts are hairline capsules.
+   ============================================================ */
+.cs-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .72rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .3s var(--ease);
+}
+.cs-cta:hover { transform: translateY(-2px); border-color: var(--ink); }
+.cs-cta--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--white);
+  box-shadow: 0 8px 22px -10px rgba(31, 36, 32, .55);
+}
+.cs-cta--primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); color: var(--white); }
+.cs-cta__arrow { display: inline-block; transition: transform .35s var(--ease); }
+.cs-cta:hover .cs-cta__arrow { transform: translateX(4px); }
+/* On night, the ghosts go frosted like the footer's talk pill. */
+.cs-band--dark .cs-cta,
+.cs-gate .cs-cta {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .08);
+}
+.cs-band--dark .cs-cta:hover,
+.cs-gate .cs-cta:hover { border-color: var(--white); background: rgba(255, 255, 255, .16); }
+.cs-band--dark .cs-cta--primary,
+.cs-gate .cs-cta--primary {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--ink);
+}
+.cs-band--dark .cs-cta--primary:hover,
+.cs-gate .cs-cta--primary:hover { background: var(--sand-pale); border-color: var(--sand-pale); color: var(--ink); }
+
+/* ============================================================
+   FIGURES — diagrams, illustrations and photographs all sit on
+   the same white plate: 22px, hairline, --lift-1, caption below
+   in muted small. One frame for every kind of picture.
+   ============================================================ */
+.cs-diagram,
+.cs-hero-illustration {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.cs-diagram__frame,
+.cs-hero-illustration__frame {
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 22px;
+  box-shadow: var(--lift-1);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: var(--ink-soft);
+  overflow: hidden;
+}
+.cs-diagram__frame svg,
+.cs-hero-illustration__frame svg { width: 100%; height: auto; }
+.cs-diagram figcaption,
+.cs-hero-illustration figcaption {
+  margin-top: 1.1rem;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 62ch;
+}
+.cs-hero-illustration__credit {
+  display: block;
+  margin-top: .5rem;
+  font-family: var(--font-label);
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cs-band--dark .cs-diagram__frame,
+.cs-band--dark .cs-hero-illustration__frame {
+  background: rgba(255, 255, 255, .05);
+  border-color: rgba(255, 255, 255, .14);
+  box-shadow: none;
+  color: rgba(255, 255, 255, .8);
+}
+.cs-band--dark .cs-diagram figcaption,
+.cs-band--dark .cs-hero-illustration figcaption { color: rgba(255, 255, 255, .62); }
+.cs-band--dark .cs-hero-illustration__credit { color: var(--sand); }
+
+/* Diagram entrance: bars grow from their left edge, lines draw, marks
+   fade — all on the scroll cue, all on transform/opacity/dashoffset so
+   the work stays on the compositor. */
+[data-diagram-reveal] .d-fade { opacity: 0; transition: opacity .5s ease .4s; }
+[data-diagram-reveal] .d-line { transition: stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1); }
+[data-diagram-reveal] .d-bar {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform .9s cubic-bezier(.2,.7,.2,1);
+}
+[data-diagram-reveal].is-in .d-fade { opacity: 1; }
+[data-diagram-reveal].is-in .d-line { stroke-dashoffset: 0 !important; }
+[data-diagram-reveal].is-in .d-bar { transform: scaleX(1); }
+/* The stagger down a stack of bars */
+[data-diagram-reveal] .d-fade--late  { transition-delay: .9s; }
+[data-diagram-reveal] .d-bar--delay  { transition-delay: .15s; }
+[data-diagram-reveal] .d-bar--delay-2 { transition-delay: .3s; }
+[data-diagram-reveal] .d-bar--delay-3 { transition-delay: .45s; }
+
+/* Standing illustration motion — pulses and dashed flows. */
+@keyframes illust-pulse { 0%,100% { transform: scale(1); opacity: inherit; } 50% { transform: scale(1.045); } }
+@keyframes illust-flow { to { stroke-dashoffset: -140; } }
+@keyframes illust-rise { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+.illust-pulse { animation: illust-pulse 5.5s ease-in-out infinite; transform-origin: center; }
+.illust-pulse--slow { animation-duration: 7s; }
+.illust-pulse--slower { animation-duration: 9s; }
+.illust-flow { animation: illust-flow 6s linear infinite; }
+.illust-flow--fast { animation-duration: 3.5s; }
+.illust-rise { animation: illust-rise 6s ease-in-out infinite; }
+/* A token travelling a fixed distance along a chain — gates, lanes,
+   state machines. The distance is set per element via --travel. */
+@keyframes illust-travel {
+  0%   { transform: translateX(0); opacity: 0; }
+  7%   { opacity: 1; }
+  93%  { opacity: 1; }
+  100% { transform: translateX(var(--travel, 400px)); opacity: 0; }
+}
+.illust-travel { animation: illust-travel 7s cubic-bezier(.55, 0, .45, 1) infinite; }
+.illust-travel--fast { animation-duration: 3.4s; }
+.illust-travel--slow { animation-duration: 12s; }
+
+/* Photographs in prose. One image, a pair, or a wide plate — all
+   at the plate radius, all captioned in the same muted voice. */
+.self-figure {
+  margin: clamp(2.25rem, 5vw, 3.5rem) 0;
+}
+.self-figure img {
+  width: 100%;
+  border-radius: 22px;
+  box-shadow: var(--lift-1);
+}
+.self-figure--pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(.8rem, 1.6vw, 1.2rem);
+}
+.self-figure--pair figcaption { grid-column: 1 / -1; }
+.self-figure--sm { max-width: 380px; }
+/* The wide plate breaks the reading measure — a picture is allowed
+   to be wider than the sentence it interrupts. Centred with a margin
+   rather than a transform, because .reveal owns transform on the way
+   in and would cancel it at the end of the animation. */
+.self-figure--wide {
+  --w: min(calc(var(--max) - 2 * var(--gutter)), calc(100vw - 2 * var(--gutter)));
+  width: var(--w);
+  margin-left: calc(50% - var(--w) / 2);
+}
+.self-figure figcaption {
+  margin-top: .95rem;
+  font-size: .92rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.cs-band--dark .self-figure figcaption { color: rgba(255, 255, 255, .62); }
+
+/* ---------- The chain ----------
+   The essay's argument as a staircase across the page: five rungs,
+   each set a little louder and standing on a rule a little wider
+   than the one before it, so the escalation is legible before a
+   word of the piece is read. The home page's writing card carries
+   the same device at card scale — this is it at full size. */
+.chain-band { padding-block: clamp(3rem, 7vh, 5rem); }
+.chain__label {
+  margin: 0 0 clamp(1.6rem, 3vw, 2.4rem);
+  font-family: var(--font-label);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.chain {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(.8rem, 2vw, 1.6rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-items: end;
+}
+.chain li {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+}
+.chain li::before { content: none; }
+.chain__step {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: clamp(.6rem, 1.05vw, .78rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, var(--o, .6));
+}
+/* The rule under each rung grows with the claim above it. */
+.chain li::after {
+  content: "";
+  height: 2px;
+  width: calc(20% + var(--o, .5) * 80%);
+  background: rgba(255, 255, 255, .18);
+  transition: width 1s var(--ease);
+}
+.chain--end .chain__step { color: var(--sand); font-size: clamp(.72rem, 1.3vw, .95rem); }
+.chain--end::after { width: 100% !important; background: var(--sand) !important; opacity: .7; }
+
+@media (max-width: 720px) {
+  .chain { grid-template-columns: 1fr; gap: 1rem; }
+  .chain li { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- Rails ----------
+   A before/after loop drawn as two rows of stops on one line. The
+   after row carries the accent; the before row stays grey, so the
+   collapse is visible without reading a word. Same "drawn to
+   scale" logic as the home page's totals bars. */
+/* Wider than the sentence it interrupts, so the five stops sit on
+   one line — like the figures, centred by margin rather than by
+   transform, which .reveal owns. */
+.rails {
+  --w: min(880px, calc(100vw - 2 * var(--gutter)));
+  width: var(--w);
+  margin: clamp(2rem, 4vw, 2.8rem) 0 clamp(2rem, 4vw, 2.8rem) calc(50% - var(--w) / 2);
+  display: grid;
+  gap: 1.4rem;
+  padding: clamp(1.4rem, 2.6vw, 2rem);
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 22px;
+  box-shadow: var(--lift-1);
+}
+.rail { display: grid; gap: .8rem; }
+.rail__tag {
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rail--after .rail__tag { color: var(--accent); }
+.rail__stops {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+.rail__stops li {
+  padding: .42rem .9rem !important;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  font-family: var(--font-label);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.rail__stops li::before { content: none !important; }
+/* The connector between stops — the handoff that used to cost time */
+.rail__stops li + li { position: relative; margin-left: 1.1rem; }
+.rail__stops li + li::after {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: 50%;
+  width: .7rem;
+  height: 1px;
+  background: var(--rule);
+}
+.rail--after .rail__stops li {
+  border-color: var(--accent);
+  background: rgba(176, 101, 58, .08);
+  color: var(--accent-deep);
+}
+.rail--after .rail__stops li + li::after { background: var(--accent); }
+
+/* ============================================================
+   THE GATE — the NDA wall. A night panel with a frosted form,
+   built from the footer's talk-pill parts.
+   ============================================================ */
+.cs-gate {
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+.cs-gate__mark { width: 34px; height: 34px; color: var(--sand); opacity: .9; }
+.cs-gate__eyebrow {
+  margin: 0;
+  font-family: var(--font-label);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.cs-gate__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--white);
+  max-width: 20ch;
+  margin: 0;
+}
+.cs-gate__copy {
+  margin: 0;
+  font-size: 1.03rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, .78);
+  max-width: 54ch;
+}
+.cs-gate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: .6rem;
+}
+.cs-gate__or {
+  margin: .4rem 0;
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .45);
+}
+.cs-gate__form {
+  display: flex;
+  gap: .5rem;
+  width: min(100%, 400px);
+}
+.cs-gate__input {
+  flex: 1;
+  min-width: 0;
+  padding: .78rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .25);
+  background: rgba(255, 255, 255, .08);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.cs-gate__input::placeholder { color: rgba(255, 255, 255, .5); }
+.cs-gate__input:focus { outline: none; border-color: var(--sand); background: rgba(255, 255, 255, .14); }
+.cs-gate__submit {
+  padding: .78rem 1.5rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .3s var(--ease);
+}
+.cs-gate__submit:hover { background: var(--sand-pale); }
+.cs-gate__error,
+.cs-gate__unlocked {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--sand);
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.cs-gate__error.is-visible { opacity: 1; height: auto; }
+.cs-gate.is-unlocked .cs-gate__unlocked { opacity: 1; height: auto; }
+.cs-gate.is-unlocked .cs-gate__form,
+.cs-gate.is-unlocked .cs-gate__or,
+.cs-gate.is-unlocked .cs-gate__actions,
+.cs-gate.is-unlocked .cs-gate__error { display: none; }
+
+/* Gated material: hidden by default so a JS failure fails closed. */
+.cs-details { display: none; }
+body.cs-unlocked .cs-details { display: block; }
+.cs-unlocked-note {
+  font-family: var(--font-label);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 clamp(2rem, 4vw, 3rem);
+}
+
+/* ============================================================
+   NEXT — the page turn. A night band the full width of the page,
+   the next title at section scale, an arrow that travels.
+   ============================================================ */
+.cs-next,
+.cs-next-v2 {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(100% 120% at 88% 10%, rgba(176, 101, 58, .26), transparent 60%),
+    linear-gradient(to bottom, var(--night) 0%, var(--night-deep) 100%);
+  padding: 0;
+}
+.cs-next a,
+.cs-next-v2 a { display: block; }
+.cs-next__inner,
+.cs-next-v2__inner {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: clamp(3.5rem, 9vh, 6rem) var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.cs-next__label,
+.cs-next-v2__label {
+  margin: 0 0 .9rem;
+  font-family: var(--font-label);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.cs-next__title,
+.cs-next-v2__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 3.1rem);
+  line-height: 1.06;
+  color: var(--white);
+  margin: 0;
+}
+.cs-next-v2__desc {
+  margin: 1rem 0 0;
+  font-size: 1.03rem;
+  line-height: 1.62;
+  color: rgba(255, 255, 255, .72);
+  max-width: 48ch;
+}
+.cs-next-v2__arrow {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: var(--ink);
+  background: var(--white);
+  transition: transform .4s var(--ease);
+}
+.cs-next-v2 a:hover .cs-next-v2__arrow { transform: translateX(8px); }
+.cs-next a:hover .cs-next__title,
+.cs-next-v2 a:hover .cs-next-v2__title { color: var(--sand-pale); }
+
+/* ============================================================
+   ABOUT — the same bands, with the reading column carrying the
+   whole page. Cream bands are paper; the brown band is night.
+   ============================================================ */
+.about-band { position: relative; padding: clamp(3.5rem, 9vh, 6.5rem) 0; }
+.about-band--cream { background: var(--paper); }
+.about-band--brown {
+  isolation: isolate;
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(176, 101, 58, .22), transparent 62%),
+    linear-gradient(to bottom, var(--night) 0%, var(--night-deep) 100%);
+  color: rgba(255, 255, 255, .84);
+}
+.about-band--brown h2, .about-band--brown .cs-body h2,
+.about-band--brown h3, .about-band--brown .cs-body h3,
+.about-band--brown strong, .about-band--brown .cs-body strong { color: var(--white); }
+.about-band--brown .cs-body { color: rgba(255, 255, 255, .8); }
+.about-band--brown .cs-body a:not(.cs-cta) { color: var(--sand); border-bottom-color: rgba(217, 191, 152, .4); }
+.about-band--brown .cs-body blockquote { color: var(--white); border-top-color: var(--sand); }
+.about-band--brown .self-figure figcaption { color: rgba(255, 255, 255, .62); }
+
+/* The route: the moves as a drawn line, the way the home page
+   draws its dollars. Each stop is a mark on one rule; the last
+   one — the one that hasn't happened yet — is the warm one. */
+.route {
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+.route li {
+  position: relative;
+  padding: 0 0 1.35rem 2.1rem;
+  border-left: 1px solid var(--rule);
+}
+.route li:last-child { padding-bottom: 0; border-left-color: transparent; }
+.route li::before {
+  content: "";
+  position: absolute;
+  left: -4.5px;
+  top: .48em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+}
+.route li[data-now]::before { background: var(--accent); border-color: var(--accent); }
+.route__place {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--ink);
+  display: block;
+}
+.route__span {
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about-band--brown .route li { border-left-color: rgba(255, 255, 255, .2); }
+.about-band--brown .route li::before { background: var(--night); border-color: rgba(255, 255, 255, .3); }
+.about-band--brown .route li[data-now]::before { background: var(--sand); border-color: var(--sand); }
+.about-band--brown .route__place { color: var(--white); }
+.about-band--brown .route__span { color: rgba(255, 255, 255, .55); }
+
+/* The sign-off */
+.about-sign {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--ink);
+}
+.about-band--brown .about-sign { color: var(--white); }
+
+/* ============================================================
+   WORK INDEX — all six studies as cards, then the résumé as a
+   ruled ledger. Cards share the plate's hover exactly.
+   ============================================================ */
+.work-band, .ch-band { padding: clamp(3.5rem, 9vh, 6rem) 0; }
+.ch-band { background: var(--paper-2); }
+
+.case-intro {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 44ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.case-intro h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+  line-height: 1.06;
+  color: var(--ink);
+  margin: 0;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: clamp(.9rem, 1.8vw, 1.5rem);
+}
+.case-grid--pair { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+
+.case-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1.4rem;
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 22px;
+  padding: clamp(1.5rem, 2.6vw, 2.1rem);
+  box-shadow: var(--lift-1);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.case-card:hover { transform: translateY(-9px); box-shadow: var(--lift-2); }
+.case-card__viz {
+  display: block;
+  width: 74px;
+  color: var(--accent);
+  opacity: .9;
+}
+.case-card__viz svg { width: 100%; height: auto; }
+.case-card__body { display: grid; align-content: start; gap: .7rem; }
+.case-card__num {
+  font-family: var(--font-label);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.case-card__title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.case-card__desc {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.case-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .9rem;
+  margin-top: .5rem;
+  padding-top: .85rem;
+  border-top: 1px solid var(--rule-soft);
+  font-family: var(--font-label);
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.case-card__meta strong { color: var(--ink-soft); font-weight: 500; }
+/* Per-card accents so the six studies read as a set of six. */
+.case-card--01 { --accent: #B0653A; }
+.case-card--02 { --accent: #4E6B78; }
+.case-card--03 { --accent: #5E6B4E; }
+.case-card--04 { --accent: #A07A3C; }
+.case-card--05 { --accent: #2A5A9C; }
+.case-card--06 { --accent: #A2513C; }
+
+/* The résumé, as a ledger */
+.experience { padding: clamp(3.5rem, 9vh, 6rem) 0; }
+.experience__head {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 44ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.experience__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+  line-height: 1.06;
+  color: var(--ink);
+  margin: 0;
+}
+.experience__intro { font-size: var(--fs-lead); line-height: 1.55; color: var(--ink-soft); margin: 0; }
+/* The company block hangs in the left column across both rows; the
+   role and its bullets stack in the right. Declared by hand because
+   the markup has no wrapper around the right-hand pair. */
+.job {
+  display: grid;
+  grid-template-columns: minmax(0, 210px) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 0 clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.job:last-child { border-bottom: 1px solid var(--rule); }
+.job__head { grid-column: 1; grid-row: 1 / span 2; display: grid; gap: .55rem; align-content: start; }
+.job__role { grid-column: 2; grid-row: 1; }
+.job__list { grid-column: 2; grid-row: 2; }
+.job__id { display: grid; gap: .3rem; }
+.job__dates, .job__title {
+  font-family: var(--font-label);
+  font-size: .64rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.job__dates { color: var(--accent); }
+.job__company {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.18rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.job__role {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+.job__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .7rem;
+  font-size: 1.02rem;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+.job__list li { position: relative; padding-left: 2.1rem; }
+.job__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .82em;
+  width: 1.1rem;
+  height: 1px;
+  background: var(--accent);
+  opacity: .8;
+}
+
+/* ============================================================
+   RESPONSIVE — interior
+   ============================================================ */
+@media (max-width: 900px) {
+  .cs-tldr__row { grid-template-columns: 1fr; }
+  .cs-tldr__row dt { padding-top: 0; }
+  .job { grid-template-columns: 1fr; grid-template-rows: auto auto auto; row-gap: 1rem; }
+  .job__head { grid-column: 1; grid-row: 1; }
+  .job__role { grid-column: 1; grid-row: 2; }
+  .job__list { grid-column: 1; grid-row: 3; }
+  .cs-next__inner,
+  .cs-next-v2__inner { flex-direction: column; align-items: flex-start; }
+  .cs-next-v2__arrow { width: 54px; height: 54px; }
+}
+
+@media (max-width: 640px) {
+  .cs-band--hero { min-height: clamp(400px, 66vh, 520px); }
+  .cs-diagram__frame,
+  .cs-hero-illustration__frame { border-radius: 18px; padding: 1.25rem; }
+  .self-figure--pair { grid-template-columns: 1fr; }
+  .self-figure img { border-radius: 18px; }
+  .cs-gate__form { flex-direction: column; }
+  .cs-meta { gap: 1rem 2rem; }
+}
+
+/* ============================================================
    MOTION + PRINT
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
+  .d-fade { opacity: 1; }
+  .d-line { stroke-dashoffset: 0 !important; }
 }
 
 @media print {
-  .nav, .site-footer { display: none; }
+  .nav, .site-footer, .cs-progress { display: none; }
   body { background: #fff; }
 }

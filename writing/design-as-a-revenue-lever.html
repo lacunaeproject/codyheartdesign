@@ -31,63 +31,79 @@
 <meta name="twitter:image" content="https://codyheart.design/og-image.png">
 
 <!-- Theme color (mobile browser chrome) -->
-<meta name="theme-color" content="#FBFAF6">
-<link rel="stylesheet" href="../css/main.css?v=185">
+<meta name="theme-color" content="#FAF8F2">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/regards-webfont.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/CheltenhamClassic.woff2" crossorigin>
+<link rel="stylesheet" href="../css/field.css?v=61">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
-<script src="../js/rise.js?v=1"></script>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="site-header__inner">
-    <a href="../index.html" class="wordmark"><span class="wordmark__badge"><svg class="wordmark__heart" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></svg></span></a>
-    <nav class="nav" aria-label="Primary">
-      <a href="../index.html">Work</a>
-      <a href="../work.html">Hobbies</a>
-      <a href="../about.html">About</a>
-      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener" class="nav__ext">Resume</a>
-
-    </nav>
-    <div class="site-header__cta">
-      <a href="mailto:hello@codyheart.design" class="btn-hello"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7.2 8.5 5.8 8.5-5.8"/></svg><span>Say Hello</span></a>
-      <a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener" class="btn-linkedin" aria-label="Cody Heart on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3.2 9h3.6v12H3.2zM9.5 9h3.45v1.64h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.3 2.4 4.3 5.5V21h-3.6v-5.3c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9.5z"/></svg></a>
-    </div>
-  </div>
-</header>
+<nav class="nav" aria-label="Primary">
+  <a href="../index.html">Work</a>
+  <a href="../about.html">About</a>
+  <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <main class="cs">
 
-  <section class="cs-hero shell" data-coords="Remote → boardroom">
-    <div class="cs-hero__nav">
-      <a href="../index.html">← Home</a>
-      <span>·</span>
-      <span>Writing</span>
-    </div>
-    <span class="eyebrow cs-hero__eyebrow">Writing · Field notes</span>
-    <h1 class="reveal">Design as a revenue lever.</h1>
-    <p class="cs-hero__lede reveal reveal--d1">
-      A change in leadership, an estimate I got badly wrong, and a weekend of pure curiosity that turned into the most convincing argument I&#8217;ve ever made for design. This is the story of how I learned to put a number on the work — and why I think every designer should learn to do it.
-    </p>
+  <!-- The essay opens on night rather than on a painting: it argues
+       on a ledger, and the home page's writing card already set that
+       register. Same geometry as a case-study hero, drawn light. -->
+  <section class="cs-band cs-band--hero cs-hero--night">
+    <div class="cs-hero__media" aria-hidden="true"></div>
+    <div class="cs-hero shell">
+      <div class="cs-hero__nav">
+        <a href="../index.html">← Home</a>
+        <span>·</span>
+        <span>Writing</span>
+      </div>
+      <div class="cs-hero__content">
+        <span class="eyebrow cs-hero__eyebrow">Field notes &#183; Essay</span>
+        <h1 class="reveal">Design as a revenue lever.</h1>
+        <p class="cs-hero__lede reveal reveal--d1">
+          A change in leadership, an estimate I got badly wrong, and a weekend of pure curiosity that turned into the most convincing argument I&#8217;ve ever made for design. This is the story of how I learned to put a number on the work — and why I think every designer should learn to do it.
+        </p>
 
-    <div class="cs-meta">
-      <div>
-        <div class="cs-meta__label">Kind</div>
-        <div class="cs-meta__value">Essay</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">On</div>
-        <div class="cs-meta__value">Design &amp; business value</div>
-      </div>
-      <div>
-        <div class="cs-meta__label">Read</div>
-        <div class="cs-meta__value">~6 minutes</div>
+        <div class="cs-meta">
+          <div>
+            <div class="cs-meta__label">Kind</div>
+            <div class="cs-meta__value">Essay</div>
+          </div>
+          <div>
+            <div class="cs-meta__label">On</div>
+            <div class="cs-meta__value">Design and business value</div>
+          </div>
+          <div>
+            <div class="cs-meta__label">Read</div>
+            <div class="cs-meta__value">~6 minutes</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="cs-body shell--read">
+  <!-- The whole argument in one line before a word of it is read:
+       the ladder from the home page's writing card, laid out at
+       full scale. Each rung sits louder and wider than the last. -->
+  <section class="cs-band cs-band--dark chain-band" aria-labelledby="chain-title">
+    <div class="shell">
+      <p class="chain__label" id="chain-title">The chain the essay follows</p>
+      <ol class="chain" role="img" aria-label="Seconds, to minutes, to reclaimed labor, to unlocked capacity, to revenue">
+        <li style="--o:.5"><span class="chain__step">Seconds</span></li>
+        <li style="--o:.63"><span class="chain__step">Minutes</span></li>
+        <li style="--o:.75"><span class="chain__step">Reclaimed labor</span></li>
+        <li style="--o:.88"><span class="chain__step">Unlocked capacity</span></li>
+        <li class="chain--end"><span class="chain__step">Revenue</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cs-band cs-band--light">
+  <div class="cs-body shell--read">
 
     <div class="cs-chapter">
       <div class="cs-chapter__num">01 / The opening</div>
@@ -118,6 +134,15 @@
       </div>
     </div>
 
+  </div>
+  </section>
+
+  <!-- The turn of the essay lands on night — the same beat the case
+       studies use when the argument stops describing and starts
+       costing something. -->
+  <section class="cs-band cs-band--dark">
+  <div class="cs-body shell--read">
+
     <div class="cs-chapter">
       <div class="cs-chapter__num">04 / What design was worth</div>
       <div>
@@ -126,6 +151,12 @@
         <p class="reveal">One finding stuck with me more than any dollar figure. The systems supporting the overwhelming majority of the company&#8217;s revenue were held together by a couple of tools and a long tail of spreadsheets. Precariously. A small, underfunded group of designers and engineers was quietly load-bearing for the entire business. The model didn&#8217;t just say design was valuable. It said design was <em>underfunded</em> — and it said it in a language leadership couldn&#8217;t wave away.</p>
       </div>
     </div>
+
+  </div>
+  </section>
+
+  <section class="cs-band cs-band--light">
+  <div class="cs-body shell--read">
 
     <div class="cs-chapter">
       <div class="cs-chapter__num">05 / What happened, and what it taught me</div>
@@ -139,50 +170,53 @@
       </div>
     </div>
 
+  </div>
   </section>
 
-  <section class="cs-next">
-    <div class="cs-next__inner">
-      <div>
-        <div class="cs-next__label">More</div>
+  <section class="cs-band cs-next-v2">
+    <a href="../work.html">
+      <div class="cs-next-v2__inner">
+        <div>
+          <p class="cs-next-v2__label">More</p>
+          <h2 class="cs-next-v2__title">The case studies</h2>
+          <p class="cs-next-v2__desc">Six projects where the argument above got tested against real systems, real coordinators, and a real P&amp;L.</p>
+        </div>
+        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
       </div>
-      <a href="../work.html">
-        <h2 class="cs-next__title">See the case studies →</h2>
-      </a>
-    </div>
+    </a>
   </section>
 
 </main>
 
-<footer class="site-footer">
-  <div class="site-footer__inner">
-    <div>
-      <h3>Elsewhere</h3>
-      <p class="site-footer__sign">Remote · Chicago</p>
-      <p style="color: var(--muted); margin: 0;">hello@codyheart.design</p>
+<footer class="site-footer" id="contact">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__lead">
+      <p class="site-footer__statement reveal">Internal tools, measurable outcomes, and the people behind the numbers.</p>
+      <a class="site-footer__talk reveal reveal--d1" href="mailto:hello@codyheart.design">
+        <span class="talk__fill" aria-hidden="true"></span>
+        <span class="talk__arrow" aria-hidden="true">&#8594;</span>
+        <span class="talk__text">Let&#8217;s talk</span>
+      </a>
+      <p class="site-footer__addr reveal reveal--d1"><a href="mailto:hello@codyheart.design">hello@codyheart.design</a></p>
     </div>
-    <div>
-      <h3>Links</h3>
-      <ul>
-        <li><a href="../index.html">Work</a></li>
-        <li><a href="../work.html">Case studies</a></li>
-        <li><a href="../about.html">About</a></li>
+
+    <div class="site-footer__cols reveal reveal--d1">
+      <ul class="site-footer__links">
+        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly</a></li>
+        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads</a></li>
+        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas</a></li>
+        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
       </ul>
-    </div>
-    <div>
-      <h3>Find me</h3>
-      <ul>
-        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
-        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly ↗</a></li>
-      </ul>
-    </div>
-    <div class="site-footer__colophon">
-      <span>© 2026 Cody Heart.</span>
-      <span>Designed by me, coded with Claude.</span>
+      <div class="site-footer__meta">
+        <span>Chicago</span>
+        <span id="footer-clock" class="site-footer__clock">--.--.--</span>
+        <span class="site-footer__copy">© 2026 Cody Heart</span>
+      </div>
     </div>
   </div>
 </footer>
 
-<script src="../js/main.js?v=13"></script>
+<script src="../js/field.js?v=5"></script>
 </body>
 </html>
