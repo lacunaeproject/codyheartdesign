@@ -393,21 +393,6 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 
 /* ---------- Hero content ---------- */
-.hero__tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.2em 2.4em;
-  font-family: var(--font-label);
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin: 0 0 2.4rem;
-}
-.hero__tab--on { color: var(--giverny); }
-
 .hero__statement {
   font-family: var(--font-display);
   font-weight: 500;
