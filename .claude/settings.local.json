@@ -283,7 +283,12 @@
       "Bash(awk -F: '$1>950')",
       "Bash(sed -n '/<section class=\"totals\"/,/<\\\\/section>/p' index.html)",
       "Read(//tmp/**)",
-      "Bash(git fetch *)"
+      "Bash(git fetch *)",
+      "PowerShell(Get-ChildItem *)",
+      "WebFetch(domain:claudetype.com)",
+      "WebFetch(domain:www.myfonts.com)",
+      "Read(//c/Users/codyj/Downloads/**)",
+      "Read(//c/Users/codyj/Downloads//**)"
     ]
   }
 }
