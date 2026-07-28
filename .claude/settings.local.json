@@ -272,7 +272,18 @@
       "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b8.webp'\\)|--hero-img:url\\('/assets/art/oliver/no02.svg'\\)|\" case-studies/tool-consolidation.html)",
       "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b20.webp'\\)|--hero-img:url\\('/assets/art/oliver/no03.svg'\\)|; s|style=\\\\\"background-position:center 78%\\\\\"||\" case-studies/matching-logic.html)",
       "PowerShell(foreach \\($p in @\\('py','python3','python'\\)\\) { $c = Get-Command $p -ErrorAction SilentlyContinue; if \\($c\\) { Write-Output \"$p -> $\\($c.Source\\)\" } })",
-      "PowerShell(foreach \\($p in @\\('cwebp','magick','convert','ffmpeg','node','npx'\\)\\) { $c = Get-Command $p -ErrorAction SilentlyContinue; if \\($c\\) { Write-Output \"$p -> $\\($c.Source\\)\" } })"
+      "PowerShell(foreach \\($p in @\\('cwebp','magick','convert','ffmpeg','node','npx'\\)\\) { $c = Get-Command $p -ErrorAction SilentlyContinue; if \\($c\\) { Write-Output \"$p -> $\\($c.Source\\)\" } })",
+      "Bash(grep -rnoE \"\\\\\\\\\\\\$[0-9][0-9.]*\\\\s?[MKB]?|[0-9][0-9.]*\\\\s?M\\\\b\" --include=*.html .)",
+      "Bash(curl -s -o /dev/null -w \"gold-leaf.jpg -> %{http_code} %{size_download} bytes\\\\n\" http://localhost:8899/assets/art/plate/gold-leaf.jpg)",
+      "Bash(curl -s -o /dev/null -w \"server: %{http_code}\\\\n\" http://localhost:8899/index.html)",
+      "Bash(\"/c/Program Files/Google/Chrome/Application/chrome.exe\" --headless --disable-gpu --hide-scrollbars --window-size=1440,900 --screenshot=shot-hero.png --virtual-time-budget=4000 http://localhost:8899/index.html)",
+      "PowerShell(& 'C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\9d888315-cd1c-4d83-b86d-81af2686867a\\\\scratchpad\\\\shoot.ps1' -Tag v2)",
+      "PowerShell(& 'C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\9d888315-cd1c-4d83-b86d-81af2686867a\\\\scratchpad\\\\shoot.ps1' -Tag v3)",
+      "PowerShell(& 'C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\9d888315-cd1c-4d83-b86d-81af2686867a\\\\scratchpad\\\\shoot.ps1' -Tag revert)",
+      "Bash(awk -F: '$1>950')",
+      "Bash(sed -n '/<section class=\"totals\"/,/<\\\\/section>/p' index.html)",
+      "Read(//tmp/**)",
+      "Bash(git fetch *)"
     ]
   }
 }
