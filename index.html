@@ -34,7 +34,7 @@
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/regards-webfont.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/CheltenhamClassic.woff2" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=74">
+<link rel="stylesheet" href="css/field.css?v=88">
 </head>
 <body class="home">
 
@@ -51,7 +51,60 @@
        The page is: hero, case study, case study, case study, done.
        ============================================================ -->
   <section class="hero">
-    <svg class="hero__heart reveal" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></svg>
+    <!-- Gold leaf, not a photograph. The yellow painting is a
+         defocused blur — every crop of it flattens to one colour at
+         icon scale — so the mark takes its palette from the painting
+         (these six stops are sampled straight out of it) and gets its
+         depth from a gradient instead. The bright band at 68% is the
+         specular flip that makes metal read as metal: light, shadow,
+         then light again. Runs corner to corner so the sweep crosses
+         both lobes rather than banding one of them. -->
+    <svg class="hero__heart reveal" viewBox="0 0 24 24" aria-hidden="true">
+      <defs>
+        <!-- 1. The metal itself. Stops sampled out of the painting;
+             the bright band after the shadow is the specular flip. -->
+        <linearGradient id="gold-leaf" x1=".24" y1="-.05" x2=".62" y2="1">
+          <stop offset="0"    stop-color="#FBE6AE"/>
+          <stop offset=".13"  stop-color="#F0CB66"/>
+          <stop offset=".29"  stop-color="#D9A63A"/>
+          <stop offset=".43"  stop-color="#BC8622"/>
+          <stop offset=".52"  stop-color="#A97219"/>
+          <stop offset=".60"  stop-color="#C79331"/>
+          <stop offset=".69"  stop-color="#F2D688"/>
+          <stop offset=".78"  stop-color="#DDAE46"/>
+          <stop offset=".90"  stop-color="#C08D28"/>
+          <stop offset="1"    stop-color="#A87423"/>
+        </linearGradient>
+        <!-- 2. Gloss on the upper-left lobe — where a light source
+             above and left of the mark would actually catch it. -->
+        <radialGradient id="gold-gloss" cx=".30" cy=".26" r=".52">
+          <stop offset="0"   stop-color="#FFF4CE" stop-opacity=".78"/>
+          <stop offset=".55" stop-color="#FFF4CE" stop-opacity=".18"/>
+          <stop offset="1"   stop-color="#FFF4CE" stop-opacity="0"/>
+        </radialGradient>
+        <!-- 3. Shadow pooling into the point, so the heart has a
+             weighted bottom instead of floating evenly lit. -->
+        <linearGradient id="gold-foot" x1="0" y1=".60" x2="0" y2="1">
+          <stop offset="0" stop-color="#6B4208" stop-opacity="0"/>
+          <stop offset="1" stop-color="#6B4208" stop-opacity=".28"/>
+        </linearGradient>
+        <clipPath id="heart-clip">
+          <path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/>
+        </clipPath>
+      </defs>
+      <!-- Layered inside the silhouette: metal, then shadow, then
+           gloss, then a lit inner rim. The rim is a centred stroke
+           clipped to the path, so only its inner half survives —
+           that catch of light along the edge is what separates gold
+           leaf from a heart that merely has a gradient in it. -->
+      <g clip-path="url(#heart-clip)">
+        <rect width="24" height="24" fill="url(#gold-leaf)"/>
+        <rect width="24" height="24" fill="url(#gold-foot)"/>
+        <rect width="24" height="24" fill="url(#gold-gloss)"/>
+        <path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"
+              fill="none" stroke="#FFEEB4" stroke-opacity=".55" stroke-width="1.1"/>
+      </g>
+    </svg>
     <p class="hero__greeting reveal">I&#8217;m Cody Heart</p>
     <h1 class="hero__statement reveal reveal--d1">Designing the tools healthcare runs on.</h1>
     <div class="hero__sub reveal reveal--d2">
@@ -76,7 +129,7 @@
       <div class="totals__mosaic">
         <!-- A — the headline figure, standing on its own painting -->
         <article class="tot-card tot-card--hero reveal">
-          <img class="tot-card__art" src="assets/art/plate/stat-sky.webp" alt="" width="1400" height="2100" loading="lazy" decoding="async">
+          <img class="tot-card__art" src="assets/art/plate/yellow.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async">
           <div class="tot-card__scrim" aria-hidden="true"></div>
           <div class="tot-card__body">
             <span class="tot-card__num">$3.5M</span>
@@ -85,35 +138,29 @@
           </div>
         </article>
 
-        <!-- B — savings, drawn to scale against the capacity figure -->
+        <!-- B — the operational number. The figure and label already
+             say the rate fell; the note's job is why that matters. -->
         <article class="tot-card reveal reveal--d1">
+          <span class="tot-card__num">&#8722;32%</span>
+          <span class="tot-card__label label">Rematch rate, relative</span>
+          <p class="tot-card__note">Rematching is pure waste &#8212; staff time, delayed care, a worse experience.</p>
+        </article>
+
+        <!-- C — the hard savings under the capacity story -->
+        <article class="tot-card reveal reveal--d2">
           <span class="tot-card__num">$500K</span>
           <span class="tot-card__label label">Annual operating savings</span>
-          <div class="tot-bars" role="img" aria-label="Drawn to scale: $500K saved outright each year beside $3.5M in unlocked capacity">
-            <div class="tot-bars__row"><i style="--w:14.3%"></i><span class="tot-bars__tag">Saved</span></div>
-            <div class="tot-bars__row"><i style="--w:100%"></i><span class="tot-bars__tag">Unlocked</span></div>
-          </div>
-          <p class="tot-card__note">Hard savings &#8212; the floor under the capacity story, drawn to scale.</p>
+          <p class="tot-card__note">Hard savings &#8212; the floor under the capacity story.</p>
         </article>
 
-        <!-- C — satisfaction, the bar drawn at its true 97% -->
-        <article class="tot-card reveal reveal--d2">
-          <span class="tot-card__num">97%</span>
-          <span class="tot-card__label label">Coordinator satisfaction</span>
-          <div class="tot-meter" role="img" aria-label="97 percent of coordinators satisfied"><i style="width:97%"></i></div>
-          <p class="tot-card__note">The people running intake, once the tools stopped fighting them.</p>
-        </article>
-
-        <!-- D — weekly volume as a unit chart: one mark per thousand calls -->
-        <article class="tot-card tot-card--wide reveal reveal--d3">
-          <div class="tot-card__stack">
-            <span class="tot-card__num">16K+</span>
-            <span class="tot-card__label label">Weekly intake calls</span>
-          </div>
-          <div class="tot-ticks" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <p class="tot-card__note">Each mark is a thousand calls riding these systems every week.</p>
+        <!-- D — the growth number the booking tool carries. No meter:
+             a meter reads as a share of a limit, and year-over-year
+             growth is not a share of anything. A stat tile is the
+             honest form for a lone figure. -->
+        <article class="tot-card reveal reveal--d3">
+          <span class="tot-card__num">+10%</span>
+          <span class="tot-card__label label">Bookings, year over year</span>
+          <p class="tot-card__note">Growth booked through the internal tool, against the same period last year.</p>
         </article>
       </div>
     </div>
