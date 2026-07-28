@@ -270,7 +270,9 @@
       "WebFetch(domain:craftwork.design)",
       "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b3.webp'\\)|--hero-img:url\\('/assets/art/oliver/no01.svg'\\)|\" case-studies/matching-tool.html)",
       "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b8.webp'\\)|--hero-img:url\\('/assets/art/oliver/no02.svg'\\)|\" case-studies/tool-consolidation.html)",
-      "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b20.webp'\\)|--hero-img:url\\('/assets/art/oliver/no03.svg'\\)|; s|style=\\\\\"background-position:center 78%\\\\\"||\" case-studies/matching-logic.html)"
+      "Bash(sed -i \"s|--hero-img:url\\('/assets/art/plate/b20.webp'\\)|--hero-img:url\\('/assets/art/oliver/no03.svg'\\)|; s|style=\\\\\"background-position:center 78%\\\\\"||\" case-studies/matching-logic.html)",
+      "PowerShell(foreach \\($p in @\\('py','python3','python'\\)\\) { $c = Get-Command $p -ErrorAction SilentlyContinue; if \\($c\\) { Write-Output \"$p -> $\\($c.Source\\)\" } })",
+      "PowerShell(foreach \\($p in @\\('cwebp','magick','convert','ffmpeg','node','npx'\\)\\) { $c = Get-Command $p -ErrorAction SilentlyContinue; if \\($c\\) { Write-Output \"$p -> $\\($c.Source\\)\" } })"
     ]
   }
 }
