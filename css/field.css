@@ -303,11 +303,11 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
      in the corners, dissolving toward a pool of buttery light where
      the statement sits. Pure CSS — nothing to download. */
   background:
-    radial-gradient(58% 44% at 18% 20%, rgba(188,212,224,.55) 0%, rgba(188,212,224,0) 70%),
-    radial-gradient(52% 44% at 82% 24%, rgba(214,204,229,.52) 0%, rgba(214,204,229,0) 72%),
-    radial-gradient(48% 40% at 76% 80%, rgba(185,204,173,.5) 0%, rgba(185,204,173,0) 70%),
-    radial-gradient(46% 40% at 22% 80%, rgba(242,217,212,.55) 0%, rgba(242,217,212,0) 72%),
-    radial-gradient(70% 55% at 50% 46%, rgba(247,238,216,.62) 0%, rgba(247,238,216,0) 75%),
+    radial-gradient(58% 44% at 18% 20%, rgba(188,212,224,.78) 0%, rgba(188,212,224,0) 72%),
+    radial-gradient(52% 44% at 82% 24%, rgba(214,204,229,.74) 0%, rgba(214,204,229,0) 74%),
+    radial-gradient(48% 40% at 76% 80%, rgba(185,204,173,.72) 0%, rgba(185,204,173,0) 72%),
+    radial-gradient(46% 40% at 22% 80%, rgba(242,217,212,.78) 0%, rgba(242,217,212,0) 74%),
+    radial-gradient(70% 55% at 50% 46%, rgba(247,238,216,.7) 0%, rgba(247,238,216,0) 75%),
     #FBF9F4;
   color: var(--ink);
 }
