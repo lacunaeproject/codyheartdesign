@@ -164,8 +164,14 @@ body {
 
 /* The front page goes all-Sprig — ledes and prose included — and
    sits on white rather than paper. Interior pages keep Cheltenham
-   and the cream ground for long reading. */
-.home { --font-body: 'Sprig', 'Iowan Old Style', Georgia, 'Times New Roman', serif; background: var(--white); }
+   and the cream ground for long reading. Ink softens to charcoal
+   here — true black fights the frosted garden light. */
+.home {
+  --font-body: 'Sprig', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --ink: #3A3F3D;
+  --ink-soft: #555B56;
+  background: var(--white);
+}
 
 img, svg { max-width: 100%; display: block; }
 img { height: auto; }
