@@ -33,85 +33,41 @@
 <meta name="theme-color" content="#F6F2E9">
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Medium.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Bold.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-BoldItalic.woff2" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=93">
+<link rel="stylesheet" href="css/field.css?v=94">
 </head>
 <body class="home">
 
-<nav class="nav" aria-label="Primary">
-      <a href="index.html" aria-current="page">Work</a>
-      <a href="about.html">About</a>
-      <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<!-- Chip chrome (Sanvi format, 2026-07-28): wordmark chip top-left,
+     nav chips top-right, both fixed so they ride the whole page.
+     The gold-leaf heart lives in the wordmark now — same gradient
+     recipe as always: metal, foot shadow, gloss, lit inner rim. -->
+<a class="chip-logo" href="index.html" aria-label="Cody Heart — home">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gold-leaf" x1=".24" y1="-.05" x2=".62" y2="1"><stop offset="0" stop-color="#FBE6AE"/><stop offset=".13" stop-color="#F0CB66"/><stop offset=".29" stop-color="#D9A63A"/><stop offset=".43" stop-color="#BC8622"/><stop offset=".52" stop-color="#A97219"/><stop offset=".60" stop-color="#C79331"/><stop offset=".69" stop-color="#F2D688"/><stop offset=".78" stop-color="#DDAE46"/><stop offset=".90" stop-color="#C08D28"/><stop offset="1" stop-color="#A87423"/></linearGradient><radialGradient id="gold-gloss" cx=".30" cy=".26" r=".52"><stop offset="0" stop-color="#FFF4CE" stop-opacity=".78"/><stop offset=".55" stop-color="#FFF4CE" stop-opacity=".18"/><stop offset="1" stop-color="#FFF4CE" stop-opacity="0"/></radialGradient><linearGradient id="gold-foot" x1="0" y1=".60" x2="0" y2="1"><stop offset="0" stop-color="#6B4208" stop-opacity="0"/><stop offset="1" stop-color="#6B4208" stop-opacity=".28"/></linearGradient><clipPath id="heart-clip"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></clipPath></defs><g clip-path="url(#heart-clip)"><rect width="24" height="24" fill="url(#gold-leaf)"/><rect width="24" height="24" fill="url(#gold-foot)"/><rect width="24" height="24" fill="url(#gold-gloss)"/><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z" fill="none" stroke="#FFEEB4" stroke-opacity=".55" stroke-width="1.1"/></g></svg>
+  <span>codyheart</span>
+</a>
+<nav class="chip-nav" aria-label="Primary">
+  <a class="chip chip--on" href="index.html" aria-current="page">&#9829;&#xFE0E; work</a>
+  <a class="chip" href="about.html">&#9998;&#xFE0E; about</a>
+  <a class="chip" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">&#8803; r&#233;sum&#233;</a>
+  <a class="chip" href="#contact">&#9993;&#xFE0E; contact</a>
+</nav>
 
 <main>
   <!-- ============================================================
-       HERO — air. Name, role, one bright gradient off the corner.
-       The page is: hero, case study, case study, case study, done.
+       HERO — a white room (Sanvi format, 2026-07-28). Tab labels,
+       one serif statement, nothing else. The chip chrome above
+       rides the whole page; the heart lives in the wordmark chip.
        ============================================================ -->
   <section class="hero">
-    <!-- Gold leaf, not a photograph. The yellow painting is a
-         defocused blur — every crop of it flattens to one colour at
-         icon scale — so the mark takes its palette from the painting
-         (these six stops are sampled straight out of it) and gets its
-         depth from a gradient instead. The bright band at 68% is the
-         specular flip that makes metal read as metal: light, shadow,
-         then light again. Runs corner to corner so the sweep crosses
-         both lobes rather than banding one of them. -->
-    <svg class="hero__heart reveal" viewBox="0 0 24 24" aria-hidden="true">
-      <defs>
-        <!-- 1. The metal itself. Stops sampled out of the painting;
-             the bright band after the shadow is the specular flip. -->
-        <linearGradient id="gold-leaf" x1=".24" y1="-.05" x2=".62" y2="1">
-          <stop offset="0"    stop-color="#FBE6AE"/>
-          <stop offset=".13"  stop-color="#F0CB66"/>
-          <stop offset=".29"  stop-color="#D9A63A"/>
-          <stop offset=".43"  stop-color="#BC8622"/>
-          <stop offset=".52"  stop-color="#A97219"/>
-          <stop offset=".60"  stop-color="#C79331"/>
-          <stop offset=".69"  stop-color="#F2D688"/>
-          <stop offset=".78"  stop-color="#DDAE46"/>
-          <stop offset=".90"  stop-color="#C08D28"/>
-          <stop offset="1"    stop-color="#A87423"/>
-        </linearGradient>
-        <!-- 2. Gloss on the upper-left lobe — where a light source
-             above and left of the mark would actually catch it. -->
-        <radialGradient id="gold-gloss" cx=".30" cy=".26" r=".52">
-          <stop offset="0"   stop-color="#FFF4CE" stop-opacity=".78"/>
-          <stop offset=".55" stop-color="#FFF4CE" stop-opacity=".18"/>
-          <stop offset="1"   stop-color="#FFF4CE" stop-opacity="0"/>
-        </radialGradient>
-        <!-- 3. Shadow pooling into the point, so the heart has a
-             weighted bottom instead of floating evenly lit. -->
-        <linearGradient id="gold-foot" x1="0" y1=".60" x2="0" y2="1">
-          <stop offset="0" stop-color="#6B4208" stop-opacity="0"/>
-          <stop offset="1" stop-color="#6B4208" stop-opacity=".28"/>
-        </linearGradient>
-        <clipPath id="heart-clip">
-          <path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/>
-        </clipPath>
-      </defs>
-      <!-- Layered inside the silhouette: metal, then shadow, then
-           gloss, then a lit inner rim. The rim is a centred stroke
-           clipped to the path, so only its inner half survives —
-           that catch of light along the edge is what separates gold
-           leaf from a heart that merely has a gradient in it. -->
-      <g clip-path="url(#heart-clip)">
-        <rect width="24" height="24" fill="url(#gold-leaf)"/>
-        <rect width="24" height="24" fill="url(#gold-foot)"/>
-        <rect width="24" height="24" fill="url(#gold-gloss)"/>
-        <path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"
-              fill="none" stroke="#FFEEB4" stroke-opacity=".55" stroke-width="1.1"/>
-      </g>
-    </svg>
-    <p class="hero__greeting reveal">I&#8217;m Cody Heart</p>
-    <h1 class="hero__statement reveal reveal--d1">Designing for what <em>makes us human.</em></h1>
-    <div class="hero__sub reveal reveal--d2">
-      <!-- Cheltenham, not the Geograph label: the trial cut has no @ -->
-      <p class="hero__role">Lead Product Designer @ LifeStance Health</p>
+    <div class="hero__tabs reveal" aria-hidden="true">
+      <span class="hero__tab hero__tab--on">Who I Am</span>
+      <span class="hero__tab">What I Care About</span>
+      <span class="hero__tab">What I Believe In</span>
+      <span class="hero__tab">What I&#8217;m Up To</span>
     </div>
+    <h1 class="hero__statement reveal reveal--d1">Designer creating meaningful tools for mental healthcare &#8212; and every other part of being human.</h1>
   </section>
 
   <!-- ============================================================
@@ -181,39 +137,36 @@
 
   <a class="cs-block" href="case-studies/matching-tool.html">
     <div class="shell">
-      <div class="cs-block__plate reveal">
+      <div class="cs-block__plate">
         <img src="assets/art/oliver/no01.svg?v=5" alt="" loading="lazy" decoding="async">
-        <div class="cs-block__scrim" aria-hidden="true"></div>
-        <div class="cs-block__body">
-          <span class="label">No 01<span class="sep" aria-hidden="true"></span>Admin Pilot</span>
-          <h3 class="cs-block__title">Took an internal booking platform from a two-state pilot to 99% national adoption.</h3>
-        </div>
+      </div>
+      <div class="cs-block__cap">
+        <p class="cs-block__capline">Took an internal booking platform from a two-state pilot to 99% national adoption.</p>
+        <p class="cs-block__capmeta">No 01 &#183; Admin Pilot</p>
       </div>
     </div>
   </a>
 
   <a class="cs-block" href="case-studies/tool-consolidation.html">
     <div class="shell">
-      <div class="cs-block__plate reveal">
+      <div class="cs-block__plate">
         <img src="assets/art/oliver/no02.svg?v=5" alt="" loading="lazy" decoding="async">
-        <div class="cs-block__scrim" aria-hidden="true"></div>
-        <div class="cs-block__body">
-          <span class="label">No 02<span class="sep" aria-hidden="true"></span>Tool Consolidation</span>
-          <h3 class="cs-block__title">Mapped 50+ regional intake tools and proved they reduce to six underlying jobs.</h3>
-        </div>
+      </div>
+      <div class="cs-block__cap">
+        <p class="cs-block__capline">Mapped 50+ regional intake tools and proved they reduce to six underlying jobs.</p>
+        <p class="cs-block__capmeta">No 02 &#183; Tool Consolidation</p>
       </div>
     </div>
   </a>
 
   <a class="cs-block" href="case-studies/matching-logic.html">
     <div class="shell">
-      <div class="cs-block__plate reveal">
+      <div class="cs-block__plate">
         <img src="assets/art/oliver/no03.svg?v=4" alt="" loading="lazy" decoding="async">
-        <div class="cs-block__scrim" aria-hidden="true"></div>
-        <div class="cs-block__body">
-          <span class="label">No 03<span class="sep" aria-hidden="true"></span>Care Matching</span>
-          <h3 class="cs-block__title">Turned a black-box matching funnel into a measurable four-gate system across 33 states.</h3>
-        </div>
+      </div>
+      <div class="cs-block__cap">
+        <p class="cs-block__capline">Turned a black-box matching funnel into a measurable four-gate system across 33 states.</p>
+        <p class="cs-block__capmeta">No 03 &#183; Care Matching</p>
       </div>
     </div>
   </a>

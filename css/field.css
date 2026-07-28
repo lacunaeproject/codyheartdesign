@@ -88,17 +88,8 @@
   font-weight: 700; font-style: normal; font-display: swap;
 }
 
-/* ---------- Geograph — micro-labels only ---------- */
-@font-face {
-  font-family: 'Geograph';
-  src: url('../assets/fonts/test-geograph-regular.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: 'Geograph';
-  src: url('../assets/fonts/test-geograph-medium.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
-}
+/* Micro-labels ride the system grotesque stack — the Geograph
+   trial files left the repo with the July 2026 cleanup. */
 
 /* ============================================================
    TOKENS — sampled from the painted grounds
@@ -131,7 +122,7 @@
 
   --font-display: 'Sprig', 'Cheltenham Classic', Georgia, serif;
   --font-body:    'Cheltenham Classic', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
-  --font-label:   'Geograph', ui-sans-serif, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-label:   ui-sans-serif, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   --fs-body: 1.0625rem;
   --fs-lead: 1.3rem;
@@ -165,9 +156,10 @@ body {
   overflow-x: hidden;
 }
 
-/* The front page goes all-Sprig — greeting, role, ledes and prose
-   included. Interior pages keep Cheltenham for long reading. */
-.home { --font-body: 'Sprig', 'Iowan Old Style', Georgia, 'Times New Roman', serif; }
+/* The front page goes all-Sprig — ledes and prose included — and
+   sits on white rather than paper. Interior pages keep Cheltenham
+   and the cream ground for long reading. */
+.home { --font-body: 'Sprig', 'Iowan Old Style', Georgia, 'Times New Roman', serif; background: var(--white); }
 
 img, svg { max-width: 100%; display: block; }
 img { height: auto; }
@@ -280,66 +272,47 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 .nav a[aria-current]:active { color: var(--white); background: var(--cobalt); }
 
 /* ============================================================
-   HERO — the hero IS the colour. Full viewport of one bright
-   grain-gradient painting, everything centered in cream on top:
-   the giraffe mark, the greeting, a short statement at poster
-   scale, and two quiet lines. The white space belongs to the
-   case blocks that follow.
+   HERO — a white room (Sanvi format, 2026-07-28). Fixed chip
+   chrome in the top corners, a row of small tab labels, and one
+   serif statement. The old painted hero retired with this format;
+   the paintings still live on the case plates and the footer.
    ============================================================ */
 .hero {
   position: relative;
-  isolation: isolate;
-  min-height: 100svh;
+  min-height: 88svh;
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
-  /* Bottom-heavy padding: the centered block rides high, and the
-     base holds clearance for the bottom pill. */
-  padding: clamp(4.5rem, 9vh, 6rem) var(--gutter) clamp(7.5rem, 16vh, 11rem);
-  overflow: hidden;
-  color: var(--white);
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: url('../assets/art/bg/bean-hero.jpg') center 42%/cover no-repeat;
-}
-/* The $3.5M card's treatment at hero scale: a heavier veil top
-   and bottom, a vignette pulling the edges into ink, and a faint
-   warm breath in the glow's centre so the light reads as evening
-   lamplight rather than daylight. */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(240,203,102,.14) 0%, rgba(240,203,102,.05) 35%, rgba(23,26,30,0) 60%),
-    radial-gradient(ellipse 85% 70% at 50% 45%, rgba(23,26,30,0) 0%, rgba(23,26,30,.35) 68%, rgba(23,26,30,.66) 100%),
-    linear-gradient(to bottom, rgba(23,26,30,.5) 0%, rgba(23,26,30,.12) 30%, rgba(23,26,30,.18) 62%, rgba(23,26,30,.6) 100%);
+  padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 9vh, 6rem);
+  background: var(--white);
+  color: var(--ink);
 }
 
-/* The heart, standing over the name the way the reference site
-   floats her shell — same path as the wordmark badge, now in gold
-   leaf rather than cream, so it picks up the yellow painting from
-   further down the page. Sized up from 44px: a gradient needs room
-   to be seen as a gradient, and at the old scale the whole mark
-   read as one flat chip of colour. Fill lives on the path in the
-   markup, so there is no `color` here to inherit. */
-.hero__heart {
-  width: clamp(58px, 6.4vw, 82px);
-  height: auto;
-  margin: 0 0 1.3rem;
-  transform-origin: center;
-  /* A close, low-opacity drop so the gold keeps an edge where it
-     crosses the hero painting's palest passages. */
-  filter: drop-shadow(0 1px 2px rgba(31, 36, 32, .38));
+/* ---------- Chip chrome — wordmark and nav ---------- */
+.chip-logo {
+  position: fixed;
+  top: 1.3rem;
+  left: 1.5rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 999px;
+  padding: .45em .95em;
+  box-shadow: 0 6px 18px -8px rgba(31, 36, 32, .22);
 }
-/* The old wordmark's double-beat, softened — lub-dub, rest */
-.hero__heart:hover { animation: heart-pulse 1.3s ease-in-out infinite; }
+.chip-logo svg { width: 1.05em; height: auto; }
+.chip-logo span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--ink);
+}
+/* The old wordmark double-beat, now on the chip — lub-dub, rest */
+.chip-logo:hover svg { animation: heart-pulse 1.3s ease-in-out infinite; }
 @keyframes heart-pulse {
   0%, 100% { transform: scale(1); }
   15%      { transform: scale(1.12); }
@@ -348,42 +321,57 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   60%      { transform: scale(1); }
 }
 
-.hero__greeting {
+.chip-nav {
+  position: fixed;
+  top: 1.3rem;
+  right: 1.5rem;
+  z-index: 60;
+  display: flex;
+  gap: .5em;
+}
+.chip {
   font-family: var(--font-body);
-  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
-  letter-spacing: .02em;
-  margin: 0 0 1rem;
-  opacity: .95;
+  font-size: .92rem;
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 999px;
+  padding: .42em 1em;
+  color: var(--ink-soft);
+  box-shadow: 0 6px 18px -8px rgba(31, 36, 32, .18);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.chip:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -8px rgba(31, 36, 32, .26); }
+.chip--on { background: var(--cobalt); border-color: var(--cobalt); color: var(--white); }
+@media (max-width: 720px) {
+  .chip-logo span { display: none; }
+  .chip { font-size: .8rem; padding: .38em .8em; }
 }
 
-/* Cheltenham, not a Geograph label — the trial cut has no @ */
-.hero__role {
-  font-family: var(--font-body);
-  font-size: clamp(1.2rem, 2vw, 1.6rem);
-  letter-spacing: .01em;
-  margin: 0;
-  opacity: .95;
+/* ---------- Hero content ---------- */
+.hero__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2em 2.4em;
+  font-family: var(--font-label);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2.4rem;
 }
+.hero__tab--on { color: var(--cobalt); }
 
 .hero__statement {
   font-family: var(--font-display);
-  font-weight: 700; /* Sprig Bold — present without going Super-fat */
-  font-size: clamp(2.9rem, 7.4vw, 6.2rem);
-  line-height: 1.14;
-  letter-spacing: -0.01em;
-  max-width: 16ch;
-  margin: 0 0 1.8rem;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  line-height: 1.22;
+  max-width: 24ch;
+  margin: 0;
 }
-/* The key phrase turns italic — same white as the roman; the
-   emphasis is the letterform, not a colour. */
 .hero__statement em { font-style: italic; }
-
-.hero__sub {
-  display: grid;
-  gap: .5rem;
-  justify-items: center;
-  color: rgba(255,255,255,.92);
-}
 
 /* ============================================================
    CASE BLOCKS — one project per screen, generous air between.
@@ -467,6 +455,48 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 /* The scrim retired with the overlay — image and text no longer
    share ground, so nothing needs dimming. */
 .cs-block__scrim { display: none; }
+
+/* The story moved out of the card (Sanvi format): an italic serif
+   sentence below the plate, with a small meta line under it. */
+.cs-block__cap {
+  padding: 1.5rem .2rem 0;
+  text-align: left;
+}
+.cs-block__capline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 34ch;
+  margin: 0 0 .55em;
+}
+.cs-block__capmeta {
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Scroll entrance: each block rises and sharpens from a blur as it
+   enters the viewport. Native scroll-driven animation — engines
+   without animation-timeline simply show the settled state. The
+   animation lives on the block (not the plate) so the plate hover
+   lift keeps its own transform. */
+@keyframes block-rise {
+  from { filter: blur(16px); transform: translateY(70px) scale(.965); opacity: .5; }
+  to   { filter: blur(0);    transform: none;                         opacity: 1; }
+}
+@supports (animation-timeline: view()) {
+  .cs-block {
+    animation: block-rise linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 85%;
+  }
+}
 
 /* The story panel: label and title in ink on white, the same
    surface language as the stat tiles above. */
