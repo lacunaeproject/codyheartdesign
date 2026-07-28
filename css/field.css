@@ -293,32 +293,57 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    ============================================================ */
 .hero {
   position: relative;
-  min-height: 88svh;
+  isolation: isolate;
+  min-height: 100svh;
   display: grid;
   align-content: center;
   justify-items: center;
   text-align: center;
   padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 9vh, 6rem);
-  /* Giverny light: lily-pond blue, wisteria, willow green and rose
-     in the corners, dissolving toward a pool of buttery light where
-     the statement sits. Pure CSS — nothing to download. */
-  background:
-    radial-gradient(58% 44% at 18% 20%, rgba(178,206,222,.95) 0%, rgba(188,212,224,0) 72%),
-    radial-gradient(52% 44% at 82% 24%, rgba(206,194,226,.92) 0%, rgba(214,204,229,0) 74%),
-    radial-gradient(48% 40% at 76% 80%, rgba(176,199,161,.92) 0%, rgba(185,204,173,0) 72%),
-    radial-gradient(46% 40% at 22% 80%, rgba(240,208,201,.95) 0%, rgba(242,217,212,0) 74%),
-    radial-gradient(70% 55% at 50% 46%, rgba(247,237,211,.8) 0%, rgba(247,238,216,0) 75%),
-    #FBF9F4;
+  overflow: hidden;
   color: var(--ink);
+  background: #F7F4EC;
 }
-/* The garden light dissipates into the page rather than stopping at
-   a seam. */
+/* The painting behind the glass: saturated Giverny colour fields —
+   lily-pond blue, wisteria, willow, rose, buttery light — blown out
+   past the edges, heavily blurred, and drifting very slowly, the
+   way light moves through a garden. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: -2;
+  background:
+    radial-gradient(42% 38% at 20% 24%, #A5C6DC 0%, rgba(165,198,220,0) 70%),
+    radial-gradient(38% 36% at 78% 20%, #BCA6D8 0%, rgba(188,166,216,0) 72%),
+    radial-gradient(40% 36% at 76% 78%, #A7C494 0%, rgba(167,196,148,0) 70%),
+    radial-gradient(38% 34% at 22% 80%, #ECB9AC 0%, rgba(236,185,172,0) 72%),
+    radial-gradient(50% 45% at 52% 50%, #F4E6BC 0%, rgba(244,230,188,0) 75%),
+    #F7F4EC;
+  filter: blur(clamp(40px, 6vw, 90px)) saturate(1.05);
+  animation: giverny-drift 48s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes giverny-drift {
+  0%   { transform: translate3d(-3%, -2%, 0) rotate(-2deg)  scale(1); }
+  50%  { transform: translate3d(2.5%, 2%, 0)  rotate(1.5deg) scale(1.06); }
+  100% { transform: translate3d(-1.5%, 3%, 0) rotate(-1deg)  scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero::before { animation: none; }
+}
+/* The frosted pane: a white veil over the whole painting, thickening
+   into solid page-white at the base so the garden dissipates into
+   the paper below. */
 .hero::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: clamp(4rem, 10vh, 7rem);
-  background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white));
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,.30) 0%,
+    rgba(255,255,255,.26) 62%,
+    var(--white) 100%);
   pointer-events: none;
 }
 
