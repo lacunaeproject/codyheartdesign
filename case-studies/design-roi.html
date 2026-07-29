@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Design ROI — Cody Heart</title>
-<meta name="description" content="Modeling the dollar value of a design team for a new CTO.">
+<meta name="description" content="Modeling the design team&#8217;s return against fully-loaded cost — a realized 9–11×, a scoped 40–100×.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,259 +13,264 @@
 <link rel="alternate icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
-<meta property="og:type" content="website">
+<!-- Open Graph / Rich link preview -->
+<meta property="og:type" content="article">
 <meta property="og:url" content="https://codyheart.design/case-studies/design-roi.html">
 <meta property="og:title" content="Design ROI — Cody Heart">
-<meta property="og:description" content="Modeling the dollar value of a design team for a new CTO.">
+<meta property="og:description" content="Modeling the design team&#8217;s return against fully-loaded cost — a realized 9–11×, a scoped 40–100×.">
 <meta property="og:image" content="https://codyheart.design/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cody Heart — Lead Product Designer">
 <meta property="og:site_name" content="Cody Heart">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Design ROI — Cody Heart">
-<meta name="twitter:description" content="Modeling the dollar value of a design team for a new CTO.">
-<meta name="twitter:image" content="https://codyheart.design/og-image.png">
-
-<!-- Theme color (mobile browser chrome) -->
-<meta name="theme-color" content="#FAF8F2">
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/CheltenhamClassic.woff2" crossorigin>
-<link rel="stylesheet" href="../css/field.css?v=109">
+<meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
-</head>
-<body class="cs-theme--red">
 
-<nav class="nav" aria-label="Primary">
-  <a href="../index.html" aria-current="page">Work</a>
-  <a href="../about.html">About</a>
-  <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
-  <a href="#contact">Contact</a>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/Geist-Variable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/CheltenhamClassicMedium.woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=1">
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a class="nav__back link-hover press-scale" href="../index.html"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5.5 4L1.5 8M1.5 8L5.5 12M1.5 8H10C11.3807 8 12.5 6.88071 12.5 5.5V5.5C12.5 4.11929 11.3807 3 10 3H8.5" stroke="currentColor"/></svg><span>Home</span></a>
+    <button class="nav__scrolltitle" aria-label="Scroll to top">Design ROI</button>
+
+    <div class="nav__links">
+      <a class="nav__link link-hover" href="../about.html">About</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-work">Work<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-work" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="tool-consolidation.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+              <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="matching-tool.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+              <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="matching-logic.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+              <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+            </a>
+            <a class="menu-item menu-item--all" role="menuitem" href="../work.html"><span>All six, and the experience</span><span aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link link-hover" href="../writing/design-as-a-revenue-lever.html">Writing</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-contact">Contact<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-contact" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="mailto:hello@codyheart.design">
+              <div class="menu-item__tile"><svg class="icon-duo  c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+              <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+              <div class="menu-item__tile"><svg class="icon-duo  c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+              <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let’s connect</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+              <div class="menu-item__tile"><svg class="icon-duo  c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+              <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+              <div class="menu-item__tile"><svg class="icon-duo  c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+              <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav__burger-wrap">
+      <button class="nav__burger" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
 </nav>
 
-<main class="cs">
+<div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-menu__inner">
+    <a class="mobile-menu__link" href="../about.html">About</a>
+    <a class="mobile-menu__link" href="../writing/design-as-a-revenue-lever.html">Writing</a>
 
-  <section class="cs-band cs-band--hero cs-hero--night">
-    <div class="cs-hero__media" aria-hidden="true"></div>
-    <div class="cs-hero shell">
-      <div class="cs-hero__nav">
-        <a href="../work.html">← All case studies</a>
-        <span>·</span>
-        <span>№ 06 of 06</span>
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Work</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="tool-consolidation.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+          <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+        </a>
+        <a class="mobile-menu__item" href="matching-tool.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+        </a>
+        <a class="mobile-menu__item" href="matching-logic.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+        </a>
+        <a class="mobile-menu__item" href="claims.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="10" height="24" rx="2"/><rect class="duo-b" x="12" y="0" width="12" height="24" rx="2"/></svg></div>
+          <div><span class="menu-item__title">Claims</span><span class="menu-item__desc">60% less time per claim</span></div>
+        </a>
+        <a class="mobile-menu__item" href="billing.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="2" y="11" width="20" height="2"/><circle class="duo-a" cx="4" cy="12" r="4"/><circle class="duo-a" cx="12" cy="12" r="4"/><circle class="duo-b" cx="20" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Billing</span><span class="menu-item__desc">The invisible half, automated</span></div>
+        </a>
+        <a class="mobile-menu__item" href="design-roi.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Design ROI</span><span class="menu-item__desc">Design as a revenue lever</span></div>
+        </a>
       </div>
-      <div class="cs-hero__content">
-        <span class="eyebrow cs-hero__eyebrow">№ 06 · Strategy &amp; ROI</span>
-        <h1 class="reveal">Design as a revenue lever, not a cost center.</h1>
+    </div>
+
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Contact</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="mailto:hello@codyheart.design">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+          <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+          <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let’s connect</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+          <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<aside class="toc" aria-label="On this page">
+  <div class="toc__inner">
+    <div class="toc__track"><div class="toc__thumb"></div></div>
+    <ul>
+      <li><a href="#outcomes">Did It Work</a></li>
+      <li><a href="#why">Why I Did It</a></li>
+      <li><a href="#how">How I Built It</a></li>
+      <li><a href="#results">The Multiples</a></li>
+      <li><a href="#used">How It Got Used</a></li>
+      <li><a href="#takeaway">Takeaway</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="article">
+  <header>
+    <div class="article__kicker">LifeStance / Strategy &amp; ROI</div>
+    <h1 class="article__title">Design as a revenue lever, not a cost center.</h1>
+    <p class="article__intro">Most design teams get discussed in cost terms &#8212; headcount, burn, allocation. Late last year, with a new CTO coming in and a resource-planning cycle opening up, I decided to <span class="highlight highlight-pink">stop arguing that design was valuable and start showing it</span>. I built a financial model of the design team&#8217;s ROI, grounded in the shipped projects we could point to, and walked it into the room. It changed the conversation.</p>
+    <dl class="meta-grid meta-grid--4">
+      <div><dt>Role</dt><dd>Lead Designer / modeler</dd></div>
+      <div><dt>Audience</dt><dd>CTO, Product, Finance</dd></div>
+      <div><dt>Timeline</dt><dd>2024 &#8211; 2025</dd></div>
+      <div><dt>Output</dt><dd>Model + prioritization framework</dd></div>
+    </dl>
+  </header>
+
+  <figure class="cs-figure"><div class="ph"><span>Artifact &#8212; the ROI model &#183; ask me to walk you through it</span></div><figcaption>The model itself stays private; the method is the case study.</figcaption></figure>
+
+  <section id="outcomes" class="cs-section">
+    <div class="section-label"><span>Did It Work</span></div>
+    <h2>Modeled what design was worth &#8212; and defended it.</h2>
+    <div class="cs-flow">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-card__num">9&#8211;11&#215;</div><div class="stat-card__label">realized ROI of the current design team, modeled against fully-loaded cost</div></div>
+        <div class="stat-card"><div class="stat-card__num">40&#8211;100&#215;</div><div class="stat-card__label">scoped upside with two targeted senior hires and a shift in what we work on</div></div>
+        <div class="stat-card"><div class="stat-card__num">1 framework</div><div class="stat-card__label">a shared prioritization model product, design, and engineering now plan against</div></div>
       </div>
     </div>
   </section>
 
-  <section class="cs-band cs-band--dark">
-    <div class="cs-glance">
-      <p class="cs-glance__eyebrow">At a glance &#183; 30 seconds</p>
-      <h2 class="cs-glance__claim">Modeled what design was worth &#8212; and defended it.</h2>
-
-      <div class="metrics">
-        <div class="metrics__grid">
-      <div class="metric reveal">
-        <p class="metric__num">9–11×</p>
-        <p class="metric__label">Realized ROI of the current design team, modeled against fully-loaded cost.</p>
-      </div>
-      <div class="metric reveal reveal--d1">
-        <p class="metric__num">40–100×</p>
-        <p class="metric__label">Scoped upside with two targeted senior hires and a shift in what we work on.</p>
-      </div>
-      <div class="metric reveal reveal--d2">
-        <p class="metric__num">1 framework</p>
-        <p class="metric__label">A shared prioritization model product, design, and engineering now use to plan the next quarter.</p>
-      </div>
-    </div>
-      </div>
-
-      <div class="cs-glance__facts">
-        <div>
-          <p class="cs-glance__fact-label">Role</p>
-          <p class="cs-glance__fact-value">Lead Designer / modeler</p>
-        </div>
-        <div>
-          <p class="cs-glance__fact-label">Audience</p>
-          <p class="cs-glance__fact-value">CTO, Product, Finance</p>
-        </div>
-        <div>
-          <p class="cs-glance__fact-label">Timeline</p>
-          <p class="cs-glance__fact-value">2024 – 2025</p>
-        </div>
-        <div>
-          <p class="cs-glance__fact-label">Output</p>
-          <p class="cs-glance__fact-value">Model + prioritization framework</p>
-        </div>
-      </div>
-
-      <div class="cs-glance__cta">
-        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Design%20ROI%20%E2%80%94%20let%E2%80%99s%20talk">Email me about this work <span class="cs-cta__arrow">&#8594;</span></a>
-        <a class="cs-cta" href="#access">Request the password</a>
-        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book 30 min</a>
-      </div>
+  <section id="why" class="cs-section">
+    <div class="section-label"><span>Why I Did It</span></div>
+    <h2>Design without a number on it.</h2>
+    <div class="cs-flow">
+      <p>Every design leader I&#8217;ve worked with has some version of the same conversation with their CFO: &#8220;We know you&#8217;re doing good work, but we can&#8217;t quite see the impact in the model.&#8221; That&#8217;s a fair critique, and the response most teams reach for &#8212; a deck of before/after screenshots, a few testimonial quotes from product partners &#8212; doesn&#8217;t really answer it.</p>
+      <p>I wanted to answer it. Not with vibes. With a model a finance team could redline.</p>
     </div>
   </section>
 
-  <section class="cs-band cs-band--light">
-    <div class="cs-body shell--read">
-    
-      <p class="cs-lede reveal">
-        Most design teams get discussed in cost terms — headcount, burn, allocation. Late last year, with a new CTO coming in and a resource-planning cycle opening up, I decided to stop arguing that design was valuable and start showing it. I built a financial model of the design team&#8217;s ROI, grounded in the shipped projects we could point to, and walked it into the room. It changed the conversation.
-      </p>
-<div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">01</span><p class="cs-q__t">Why I did it</p></div>
-      <h2 class="cs-answer reveal">Design without a number on it.</h2>
-          <p class="reveal">Every design leader I&#8217;ve worked with has some version of the same conversation with their CFO: &#8220;We know you&#8217;re doing good work, but we can&#8217;t quite see the impact in the model.&#8221; That&#8217;s a fair critique, and the response most teams reach for — a deck of before/after screenshots, a few testimonial quotes from product partners — doesn&#8217;t really answer it.</p>
-          <p class="reveal">I wanted to answer it. Not with vibes. With a model a finance team could redline.</p>
-    </div>
-
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">02</span><p class="cs-q__t">How I built it</p></div>
-      <h2 class="cs-answer reveal">Build it on the ledger, not the mood board.</h2>
-          <p class="reveal">I started with the shipped work the team could clearly claim an outcome on. For each project, I wrote down three things: the directly-attributable savings or revenue (the hard number), the reasonable inferred upside (the softer but defensible one), and the assumptions behind both — so anyone reading the model could argue with them instead of with me.</p>
-          <h3 class="reveal">The big entries</h3>
-          <ul class="reveal">
-            <li><strong>Matching tool time savings</strong> — a measured 39-second per-call handle-time reduction across a 33-state rollout, isolated by a natural control group. Modeled downstream two ways, both shown: reclaimed coordinator labor at fully-loaded cost, and the booking capacity that time opens up at average visit revenue. The dollar figures are potential, not booked; the assumptions are on the same page as the number. The largest single input to the model. (See <a href="matching-tool.html">Matching Tool</a>.)</li>
-            <li><strong>Matching framework lift</strong> — estimated conversion gains on specific funnel stages attributable to design interventions at each gate.</li>
-            <li><strong>Operational unlocks</strong> — capacity returned to care coordinators, clinicians, and call-center agents from tool consolidation, priced at fully-loaded labor.</li>
-            <li><strong>Avoided build</strong> — engineering work the team didn&#8217;t have to do because a design iteration ruled it out before the commit.</li>
-          </ul>
-          <p class="reveal">On the cost side: fully-loaded comp, tooling, and a fair share of managerial overhead. No thumb on the scale.</p>
-    </div>
+  <section id="how" class="cs-section">
+    <div class="section-label"><span>How I Built It</span></div>
+    <h2>Build it on the ledger, not the mood board.</h2>
+    <div class="cs-flow">
+      <p>I started with the shipped work the team could clearly claim an outcome on. For each project, I wrote down three things: the directly-attributable savings or revenue (the hard number), the reasonable inferred upside (the softer but defensible one), and the assumptions behind both &#8212; so anyone reading the model could argue with them instead of with me.</p>
+      <h3>The big entries</h3>
+      <ul>
+        <li><strong>Matching tool time savings</strong> &#8212; a measured 39-second per-call handle-time reduction across a 33-state rollout, isolated by a natural control group. Modeled downstream two ways, both shown: reclaimed coordinator labor at fully-loaded cost, and the booking capacity that time opens up at average visit revenue. The dollar figures are potential, not booked; the assumptions are on the same page as the number. The largest single input to the model. (See <a style="text-decoration:underline" href="matching-tool.html">Matching Tool</a>.)</li>
+        <li><strong>Matching framework lift</strong> &#8212; estimated conversion gains on specific funnel stages attributable to design interventions at each gate.</li>
+        <li><strong>Operational unlocks</strong> &#8212; capacity returned to care coordinators, clinicians, and call-center agents from tool consolidation, priced at fully-loaded labor.</li>
+        <li><strong>Avoided build</strong> &#8212; engineering work the team didn&#8217;t have to do because a design iteration ruled it out before the commit.</li>
+      </ul>
+      <p>On the cost side: fully-loaded comp, tooling, and a fair share of managerial overhead. No thumb on the scale.</p>
     </div>
   </section>
 
-  <section class="cs-band cs-band--dark">
-    <div class="cs-body shell--read">
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">03</span><p class="cs-q__t">What came of it</p></div>
-      <h2 class="cs-answer reveal">A realized 9–11×, and a scoped 40–100×.</h2>
-          <p class="reveal">The realized ROI — the number the current team, at the current headcount, against the current cost, could point to in shipped work — came out to 9–11×. That&#8217;s a real multiple, and it isn&#8217;t a rounding error on the P&amp;L.</p>
-          <p class="reveal">The scoped upside was the more interesting number. With two senior hires (a platform designer and a second researcher) and a shift in what the team worked on — away from incremental feature polish, toward the structural internal-tools and routing work that historically had the highest ROI — the model supported a 40–100× multiple. Not tomorrow. Over the investment horizon the CTO was planning against.</p>
-          <blockquote class="reveal">A design team that can show its work on a spreadsheet is a design team that gets invested in.</blockquote>
-    </div>
-
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">04</span><p class="cs-q__t">How it got used</p></div>
-      <h2 class="cs-answer reveal">It became the planning tool.</h2>
-          <p class="reveal">The model landed during the new CTO&#8217;s first resource-planning cycle. It didn&#8217;t just get looked at once and filed — it became the working document, the thing the CTO and I referenced when deciding which design initiatives to staff, which to defer, and where engineering capacity should flow against them.</p>
-          <p class="reveal">More importantly, it became a shared vocabulary between product, design, and engineering leadership. A prioritization framework fell out of it almost accidentally: for any new initiative, we asked three questions — what&#8217;s the direct financial lift, what&#8217;s the operational unlock, and which design capacity does it require — and ranked the portfolio against those. That framework now runs quarterly planning across all three functions.</p>
-    </div>
+  <section id="results" class="cs-section">
+    <div class="section-label"><span>The Multiples</span></div>
+    <h2>A realized 9&#8211;11&#215;, and a scoped 40&#8211;100&#215;.</h2>
+    <div class="cs-flow">
+      <p>The realized ROI &#8212; the number the current team, at the current headcount, against the current cost, could point to in shipped work &#8212; came out to 9&#8211;11&#215;. That&#8217;s a real multiple, and it isn&#8217;t a rounding error on the P&amp;L.</p>
+      <p>The scoped upside was the more interesting number. With two senior hires (a platform designer and a second researcher) and a shift in what the team worked on &#8212; away from incremental feature polish, toward the structural internal-tools and routing work that historically had the highest ROI &#8212; the model supported a 40&#8211;100&#215; multiple. Not tomorrow. Over the investment horizon the CTO was planning against.</p>
+      <blockquote class="cs-quote"><p>A design team that can show its work on a spreadsheet is a design team that gets invested in.</p></blockquote>
     </div>
   </section>
 
-  <section class="cs-band cs-band--light">
-    <div class="cs-body shell--read">
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">05</span><p class="cs-q__t">What I learned</p></div>
-      <h2 class="cs-answer reveal">What I took away from it.</h2>
-          <p class="reveal">Two things, both of which I&#8217;d carry into any future design leadership role.</p>
-          <p class="reveal">First: the model doesn&#8217;t have to be perfect. It has to be inspectable. The assumptions being visible is what makes a finance team trust it — not the sophistication of the math. The first draft I walked in with had plenty of numbers people argued with, and that was fine. The argument itself moved design closer to the center of resource planning, not further from it.</p>
-          <p class="reveal">Second: most of the highest-leverage design work in a healthcare-operations org looks boring from the outside. Routing rules. Reconciliation dashboards. A single screen where an agent enters a claim. The ROI conversation pushed me to be more honest about which projects I wanted to staff next — and the answer was almost always the less glamorous one.</p>
-    </div>
+  <section id="used" class="cs-section">
+    <div class="section-label"><span>How It Got Used</span></div>
+    <h2>It became the planning tool.</h2>
+    <div class="cs-flow">
+      <p>The model landed during the new CTO&#8217;s first resource-planning cycle. It didn&#8217;t just get looked at once and filed &#8212; it became the working document, the thing the CTO and I referenced when deciding which design initiatives to staff, which to defer, and where engineering capacity should flow against them.</p>
+      <p>More importantly, it became a shared vocabulary between product, design, and engineering leadership. A prioritization framework fell out of it almost accidentally: for any new initiative, we asked three questions &#8212; what&#8217;s the direct financial lift, what&#8217;s the operational unlock, and which design capacity does it require &#8212; and ranked the portfolio against those. That framework now runs quarterly planning across all three functions.</p>
     </div>
   </section>
 
-  <section class="cs-band cs-band--light">
-    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-06">
-        <div class="cs-hero-illustration__frame">
-          <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
-            <title id="hero-illust-06">A cost weight on one end of a lever, lifted into revenue on the other</title>
-
-            <!-- Ground / axis -->
-            <line x1="70" y1="232" x2="746" y2="232" stroke="currentColor" stroke-width="1" opacity="0.25"/>
-
-            <!-- Fulcrum -->
-            <polygon points="380,190 362,232 398,232" fill="currentColor"/>
-            <circle cx="380" cy="190" r="12" fill="none" stroke="var(--accent)" stroke-width="1" opacity="0.5" class="illust-pulse"/>
-
-            <!-- The lever beam, balanced on the fulcrum: cost down-left, value up-right -->
-            <line x1="150" y1="224" x2="610" y2="156" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-
-            <!-- Left: the cost weight -->
-            <rect x="135" y="210" width="30" height="20" rx="2" fill="var(--muted)"/>
-            <text x="150" y="252" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="var(--muted)" letter-spacing="1.5">COST CENTER</text>
-
-            <!-- Right: the value end, drifting up -->
-            <g class="illust-rise">
-              <circle cx="610" cy="156" r="7" fill="var(--accent)"/>
-            </g>
-            <text x="610" y="138" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="var(--accent)" letter-spacing="1.5">REVENUE LEVER</text>
-
-            <!-- Two projections off the value end — realized and scoped upside -->
-            <g fill="none" stroke="var(--accent)" stroke-width="1.4">
-              <line x1="618" y1="153" x2="712" y2="126" class="illust-flow illust-flow--fast"/>
-              <line x1="618" y1="153" x2="712" y2="84" class="illust-flow illust-flow--fast" opacity="0.75"/>
-            </g>
-            <g font-family="'Cheltenham Classic', Georgia, serif">
-              <text x="720" y="130" font-size="17" fill="var(--accent)">9&#8211;11×</text>
-              <text x="720" y="88" font-size="17" fill="var(--accent)" opacity="0.85">40&#8211;100×</text>
-            </g>
-            <g font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="8" letter-spacing="1" fill="var(--muted)">
-              <text x="720" y="142">REALIZED</text>
-              <text x="720" y="100">SCOPED</text>
-            </g>
-          </svg>
-        </div>
-        <figcaption>
-          Design as a lever, not a line item. Priced on the ledger against fully-loaded cost, the shipped work carried a realized 9&#8211;11× — with a scoped 40&#8211;100× on the far end of the same beam.
-          <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
-        </figcaption>
-      </figure>
+  <section id="takeaway" class="cs-section">
+    <div class="section-label"><span>Key Takeaway</span></div>
+    <h2>What I took away from it.</h2>
+    <div class="cs-flow">
+      <p>Two things, both of which I&#8217;d carry into any future design leadership role.</p>
+      <p>First: the model doesn&#8217;t have to be perfect. It has to be inspectable. The assumptions being visible is what makes a finance team trust it &#8212; not the sophistication of the math. The first draft I walked in with had plenty of numbers people argued with, and that was fine. The argument itself moved design closer to the center of resource planning, not further from it.</p>
+      <p>Second: most of the highest-leverage design work in a healthcare-operations org looks boring from the outside. Routing rules. Reconciliation dashboards. A single screen where an agent enters a claim. The ROI conversation pushed me to be more honest about which projects I wanted to staff next &#8212; and the answer was almost always the less glamorous one.</p>
+    </div>
   </section>
 
-  <section class="cs-band cs-next-v2">
-    <a href="../work.html">
-      <div class="cs-next-v2__inner">
-        <div>
-          <p class="cs-next-v2__label">That&#8217;s the last one</p>
-          <h2 class="cs-next-v2__title">All case studies</h2>
-          <p class="cs-next-v2__desc">Six projects, and what changed in each. Back to the index.</p>
-        </div>
-        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
-      </div>
-    </a>
-  </section>
-
+  <footer class="cs-footnav">
+    <a class="link-hover press-scale" href="../index.html">&#8592; All projects</a>
+    <a class="link-hover press-scale" href="../work.html">Next project &#8594;</a>
+  </footer>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="shell site-footer__inner">
-    <div class="site-footer__lead">
-      <p class="site-footer__statement reveal">Internal tools, measurable outcomes, and the people behind the numbers.</p>
-      <a class="site-footer__talk reveal reveal--d1" href="mailto:hello@codyheart.design">
-        <span class="talk__fill" aria-hidden="true"></span>
-        <span class="talk__arrow" aria-hidden="true">&#8594;</span>
-        <span class="talk__text">Let&#8217;s talk</span>
+<footer class="footer">
+  <div class="footer__inner">
+    <p>&#169; 2026 Cody Heart &#183; Built with plain HTML, <a class="text-link" target="_blank" rel="noopener noreferrer" href="https://claude.ai/code">Claude Code</a> &amp; a Cheltenham revival</p>
+    <div class="footer__social">
+      <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" href="https://www.linkedin.com/in/codyheart/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <p class="site-footer__addr reveal reveal--d1"><a href="mailto:hello@codyheart.design">hello@codyheart.design</a></p>
-    </div>
-
-    <div class="site-footer__cols reveal reveal--d1">
-      <ul class="site-footer__links">
-        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly</a></li>
-        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads</a></li>
-        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas</a></li>
-        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
-      </ul>
-      <div class="site-footer__meta">
-        <span>Chicago</span>
-        <span id="footer-clock" class="site-footer__clock">--.--.--</span>
-        <span class="site-footer__copy">© 2026 Cody Heart</span>
-      </div>
+      <a target="_blank" rel="noopener noreferrer" aria-label="Goodreads — a reader's atlas" href="https://www.goodreads.com/user/show/164877363-cody-heart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </a>
+      <a aria-label="Email" href="mailto:hello@codyheart.design">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 
-<script src="../js/field.js?v=6"></script>
+<script src="../js/site.js?v=1" defer></script>
 </body>
 </html>

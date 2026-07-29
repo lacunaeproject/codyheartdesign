@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>About — Cody Heart</title>
 <meta name="description" content="Lead product designer. Seven years in healthcare operations. Franklin, TN → Chicago, IL 2027.">
 
@@ -13,7 +13,7 @@
 <link rel="alternate icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
+<!-- Open Graph / Rich link preview -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://codyheart.design/about.html">
 <meta property="og:title" content="About — Cody Heart">
@@ -30,173 +30,261 @@
 <meta name="twitter:description" content="Lead product designer. Seven years in healthcare operations. Franklin, TN → Chicago, IL 2027.">
 <meta name="twitter:image" content="https://codyheart.design/og-image.png">
 
-<!-- Theme color (mobile browser chrome) -->
-<meta name="theme-color" content="#FAF8F2">
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/CheltenhamClassic.woff2" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=109">
-</head>
-<body class="about-page">
+<meta name="theme-color" content="#ffffff">
 
-<nav class="nav" aria-label="Primary">
-  <a href="index.html">Work</a>
-  <a href="about.html" aria-current="page">About</a>
-  <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
-  <a href="#contact">Contact</a>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/Geist-Variable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/CheltenhamClassicMedium.woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css?v=1">
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a class="nav__wordmark" href="index.html">Cody Heart</a>
+
+    <div class="nav__links">
+      <a class="nav__link link-hover" href="about.html" aria-current="page">About</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-work">Work<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-work" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="case-studies/tool-consolidation.html">
+              <div class="menu-item__tile"><svg class="icon-duo c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+              <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="case-studies/matching-tool.html">
+              <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+              <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="case-studies/matching-logic.html">
+              <div class="menu-item__tile"><svg class="icon-duo c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+              <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+            </a>
+            <a class="menu-item menu-item--all" role="menuitem" href="work.html"><span>All six, and the experience</span><span aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link link-hover" href="writing/design-as-a-revenue-lever.html">Writing</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-contact">Contact<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-contact" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="mailto:hello@codyheart.design">
+              <div class="menu-item__tile"><svg class="icon-duo c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+              <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+              <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+              <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let&#8217;s connect</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+              <div class="menu-item__tile"><svg class="icon-duo c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+              <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+              <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+              <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav__burger-wrap">
+      <button class="nav__burger" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
 </nav>
 
-<main>
+<div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-menu__inner">
+    <a class="mobile-menu__link" href="about.html">About</a>
+    <a class="mobile-menu__link" href="writing/design-as-a-revenue-lever.html">Writing</a>
+
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Work</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="case-studies/tool-consolidation.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+          <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+        </a>
+        <a class="mobile-menu__item" href="case-studies/matching-tool.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+        </a>
+        <a class="mobile-menu__item" href="case-studies/matching-logic.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+        </a>
+        <a class="mobile-menu__item" href="case-studies/claims.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="10" height="24" rx="2"/><rect class="duo-b" x="12" y="0" width="12" height="24" rx="2"/></svg></div>
+          <div><span class="menu-item__title">Claims</span><span class="menu-item__desc">60% less time per claim</span></div>
+        </a>
+        <a class="mobile-menu__item" href="case-studies/billing.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="2" y="11" width="20" height="2"/><circle class="duo-a" cx="4" cy="12" r="4"/><circle class="duo-a" cx="12" cy="12" r="4"/><circle class="duo-b" cx="20" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Billing</span><span class="menu-item__desc">The invisible half, automated</span></div>
+        </a>
+        <a class="mobile-menu__item" href="case-studies/design-roi.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Design ROI</span><span class="menu-item__desc">Design as a revenue lever</span></div>
+        </a>
+      </div>
+    </div>
+
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Contact</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="mailto:hello@codyheart.design">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+          <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+          <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let&#8217;s connect</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+          <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="article">
 
   <!-- ============================================================
-       HERO — a plate, the same device the case studies open on:
-       one painting, the statement in cream riding the scrim.
+       THE LONGER STORY — headshot floated into the opening
+       statement, the way a good museum label sits inside a wall.
        ============================================================ -->
-  <section class="cs-band cs-band--hero cs-hero--media" style="--hero-img:url('/assets/art/bg/b24.webp')">
-    <div class="cs-hero__media" aria-hidden="true"></div>
-    <div class="cs-hero shell">
-      <div class="cs-hero__nav">
-        <a href="index.html">← Home</a>
-        <span>·</span>
-        <span>About</span>
+  <section class="about-hero">
+    <img class="about-hero__photo" src="assets/self/me-monet.web.jpg" alt="Cody Heart in Monet&#8217;s garden at Giverny" width="1200" height="1600">
+    <h1>I make things that reduce harm. I find things that make me feel alive.</h1>
+    <img class="about-hero__photo--mobile" src="assets/self/me-monet.web.jpg" alt="Cody Heart in Monet&#8217;s garden at Giverny" width="1200" height="1600">
+    <p>I started drawing as a kid &#8212; sports stars mostly, whose autographs I collected at games &#8212; and that took me to the California College of the Arts to study illustration. After school I drifted out of making images and into operations work at Postmates and then Twitter, helping build and label the data sets that trained machine learning models.</p>
+    <p>On the side I taught myself what was then called user experience design, now product design, and for the last seven years I&#8217;ve been doing it full time, mostly for healthcare platforms. First at Collective Health, designing member tools, claims software, and billing workflows. Then at LifeStance, where I lead design for a national booking platform that runs across 33 states.</p>
+    <p>The work I&#8217;m proudest of is the work that shows up as a number on somebody&#8217;s P&amp;L. Thirty seconds cut from an average call. Forty percent of manual billing work removed. A design-team ROI I could actually model out and defend to a new CTO. But the other half of the job &#8212; the half I try not to be precious about &#8212; is sitting with the person on the other end of the workflow. A call-center agent who has to say the same three sentences 74 times a day. A claims adjuster looking at a form that was never designed for her. A patient in the middle of a mental health crisis navigating a booking flow at midnight. <span class="highlight highlight-yellow">The metrics come from paying attention to them, not from optimizing around them.</span></p>
+    <p>I grew up in Los Angeles, spent a decade in the Bay Area, two years in Manhattan, and the last few in Franklin, Tennessee &#8212; a Nashville suburb. In 2027, Chicago. Each move changes the work a little: the design-ops instincts sharpened in San Francisco, the operations mindset came from Postmates and Twitter, the comfort with regulated, ambiguous systems came from working with clinicians in healthcare. I&#8217;m curious what Chicago teaches me.</p>
+    <p>The numbers matter to me &#8212; I&#8217;m proud of them &#8212; but they were never the whole point. What I want the next stretch of this work to be about is harder to measure: work that&#8217;s unmistakably mine, that includes more people than it leaves out, and that I&#8217;d stand behind even when no one&#8217;s keeping score.</p>
+  </section>
+
+  <!-- ============================================================
+       MORE ABOUT ME — three squares, the life outside the work.
+       ============================================================ -->
+  <section class="cs-section">
+    <div class="section-label" style="margin-bottom:24px"><span>More About Me</span></div>
+    <div class="photo-grid">
+      <figure>
+        <div class="photo-frame"><img src="assets/self/me-eiffel.web.jpg" alt="Cody and Laura at the top of the Eiffel Tower at sunset" loading="lazy" decoding="async"></div>
+        <figcaption>Paris, at the top of the tower, with Laura. Some of the moves are just for the two of us.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame"><img src="assets/self/me-cooking.web.jpg" alt="Cody and Laura making fresh pasta in matching red aprons" loading="lazy" decoding="async"></div>
+        <figcaption>Pasta night, in the matching red aprons. Fifty books a year, and I&#8217;m boxing again.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame"><img src="assets/self/me-nashville.web.jpg" alt="Cody outdoors in a Chicago Cubs cap" loading="lazy" decoding="async"></div>
+        <figcaption>Franklin, Tennessee &#8212; already wearing the Chicago colors.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE WILDLIFE — travel built around a camera. All four mine.
+       ============================================================ -->
+  <section class="cs-section">
+    <div class="section-label" style="margin-bottom:24px"><span>The Wildlife</span></div>
+    <div class="cs-flow" style="margin-bottom:24px">
+      <p>Travel, for me, is built around wildlife photography &#8212; all four of these are mine. Four continents down, with plans to finish all seven in the next five years.</p>
+    </div>
+    <div class="photo-grid photo-grid--4">
+      <figure>
+        <div class="photo-frame"><img src="assets/photography/web/cheetah.webp" alt="A cheetah looking straight into the lens" loading="lazy" decoding="async"></div>
+        <figcaption>The cheetah, mid-stare.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame"><img src="assets/photography/web/grizzly.webp" alt="A grizzly bear in profile" loading="lazy" decoding="async"></div>
+        <figcaption>The grizzly, in profile.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame"><img src="assets/photography/web/orangutan-3.webp" alt="An orangutan gazing out from its shaggy coat" loading="lazy" decoding="async"></div>
+        <figcaption>The orangutan, unbothered.</figcaption>
+      </figure>
+      <figure>
+        <div class="photo-frame"><img src="assets/photography/web/panda.webp" alt="A giant panda eating bamboo" loading="lazy" decoding="async"></div>
+        <figcaption>The panda, at lunch.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERIENCE — the resume, as quiet rows.
+       ============================================================ -->
+  <section class="cs-section">
+    <div class="section-label" style="margin-bottom:24px"><span>Experience</span></div>
+    <div class="rows">
+      <div class="row">
+        <span class="row__span">Jun 2024 &#8211; present</span>
+        <span class="row__org">LifeStance Health</span>
+        <p class="row__body"><span class="row__role">Lead Product Designer &#183; Remote &#8212;</span> Design across the 33-state footprint. Enabled the national rollout of an internal booking tool; $500K annual savings and $15&#8211;25M in unlocked revenue capacity. Modeled a 9&#8211;11&#215; design-team ROI the new CTO used for resource planning, and led strategy for a patient&#8211;provider routing system that turned an ambiguous funnel into a measurable framework.</p>
       </div>
-      <div class="cs-hero__content">
-        <span class="eyebrow cs-hero__eyebrow">The longer story</span>
-        <h1 class="reveal">I make things that reduce harm. I find things that make me feel alive.</h1>
-        <p class="cs-hero__lede reveal reveal--d1">Los Angeles &#8594; the Bay &#8594; New York &#8594; Franklin, TN &#8594; Chicago 2027</p>
+      <div class="row">
+        <span class="row__span">Jun 2021 &#8211; Jun 2024</span>
+        <span class="row__org">LifeStance Health</span>
+        <p class="row__body"><span class="row__role">Senior Designer &amp; acting PO &#183; Remote &#8212;</span> Shipped the streamlined admin booking tool &#8212; 15 seconds off the average call, $250K/year in labor. Directed design across internal tools in 33 states and spent a year as acting Product Owner: backlog, stories, sprints.</p>
+      </div>
+      <div class="row">
+        <span class="row__span">Nov 2018 &#8211; Jun 2021</span>
+        <span class="row__org">Collective Health</span>
+        <p class="row__body"><span class="row__role">Designer to Sr. Designer &#183; San Francisco &#8212;</span> Led end-to-end design of 45+ features across internal tools, member experiences, and platform infrastructure. Cut time on task by 50% in key CX workflows &#8212; 60% for out-of-network claim transcription &#8212; and eliminated 40% of manual billing work through automation.</p>
       </div>
     </div>
   </section>
 
-  <!-- BAND 1 · paper -->
-  <section class="about-band about-band--cream">
-  <div class="cs-body shell--read">
-    <p class="reveal">I started drawing as a kid — sports stars mostly, whose autographs I collected at games — and that took me to the California College of the Arts to study illustration. After school I drifted out of making images and into operations work at Postmates and then Twitter, helping build and label the data sets that trained machine learning models.</p>
-
-    <p class="reveal">On the side I taught myself what was then called user experience design, now product design, and for the last seven years I&#8217;ve been doing it full time, mostly for healthcare platforms. First at Collective Health, designing member tools, claims software, and billing workflows. Then at LifeStance, where I lead design for a national booking platform that runs across 33 states.</p>
-
-    <figure class="self-figure self-figure--pair reveal">
-      <img src="assets/self/me-monet-2.web.jpg" alt="Cody on the balcony of Monet&#8217;s house in Giverny" width="1200" height="1600" loading="lazy" decoding="async">
-      <img src="assets/self/me-monet-3.web.jpg" alt="Cody and Laura in the doorway of Monet&#8217;s house in Giverny" width="1200" height="1600" loading="lazy" decoding="async">
-      <figcaption>At Monet&#8217;s house in Giverny. The art-school kid who came up through illustration never fully left — I just point him at software now.</figcaption>
-    </figure>
-
-    <h2 class="reveal">The metrics, and what lives behind them.</h2>
-
-    <p class="reveal">The work I&#8217;m proudest of is the work that shows up as a number on somebody&#8217;s P&amp;L. Thirty seconds cut from an average call. Forty percent of manual billing work removed. A design-team ROI I could actually model out and defend to a new CTO.</p>
-
-    <p class="reveal">But the other half of the job — the half I try not to be precious about — is sitting with the person on the other end of the workflow. A call-center agent who has to say the same three sentences 74 times a day. A claims adjuster looking at a form that was never designed for her. A patient in the middle of a mental health crisis navigating a booking flow at midnight. The metrics come from paying attention to them, not from optimizing around them.</p>
-
-    <p class="reveal">I think a lot about what it means to design systems that have empathy built in — not as a decorative layer, but as part of the structural logic. I don&#8217;t always get it right. But it&#8217;s the compass.</p>
-
-    <p class="reveal">The numbers matter to me — I&#8217;m proud of them — but they were never the whole point, and I&#8217;ve learned they aren&#8217;t enough on their own to make a career feel worth it. What I want the next stretch of this work to be about is harder to measure: work that&#8217;s unmistakably mine, that includes more people than it leaves out, and that I&#8217;d stand behind even when no one&#8217;s keeping score. I&#8217;d like to be more generous with it, too — to make room for other designers, to give away what I&#8217;ve figured out, and to keep some real joy in the craft itself.</p>
-
-  </div>
-  </section>
-
-  <!-- BAND 2 · night -->
-  <section class="about-band about-band--brown">
-  <div class="cs-body shell--read">
-    <h2 class="reveal">The geography of it.</h2>
-
-    <p class="reveal">I grew up in Los Angeles, spent a decade in the Bay Area (Oakland, Berkeley, San Francisco), two years in Manhattan, and the last few in Franklin, Tennessee — a Nashville suburb. In 2027, Chicago.</p>
-
-    <!-- The moves as a drawn line, the way the home page draws its
-         dollars. The last stop hasn't happened yet, so it's the one
-         carrying the warm mark. -->
-    <ol class="route reveal">
-      <li><span class="route__place">Los Angeles</span><span class="route__span">Where it started</span></li>
-      <li><span class="route__place">The Bay Area</span><span class="route__span">Oakland, Berkeley, San Francisco &#8212; a decade</span></li>
-      <li><span class="route__place">Manhattan</span><span class="route__span">Two years</span></li>
-      <li><span class="route__place">Franklin, Tennessee</span><span class="route__span">Outside Nashville &#8212; now</span></li>
-      <li data-now><span class="route__place">Chicago</span><span class="route__span">2027</span></li>
-    </ol>
-
-    <figure class="self-figure self-figure--sm reveal">
-      <img src="assets/self/me-nashville.web.jpg" alt="Cody outdoors in a Chicago Cubs cap" width="1108" height="1600" loading="lazy" decoding="async">
-      <figcaption>Franklin, Tennessee — already wearing the Chicago colors.</figcaption>
-    </figure>
-
-    <p class="reveal">Each move changes the work a little. The design-ops instincts sharpened in San Francisco; the operations mindset came from Postmates and Twitter; the comfort with regulated, ambiguous systems came from working with clinicians in healthcare. Franklin taught me that the best collaboration is often asynchronous and unhurried. I&#8217;m curious what Chicago teaches me.</p>
-
-    <figure class="self-figure self-figure--wide reveal">
-      <img src="assets/self/me-eiffel.web.jpg" alt="Cody and Laura at the top of the Eiffel Tower at sunset, Paris skyline behind them" width="1600" height="1200" loading="lazy" decoding="async">
-      <figcaption>Paris, at the top of the tower, with Laura. Some of the moves are just for the two of us.</figcaption>
-    </figure>
-  </div>
-  </section>
-
-  <!-- BAND 3 · back to paper -->
-  <section class="about-band about-band--cream">
-  <div class="cs-body shell--read">
-    <h2 class="reveal">The outside of work.</h2>
-
-    <p class="reveal">I read about 50 books a year. I&#8217;m boxing again. I run <a href="https://codynheart.com" target="_blank" rel="noopener">a separate site</a> — a reader&#8217;s atlas of the books that have stayed with me and the data that grew out of them. If you&#8217;ve read a book that changed how you see something, I&#8217;d love to hear about it.</p>
-
-    <figure class="self-figure self-figure--pair reveal">
-      <img src="assets/self/me-cooking.web.jpg" alt="Cody and Laura making fresh pasta together in matching red aprons" width="1200" height="1600" loading="lazy" decoding="async">
-      <img src="assets/self/me-disney.web.jpg" alt="Cody and Laura at a Disney Halloween parade" width="1067" height="1600" loading="lazy" decoding="async">
-      <figcaption>Pasta night, and Halloween at the parks. Most of the best of it is with Laura.</figcaption>
-    </figure>
-
-    <blockquote class="reveal">
-      I set aside an hour each week for other designers — portfolio reviews, career moves, untangling tricky work situations.
-    </blockquote>
-
-    <p class="reveal">If that sounds useful, grab a spot. If you want to talk about hiring, email me.</p>
-
-    <div class="cs-glance__cta reveal">
-      <a class="cs-cta cs-cta--primary" href="mailto:hello@codyheart.design?subject=Hello">Email me <span class="cs-cta__arrow">&#8594;</span></a>
-      <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Grab 30 minutes</a>
-    </div>
-
-    <p class="about-sign reveal">— Cody</p>
-  </div>
-  </section>
-
-  <section class="cs-band cs-next-v2">
-    <a href="work.html">
-      <div class="cs-next-v2__inner">
-        <div>
-          <p class="cs-next-v2__label">The other half</p>
-          <h2 class="cs-next-v2__title">The work, and the numbers</h2>
-          <p class="cs-next-v2__desc">Six case studies from seven years in healthcare operations &#8212; what the tools were, what changed, and what it was worth.</p>
-        </div>
-        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
+  <!-- ============================================================
+       THE OPEN HOUR — a standing offer to other designers.
+       ============================================================ -->
+  <section class="cs-section">
+    <div class="section-label" style="margin-bottom:16px"><span>The Open Hour</span></div>
+    <div class="cs-flow">
+      <p>I set aside an hour each week for other designers &#8212; portfolio reviews, career moves, untangling tricky work situations. If that sounds useful, grab a spot. If you want to talk about hiring, email me. And I run <a class="text-link" style="text-decoration:underline" href="https://codynheart.com" target="_blank" rel="noopener">a separate site</a> &#8212; a reader&#8217;s atlas of the books that have stayed with me. If you&#8217;ve read one that changed how you see something, I&#8217;d love to hear about it.</p>
+      <div class="gate__actions" style="justify-content:flex-start;margin-top:8px">
+        <a class="btn btn--primary" href="mailto:hello@codyheart.design?subject=Hello">Email me &#8594;</a>
+        <a class="btn" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Grab 30 minutes</a>
       </div>
-    </a>
+    </div>
   </section>
 
+  <footer class="cs-footnav">
+    <a class="link-hover press-scale" href="index.html">&#8592; Home</a>
+    <a class="link-hover press-scale" href="work.html">All work &#8594;</a>
+  </footer>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="shell site-footer__inner">
-    <div class="site-footer__lead">
-      <p class="site-footer__statement reveal">Internal tools, measurable outcomes, and the people behind the numbers.</p>
-      <a class="site-footer__talk reveal reveal--d1" href="mailto:hello@codyheart.design">
-        <span class="talk__fill" aria-hidden="true"></span>
-        <span class="talk__arrow" aria-hidden="true">&#8594;</span>
-        <span class="talk__text">Let&#8217;s talk</span>
+<footer class="footer">
+  <div class="footer__inner">
+    <p>&#169; 2026 Cody Heart &#183; Built with plain HTML, <a class="text-link" target="_blank" rel="noopener noreferrer" href="https://claude.ai/code">Claude Code</a> &amp; a Cheltenham revival</p>
+    <div class="footer__social">
+      <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" href="https://www.linkedin.com/in/codyheart/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <p class="site-footer__addr reveal reveal--d1"><a href="mailto:hello@codyheart.design">hello@codyheart.design</a></p>
-    </div>
-
-    <div class="site-footer__cols reveal reveal--d1">
-      <ul class="site-footer__links">
-        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly</a></li>
-        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads</a></li>
-        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas</a></li>
-        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
-      </ul>
-      <div class="site-footer__meta">
-        <span>Chicago</span>
-        <span id="footer-clock" class="site-footer__clock">--.--.--</span>
-        <span class="site-footer__copy">© 2026 Cody Heart</span>
-      </div>
+      <a target="_blank" rel="noopener noreferrer" aria-label="Goodreads — a reader's atlas" href="https://www.goodreads.com/user/show/164877363-cody-heart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </a>
+      <a aria-label="Email" href="mailto:hello@codyheart.design">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 
-<script src="js/field.js?v=6"></script>
+<script src="js/site.js?v=1" defer></script>
 </body>
 </html>

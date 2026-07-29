@@ -288,7 +288,11 @@
       "WebFetch(domain:claudetype.com)",
       "WebFetch(domain:www.myfonts.com)",
       "Read(//c/Users/codyj/Downloads/**)",
-      "Read(//c/Users/codyj/Downloads//**)"
+      "Read(//c/Users/codyj/Downloads//**)",
+      "Bash(curl -sL \"https://www.andreavollendorf.com/\" -o av-home.html)",
+      "Bash(curl -sL \"https://www.andreavollendorf.com/_next/static/chunks/c7bac35da4368ea8.css\" -o av.css)",
+      "Bash(curl -sL -o Geist-Variable.woff2 \"https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2\")",
+      "Bash(curl -sL -o GeistMono-Variable.woff2 \"https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Variable.woff2\")"
     ]
   }
 }

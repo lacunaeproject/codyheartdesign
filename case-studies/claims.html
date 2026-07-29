@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Claims — Cody Heart</title>
-<meta name="description" content="Rebuilding claims processing for a third-party administrator. Case study.">
+<meta name="description" content="Rebuilding out-of-network claims transcription at Collective Health: 60% less time on task.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,312 +13,322 @@
 <link rel="alternate icon" href="/favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
-<!-- Open Graph / Rich link preview (Slack, LinkedIn, iMessage, Facebook) -->
-<meta property="og:type" content="website">
+<!-- Open Graph / Rich link preview -->
+<meta property="og:type" content="article">
 <meta property="og:url" content="https://codyheart.design/case-studies/claims.html">
-<meta property="og:title" content="Claims Infrastructure — Cody Heart">
-<meta property="og:description" content="Rebuilding claims processing for a third-party administrator. Case study.">
+<meta property="og:title" content="Claims — Cody Heart">
+<meta property="og:description" content="Rebuilding out-of-network claims transcription at Collective Health: 60% less time on task.">
 <meta property="og:image" content="https://codyheart.design/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Cody Heart — Lead Product Designer">
 <meta property="og:site_name" content="Cody Heart">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Claims Infrastructure — Cody Heart">
-<meta name="twitter:description" content="Rebuilding claims processing for a third-party administrator. Case study.">
-<meta name="twitter:image" content="https://codyheart.design/og-image.png">
-
-<!-- Theme color (mobile browser chrome) -->
-<meta name="theme-color" content="#FAF8F2">
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/CheltenhamClassic.woff2" crossorigin>
-<link rel="stylesheet" href="../css/field.css?v=109">
+<meta name="theme-color" content="#ffffff">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
 <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
-</head>
-<body class="cs-theme--gold">
 
-<nav class="nav" aria-label="Primary">
-  <a href="../index.html" aria-current="page">Work</a>
-  <a href="../about.html">About</a>
-  <a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
-  <a href="#contact">Contact</a>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/Geist-Variable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/CheltenhamClassicMedium.woff2" crossorigin>
+<link rel="stylesheet" href="../css/site.css?v=1">
+</head>
+<body>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <a class="nav__back link-hover press-scale" href="../index.html"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5.5 4L1.5 8M1.5 8L5.5 12M1.5 8H10C11.3807 8 12.5 6.88071 12.5 5.5V5.5C12.5 4.11929 11.3807 3 10 3H8.5" stroke="currentColor"/></svg><span>Home</span></a>
+    <button class="nav__scrolltitle" aria-label="Scroll to top">Claims</button>
+
+    <div class="nav__links">
+      <a class="nav__link link-hover" href="../about.html">About</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-work">Work<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-work" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="tool-consolidation.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+              <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="matching-tool.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+              <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" href="matching-logic.html">
+              <div class="menu-item__tile"><svg class="icon-duo  c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+              <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+            </a>
+            <a class="menu-item menu-item--all" role="menuitem" href="../work.html"><span>All six, and the experience</span><span aria-hidden="true">&#8594;</span></a>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link link-hover" href="../writing/design-as-a-revenue-lever.html">Writing</a>
+
+      <div class="nav__drop">
+        <button class="nav__link link-hover press-scale" aria-expanded="false" aria-haspopup="true" aria-controls="menu-contact">Contact<svg class="chev" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 4L5 6.5L7.5 4"/></svg></button>
+        <div class="nav__menu" id="menu-contact" role="menu" aria-hidden="true">
+          <div class="nav__menu-pad">
+            <a class="menu-item" role="menuitem" href="mailto:hello@codyheart.design">
+              <div class="menu-item__tile"><svg class="icon-duo  c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+              <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+              <div class="menu-item__tile"><svg class="icon-duo  c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+              <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let’s connect</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+              <div class="menu-item__tile"><svg class="icon-duo  c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+              <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+            </a>
+            <a class="menu-item" role="menuitem" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+              <div class="menu-item__tile"><svg class="icon-duo  c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+              <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav__burger-wrap">
+      <button class="nav__burger" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
 </nav>
 
-<main class="cs">
+<div class="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mobile-menu__inner">
+    <a class="mobile-menu__link" href="../about.html">About</a>
+    <a class="mobile-menu__link" href="../writing/design-as-a-revenue-lever.html">Writing</a>
 
-  <section class="cs-band cs-band--hero cs-hero--media" style="--hero-img:url('/assets/art/bg/hero.webp')">
-    <div class="cs-hero__media" aria-hidden="true" style="background-position:center 58%"></div>
-    <div class="cs-hero shell">
-      <div class="cs-hero__nav">
-        <a href="../work.html">← All case studies</a>
-        <span>·</span>
-        <span>№ 04 of 06</span>
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Work</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="tool-consolidation.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-orange" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="8.5" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="17" y="0" width="7" height="7" rx="1.5"/><rect class="duo-a" x="4.25" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-a" x="12.75" y="8.5" width="7" height="7" rx="1.5"/><rect class="duo-b" x="4" y="17" width="16" height="7" rx="1.5"/></svg></div>
+          <div><span class="menu-item__title">Tool Consolidation</span><span class="menu-item__desc">50+ regional tools, to six jobs</span></div>
+        </a>
+        <a class="mobile-menu__item" href="matching-tool.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <div><span class="menu-item__title">Matching Tool</span><span class="menu-item__desc">Two-state pilot to 99% national</span></div>
+        </a>
+        <a class="mobile-menu__item" href="matching-logic.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm0 5a7 7 0 1 1 0 14 7 7 0 0 1 0-14Z"/><circle class="duo-b" cx="12" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Care Matching</span><span class="menu-item__desc">A measurable four-gate funnel</span></div>
+        </a>
+        <a class="mobile-menu__item" href="claims.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="0" width="10" height="24" rx="2"/><rect class="duo-b" x="12" y="0" width="12" height="24" rx="2"/></svg></div>
+          <div><span class="menu-item__title">Claims</span><span class="menu-item__desc">60% less time per claim</span></div>
+        </a>
+        <a class="mobile-menu__item" href="billing.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-teal" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="2" y="11" width="20" height="2"/><circle class="duo-a" cx="4" cy="12" r="4"/><circle class="duo-a" cx="12" cy="12" r="4"/><circle class="duo-b" cx="20" cy="12" r="4"/></svg></div>
+          <div><span class="menu-item__title">Billing</span><span class="menu-item__desc">The invisible half, automated</span></div>
+        </a>
+        <a class="mobile-menu__item" href="design-roi.html">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Design ROI</span><span class="menu-item__desc">Design as a revenue lever</span></div>
+        </a>
       </div>
-      <div class="cs-hero__content">
-        <span class="eyebrow cs-hero__eyebrow">№ 04 · Claims</span>
-        <h1 class="reveal">Rebuilding the slowest screen in the building.</h1>
+    </div>
+
+    <div class="mobile-menu__section">
+      <p class="mobile-menu__label">Contact</p>
+      <div class="mobile-menu__list">
+        <a class="mobile-menu__item" href="mailto:hello@codyheart.design">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-green" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-b" d="M12 12.6 0 5.4V5a3 3 0 0 1 3-3h18a3 3 0 0 1 3 3v.4l-12 7.2Z"/><path class="duo-a" d="M0 8.2 12 15.4 24 8.2V19a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V8.2Z"/></svg></div>
+          <div><span class="menu-item__title">Email</span><span class="menu-item__desc">hello@codyheart.design</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyheart/">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="8" width="6" height="16"/><circle class="duo-b" cx="3" cy="3" r="3"/><path class="duo-b" d="M6 17a9 9 0 0 1 18 0v7h-6v-7a3 3 0 0 0-6 0v7H6v-7Z"/></svg></div>
+          <div><span class="menu-item__title">LinkedIn</span><span class="menu-item__desc">Let’s connect</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://calendly.com/codynheart/30min">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-purple" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="0" y="4" width="24" height="20" rx="2"/><path class="duo-b" d="M0 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v4H0V6Z"/><rect class="duo-b" x="4" y="0" width="3" height="6" rx="1.5"/><rect class="duo-b" x="17" y="0" width="3" height="6" rx="1.5"/><circle class="duo-b" cx="12" cy="17" r="3"/></svg></div>
+          <div><span class="menu-item__title">Calendly</span><span class="menu-item__desc">Grab 30 minutes</span></div>
+        </a>
+        <a class="mobile-menu__item" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing">
+          <div class="menu-item__tile"><svg class="icon-duo is-colored c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path class="duo-a" d="M4 0h11l5 5v19H4V0Z"/><path class="duo-b" d="M15 0l5 5h-5V0Z"/><rect class="duo-b" x="8" y="10" width="8" height="2" rx="1"/><rect class="duo-b" x="8" y="15" width="8" height="2" rx="1"/></svg></div>
+          <div><span class="menu-item__title">Resume</span><span class="menu-item__desc">View the PDF</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<aside class="toc" aria-label="On this page">
+  <div class="toc__inner">
+    <div class="toc__track"><div class="toc__thumb"></div></div>
+    <ul>
+      <li><a href="#outcomes">Did It Work</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#solution">The Solution</a></li>
+      <li><a href="#role">My Role</a></li>
+      <li><a href="#reporting">The Reporting</a></li>
+      <li><a href="#takeaway">Takeaway</a></li>
+      <li><a href="#reasoning">The Reasoning</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="article">
+  <header>
+    <div class="article__kicker">Collective Health / Claims</div>
+    <h1 class="article__title">Rebuilding the slowest screen in the building.</h1>
+    <p class="article__intro">At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: <span class="highlight highlight-green">make it faster, and make it auditable</span>.</p>
+    <dl class="meta-grid meta-grid--4">
+      <div><dt>Role</dt><dd>Senior Designer,
+Platform Experience</dd></div>
+      <div><dt>Company</dt><dd>Collective Health</dd></div>
+      <div><dt>Timeline</dt><dd>2018 &#8211; 2021</dd></div>
+      <div><dt>Scope</dt><dd>CX floor, claims &amp; reporting</dd></div>
+    </dl>
+  </header>
+
+  <figure class="cs-figure"><div class="ph"><span>Screen &#8212; the split-view transcription tool &#183; under NDA, ask for the password</span></div><figcaption>Claim PDF on the left, form on the right, the form following the reader&#8217;s eye.</figcaption></figure>
+
+  <section id="outcomes" class="cs-section">
+    <div class="section-label"><span>Did It Work</span></div>
+    <h2>Took the slowest screen in the building and made it fast.</h2>
+    <div class="cs-flow">
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-card__num">&#8722;60%</div><div class="stat-card__label">time on task for out-of-network claim transcription</div></div>
+        <div class="stat-card"><div class="stat-card__num">&#8722;50%</div><div class="stat-card__label">time on task across adjacent CX workflows sharing the same data model</div></div>
+        <div class="stat-card"><div class="stat-card__num">45+</div><div class="stat-card__label">features shipped across internal tools, member platform, and reporting infrastructure</div></div>
       </div>
     </div>
   </section>
 
-  <section class="cs-band cs-band--light cs-tldr-band">
-    <div class="cs-tldr">
-
-      <header class="cs-tldr__head">
-        <p class="cs-tldr__eyebrow">The short version</p>
-        <h2 class="cs-tldr__claim">Took the slowest screen in the building and made it fast.</h2>
-        <p class="cs-tldr__deck">The internal claims-review tool the CX team used to answer member questions.</p>
-      </header>
-
-      <dl class="cs-tldr__list">
-        <div class="cs-tldr__row">
-          <dt>The problem</dt>
-          <dd>Reviewing one out-of-network claim took about twenty minutes across disconnected screens.</dd>
-        </div>
-        <div class="cs-tldr__row">
-          <dt>The solution</dt>
-          <dd>Put the source document inside the workflow &#8212; a split view of the claim and the evidence behind it.</dd>
-        </div>
-        <div class="cs-tldr__row">
-          <dt>My role</dt>
-          <dd>Senior designer on Platform Experience, sitting with the specialists who worked in it daily.</dd>
-        </div>
-        <div class="cs-tldr__row">
-          <dt>What I learned</dt>
-          <dd>Watch the document people keep switching away to. That document is the real interface.</dd>
-        </div>
-      </dl>
-
-      <section class="cs-tldr__figures">
-        <p class="cs-tldr__figures-label">Did it work</p>
-        <dl class="cs-tldr__list cs-tldr__list--figures">
-          <div class="cs-tldr__row cs-tldr__row--metric">
-            <dt>-60%</dt>
-            <dd>Time on task for out-of-network claim transcription.</dd>
+  <section id="problem" class="cs-section">
+    <div class="section-label"><span>Where We Started</span></div>
+    <h2>Twenty minutes per claim.</h2>
+    <div class="cs-flow">
+      <p>An out-of-network claim is, by definition, one where the provider wasn&#8217;t in Collective&#8217;s network &#8212; so the paperwork lands in a stack of PDFs, scanned forms, and faxed itemizations. A CX specialist has to transcribe each one into our internal system, and every field matters: dates of service, procedure codes, modifiers, diagnosis codes, billed amounts, patient responsibility. A twenty-minute data-entry job, done by a human, on work that ultimately flows into a reimbursement decision.</p>
+      <p>The existing screen had been built quickly, several years earlier, by an engineer who was no longer at the company. It was a literal top-to-bottom form with no contextual intelligence, no duplicate detection, and no way to keep a PDF open side-by-side without leaving the tool.</p>
+      <figure class="cs-figure">
+        <div class="diagram">
+          <div style="display:flex;flex-direction:column;gap:24px">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-40)">Before</span><span style="font-family:var(--serif);font-size:18px;color:var(--ink-85)">20 min / claim</span></div>
+              <div style="height:4px;border-radius:999px;background:rgba(0,0,0,.35);width:100%"></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">After</span><span style="font-family:var(--serif);font-size:18px;color:var(--accent)">&#8776;8 min <span style="font-family:var(--sans);font-size:12px">(&#8722;60%)</span></span></div>
+              <div style="height:4px;border-radius:999px;background:var(--accent);width:40%"></div>
+            </div>
           </div>
-          <div class="cs-tldr__row cs-tldr__row--metric">
-            <dt>-50%</dt>
-            <dd>Time on task across adjacent CX workflows that shared the same data model.</dd>
-          </div>
-          <div class="cs-tldr__row cs-tldr__row--metric">
-            <dt>45+ ships</dt>
-            <dd>Features shipped across internal tools, member platform, and reporting infrastructure over the engagement.</dd>
-          </div>
-        </dl>
-      </section>
-
-
-      <footer class="cs-tldr__foot">
-        <div class="cs-glance__cta">
-        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Claims%20%E2%80%94%20let%E2%80%99s%20talk">Email me about this work <span class="cs-cta__arrow">&#8594;</span></a>
-        <a class="cs-cta" href="#access">Request the password</a>
-        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book 30 min</a>
-      </div>
-      </footer>
-
-    </div>
-  </section>
-
-  <section class="cs-band cs-band--light">
-    <div class="cs-body shell--read">
-    
-      <p class="cs-lede reveal">
-        At Collective Health, out-of-network claims transcription was the bottleneck of the customer-experience floor. A single claim could take twenty minutes to enter by hand, and the financial tooling around it had grown out of spreadsheets into a fragile patchwork. The brief was simple: make it faster, and make it auditable.
-      </p>
-<div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">01</span><p class="cs-q__t">The problem</p></div>
-      <h2 class="cs-answer reveal">Twenty minutes per claim.</h2>
-          <p class="reveal">An out-of-network (OON) claim is, by definition, one where the provider wasn&#8217;t in Collective&#8217;s network — so the paperwork lands in a stack of PDFs, scanned forms, and faxed itemizations. A CX specialist has to transcribe each one into our internal system, and every field matters: dates of service, procedure codes, modifiers, diagnosis codes, billed amounts, patient responsibility. A twenty-minute data-entry job, done by a human, on work that ultimately flows into a reimbursement decision.</p>
-          <p class="reveal">The existing screen had been built quickly, several years earlier, by an engineer who was no longer at the company. It was a literal top-to-bottom form with no contextual intelligence, no duplicate detection, and no way to keep a PDF open side-by-side without leaving the tool.</p>
-    </div>
-
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">02</span><p class="cs-q__t">The solution</p></div>
-      <h2 class="cs-answer reveal">Put the source document inside the workflow.</h2>
-          <p class="reveal">A split-screen transcription tool with the claim PDF on the left and the form on the right, field groupings that follow how information appears on the page, keyboard navigation, pre-filled high-confidence data, and a real field-level audit trail. Paired with reporting dashboards that finally made queue depth, claim age, and specialist throughput legible to the rest of the org.</p>
-    </div>
-    </div>
-  </section>
-
-  <section class="cs-band cs-band--dark">
-    <div class="cs-body shell--read">
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">03</span><p class="cs-q__t">My role</p></div>
-      <h2 class="cs-answer reveal">Senior designer on Platform Experience, sitting with the people who used it.</h2>
-        <!-- DRAFT (written by Claude from material already on this page) - rewrite in your own voice -->
-        <p class="reveal">I partnered with the CX team who worked in this tool every day. I ran the research sessions, designed the split-screen workflow that came out of them, and built the reporting views that followed.</p>
-    </div>
-    </div>
-  </section>
-
-  <section class="cs-band cs-band--light">
-    <div class="cs-body shell--read">
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">04</span><p class="cs-q__t">Did it work</p></div>
-      <h2 class="cs-answer reveal">Dashboards that made the next investment legible.</h2>
-          <p class="reveal">Reducing time-on-task was the headline. The second-order work was the reporting — the system-level views that let CX leadership, finance, and product see where claims work was piling up and why. I designed reporting dashboards that exposed queue depth, claim age, exception rate, and specialist throughput, with drill-downs to the individual claim. Those dashboards were later used to justify hiring, to prioritize engineering work, and to make the case for further automation.</p>
-          <blockquote class="reveal">A design team that can&#8217;t show you its numbers is, quietly, a design team you can cut.</blockquote>
-    </div>
-
-    <div class="cs-chapter cs-qa">
-      <div class="cs-q"><span class="cs-q__n">05</span><p class="cs-q__t">What I learned</p></div>
-      <h2 class="cs-answer reveal">What I learned from the specialists.</h2>
-          <p class="reveal">The specialists who transcribed claims every day were the best product partners I&#8217;d worked with. They knew the edge cases, the weird-plan exceptions, the carriers whose PDFs were unreadable, the small lies that certain provider forms told. Most of the durable improvements on this project came from their corrections to my first drafts.</p>
-          <p class="reveal">The lesson I kept, and have kept using at LifeStance: when you&#8217;re designing an internal tool, the people using it for eight hours a day are not a research population to be synthesized. They are collaborators whose names should be in the commit history.</p>
-    </div>
-    </div>
-  </section>
-
-  <section class="cs-band cs-band--light">
-    <figure class="cs-hero-illustration" aria-labelledby="hero-illust-04">
-        <div class="cs-hero-illustration__frame">
-          <svg viewBox="0 0 800 300" role="img" xmlns="http://www.w3.org/2000/svg">
-            <title id="hero-illust-04">The same task on two tracks — a long slow lane and a short fast one</title>
-
-            <!-- Source document, where both lanes begin -->
-            <rect x="30" y="120" width="44" height="58" rx="3" fill="var(--paper-pure)" stroke="currentColor" stroke-width="1.4"/>
-            <path d="M62 120 L74 132 L62 132 Z" fill="var(--rule)"/>
-            <g stroke="currentColor" stroke-width="1" opacity="0.4" stroke-linecap="round">
-              <line x1="38" y1="140" x2="66" y2="140"/><line x1="38" y1="150" x2="66" y2="150"/><line x1="38" y1="160" x2="58" y2="160"/>
-            </g>
-            <text x="52" y="198" text-anchor="middle" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="9" fill="var(--muted)" letter-spacing="1.5">SOURCE</text>
-
-            <!-- Faint feeders from the document into each lane -->
-            <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" stroke-dasharray="2 5">
-              <path d="M76 138 Q 96 120 110 120"/>
-              <path d="M76 160 Q 96 202 110 202"/>
-            </g>
-
-            <!-- BEFORE lane: long, slow -->
-            <text x="110" y="96" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10" fill="var(--muted)" letter-spacing="2">BEFORE</text>
-            <text x="744" y="96" text-anchor="end" font-family="'Cheltenham Classic', Georgia, serif" font-size="20" fill="currentColor">20 min / claim</text>
-            <line x1="110" y1="120" x2="744" y2="120" stroke="currentColor" stroke-width="3" opacity="0.4" stroke-linecap="round"/>
-            <g stroke="currentColor" stroke-width="1" opacity="0.28">
-              <line x1="173" y1="115" x2="173" y2="125"/><line x1="236" y1="115" x2="236" y2="125"/><line x1="299" y1="115" x2="299" y2="125"/><line x1="362" y1="115" x2="362" y2="125"/><line x1="425" y1="115" x2="425" y2="125"/><line x1="488" y1="115" x2="488" y2="125"/><line x1="551" y1="115" x2="551" y2="125"/><line x1="614" y1="115" x2="614" y2="125"/><line x1="677" y1="115" x2="677" y2="125"/>
-            </g>
-            <g transform="translate(110, 120)">
-              <circle cx="0" cy="0" r="6" fill="currentColor" class="illust-travel illust-travel--slow" style="--travel: 634px"/>
-            </g>
-
-            <!-- AFTER lane: short, fast -->
-            <text x="110" y="178" font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="10" fill="var(--accent)" letter-spacing="2">AFTER</text>
-            <text x="392" y="207" font-family="'Cheltenham Classic', Georgia, serif" font-size="20" fill="var(--accent)">≈8 min <tspan font-family="ui-sans-serif, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12">(&#8722;60%)</tspan></text>
-            <line x1="110" y1="202" x2="372" y2="202" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
-            <g stroke="var(--accent)" stroke-width="1" opacity="0.3">
-              <line x1="172" y1="197" x2="172" y2="207"/><line x1="234" y1="197" x2="234" y2="207"/><line x1="296" y1="197" x2="296" y2="207"/>
-            </g>
-            <g transform="translate(110, 202)">
-              <circle cx="0" cy="0" r="6" fill="var(--accent)" class="illust-travel illust-travel--fast" style="--travel: 262px"/>
-            </g>
-          </svg>
         </div>
-        <figcaption>
-          The same twenty-minute transcription, before and after. Pulling the source document into the tool and letting the form follow the reader&#8217;s eye cut time on task by roughly sixty percent.
-          <span class="cs-hero-illustration__credit">Illustration · Cody Heart</span>
-        </figcaption>
+        <figcaption>The same twenty-minute transcription, before and after, drawn to scale.</figcaption>
       </figure>
+    </div>
   </section>
 
-  <section class="cs-band cs-band--dark" id="access">
-    <div class="cs-gate" data-screens-gate>
-      <svg class="cs-gate__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-      <p class="cs-gate__eyebrow">Protected</p>
-      <h2 class="cs-gate__title">How I got from the problem to the solution.</h2>
-      <p class="cs-gate__copy">Everything between the problem and the solution &#8212; the research, the options I ruled out, the reasoning behind each call, and the screens themselves &#8212; was done under NDA. Ask and I&#8217;ll send the password, or I&#8217;ll walk you through it live, which is usually the better version anyway.</p>
-      <div class="cs-gate__actions">
-        <a class="cs-cta cs-cta--primary" href="mailto:codynheart@gmail.com?subject=Password%20request%20%E2%80%94%20Claims">Request the password</a>
-        <a class="cs-cta" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book a walkthrough</a>
+  <section id="solution" class="cs-section">
+    <div class="section-label"><span>The Solution</span></div>
+    <h2>Put the source document inside the workflow.</h2>
+    <div class="cs-flow">
+      <p>A split-screen transcription tool with the claim PDF on the left and the form on the right, field groupings that follow how information appears on the page, keyboard navigation, pre-filled high-confidence data, and a real field-level audit trail. Paired with reporting dashboards that finally made queue depth, claim age, and specialist throughput legible to the rest of the org.</p>
+    </div>
+  </section>
+
+  <section id="role" class="cs-section">
+    <div class="section-label"><span>My Role</span></div>
+    <h2>Sitting with the people who used it.</h2>
+    <div class="cs-flow">
+      <p>I partnered with the CX team who worked in this tool every day. I ran the research sessions, designed the split-screen workflow that came out of them, and built the reporting views that followed.</p>
+    </div>
+  </section>
+
+  <section id="reporting" class="cs-section">
+    <div class="section-label"><span>The Reporting</span></div>
+    <h2>Dashboards that made the next investment legible.</h2>
+    <div class="cs-flow">
+      <p>Reducing time-on-task was the headline. The second-order work was the reporting &#8212; the system-level views that let CX leadership, finance, and product see where claims work was piling up and why. I designed reporting dashboards that exposed queue depth, claim age, exception rate, and specialist throughput, with drill-downs to the individual claim. Those dashboards were later used to justify hiring, to prioritize engineering work, and to make the case for further automation.</p>
+      <blockquote class="cs-quote"><p>A design team that can&#8217;t show you its numbers is, quietly, a design team you can cut.</p></blockquote>
+    </div>
+  </section>
+
+  <section id="takeaway" class="cs-section">
+    <div class="section-label"><span>Key Takeaway</span></div>
+    <h2>What I learned from the specialists.</h2>
+    <div class="cs-flow">
+      <p>The specialists who transcribed claims every day were the best product partners I&#8217;d worked with. They knew the edge cases, the weird-plan exceptions, the carriers whose PDFs were unreadable, the small lies that certain provider forms told. Most of the durable improvements on this project came from their corrections to my first drafts.</p>
+      <p>The lesson I kept, and have kept using at LifeStance: when you&#8217;re designing an internal tool, the people using it for eight hours a day are not a research population to be synthesized. They are collaborators whose names should be in the commit history.</p>
+    </div>
+  </section>
+
+  <section id="reasoning" class="cs-section">
+    <div class="section-label"><span>The Reasoning</span></div>
+    <div class="gate" data-screens-gate>
+      <svg class="gate__mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="1.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <p class="gate__eyebrow">Protected</p>
+      <h3 class="gate__title">How I got from the problem to the solution.</h3>
+      <p class="gate__copy">Everything between the problem and the solution &#8212; the research, the options I ruled out, the reasoning behind each call, and the screens themselves &#8212; was done under NDA. Ask and I&#8217;ll send the password, or I&#8217;ll walk you through it live, which is usually the better version anyway.</p>
+      <div class="gate__actions">
+        <a class="btn btn--primary" href="mailto:codynheart@gmail.com?subject=Password%20request%20%E2%80%94%20Claims">Request the password</a>
+        <a class="btn" href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Book a walkthrough</a>
       </div>
-      <p class="cs-gate__or">or</p>
-      <form class="cs-gate__form screens-gate__form" autocomplete="off" novalidate>
-        <label class="visually-hidden" for="gate-claims">Password</label>
-        <input class="cs-gate__input screens-gate__input" id="gate-claims" type="password" placeholder="Password" spellcheck="false" autocapitalize="off" autocorrect="off" required>
-        <button class="cs-gate__submit" type="submit">Enter</button>
+      <p class="gate__or">or</p>
+      <form class="gate__form" autocomplete="off" novalidate>
+        <label class="visually-hidden" for="gate-pw">Password</label>
+        <input class="gate__input" id="gate-pw" type="password" placeholder="Password" spellcheck="false" autocapitalize="off" autocorrect="off" required>
+        <button class="btn btn--primary" type="submit">Enter</button>
       </form>
-      <p class="cs-gate__error screens-gate__error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</p>
-      <p class="cs-gate__unlocked">Unlocked &#8212; the reasoning is below.</p>
+      <p class="gate__error" role="alert" aria-live="polite">That&#8217;s not the password. Try again.</p>
+      <p class="gate__unlocked">Unlocked &#8212; the reasoning is below.</p>
     </div>
   </section>
 
   <div class="cs-details">
-    <section class="cs-band cs-band--light">
-      <div class="cs-body shell--read">
-        <p class="cs-unlocked-note">The reasoning between problem and solution</p>
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">02 / Research</div>
-      <div>
-        <h2 class="reveal">The source document is the interface.</h2>
-          <p class="reveal">After shadowing the CX team for several weeks, I realized the real interface wasn&#8217;t the form. It was the PDF. Specialists spent most of their time scanning back and forth between the document and the form, losing their place, re-reading lines. The form field you were filling in had to match the region of the document you were reading, or the work got slow and error-prone.</p>
-          <p class="reveal">The design insight, once it clicked, felt obvious: put the document in the tool, not next to it. Make the form follow the reader&#8217;s eye.</p>
-      </div>
-    </div>
+    <p class="cs-unlocked-note">The reasoning between problem and solution</p>
 
-    <div class="cs-chapter">
-      <div class="cs-chapter__num">03 / Design</div>
-      <div>
-        <h2 class="reveal">A split that actually works.</h2>
-          <p class="reveal">We shipped a split-screen transcription tool with the PDF on the left and the form on the right. Fields were grouped to match the way information typically appears on a claim form — patient identifiers up top, service lines in the middle, totals at the bottom. We added keyboard navigation between fields, auto-advance on known field lengths (like date of service), and a running total that the specialist could sanity-check against the document.</p>
-          <p class="reveal">On the data side, I worked with engineering to pre-fill any field we already had high-confidence data for — provider NPI, member ID, plan details — leaving only the novel fields for manual entry. Duplicate-claim detection flagged likely re-submissions before the specialist had to find them.</p>
-          <h3 class="reveal">Small details that mattered</h3>
-          <ul class="reveal">
-            <li>A persistent note field on every claim, for specialists to leave context for the next reviewer. The line between &#8220;can I process this?&#8221; and &#8220;I need help&#8221; used to live in Slack; we brought it into the record.</li>
-            <li>Field-level audit: who entered each value, when, and what it was changed from. Compliance loved it; specialists were surprised how often they referred back to it themselves.</li>
-            <li>Undo. A real undo, not a refresh-and-cry undo.</li>
-          </ul>
-      </div>
+  <section id="research" class="cs-section">
+    <div class="section-label"><span>The Research</span></div>
+    <h2>The source document is the interface.</h2>
+    <div class="cs-flow">
+      <p>After shadowing the CX team for several weeks, I realized the real interface wasn&#8217;t the form. It was the PDF. Specialists spent most of their time scanning back and forth between the document and the form, losing their place, re-reading lines. The form field you were filling in had to match the region of the document you were reading, or the work got slow and error-prone.</p>
+      <p>The design insight, once it clicked, felt obvious: put the document in the tool, not next to it. Make the form follow the reader&#8217;s eye.</p>
+      <figure class="cs-figure"><div class="ph"><span>Screen &#8212; shadowing notes &amp; the eye-path map</span></div></figure>
     </div>
-      </div>
-    </section>
-  </div><!-- /.cs-details -->
-
-  <section class="cs-band cs-next-v2">
-    <a href="billing.html">
-      <div class="cs-next-v2__inner">
-        <div>
-          <p class="cs-next-v2__label">Next case study &#183; &#8470; 05</p>
-          <h2 class="cs-next-v2__title">Billing</h2>
-          <p class="cs-next-v2__desc">Replaced three disconnected finance tools with one state-aware workspace, and automated the boring half.</p>
-        </div>
-        <span class="cs-next-v2__arrow" aria-hidden="true">&#8594;</span>
-      </div>
-    </a>
   </section>
 
+  <section id="design" class="cs-section">
+    <div class="section-label"><span>The Design</span></div>
+    <h2>A split that actually works.</h2>
+    <div class="cs-flow">
+      <p>We shipped a split-screen transcription tool with the PDF on the left and the form on the right. Fields were grouped to match the way information typically appears on a claim form &#8212; patient identifiers up top, service lines in the middle, totals at the bottom. We added keyboard navigation between fields, auto-advance on known field lengths, and a running total the specialist could sanity-check against the document.</p>
+      <p>On the data side, I worked with engineering to pre-fill any field we already had high-confidence data for &#8212; provider NPI, member ID, plan details &#8212; leaving only the novel fields for manual entry. Duplicate-claim detection flagged likely re-submissions before the specialist had to find them.</p>
+      <h3>Small details that mattered</h3>
+      <ul>
+        <li>A persistent note field on every claim, for specialists to leave context for the next reviewer. The line between &#8220;can I process this?&#8221; and &#8220;I need help&#8221; used to live in Slack; we brought it into the record.</li>
+        <li>Field-level audit: who entered each value, when, and what it was changed from. Compliance loved it; specialists were surprised how often they referred back to it themselves.</li>
+        <li>Undo. A real undo, not a refresh-and-cry undo.</li>
+      </ul>
+      <figure class="cs-figure"><div class="ph"><span>Screen &#8212; the split view, PDF left, form right</span></div></figure>
+    </div>
+  </section>
+  </div>
+
+  <footer class="cs-footnav">
+    <a class="link-hover press-scale" href="../index.html">&#8592; All projects</a>
+    <a class="link-hover press-scale" href="billing.html">Next project &#8594;</a>
+  </footer>
 </main>
 
-<footer class="site-footer" id="contact">
-  <div class="shell site-footer__inner">
-    <div class="site-footer__lead">
-      <p class="site-footer__statement reveal">Internal tools, measurable outcomes, and the people behind the numbers.</p>
-      <a class="site-footer__talk reveal reveal--d1" href="mailto:hello@codyheart.design">
-        <span class="talk__fill" aria-hidden="true"></span>
-        <span class="talk__arrow" aria-hidden="true">&#8594;</span>
-        <span class="talk__text">Let&#8217;s talk</span>
+<footer class="footer">
+  <div class="footer__inner">
+    <p>&#169; 2026 Cody Heart &#183; Built with plain HTML, <a class="text-link" target="_blank" rel="noopener noreferrer" href="https://claude.ai/code">Claude Code</a> &amp; a Cheltenham revival</p>
+    <div class="footer__social">
+      <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" href="https://www.linkedin.com/in/codyheart/">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
-      <p class="site-footer__addr reveal reveal--d1"><a href="mailto:hello@codyheart.design">hello@codyheart.design</a></p>
-    </div>
-
-    <div class="site-footer__cols reveal reveal--d1">
-      <ul class="site-footer__links">
-        <li><a href="https://www.linkedin.com/in/codyheart/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://calendly.com/codynheart/30min" target="_blank" rel="noopener">Calendly</a></li>
-        <li><a href="https://www.goodreads.com/user/show/164877363-cody-heart" target="_blank" rel="noopener">Goodreads</a></li>
-        <li><a href="https://codynheart.com" target="_blank" rel="noopener">A reader&#8217;s atlas</a></li>
-        <li><a href="https://drive.google.com/file/d/1DNg6jHae1uTtqSoy8dUVyaRoVnSJ9kkv/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
-      </ul>
-      <div class="site-footer__meta">
-        <span>Chicago</span>
-        <span id="footer-clock" class="site-footer__clock">--.--.--</span>
-        <span class="site-footer__copy">© 2026 Cody Heart</span>
-      </div>
+      <a target="_blank" rel="noopener noreferrer" aria-label="Goodreads — a reader's atlas" href="https://www.goodreads.com/user/show/164877363-cody-heart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </a>
+      <a aria-label="Email" href="mailto:hello@codyheart.design">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </a>
     </div>
   </div>
 </footer>
 
-<script src="../js/field.js?v=6"></script>
+<script src="../js/site.js?v=1" defer></script>
 </body>
 </html>
