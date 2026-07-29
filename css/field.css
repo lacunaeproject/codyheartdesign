@@ -49,6 +49,13 @@
   font-weight: 800; font-style: normal; font-display: swap;
 }
 
+/* Regards ships a single cut — no bold, no italic. */
+@font-face {
+  font-family: 'Regards';
+  src: url('../assets/fonts/regards-webfont.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
 @font-face {
   font-family: 'Sprig';
   src: url('../assets/fonts/FAIRE-Sprig-Trial-Regular.woff2') format('woff2');
@@ -150,9 +157,22 @@
      an edge. */
   --giverny:    #2E9169;
   --giverny-deep: #217251;
+  /* The rest of the garden, for the front page: the irises along
+     the path, the wisteria over the bridge, the water under it,
+     the crushed-brick pink of the house — and one poppy, the loud
+     red Monet spent a career scattering through green. */
+  --iris:       #5D5192;
+  --iris-soft:  #7B6FAE;
+  --wisteria:   #CBBFE8;
+  --cerulean:   #3E688F;
+  /* Light enough to read as water catching sun, dark enough to
+     hold 3:1 on the frosted ground at display size. */
+  --cerulean-2: #5E87AE;
+  --rose-brick: #A64A3F;
+  --poppy:      #D9603B;
 
-  --font-display: 'Sprig', 'Cheltenham Classic', Georgia, serif;
-  --font-body:    'Cheltenham Classic', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-display: 'Cheltenham Classic', 'Iowan Old Style', Georgia, serif;
+  --font-body:    ui-sans-serif, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-label:   ui-sans-serif, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   --fs-body: 1.0625rem;
@@ -192,10 +212,132 @@ body {
    and the cream ground for long reading. Ink softens to charcoal
    here — true black fights the frosted garden light. */
 .home {
-  --font-body: 'Sprig', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
-  --ink: #3A3F3D;
-  --ink-soft: #555B56;
+  --ink: #1D211F;
+  --ink-soft: #4A504D;
   background: var(--white);
+  /* Monet banned black from his palette; in the garden the shadows
+     are violet. Redefined here rather than in the token block so
+     the interior pages keep their neutral ink shadows. */
+  --lift-1: 0 1px 2px rgba(93,81,146,.07), 0 8px 24px rgba(93,81,146,.10);
+  --lift-2: 0 2px 8px rgba(93,81,146,.10), 0 24px 60px rgba(93,81,146,.17);
+  /* The five pigments of the drifting fields. Hero and page wash
+     share this one palette, so the time-of-day classes below
+     re-light both with a single set of overrides. */
+  --w-cool: #A5C6DC;
+  --w-vio:  #BCA6D8;
+  --w-grn:  #A7C494;
+  --w-rose: #ECB9AC;
+  --w-lite: #F4E6BC;
+  --w-base: #F7F4EC;
+}
+
+/* The series conceit — the same garden painted at three lights,
+   Rouen Cathedral logic applied to a homepage. The head script
+   reads the visitor's clock (?light=morn|day|dusk overrides it
+   for previewing) and stamps one class on <html>. Midday is the
+   default palette above; morning leans mist and first rose;
+   evening falls violet and amber. */
+html.light-morn .home {
+  --w-cool: #ABCDE6; --w-vio: #CDC2E8; --w-grn: #B5CDAB;
+  --w-rose: #F4C6C2; --w-lite: #ECF1F1; --w-base: #F5F7F5;
+}
+html.light-dusk .home {
+  --w-cool: #9DAED6; --w-vio: #C2A0DA; --w-grn: #A4B88C;
+  --w-rose: #EFAB96; --w-lite: #F1D3A4; --w-base: #F7F0E2;
+}
+.home ::selection { background: var(--wisteria); color: var(--ink); }
+.home :focus-visible { outline-color: var(--iris-soft); }
+
+/* The painted ground — the garden does not end at the hero's
+   fold. The same water-garden pools the hero drifts, carried
+   under the ENTIRE page at reading strength: fixed to the
+   window, blurred past recognition, moving on a statelier loop
+   than the hero above it. The white cards float on it the way
+   the lily pads float on the pond. */
+body.home::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  background:
+    radial-gradient(36% 30% at 15% 20%, var(--w-cool) 0%, transparent 70%),
+    radial-gradient(32% 30% at 85% 15%, var(--w-vio) 0%, transparent 72%),
+    radial-gradient(34% 30% at 82% 82%, var(--w-grn) 0%, transparent 70%),
+    radial-gradient(30% 28% at 18% 85%, var(--w-rose) 0%, transparent 72%),
+    radial-gradient(44% 40% at 50% 50%, var(--w-lite) 0%, transparent 75%),
+    var(--white);
+  filter: blur(clamp(30px, 5vw, 70px)) saturate(1.08);
+  /* A whisper now — the references all read on quiet ground. */
+  opacity: .1;
+  animation: giverny-drift 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Dappled light — sun through the willows, over everything: the
+   page, the cards, the chrome. Soft pools of buttery, green and
+   lavender light drifting on a very long loop, blended so they
+   warm what they cross rather than sit on it. Fixed, because the
+   light belongs to the window, not the page — the garden scrolls
+   beneath it. */
+body.home::after {
+  content: "";
+  position: fixed;
+  inset: -30%;
+  z-index: 200;
+  pointer-events: none;
+  background:
+    radial-gradient(28% 24% at 22% 28%, rgba(244,230,188,.7) 0%, rgba(244,230,188,0) 70%),
+    radial-gradient(24% 26% at 74% 18%, rgba(214,232,196,.55) 0%, rgba(214,232,196,0) 70%),
+    radial-gradient(26% 22% at 80% 76%, rgba(244,230,188,.6) 0%, rgba(244,230,188,0) 70%),
+    radial-gradient(22% 24% at 30% 78%, rgba(203,191,232,.5) 0%, rgba(203,191,232,0) 72%);
+  mix-blend-mode: soft-light;
+  animation: dapple-drift 90s ease-in-out infinite alternate;
+  will-change: transform;
+  display: none;
+}
+@keyframes dapple-drift {
+  0%   { transform: translate3d(-4%, -3%, 0) rotate(-2deg); }
+  50%  { transform: translate3d(3%, 2%, 0)   rotate(1.5deg); }
+  100% { transform: translate3d(-2%, 4%, 0)  rotate(-1deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.home::before, body.home::after { animation: none; }
+}
+
+/* Evening falls as you walk. A fixed violet-amber veil whose
+   opacity is driven by the scroll position itself — invisible at
+   the gate, fully arrived at the pond. Engines without scroll
+   timelines simply never see dusk fall; that is fine. */
+.dusk-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(93, 81, 146, .12), rgba(239, 171, 150, .09));
+  mix-blend-mode: multiply;
+  opacity: 0;
+}
+@supports (animation-timeline: scroll()) {
+  .dusk-veil { animation: dusk-fall linear both; animation-timeline: scroll(root); }
+}
+@keyframes dusk-fall {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dusk-veil { animation: none; opacity: 0; }
+}
+
+/* The garden's scrollbar: a thin stem of bridge green. Scoped by
+   the light classes, which only the home page sets. */
+html[class*="light-"] { scrollbar-width: thin; scrollbar-color: #4A7C6F transparent; }
+html[class*="light-"]::-webkit-scrollbar { width: 11px; }
+html[class*="light-"]::-webkit-scrollbar-track { background: transparent; }
+html[class*="light-"]::-webkit-scrollbar-thumb {
+  background: linear-gradient(#7B6FAE, #4A7C6F);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
 img, svg { max-width: 100%; display: block; }
@@ -227,6 +369,22 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   color: var(--muted);
 }
 .label--accent { color: var(--terracotta); }
+/* A label with a hairline running out to the right margin — the
+   references' quiet way of ruling a section open. */
+.label-rule {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  width: 100%;
+  justify-self: stretch;
+}
+.label-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
 
 /* A hairline separator that replaces the middot, which Geograph lacks */
 .sep {
@@ -308,13 +466,122 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 .nav a[aria-current]:active { color: var(--white); background: var(--giverny); }
 
+/* ---------- Top bar, Andrea-style ----------
+   Name on the left, quiet sentence-case links on the right, all
+   on the page column. The chip and floating pill retire on the
+   front page. */
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 1.7rem var(--gutter) 0;
+}
+.topbar__name {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .98rem;
+  color: var(--ink);
+}
+.topbar__name svg { width: 1.05em; height: auto; }
+.topbar__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+.topbar__nav a {
+  font-family: var(--font-body);
+  font-size: .95rem;
+  color: var(--ink-soft);
+  transition: color .25s var(--ease);
+}
+.topbar__nav > a:hover,
+.topbar__nav .nav__group > a:hover { color: var(--giverny-deep); }
+.topbar__nav a[aria-current] { color: var(--ink); font-weight: 700; }
+.topbar .nav-drop__item strong {
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.topbar .nav-drop__item span {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  color: var(--muted);
+}
+.topbar .nav-drop__item { display: grid; gap: .1rem; padding: .6rem .75rem; border-radius: 9px; }
+.topbar .nav-drop__item:hover { background: rgba(46, 145, 105, .1); }
+.topbar .nav-drop__item--all { grid-template-columns: auto auto; align-items: center; justify-content: start; gap: .45rem; }
+
+/* ---------- Work dropdown ----------
+   Andrea's move: the Work item opens a quiet white panel, each
+   study a name and a one-line description. Hover or focus. */
+.nav__group { position: relative; display: inline-flex; align-items: stretch; }
+.nav-drop {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 260px;
+  display: grid;
+  gap: .15rem;
+  padding: .45rem;
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 14px;
+  box-shadow: var(--lift-2);
+  opacity: 0;
+  translate: 0 -4px;
+  pointer-events: none;
+  transition: opacity .25s var(--ease), translate .25s var(--ease);
+}
+.nav__group:hover .nav-drop,
+.nav__group:focus-within .nav-drop {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
+}
+.nav .nav-drop__item {
+  display: grid;
+  gap: .1rem;
+  padding: .6rem .75rem;
+  border-radius: 9px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.nav .nav-drop__item strong {
+  font-family: var(--font-body);
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.nav .nav-drop__item span {
+  font-family: var(--font-body);
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.nav .nav-drop__item:hover { background: rgba(46, 145, 105, .1); }
+.nav .nav-drop__item--all { grid-template-columns: auto auto; align-items: center; justify-content: start; gap: .45rem; }
+
 /* On the front page the pill rides the TOP edge, sharing a midline
    with the wordmark chip — still horizontally centered. Interior
    pages keep it at the bottom, in thumb reach. */
 .home .nav {
   bottom: auto;
   top: clamp(1.6rem, 3vh, 2.4rem);
+  /* The capsule's shadow joins the violet rule above. */
+  box-shadow: 0 10px 30px -8px rgba(76,64,128,.32);
 }
+.home .chip-logo { box-shadow: 0 6px 18px -8px rgba(76,64,128,.28); }
 
 /* ============================================================
    HERO — four lines of type, each rising out of its own clipping
@@ -333,7 +600,14 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   /* Enough floor that the block never rides under the fixed chip
      and pill when the viewport is short. */
   padding-block: clamp(6rem, 11vh, 7.5rem);
-  background: #F7F4EC;
+  background: var(--w-base);
+  /* No seam at the base: rather than trying to colour-match two
+     independently drifting paintings where the section box ends,
+     the whole hero — ground, drift, veil — dissolves over its
+     last fifth, and the page-wide wash underneath simply keeps
+     going. The type sits centred, well clear of the fade. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
 }
 /* The water garden, drifting. Saturated colour fields — pond
    blue, wisteria, willow, the pink of the lilies, and the buttery
@@ -350,12 +624,12 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   inset: -28%;
   z-index: -2;
   background:
-    radial-gradient(42% 38% at 20% 24%, #A5C6DC 0%, rgba(165,198,220,0) 70%),
-    radial-gradient(38% 36% at 78% 20%, #BCA6D8 0%, rgba(188,166,216,0) 72%),
-    radial-gradient(40% 36% at 76% 78%, #A7C494 0%, rgba(167,196,148,0) 70%),
-    radial-gradient(38% 34% at 22% 80%, #ECB9AC 0%, rgba(236,185,172,0) 72%),
-    radial-gradient(50% 45% at 52% 50%, #F4E6BC 0%, rgba(244,230,188,0) 75%),
-    #F7F4EC;
+    radial-gradient(42% 38% at 20% 24%, var(--w-cool) 0%, transparent 70%),
+    radial-gradient(38% 36% at 78% 20%, var(--w-vio) 0%, transparent 72%),
+    radial-gradient(40% 36% at 76% 78%, var(--w-grn) 0%, transparent 70%),
+    radial-gradient(38% 34% at 22% 80%, var(--w-rose) 0%, transparent 72%),
+    radial-gradient(50% 45% at 52% 50%, var(--w-lite) 0%, transparent 75%),
+    var(--w-base);
   /* A touch more saturation so the colours stay distinct from one
      another through the frosted pane — movement you cannot tell
      apart from its neighbour does not read as movement. */
@@ -365,6 +639,8 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
      sliding back and forth along one line. */
   animation: giverny-drift 18s ease-in-out infinite alternate;
   will-change: transform;
+  /* Quieter, per the references: the garden stays, at a whisper. */
+  opacity: .32;
 }
 @keyframes giverny-drift {
   0%   { transform: translate3d(-6%, -4%, 0) rotate(-3.5deg) scale(1.02); }
@@ -373,7 +649,12 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   100% { transform: translate3d(-3%, 5%, 0)  rotate(-1.5deg) scale(1.1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-intro::before { animation: none; }
+  .hero-intro::before,
+  .cs-block__plate, .cs-block:hover .cs-block__plate,
+  .section-rule,
+  .site-footer::before, .site-footer::after,
+  .tot-card__art, .totals .tot-card__num,
+  .chapter__num, .chapter__art { animation: none; }
 }
 /* The frosted pane: a white veil over the whole garden, thickening
    into solid page-white at the base so the colour dissipates into
@@ -388,7 +669,11 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   background: linear-gradient(to bottom,
     rgba(255,255,255,.30) 0%,
     rgba(255,255,255,.26) 62%,
-    var(--white) 100%);
+    rgba(255,255,255,.62) 100%);
+  /* The base no longer lands on solid page-white: the painted
+     ground now continues under the whole page, so the veil only
+     thickens toward the strength the ground itself is veiled to,
+     and the hero hands its colour off instead of ending it. */
   pointer-events: none;
 }
 /* The block shrinks to its widest line and is centred on the
@@ -396,10 +681,30 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    edge. fit-content is what does it — a full-width container
    would pin the type to the left gutter instead. */
 .hero-container {
-  width: fit-content;
-  max-width: 100%;
+  /* Jessica-anchored: the type locks to the same left column the
+     whole page reads on, at full editorial scale. */
+  width: 100%;
+  max-width: var(--max);
   margin-inline: auto;
-  padding-inline: 24px;
+  padding-inline: var(--gutter);
+}
+
+/* The positioning lede, Andrea-style: one paragraph under the
+   display, with the key phrase held in a sand highlight. */
+.hero-lede {
+  max-width: 52ch;
+  margin: 2.2rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.hero-lede mark {
+  background: rgba(240, 196, 84, .4);
+  color: inherit;
+  padding: .04em .18em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 /* ---------- Chip chrome — wordmark and nav ---------- */
@@ -418,6 +723,10 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   box-shadow: 0 6px 18px -8px rgba(31, 36, 32, .22);
 }
 .chip-logo svg { width: 1.05em; height: auto; }
+/* The house itself: pink crushed brick, green shutters. The chip
+   takes the pairing when touched. */
+.chip-logo { transition: background .35s var(--ease), border-color .35s var(--ease); }
+.home .chip-logo:hover { background: #FBF1ED; border-color: rgba(74, 124, 111, .5); }
 /* Same capsule height as the nav pill, so chip and pill share a
    midline across the top of the page. */
 .chip-logo { height: 3.1rem; box-sizing: border-box; }
@@ -456,7 +765,7 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 .display-heading {
   /* Gooper leads here, not in the token — the swap is local, so
      every other heading on the site stays Sprig. */
-  font-family: 'Gooper', var(--font-display);
+  font-family: var(--font-display);
   /* Fluid, because the rows are nowrap: a fixed size overflows
      the moment the window is narrower than the longest line.
      4vw keeps the longest row inside the gutters at every width,
@@ -465,7 +774,9 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   font-weight: 400;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: #333333;
+  /* Charcoal with viridian in it, not neutral #333 — the same
+     no-black rule the shadows follow. */
+  color: #343D38;
   margin: 0;
   padding-inline: 8px;
   position: relative;
@@ -474,7 +785,33 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 .display-heading._2 { line-height: 1.2; }
 /* The four emphasised things — name, role, city, field — in
    Gooper Black against its Regular. Weight alone; no slope. */
-.display-em { font-style: normal; font-weight: 800; }
+.display-em { font-style: italic; font-weight: 700; }
+
+/* …and each in its own petal gradient, so colour joins weight in
+   doing the emphasis work: the name in the crushed-brick pink of
+   the house warming into poppy, the role in iris, the city in
+   cerulean water, the field in the green of the door. Clipped to
+   the type; engines without clip support keep the charcoal. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-container .display-em {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero-container .display-text-div:nth-of-type(1) .display-em {
+    background-image: linear-gradient(100deg, var(--rose-brick), var(--poppy));
+  }
+  .hero-container .display-text-div:nth-of-type(2) .display-em {
+    background-image: linear-gradient(100deg, var(--iris), var(--iris-soft));
+  }
+  .hero-container .display-text-div:nth-of-type(3) .display-em {
+    background-image: linear-gradient(100deg, var(--cerulean), var(--cerulean-2));
+  }
+  .hero-container .display-text-div:nth-of-type(4) .display-em {
+    background-image: linear-gradient(100deg, var(--giverny-deep), var(--giverny));
+  }
+}
 
 @media screen and (min-width: 1440px) {
   .display-text-div { padding-top: .4vw; padding-bottom: .4vw; }
@@ -502,15 +839,18 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 /* The glyph marks are pinned off the display face on purpose:
    the display trial cuts carry no dingbats, and per-glyph
    fallback would size them unpredictably against the type. */
+/* Both marks are poppies now — the one loud red, scattered twice.
+   Against the iris of the role and the green of the field, it is
+   the complement doing what it did in his poppy fields. */
 .text-spike {
   display: inline-block;
-  color: var(--cobalt);
+  color: var(--poppy);
   transform-style: preserve-3d;
   font-family: var(--font-label);
 }
 .text-star {
   display: inline-block;
-  color: var(--giverny);
+  color: var(--poppy);
   font-family: var(--font-label);
 }
 
@@ -589,12 +929,35 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    hairline the footer colophon uses, at shell width. */
 .section-rule {
   border: 0;
-  height: 1px;
-  background: var(--rule);
+  /* A stem, not a rule: wisteria into willow, fading out at both
+     ends like a cut flower laid between the chapters. */
+  height: 2px;
+  border-radius: 2px;
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(90deg,
+    rgba(203,191,232,0) 0%,
+    var(--wisteria) 18%,
+    #A7C494 82%,
+    rgba(167,196,148,0) 100%);
   width: min(calc(100% - 2 * var(--gutter)), calc(var(--max) - 2 * var(--gutter)));
   /* Even air on both sides of the line — the pause between the
      numbers chapter and the stories chapter. */
   margin: clamp(5rem, 11vh, 8rem) auto;
+}
+/* The stem grows across the page as it scrolls into view,
+   wisteria end first — clip-path, so nothing distorts. Engines
+   without view timelines show the settled stem. */
+@supports (animation-timeline: view()) {
+  .section-rule {
+    animation: stem-grow linear both;
+    animation-timeline: view();
+    animation-range: entry 20% entry 90%;
+  }
+}
+@keyframes stem-grow {
+  from { clip-path: inset(-12px 100% -12px 0); }
+  to   { clip-path: inset(-12px 0 -12px 0); }
 }
 
 .work-head {
@@ -634,7 +997,8 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 /* Hover lives on the card, not the type — the plate lifts and the
    scene drifts; the text never changes, so it stays readable. */
 .cs-block:hover .cs-block__plate {
-  transform: translateY(-14px);
+  /* A lily pad tips a hair when a frog lands on it. */
+  transform: translateY(-14px) rotate(.35deg);
   box-shadow: var(--lift-2);
 }
 /* The illustration owns the top of the card, full-bleed to the
@@ -646,6 +1010,26 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   transition: transform 1.1s var(--ease);
 }
 .cs-block:hover .cs-block__plate img { transform: scale(1.035); }
+
+/* ---------- Lily pads ----------
+   Each plate floats on its own slow swell — a few pixels, out of
+   phase with its neighbours via negative delays, so the three
+   never read as choreography. The bob lives on `translate`; the
+   hover lift keeps `transform`; the two compose instead of
+   fighting. */
+@keyframes pad-bob {
+  from { translate: 0 -2px; }
+  to   { translate: 0 3px; }
+}
+.cs-block__plate { --bob: pad-bob 7.2s ease-in-out -2.1s infinite alternate; animation: var(--bob); }
+a.cs-block:nth-of-type(2) .cs-block__plate { --bob: pad-bob 8.4s ease-in-out -5.3s infinite alternate; }
+a.cs-block:nth-of-type(3) .cs-block__plate { --bob: pad-bob 6.3s ease-in-out -3.7s infinite alternate; }
+
+/* (A counter-breathing water-shadow lived under each pad for a
+   short while — cut. The bob carries the float on its own.) */
+
+/* (A hover ripple ring lived here briefly — it never read as
+   water. The pads keep their bob and tilt; the water stays calm.) */
 
 /* The scrim retired with the overlay — image and text no longer
    share ground, so nothing needs dimming. */
@@ -675,6 +1059,247 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   color: var(--ink-soft);
   margin: 0;
 }
+/* ============================================================
+   THE CHAPTERS — the work as an editorial feature. Each project
+   is a room: its own colour pool, its outcome sentence as the
+   headline, its figures set big in its own pigment beside the
+   words, its plate demoted to a spot illustration. The pools
+   alternate down the page like rooms off a hall.
+   ============================================================ */
+.work-intro {
+  padding: clamp(7.5rem, 16vh, 11rem) 0 clamp(2.5rem, 6vh, 4rem);
+  /* The achievement sits at the yellow table: the career totals
+     in gold, in their own pool of dining-room light. */
+  background: radial-gradient(120% 46% at 45% 50%,
+    rgba(240, 196, 84, .12) 0%, rgba(240, 196, 84, .05) 55%, rgba(240, 196, 84, 0) 100%);
+}
+.work-intro__inner { display: grid; gap: .8rem; justify-items: start; }
+/* The ruled meta row from her case pages: facts in columns
+   under one hairline. */
+.meta-row {
+  width: 100%;
+  justify-self: stretch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.2rem;
+  margin-top: .8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--rule);
+}
+.meta-row p { margin: .3rem 0 0; font-size: .95rem; color: var(--ink); }
+
+.work-intro__stats { margin-top: 1.2rem; }
+.work-intro .chapter__num {
+  color: #7A5310;
+  font-size: clamp(2.4rem, 3.8vw, 3.4rem);
+}
+.work-intro .chapter__statlabel { color: #8A6A2A; }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .work-intro .chapter__num {
+    background-image: linear-gradient(105deg, #7A5310 15%, #C89238 45%, #7A5310 80%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gold-light 12s ease-in-out infinite alternate;
+  }
+  .work-intro .chapter__stat:nth-child(2) .chapter__num { animation-delay: -4s; }
+  .work-intro .chapter__stat:nth-child(3) .chapter__num { animation-delay: -8s; }
+}
+
+/* The threshold between the claim and the moves. */
+.how-head { padding-top: clamp(1.5rem, 4vh, 2.5rem); }
+
+.chapter {
+  padding: clamp(3rem, 6vh, 4.5rem) 0;
+  scroll-margin-top: 4rem;
+}
+.chapter--gold { }
+.chapter--green { }
+.chapter--iris { }
+.chapter--blue { }
+.chapter--blue .chapter__title { color: #35516B; }
+.chapter--blue .chapter__num   { color: #3C5C77; }
+.chapter--blue .chapter__statlabel { color: #4A6B87; }
+.chapter--blue .chapter__titlelink:hover { color: #3C5C77; }
+.chapter--blue .chapter__more a { color: #4A6B87; }
+.chapter--blue .chapter__more a:hover { background: #4A6B87; color: var(--white); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .chapter--blue .chapter__num {
+    background-image: linear-gradient(105deg, #3C5C77 15%, #6E97BE 45%, #3C5C77 80%);
+    animation-duration: 13s;
+    animation-delay: -6s;
+  }
+}
+.chapter__inner { display: grid; }
+/* Pure editorial now — no plates. The text block holds a reading
+   measure, and alternate chapters cross the hall: block and light
+   pool both shift to the other side. */
+.chapter__text {
+  display: grid;
+  gap: .55rem;
+  justify-items: start;
+  max-width: 46rem;
+  border-left: 3px solid;
+  padding-left: clamp(1.4rem, 3vw, 2.2rem);
+}
+.chapter--green .chapter__text { border-color: rgba(126, 154, 92, .55); }
+.chapter--blue .chapter__text  { border-color: rgba(110, 151, 190, .55); }
+.chapter--iris .chapter__text  { border-color: rgba(139, 126, 192, .55); }
+/* The step numeral, oversized and in-flow — you SEE first, then,
+   then as you scroll. Ghosted in the room's own pigment. */
+.chapter__text::before {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 4vw, 3.2rem);
+  line-height: .85;
+  letter-spacing: -0.02em;
+  opacity: .3;
+  margin-bottom: .15rem;
+}
+.chapter--green .chapter__text::before { content: "01"; color: #4B6234; }
+.chapter--blue .chapter__text::before  { content: "02"; color: #3C5C77; }
+.chapter--iris .chapter__text::before  { content: "03"; color: #4E4380; }
+/* Eyebrows join the room's hue. */
+.chapter--green .label--accent { color: #55673F; }
+.chapter--blue .label--accent  { color: #4A6B87; }
+.chapter--iris .label--accent  { color: #5D5192; }
+/* The "then" thread: a line falls from each step toward the next,
+   handing its colour to the room that follows — green into
+   cerulean, cerulean into iris, iris into the cobalt of the
+   thinking. First, then, then, and the writing. */
+.chapter__inner::after {
+  content: "";
+  display: block;
+  width: 3px;
+  height: clamp(2rem, 5vh, 3rem);
+  margin-top: 1.4rem;
+}
+.chapter--green .chapter__inner::after { background: linear-gradient(to bottom, rgba(126,154,92,.55), rgba(110,151,190,.55)); }
+.chapter--blue .chapter__inner::after  { background: linear-gradient(to bottom, rgba(110,151,190,.55), rgba(139,126,192,.55)); }
+.chapter--iris .chapter__inner::after  { background: linear-gradient(to bottom, rgba(139,126,192,.55), rgba(42,90,156,.45)); }
+/* The achievement IS the headline — display face, headline
+   scale, the largest thing in the chapter. The numbers below it
+   are the evidence; the study behind it is the how. */
+.chapter__title {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 28ch;
+  margin: .15rem 0 0;
+}
+.chapter__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(1rem, 2vw, 1.6rem);
+  margin-top: 1.3rem;
+  /* Full measure, or the auto-fit collapses to one column and
+     the evidence stacks into a list instead of reading as a row
+     of receipts under the claim. */
+  width: 100%;
+}
+/* The evidence sits in quiet cards, Andrea-style: white, one
+   hairline, soft radius, number + caption. The pigment stays. */
+.chapter__stat {
+  display: grid;
+  gap: .45rem;
+  align-content: start;
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 14px;
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+.chapter__num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  /* Smaller than the headline on purpose: evidence, not thesis. */
+  font-size: clamp(1.7rem, 2.2vw, 2.1rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+/* Each room commits to its colour the way he painted his: the
+   headline wears the chapter's deepest ink, the numbers its
+   brighter pigment, the button its mid tone. One hue per room. */
+.chapter--gold .chapter__title  { color: #5E440E; }
+.chapter--green .chapter__title { color: #3C4F2A; }
+.chapter--iris .chapter__title  { color: #3F3668; }
+.chapter--gold .chapter__num  { color: #7A5310; }
+.chapter--green .chapter__num { color: #4B6234; }
+.chapter--iris .chapter__num  { color: #4E4380; }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .chapter__num {
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gold-light 12s ease-in-out infinite alternate;
+  }
+  .chapter--gold .chapter__num {
+    background-image: linear-gradient(105deg, #7A5310 15%, #C89238 45%, #7A5310 80%);
+  }
+  .chapter--green .chapter__num {
+    background-image: linear-gradient(105deg, #4B6234 15%, #7E9A5C 45%, #4B6234 80%);
+    animation-duration: 13.5s;
+    animation-delay: -5s;
+  }
+  .chapter--iris .chapter__num {
+    background-image: linear-gradient(105deg, #4E4380 15%, #8B7EC0 45%, #4E4380 80%);
+    animation-duration: 12.5s;
+    animation-delay: -3s;
+  }
+  .chapter__stat:nth-child(2) .chapter__num { animation-delay: -7s; }
+}
+.chapter--gold .chapter__statlabel  { color: #8A6A2A; }
+.chapter--green .chapter__statlabel { color: #55673F; }
+.chapter--iris .chapter__statlabel  { color: #5D5192; }
+.chapter__note {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 38ch;
+}
+/* The headline is the door: it opens the study, and says so on
+   touch by taking the chapter's deep pigment. */
+.chapter__titlelink { color: inherit; transition: color .3s var(--ease); }
+.chapter--gold .chapter__titlelink:hover  { color: #7A5310; }
+.chapter--green .chapter__titlelink:hover { color: #4B6234; }
+.chapter--iris .chapter__titlelink:hover  { color: #4E4380; }
+
+/* And an unmissable handle: a pill in the chapter's pigment that
+   names what it opens. Fills on hover. */
+.chapter__more { margin: 1.2rem 0 0; }
+.chapter__more a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  padding: .8em 1.35em;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+  font-family: var(--font-label);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background .3s var(--ease), color .3s var(--ease);
+}
+.chapter--gold .chapter__more a  { color: #8A6A2A; }
+.chapter--green .chapter__more a { color: #55673F; }
+.chapter--iris .chapter__more a  { color: #5D5192; }
+.chapter--gold .chapter__more a:hover  { background: #8A6A2A; color: var(--white); }
+.chapter--green .chapter__more a:hover { background: #55673F; color: var(--white); }
+.chapter--iris .chapter__more a:hover  { background: #5D5192; color: var(--white); }
+.chapter__more .arrow { display: inline-block; transition: transform .35s var(--ease); }
+.chapter__more a:hover .arrow { transform: translateX(4px); }
+/* (The spot illustrations retired — the pigmented figures are the
+   art now. The plates still live on the case-study pages.) */
+
 
 /* Scroll entrance: each block rises and sharpens from a blur as it
    enters the viewport. Native scroll-driven animation — engines
@@ -757,7 +1382,13 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    sits a little louder and a little wider than the one above it,
    so the escalation is legible before a word is read. */
 .wr-card__ledger {
-  background: var(--night);
+  /* THE BLUE KITCHEN. The panel trades night for Monet's cobalt,
+     with the faintest tile seams — the kitchen's blue grid at a
+     whisper under the staircase of rungs. */
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 44px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 44px),
+    linear-gradient(165deg, #24457A, #1D3F70);
   padding: clamp(1.6rem, 3vw, 2.2rem);
   display: grid;
   align-content: center;
@@ -836,7 +1467,20 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 .totals {
   /* A full breath after the hero before the numbers begin. */
   padding: clamp(7.5rem, 16vh, 12rem) 0 clamp(1.5rem, 4vh, 3rem);
+  /* THE YELLOW DINING ROOM. Monet painted the dining room one
+     committed chrome yellow — the totals band is that room. Not a
+     painted band but a pool of light: one large radial with no
+     edge anywhere, so the room breathes out into the garden. */
+  /* The ellipse must die inside the box: vertical radius 44%
+     against a centre at 46% means the fade completes just before
+     both edges — no slice where the section ends. */
+  background: radial-gradient(130% 44% at 50% 46%,
+    rgba(240, 196, 84, .34) 0%,
+    rgba(240, 196, 84, .17) 55%,
+    rgba(240, 196, 84, 0) 100%);
 }
+.totals .totals__title { color: #6E4F10; }
+.totals .totals__lede { color: #6E5B2E; }
 .totals__head {
   display: grid;
   gap: 1.1rem;
@@ -864,12 +1508,13 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    numbers carry themselves; there is no chart furniture here,
    so each card is a figure, a label, and a sentence. */
 .totals__mosaic {
+  /* A ledger set on the dining table: four full-width rows with
+     rules between, numerals down the left column, words down the
+     right. Nothing floats — the rules anchor every figure to the
+     measure, and the first row's scale does the hierarchy. */
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-areas:
-    "a a a a a a a a a a a a"
-    "b b b b c c c c d d d d";
-  gap: clamp(.9rem, 1.6vw, 1.4rem);
+  grid-template-columns: 1fr;
+  grid-template-areas: "a" "b" "c" "d";
 }
 .tot-card--hero { grid-area: a; }
 .totals__mosaic > :nth-child(2) { grid-area: b; }
@@ -893,7 +1538,7 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   /* The second and last place Gooper speaks. Its slab numerals
      give these a ledger-like weight that suits figures a finance
      team could argue with; everything around them stays Sprig. */
-  font-family: 'Gooper', var(--font-display);
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(2.4rem, 3.4vw, 3.2rem);
   line-height: 1;
@@ -911,19 +1556,155 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 /* A — the headline figure stands on its own painting, the number
    in cream over the canvas's quiet lower reach. */
 .tot-card--hero {
-  overflow: hidden;
-  /* A band, not a panel — across the full measure it only needs
-     enough depth to hold the figure and its note. */
-  min-height: clamp(240px, 30vh, 320px);
-  align-content: end;
+  /* No card at all: the headline figure lives directly in the
+     yellow room, set enormous — the room is the panel. */
+  overflow: visible;
+  min-height: 0;
+  align-content: start;
   border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: clamp(.5rem, 1.5vw, 1.5rem) 0 clamp(1.2rem, 2.5vw, 2rem);
 }
+.tot-card--hero .tot-card__art,
+.tot-card--hero .tot-card__scrim { display: none; }
+/* The figure in gold leaf: an amber gradient clipped to the
+   numeral, with the light travelling slowly through it — the
+   same register as the heart in the wordmark. */
+.totals .tot-card--hero .tot-card__num {
+  font-size: clamp(3.6rem, 7vw, 6.5rem);
+  letter-spacing: -0.02em;
+  color: #7A5310;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .totals .tot-card--hero .tot-card__num {
+    background-image: linear-gradient(105deg,
+      #7A5310 15%, #C89238 40%, #8A5F14 55%, #C89238 70%, #7A5310 90%);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gold-light 11s ease-in-out infinite alternate;
+  }
+}
+@keyframes gold-light {
+  from { background-position: 0% 0; }
+  to   { background-position: 100% 0; }
+}
+.totals .tot-card--hero .tot-card__label { color: #8A6A2A; }
+.totals .tot-card--hero .tot-card__note { color: #6E5B2E; max-width: 46ch; }
+
+/* No cards anywhere in the room — the whole ledger is pure
+   typography. The three companion figures take the headline's
+   treatment at a smaller size: each in its own pigment, each
+   with the same slow light moving through it, out of phase so
+   the room never pulses in unison. */
+.totals__mosaic > * {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "num label"
+    "num note"
+    "num from";
+  column-gap: clamp(2rem, 5vw, 4.5rem);
+  row-gap: .35rem;
+  align-content: center;
+  padding: clamp(1.7rem, 3.2vw, 2.6rem) 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.totals__mosaic > * + * { border-top: 1px solid rgba(138, 106, 42, .28); }
+/* The headline's num/label/note sit inside a body wrapper left
+   over from its card days — dissolve it so they join the row
+   grid like everyone else's. */
+.tot-card--hero .tot-card__body { display: contents; }
+.totals__mosaic .tot-card__num { grid-area: num; align-self: center; }
+.totals__mosaic .tot-card__label { grid-area: label; align-self: end; }
+.totals__mosaic .tot-card__note { grid-area: note; align-self: start; margin: 0; }
+/* The thread between the ledger and the walk: every figure names
+   the story that made it and steps down to it. Coloured to its
+   row's pigment, so number and provenance read as one object. */
+.totals__mosaic .tot-card__from {
+  grid-area: from;
+  justify-self: start;
+  margin-top: .6rem;
+  font-family: var(--font-label);
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #8A6A2A;
+  border-bottom: 1px solid rgba(138, 106, 42, .4);
+  padding-bottom: 2px;
+  transition: color .3s var(--ease), border-color .3s var(--ease);
+}
+.totals__mosaic .tot-card__from:hover { color: #6E4F10; border-color: currentColor; }
+.totals__mosaic > :nth-child(2) .tot-card__from { color: var(--iris); border-color: rgba(93, 81, 146, .35); }
+.totals__mosaic > :nth-child(2) .tot-card__from:hover { color: #453A73; }
+.totals__mosaic > :nth-child(3) .tot-card__from { color: var(--giverny-deep); border-color: rgba(33, 114, 81, .35); }
+.totals__mosaic > :nth-child(3) .tot-card__from:hover { color: #17553B; }
+.totals__mosaic > :nth-child(4) .tot-card__from { color: var(--poppy); border-color: rgba(217, 96, 59, .35); }
+.totals__mosaic > :nth-child(4) .tot-card__from:hover { color: #9C3F17; }
+/* Anchor landings breathe below the fixed chrome. */
+.cs-block { scroll-margin-top: 4rem; }
+.totals__mosaic > :nth-child(n+2) .tot-card__num {
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  letter-spacing: -0.015em;
+}
+.totals__mosaic > :nth-child(n+2) .tot-card__note {
+  font-size: .95rem;
+  line-height: 1.55;
+}
+@media (max-width: 720px) {
+  .totals__mosaic > * {
+    grid-template-columns: 1fr;
+    grid-template-areas: "num" "label" "note" "from";
+  }
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .totals__mosaic > :nth-child(n+2) .tot-card__num {
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gold-light 13s ease-in-out infinite alternate;
+  }
+  .totals__mosaic > :nth-child(2) .tot-card__num {
+    background-image: linear-gradient(105deg, #4E4380 15%, #8B7EC0 45%, #4E4380 80%);
+  }
+  .totals__mosaic > :nth-child(3) .tot-card__num {
+    background-image: linear-gradient(105deg, #1C5F44 15%, #3FA57C 45%, #1C5F44 80%);
+    animation-duration: 12s;
+    animation-delay: -4s;
+  }
+  .totals__mosaic > :nth-child(4) .tot-card__num {
+    background-image: linear-gradient(105deg, #9C3F17 15%, #E07B4A 45%, #9C3F17 80%);
+    animation-duration: 14.5s;
+    animation-delay: -8s;
+  }
+}
+/* One warm ink family for every label and note in the room. */
+.totals .tot-card__label { color: #8A6A2A; }
+.totals .tot-card__note { color: #6E5B2E; }
 .tot-card__art {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* The one photographed painting on the page breathes — a Ken
+     Burns drift too slow to catch, fast enough to feel. */
+  transform-origin: 50% 45%;
+  animation: art-breathe 38s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes art-breathe {
+  from { transform: scale(1); }
+  to   { transform: scale(1.045); }
 }
 .tot-card__scrim {
   position: absolute;
@@ -939,6 +1720,13 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   color: var(--white);
   font-size: clamp(2.9rem, 4.6vw, 4rem);
 }
+/* The three paper figures each take a pigment from the hero's
+   bed — iris, the door green, one poppy — so the ledger keeps
+   speaking the garden's colour after the fold. The headline
+   figure stays white on its painting. */
+.totals__mosaic .tot-card:nth-of-type(2) .tot-card__num { color: var(--iris); }
+.totals__mosaic .tot-card:nth-of-type(3) .tot-card__num { color: var(--giverny-deep); }
+.totals__mosaic .tot-card:nth-of-type(4) .tot-card__num { color: var(--poppy); }
 /* The label still steps up here — .7rem of wide-tracked uppercase
    holds fine on paper but reads as fine print over a painting. The
    note doesn't need its own size any more: the base is large enough
@@ -966,7 +1754,17 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
    fade gone, the artwork lands on a hard edge, so this padding is
    the only white space between the wildlife pack and the colour.
    It used to have the fade's first several rem to lean on. */
-.hello { padding: 0 0 clamp(12rem, 26vh, 18rem); }
+.hello {
+  padding: clamp(2rem, 5vh, 4rem) 0 clamp(12rem, 26vh, 18rem);
+  /* THE PINK HOUSE. The domestic chapter sits on the crushed-brick
+     rose of the facade — and the kickers wear shutter green on it,
+     the pairing every photograph of the place leads with. */
+  background: linear-gradient(to bottom,
+    rgba(236, 185, 172, 0) 0%,
+    rgba(236, 185, 172, .20) 16%,
+    rgba(236, 185, 172, .20) 88%,
+    rgba(236, 185, 172, 0) 100%);
+}
 /* Text carries the left; the right column stacks the portrait
    over a two-by-two pack of the wildlife frames. */
 .hello__inner {
@@ -990,12 +1788,24 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 /* Three TLDR paragraphs, each under a quiet kicker. */
 .hello__block { display: grid; gap: .5rem; }
-.hello__kicker { font-size: .62rem; }
+/* Shutter green on the pink facade — the house's own pairing. */
+.hello__kicker { font-size: .62rem; color: var(--giverny-deep); }
 .hello__copy {
   margin: 0;
   font-size: var(--fs-body);
   line-height: 1.68;
   color: var(--ink-soft);
+}
+/* The book opens where the house does: one Gooper drop cap in
+   door green, storybook register for the domestic chapter. */
+.hello__block:first-of-type .hello__copy::first-letter {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 3.1em;
+  float: left;
+  line-height: .82;
+  padding: .04em .14em 0 0;
+  color: var(--giverny-deep);
 }
 .hello__media {
   display: grid;
@@ -1003,10 +1813,42 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   align-content: start;
 }
 .hello__photo {
-  border-radius: 22px;
+  position: relative;
+  /* An arched garden window in the pink wall — the shape does the
+     work a drawn frame was doing before. */
+  border-radius: 300px 300px 22px 22px;
   overflow: hidden;
   box-shadow: var(--lift-1);
   aspect-ratio: 4 / 5;
+}
+/* The drawn garden reaches over the photographic one: wisteria
+   at the lintel, and a wall label saying where this actually is
+   — the painted garden up top, the real one down here, one
+   museum system bracketing the visit. */
+.photo-wisteria {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.placard--photo {
+  position: absolute;
+  left: .9rem;
+  bottom: .9rem;
+  z-index: 1;
+  padding: .45em .8em;
+  background: rgba(250, 248, 242, .92);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: var(--font-label);
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  box-shadow: var(--lift-1);
 }
 .hello__photo img {
   width: 100%;
@@ -1068,10 +1910,24 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 .site-footer::before {
   content: "";
   position: absolute;
-  inset: 0;
+  /* Overhang for the blur and the drift, same as the hero. */
+  inset: -20%;
   z-index: -2;
-  background: url('../assets/art/bg/bean-hero.jpg') center 42%/cover no-repeat;
-  transform: scaleY(-1);
+  /* The page began in the garden at midday; it ends at the pond
+     after dark — the same five pigments floating low over deep
+     viridian water. The bean painting this replaces is one git
+     revert away if it is ever wanted back. */
+  background:
+    radial-gradient(50% 55% at 20% 30%, rgba(125,163,199,.34) 0%, transparent 70%),
+    radial-gradient(44% 50% at 80% 24%, rgba(185,168,214,.30) 0%, transparent 72%),
+    radial-gradient(46% 48% at 76% 74%, rgba(157,179,127,.20) 0%, transparent 70%),
+    radial-gradient(58% 52% at 55% 82%, rgba(233,180,76,.14) 0%, transparent 75%),
+    #22332E;
+  /* Fewer, larger pools and a lighter hand on the blur — heavy
+     blur over a wide short box smeared the pigments into grey. */
+  filter: blur(clamp(24px, 3.5vw, 48px)) saturate(1.25);
+  animation: giverny-drift 44s ease-in-out infinite alternate;
+  will-change: transform;
 }
 /* One veil: a breath of ink at the base so the colophon always
    clears the artwork's palest passages. No paper fade at the top —
@@ -1086,7 +1942,12 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
     linear-gradient(to bottom,
       rgba(31, 36, 32, 0) 55%,
       rgba(31, 36, 32, .28) 100%);
+  /* The banded glints tried here read as streaks over the blurred
+     field, not light on water — retired. The drift is the water. */
 }
+
+/* (A ghosted bridge and floating lily pads lived on the pond for
+   one round of review — cut. The water speaks for itself.) */
 .site-footer__inner {
   display: flex;
   flex-wrap: wrap;
@@ -1115,8 +1976,10 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   padding: 7px 26px 7px 7px;
   border-radius: 999px;
   overflow: hidden;
-  background: rgba(255, 255, 255, .12);
-  border: 1px solid rgba(255, 255, 255, .22);
+  /* The green door, as colour only: the one thing you knock on
+     wears the door's green. */
+  background: rgba(46, 145, 105, .8);
+  border: 1px solid rgba(255, 255, 255, .28);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
@@ -2745,4 +3608,98 @@ body.cs-unlocked .cs-details { display: block; }
 @media print {
   .nav, .site-footer, .cs-progress { display: none; }
   body { background: #fff; }
+}
+
+
+/* ============================================================
+   ANDREA, LITERALLY — flat sans figures, sentence-case captions,
+   neutral labels, structure from air and hairlines alone.
+   ============================================================ */
+.chapter__num,
+.chapter--gold .chapter__num,
+.chapter--green .chapter__num,
+.chapter--iris .chapter__num,
+.chapter--blue .chapter__num,
+.work-intro .chapter__num,
+.totals .tot-card__num {
+  font-family: var(--font-body);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  background-image: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  animation: none;
+}
+.chapter__num { font-size: clamp(1.5rem, 1.9vw, 1.8rem); }
+.work-intro .chapter__num { font-size: clamp(1.7rem, 2.2vw, 2.1rem); }
+.chapter__statlabel.label,
+.work-intro .chapter__statlabel.label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: .875rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.home .label--accent { color: var(--muted); }
+.chapter__text::before { content: none; }
+.chapter__text { border-left: 0; padding-left: 0; }
+.chapter__inner::after { content: none; }
+.chapter__note { color: var(--muted); }
+
+/* Cascade repairs for the literal pass: re-pigment the summary
+   figures (an older gradient rule left them transparent), and
+   silence the ghost numerals at full specificity. */
+.work-intro .chapter__num { color: #7A5310; }
+.chapter--gold .chapter__num  { color: #7A5310; }
+.chapter--green .chapter__num { color: #4B6234; }
+.chapter--iris .chapter__num  { color: #4E4380; }
+.chapter--blue .chapter__num  { color: #3C5C77; }
+.chapter--gold .chapter__text::before,
+.chapter--green .chapter__text::before,
+.chapter--iris .chapter__text::before,
+.chapter--blue .chapter__text::before { content: none; }
+
+/* ============================================================
+   THE WHITE PAGE — the hero keeps its light; everything after
+   it reads on plain white, Andrea to the bone.
+   ============================================================ */
+body.home::before { display: none; }
+.dusk-veil { display: none; }
+.work-intro { background: none; }
+.hello { background: none; }
+
+/* The footer leaves the pond: ink on white, one green door. */
+.home .site-footer { color: var(--ink); }
+.home .site-footer::before,
+.home .site-footer::after { content: none; }
+.home .site-footer__statement { color: var(--ink); }
+.home .site-footer__addr a,
+.home .site-footer__links a,
+.home .site-footer__meta span,
+.home .site-footer__clock,
+.home .site-footer__copy { color: var(--ink-soft); }
+.home .site-footer__links a:hover { color: var(--giverny-deep); }
+.home .site-footer__talk {
+  background: var(--giverny);
+  border-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.home .talk__text { color: var(--white); }
+.home .site-footer__talk:hover .talk__text { color: var(--ink); }
+
+/* The hero too: white. The type is the colour. */
+.hero-intro { background: var(--white); }
+.hero-intro::before,
+.hero-intro::after { content: none; }
+
+/* Hero leading, tightened: the .3vw clip-padding on every row plus
+   the 1.2 on line two had the display sitting at ~1.25 effective.
+   Display serif wants to stack. */
+.display-heading,
+.display-heading._2 { line-height: 1.05; }
+.display-text-div {
+  padding-top: .1vw;
+  padding-bottom: .1vw;
 }
