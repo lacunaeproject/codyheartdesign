@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gooper paired — Cheltenham vs Sprig</title>
+<link rel="stylesheet" href="css/field.css?v=105">
+<style>
+body { background: #fff; padding: 2.5rem 0 5rem; }
+.spec { max-width: 1180px; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+
+.spec__head h1 {
+  font-family: var(--font-display); font-weight: 800; font-size: 2.6rem;
+  color: #333; margin: 0 0 .5rem; line-height: 1.1;
+}
+.spec__head p { font-size: 1.0625rem; color: var(--muted); margin: 0 0 2.5rem; max-width: 64ch; }
+
+/* Each panel is the same handful of real page parts. Display is
+   Gooper in both; only the reading face changes. */
+.panel { padding: 2.25rem 0 2.75rem; border-top: 2px solid var(--ink); }
+.panel + .panel { margin-top: 1rem; }
+.panel__tag {
+  font-family: var(--font-label); font-size: .68rem; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--terracotta);
+  margin-bottom: 1.75rem;
+}
+.panel__tag em { font-style: normal; color: var(--muted); letter-spacing: .1em; }
+
+/* Display — identical in both panels */
+.p-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.05;
+  color: #333; margin: 0 0 1.1rem;
+}
+.p-fig {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.4rem, 3.4vw, 3.2rem); line-height: 1;
+  letter-spacing: -.01em; color: #333; margin: 0 0 .4rem;
+}
+.p-cap {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.35;
+  color: #333; max-width: 34ch; margin: 0 0 2rem;
+}
+
+/* Reading — the variable */
+.read-chelt { font-family: 'Cheltenham Classic', Georgia, serif; }
+.read-sprig { font-family: 'Sprig', Georgia, serif; }
+
+.p-lead { font-size: 1.3rem; line-height: 1.55; max-width: 46ch; margin: 0 0 1.5rem; color: var(--ink-soft); }
+.p-note { font-size: 1.22rem; line-height: 1.5; max-width: 42ch; margin: 0 0 1.5rem; color: var(--muted); }
+.p-body { font-size: 1.0625rem; line-height: 1.68; max-width: 62ch; margin: 0; color: var(--ink-soft); }
+
+.glyphs { margin-top: 3.5rem; padding-top: 1.75rem; border-top: 1px solid var(--rule); }
+.glyphs h2 {
+  font-family: var(--font-display); font-weight: 500; font-size: 1.5rem;
+  color: #333; margin: 0 0 .35rem;
+}
+.glyphs p { font-size: 1.0625rem; color: var(--muted); margin: 0 0 1.25rem; max-width: 64ch; }
+.glyphs__row { display: grid; grid-template-columns: 130px minmax(0,1fr); gap: 1.5rem; align-items: baseline; padding: .85rem 0; border-top: 1px solid var(--rule-soft); }
+.glyphs__name { font-family: var(--font-label); font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.glyphs__line { font-size: 2rem; line-height: 1.4; color: #333; }
+</style>
+</head>
+<body class="home">
+<div class="spec">
+
+  <header class="spec__head">
+    <h1>What reads under Gooper</h1>
+    <p>The same page parts twice. Display type is Gooper in both panels — titles, figures, the italic case caption. Only the reading face changes underneath it.</p>
+  </header>
+
+  <section class="panel">
+    <p class="panel__tag">Gooper <em>+ Cheltenham Classic</em></p>
+    <h2 class="p-title">Five years, totaled.</h2>
+    <p class="p-lead read-chelt">Four numbers a finance team could argue with &#8212; and below them, the stories of how each one happened.</p>
+    <p class="p-fig">$3.5M</p>
+    <p class="p-note read-chelt">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
+    <p class="p-cap">Took an internal booking platform from a two-state pilot to 99% national adoption.</p>
+    <p class="p-body read-chelt">Seven years in product design, almost all of it in healthcare. I designed member tools, claims software, and billing workflows at Collective Health, and now lead design at LifeStance Health for a national booking platform running across 33 states. The work I&#8217;m proudest of shows up as a number on a P&amp;L &#8212; and every one of those numbers came from sitting with the people behind the workflow.</p>
+  </section>
+
+  <section class="panel">
+    <p class="panel__tag">Gooper <em>+ Sprig</em></p>
+    <h2 class="p-title">Five years, totaled.</h2>
+    <p class="p-lead read-sprig">Four numbers a finance team could argue with &#8212; and below them, the stories of how each one happened.</p>
+    <p class="p-fig">$3.5M</p>
+    <p class="p-note read-sprig">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
+    <p class="p-cap">Took an internal booking platform from a two-state pilot to 99% national adoption.</p>
+    <p class="p-body read-sprig">Seven years in product design, almost all of it in healthcare. I designed member tools, claims software, and billing workflows at Collective Health, and now lead design at LifeStance Health for a national booking platform running across 33 states. The work I&#8217;m proudest of shows up as a number on a P&amp;L &#8212; and every one of those numbers came from sitting with the people behind the workflow.</p>
+  </section>
+
+  <section class="glyphs">
+    <h2>Cheltenham glyph check</h2>
+    <p>The characters your copy actually needs, set large in Cheltenham. Anything missing will visibly fall back to Georgia mid-line.</p>
+    <div class="glyphs__row">
+      <div class="glyphs__name">Punctuation</div>
+      <div class="glyphs__line read-chelt">I&#8217;m &#8212; en&#8211;dash &#183; P&amp;L &#8220;quoted&#8221; (parens) 99% $3.5M +10% &#8722;32%</div>
+    </div>
+    <div class="glyphs__row">
+      <div class="glyphs__name">Cheltenham italic</div>
+      <div class="glyphs__line read-chelt" style="font-style:italic">Took an internal booking platform &#8212; 99% adoption.</div>
+    </div>
+    <div class="glyphs__row">
+      <div class="glyphs__name">Georgia, for contrast</div>
+      <div class="glyphs__line" style="font-family:Georgia,serif">I&#8217;m &#8212; en&#8211;dash &#183; P&amp;L &#8220;quoted&#8221; (parens) 99% $3.5M +10% &#8722;32%</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

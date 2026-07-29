@@ -25,6 +25,30 @@
    FAIRE trial files for now; swap for licensed cuts once the
    pack is purchased. Weights in use: 400/500 headings and titles,
    700 hero and figures. */
+/* ---------- Gooper — the accent ----------
+   TRIAL files, same footing as Sprig, still raw OTF rather than
+   woff2 — convert when the family is bought.
+
+   Deliberately sparing: Gooper speaks exactly twice on this site,
+   in the hero and on the four totals figures. Sprig carries every
+   other heading, every title and all the reading. Three cuts is
+   all those two moments need. */
+@font-face {
+  font-family: 'Gooper';
+  src: url('../assets/fonts/Gooper7-Regular-Trial.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gooper';
+  src: url('../assets/fonts/Gooper7-Bold-Trial.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gooper';
+  src: url('../assets/fonts/Gooper7-Black-Trial.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+
 @font-face {
   font-family: 'Sprig';
   src: url('../assets/fonts/FAIRE-Sprig-Trial-Regular.woff2') format('woff2');
@@ -87,6 +111,7 @@
   src: url('../assets/fonts/CheltenhamClassicBold.woff2') format('woff2');
   font-weight: 700; font-style: normal; font-display: swap;
 }
+
 
 /* Micro-labels ride the system grotesque stack — the Geograph
    trial files left the repo with the July 2026 cleanup. */
@@ -292,32 +317,37 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 }
 
 /* ============================================================
-   HERO — a white room (Sanvi format, 2026-07-28). Fixed chip
-   chrome in the top corners, a row of small tab labels, and one
-   serif statement. The old painted hero retired with this format;
-   the paintings still live on the case plates and the footer.
+   HERO — four lines of type, each rising out of its own clipping
+   row on load. Full viewport, type ranged left and centred
+   vertically in it. The painted Giverny hero it replaced is in
+   git history if it is ever wanted back.
    ============================================================ */
-.hero {
+.hero-intro {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
+  /* The hero IS the first screen: nothing else shares it. */
   min-height: 100svh;
   display: grid;
   align-content: center;
-  justify-items: center;
-  text-align: center;
-  padding: clamp(6rem, 14vh, 9rem) var(--gutter) clamp(4rem, 9vh, 6rem);
-  overflow: hidden;
-  color: var(--ink);
+  /* Enough floor that the block never rides under the fixed chip
+     and pill when the viewport is short. */
+  padding-block: clamp(6rem, 11vh, 7.5rem);
   background: #F7F4EC;
 }
-/* The painting behind the glass: saturated Giverny colour fields —
-   lily-pond blue, wisteria, willow, rose, buttery light — blown out
-   past the edges, heavily blurred, and drifting very slowly, the
-   way light moves through a garden. */
-.hero::before {
+/* The water garden, drifting. Saturated colour fields — pond
+   blue, wisteria, willow, the pink of the lilies, and the buttery
+   light over all of it — blown out past the edges, heavily
+   blurred, and moving very slowly, the way light moves through a
+   garden on a still afternoon. Recovered from the hero this one
+   replaced; it was already the right idea. */
+.hero-intro::before {
   content: "";
   position: absolute;
-  inset: -22%;
+  /* Deeper overhang than the original -22%: the drift below moves
+     further now, and this is the margin that keeps a hard edge
+     from ever swinging into frame. */
+  inset: -28%;
   z-index: -2;
   background:
     radial-gradient(42% 38% at 20% 24%, #A5C6DC 0%, rgba(165,198,220,0) 70%),
@@ -326,22 +356,31 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
     radial-gradient(38% 34% at 22% 80%, #ECB9AC 0%, rgba(236,185,172,0) 72%),
     radial-gradient(50% 45% at 52% 50%, #F4E6BC 0%, rgba(244,230,188,0) 75%),
     #F7F4EC;
-  filter: blur(clamp(40px, 6vw, 90px)) saturate(1.05);
-  animation: giverny-drift 48s ease-in-out infinite alternate;
+  /* A touch more saturation so the colours stay distinct from one
+     another through the frosted pane — movement you cannot tell
+     apart from its neighbour does not read as movement. */
+  filter: blur(clamp(40px, 6vw, 90px)) saturate(1.18);
+  /* 18s a leg rather than 48s, and roughly double the amplitude.
+     Four stops instead of three so the path wanders instead of
+     sliding back and forth along one line. */
+  animation: giverny-drift 18s ease-in-out infinite alternate;
   will-change: transform;
 }
 @keyframes giverny-drift {
-  0%   { transform: translate3d(-3%, -2%, 0) rotate(-2deg)  scale(1); }
-  50%  { transform: translate3d(2.5%, 2%, 0)  rotate(1.5deg) scale(1.06); }
-  100% { transform: translate3d(-1.5%, 3%, 0) rotate(-1deg)  scale(1.03); }
+  0%   { transform: translate3d(-6%, -4%, 0) rotate(-3.5deg) scale(1.02); }
+  35%  { transform: translate3d(3%, 2%, 0)   rotate(2deg)    scale(1.12); }
+  70%  { transform: translate3d(5%, -3%, 0)  rotate(3.5deg)  scale(1.05); }
+  100% { transform: translate3d(-3%, 5%, 0)  rotate(-1.5deg) scale(1.1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
+  .hero-intro::before { animation: none; }
 }
-/* The frosted pane: a white veil over the whole painting, thickening
-   into solid page-white at the base so the garden dissipates into
-   the paper below. */
-.hero::after {
+/* The frosted pane: a white veil over the whole garden, thickening
+   into solid page-white at the base so the colour dissipates into
+   the paper below rather than ending on a seam. It is also what
+   keeps the charcoal headline readable over the brightest
+   passages of the drift. */
+.hero-intro::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -351,6 +390,16 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
     rgba(255,255,255,.26) 62%,
     var(--white) 100%);
   pointer-events: none;
+}
+/* The block shrinks to its widest line and is centred on the
+   page; the lines inside it all range left off that shared
+   edge. fit-content is what does it — a full-width container
+   would pin the type to the left gutter instead. */
+.hero-container {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: 24px;
 }
 
 /* ---------- Chip chrome — wordmark and nav ---------- */
@@ -392,16 +441,132 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
   .chip-logo span { display: none; }
 }
 
-/* ---------- Hero content ---------- */
-.hero__statement {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
-  line-height: 1.22;
-  max-width: 24ch;
-  margin: 0;
+/* ---------- Hero content ----------
+   Each rendered line sits in a flex row that clips its own
+   contents. The row is the mask: that is the whole mechanic. */
+.display-text-div {
+  display: flex;
+  align-items: center;
+  padding-top: .3vw;
+  padding-bottom: .3vw;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
 }
-.hero__statement em { font-style: italic; }
+.display-heading {
+  /* Gooper leads here, not in the token — the swap is local, so
+     every other heading on the site stays Sprig. */
+  font-family: 'Gooper', var(--font-display);
+  /* Fluid, because the rows are nowrap: a fixed size overflows
+     the moment the window is narrower than the longest line.
+     4vw keeps the longest row inside the gutters at every width,
+     and 70px stops it growing on a very wide display. */
+  font-size: min(4vw, 70px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #333333;
+  margin: 0;
+  padding-inline: 8px;
+  position: relative;
+  white-space: nowrap;
+}
+.display-heading._2 { line-height: 1.2; }
+/* The four emphasised things — name, role, city, field — in
+   Gooper Black against its Regular. Weight alone; no slope. */
+.display-em { font-style: normal; font-weight: 800; }
+
+@media screen and (min-width: 1440px) {
+  .display-text-div { padding-top: .4vw; padding-bottom: .4vw; }
+}
+@media screen and (max-width: 900px) {
+  .hero-container { padding-inline: var(--gutter); }
+}
+
+/* ---------- Hero marks ---------- */
+.mark-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.6vw;
+  height: auto;
+  flex: none;
+}
+.mark-div--bloom { margin-top: .6vw; margin-left: 1.2vw; }
+/* Without a width the SVG collapses to nothing as a flex item. */
+.mark-bloom { display: block; width: 100%; }
+.mark-bloom svg { width: 100%; height: auto; }
+@media screen and (max-width: 767px) {
+  .mark-div--bloom { margin-left: .6vw; }
+}
+/* The glyph marks are pinned off the display face on purpose:
+   the display trial cuts carry no dingbats, and per-glyph
+   fallback would size them unpredictably against the type. */
+.text-spike {
+  display: inline-block;
+  color: var(--cobalt);
+  transform-style: preserve-3d;
+  font-family: var(--font-label);
+}
+.text-star {
+  display: inline-block;
+  color: var(--giverny);
+  font-family: var(--font-label);
+}
+
+/* ---------- The load sequence ----------
+   Armed by an inline head script so nothing is ever hidden
+   without scripting, and skipped under reduced motion.
+
+   :where() keeps the from-state at one class of specificity so
+   the settled rules below can outrank it — written plainly as
+   `html.js-rise ...` it wins instead and the type never moves.
+
+   Built on the individual transform properties, because that is
+   what lets each component carry its own duration and delay. */
+:where(html.js-rise) .line__i    { translate: 0 100%; }
+:where(html.js-rise) .mark-bloom { translate: 0 100%; scale: 0; rotate: 0deg; }
+:where(html.js-rise) .text-spike { scale: 0; rotate: y -720deg; }
+:where(html.js-rise) .text-star  { transform: skew(-45deg, -45deg); }
+
+.line__i { display: block; }
+
+.is-lit .line__i {
+  translate: 0 0;
+  transition: translate 400ms ease-out var(--d, 0ms);
+}
+.is-lit .mark-bloom {
+  translate: 0 0;
+  scale: 1;
+  rotate: 360deg;
+  transition:
+    translate 400ms  ease-out     0ms,
+    scale     300ms  ease         150ms,
+    rotate    1000ms ease-in-out  150ms;
+}
+.is-lit .text-spike {
+  scale: 1;
+  rotate: y 0deg;
+  transition:
+    scale  500ms ease                              750ms,
+    rotate 500ms cubic-bezier(.175,.885,.32,1.275) 750ms;
+}
+.is-lit .text-star {
+  transform: skew(0deg, 0deg);
+  transition: transform 500ms ease 2400ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line__i, .mark-bloom, .text-spike {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+  .text-star { transform: none !important; transition: none !important; }
+  .display-text-div { overflow: visible; }
+}
+
 
 /* ============================================================
    CASE BLOCKS — one project per screen, generous air between.
@@ -725,7 +890,10 @@ h1, h2, h3 { margin: 0; line-height: 1.05; font-weight: 400; }
 /* Sprig Bold — the figures join the display voice; its numerals
    are the strongest in the family. */
 .tot-card__num {
-  font-family: var(--font-display);
+  /* The second and last place Gooper speaks. Its slab numerals
+     give these a ledger-like weight that suits figures a finance
+     team could argue with; everything around them stays Sprig. */
+  font-family: 'Gooper', var(--font-display);
   font-weight: 700;
   font-size: clamp(2.4rem, 3.4vw, 3.2rem);
   line-height: 1;

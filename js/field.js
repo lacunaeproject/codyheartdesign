@@ -31,6 +31,40 @@
     items.forEach(function (el) { io.observe(el); });
   })();
 
+  /* ---------- Hero load-in ----------
+     Each line of the home hero rises out of its own clipping row,
+     one after the next. All the durations and easings live in the
+     CSS; this only sets the per-line delay and flips the switch on
+     the frame after the armed state has painted.
+
+     html.js-rise is added by an inline script in the page head so
+     the type is never seen in place and then dropped behind its
+     mask. It stays on while the sequence runs — it carries the
+     from-state the transitions start from — and the head script's
+     own failsafe clears it afterwards. */
+  (function heroRise() {
+    var html = document.documentElement;
+    var hero = document.querySelector('.hero-intro');
+    if (!hero) { html.classList.remove('js-rise'); return; }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      html.classList.remove('js-rise');
+      return;
+    }
+
+    // Five rising pieces across four rows: the city and the words
+    // after it share row three, 150ms apart, so they rise side by
+    // side rather than as two stacked beats.
+    var DELAYS = [0, 750, 1500, 1650, 2250];
+    var lines = hero.querySelectorAll('.line__i');
+    Array.prototype.forEach.call(lines, function (el, i) {
+      el.style.setProperty('--d', (DELAYS[i] !== undefined ? DELAYS[i] : 2250) + 'ms');
+    });
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { hero.classList.add('is-lit'); });
+    });
+  })();
+
   /* ---------- Chicago clock ----------
      The footer signs off with home time. Period separators, not
      colons — the Geograph trial cut carries digits and . but no : */

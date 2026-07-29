@@ -35,14 +35,242 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Medium.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Bold.woff2" crossorigin>
-<link rel="preload" as="font" type="font/otf" href="assets/fonts/Gooper7-Regular-Trial.otf" crossorigin>
-<link rel="preload" as="font" type="font/otf" href="assets/fonts/Gooper7-Black-Trial.otf" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=109">
+<link rel="stylesheet" href="css/field.css?v=104">
 
-<!-- Arm the hero load-in before first paint, so the type is never
-     seen in place and then dropped behind its mask. Under reduced
-     motion it never arms at all, and the failsafe clears it if the
-     script at the foot of the page never runs. -->
+<style>
+/* ---------- Gooper — the trial cut ----------
+   Same footing as Sprig: these are TRIAL files (OTF, not woff2
+   yet), so they are declared here in the variant rather than in
+   field.css. If this becomes the direction, convert to woff2
+   and move the faces up into the stylesheet with the others.
+
+   Regular for the roman, Black for the four emphasised things.
+   No italic cuts: the emphasis is weight now, not slope. */
+@font-face {
+  font-family: 'Gooper';
+  src: url('assets/fonts/Gooper7-Regular-Trial.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gooper';
+  src: url('assets/fonts/Gooper7-Black-Trial.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+/* Declared but unused — Super is here if 800 isn't enough. */
+@font-face {
+  font-family: 'Gooper';
+  src: url('assets/fonts/Gooper7-Super-Trial.otf') format('opentype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+
+/* ============================================================
+   VARIANT D — THE REFERENCE HERO
+
+   The Jessica Hernandez hero rebuilt to spec: her sizing, her
+   row structure, her load sequence to the millisecond. Sprig
+   carries the type instead of her face, and the words are
+   Cody's own sentence rather than hers.
+
+   Measured off the published site:
+     .display-heading   4.8em / 400 / lh 1.1 / 8px side padding
+     .display-heading._2                       lh 1.2
+     ≥1440px            92px
+     .display-text-div  flex, align-items center, overflow
+                        hidden, .3vw block padding (.4vw ≥1440)
+     .italic-display    italic 600
+     .container         max-width 1400px, 24px gutters
+     marks              4.6vw wide, ~1.2vw left margin
+
+   Load sequence, exactly as her IX2 data defines it:
+     init   lines translateY(100%) · bloom translateY(100%)
+            scale(0) · spikes scale(0) rotateY(-720deg) ·
+            closing marks skew(-45deg, -45deg)
+     0ms    line 1 rises      400ms  ease-out
+     0ms    bloom rises       400ms  ease-out
+     150ms  bloom scales      300ms
+     150ms  bloom spins 360   1000ms ease-in-out
+     750ms  spikes scale      500ms
+     750ms  spikes spin       500ms  outBack
+     750ms  line 2 rises      400ms  ease-out
+     1500ms line 3 rises      400ms  ease-out
+     1650ms line 4 rises      400ms  ease-out
+     2250ms line 5 rises      400ms  ease-out
+     2400ms closing marks unskew from -45/-45, 500ms
+
+   Built on the individual transform properties (translate /
+   rotate / scale) rather than one transform, because that is
+   what lets each component carry its own duration, delay and
+   easing — which is precisely how her three separate move,
+   scale and rotate actions behave.
+
+   Three things are NOT hers: the typeface (Sprig), the words,
+   and the marks. Her flower, smiley and sparkle SVGs are her
+   artwork, so the bloom is this site's own gold-leaf heart and
+   the drop is a typographic glyph. Mark colours come from this
+   palette rather than her blue and green.
+   ============================================================ */
+
+.hero-intro {
+  position: relative;
+  /* Hers starts at y=0 because her nav is hidden on load. This
+     page has a fixed chip and pill to clear, so the rows begin
+     below them. The only sizing figure here that isn't hers. */
+  padding-top: clamp(6rem, 11vh, 7.5rem);
+  padding-bottom: clamp(3rem, 7vh, 5rem);
+}
+.hero-container {
+  max-width: 1700px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+/* Each rendered line is a flex row that clips its own contents.
+   This is the whole mechanic: the row is the mask. */
+.display-text-div {
+  display: flex;
+  align-items: center;
+  padding-top: .3vw;
+  padding-bottom: .3vw;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.display-heading {
+  font-family: 'Gooper', var(--font-display);
+  /* Fluid rather than her fixed 4.8em. The rows are nowrap, so a
+     fixed size overflows the moment the window is narrower than
+     the longest line — hers does exactly that and simply lets it
+     run off. 4.4vw keeps the longest row (about 19.4em of Sprig)
+     inside the gutters at every width, and 80px caps it so it
+     stops growing on a very wide display. */
+  font-size: min(4vw, 70px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #333333;
+  margin: 0;
+  padding-inline: 8px;
+  position: relative;
+  white-space: nowrap;
+}
+.display-heading._2 { line-height: 1.2; }
+.display-em { font-style: normal; font-weight: 800; }
+
+@media screen and (min-width: 1440px) {
+  .display-text-div { padding-top: .4vw; padding-bottom: .4vw; }
+}
+@media screen and (max-width: 900px) {
+  .hero-container { padding-inline: var(--gutter); }
+}
+
+/* ---------- The marks ----------
+   Her flower and smiley sit in the flex row beside the type at
+   4.6vw. Same geometry here; different objects. */
+.mark-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.6vw;
+  height: auto;
+  flex: none;
+}
+.mark-div--bloom { margin-top: .6vw; margin-left: 1.2vw; }
+/* The mark fills its cell the way her .flower-img does — without
+   a width the SVG collapses to nothing as a flex item. */
+.mark-bloom { display: block; width: 100%; }
+.mark-bloom svg { width: 100%; height: auto; }
+@media screen and (max-width: 767px) {
+  .mark-div--bloom { margin-left: .6vw; }
+}
+
+/* The spikes ride inside the heading as inline glyphs, the way
+   hers do. Her blue becomes this site's cobalt. */
+.text-spike {
+  display: inline-block;
+  color: var(--cobalt);
+  transform-style: preserve-3d;
+  /* The marks are pinned off the display face on purpose: a
+     15KB trial cut is unlikely to carry dingbats, and per-glyph
+     fallback would size them unpredictably against the type. */
+  font-family: var(--font-label);
+}
+/* The closing marks are a different animal in her build: they
+   skew rather than spin, unskewing from -45/-45 at 2400ms.
+   Her green becomes this site's giverny. */
+.text-star {
+  display: inline-block;
+  color: var(--giverny);
+  font-family: var(--font-label);
+}
+
+/* ---------- The sequence ----------
+   Armed by the head script so nothing is ever hidden without
+   scripting, and skipped entirely under reduced motion. */
+/* :where() keeps these at a single class of specificity, so the
+   settled rules below can outrank them. Written as plain
+   `html.js-rise ...` the from-state scores higher than the
+   to-state and the type never moves. */
+:where(html.js-rise) .line__i    { translate: 0 100%; }
+:where(html.js-rise) .mark-bloom { translate: 0 100%; scale: 0; rotate: 0deg; }
+:where(html.js-rise) .text-spike { scale: 0; rotate: y -720deg; }
+:where(html.js-rise) .text-star  { transform: skew(-45deg, -45deg); }
+
+.line__i { display: block; }
+
+.is-lit .line__i {
+  translate: 0 0;
+  transition: translate 400ms ease-out var(--d, 0ms);
+}
+.is-lit .mark-bloom {
+  translate: 0 0;
+  scale: 1;
+  rotate: 360deg;
+  transition:
+    translate 400ms  ease-out     0ms,
+    scale     300ms  ease         150ms,
+    rotate    1000ms ease-in-out  150ms;
+}
+.is-lit .text-spike {
+  scale: 1;
+  rotate: y 0deg;
+  transition:
+    scale  500ms ease                              750ms,
+    rotate 500ms cubic-bezier(.175,.885,.32,1.275) 750ms;
+}
+.is-lit .text-star {
+  transform: skew(0deg, 0deg);
+  transition: transform 500ms ease 2400ms;
+}
+
+/* Reduced motion never arms in the first place — the head script
+   returns before adding the class — but this makes it certain. */
+@media (prefers-reduced-motion: reduce) {
+  .line__i, .mark-bloom, .text-spike {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+  .display-text-div { overflow: visible; }
+}
+
+/* ---------- The page below ----------
+   Unchanged from the other variants: the work, then the totals
+   as a sum, then writing, hello, footer. */
+.work-tail { padding-top: clamp(1.5rem, 4vh, 2.5rem); }
+.totals { padding-top: 0; }
+.cs-block:first-of-type {
+  padding-top: clamp(1.5rem, 4vh, 2.5rem);
+  /* Opts out of the scroll-driven rise, same as the other
+     variants: the plate is partly in the opening viewport and
+     should not be sitting under a blur while the hero plays. */
+  animation: none;
+}
+</style>
+
+<!-- Arm before first paint, so the type never shows in place and
+     then drops behind its mask. Failsafe clears it if the script
+     at the foot of the page never runs. -->
 <script>
 (function () {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -56,7 +284,7 @@
 
 <!-- Wordmark chip top-left, fixed. The gold-leaf heart lives here —
      same gradient recipe as always: metal, foot shadow, gloss, lit
-     inner rim. Navigation stays the floating bottom pill. -->
+     inner rim. Navigation stays the floating pill. -->
 <a class="chip-logo" href="index.html" aria-label="Cody Heart — home">
   <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="gold-leaf" x1=".24" y1="-.05" x2=".62" y2="1"><stop offset="0" stop-color="#FBE6AE"/><stop offset=".13" stop-color="#F0CB66"/><stop offset=".29" stop-color="#D9A63A"/><stop offset=".43" stop-color="#BC8622"/><stop offset=".52" stop-color="#A97219"/><stop offset=".60" stop-color="#C79331"/><stop offset=".69" stop-color="#F2D688"/><stop offset=".78" stop-color="#DDAE46"/><stop offset=".90" stop-color="#C08D28"/><stop offset="1" stop-color="#A87423"/></linearGradient><radialGradient id="gold-gloss" cx=".30" cy=".26" r=".52"><stop offset="0" stop-color="#FFF4CE" stop-opacity=".78"/><stop offset=".55" stop-color="#FFF4CE" stop-opacity=".18"/><stop offset="1" stop-color="#FFF4CE" stop-opacity="0"/></radialGradient><linearGradient id="gold-foot" x1="0" y1=".60" x2="0" y2="1"><stop offset="0" stop-color="#6B4208" stop-opacity="0"/><stop offset="1" stop-color="#6B4208" stop-opacity=".28"/></linearGradient><clipPath id="heart-clip"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></clipPath></defs><g clip-path="url(#heart-clip)"><rect width="24" height="24" fill="url(#gold-leaf)"/><rect width="24" height="24" fill="url(#gold-foot)"/><rect width="24" height="24" fill="url(#gold-gloss)"/><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z" fill="none" stroke="#FFEEB4" stroke-opacity=".55" stroke-width="1.1"/></g></svg>
   <span>codyheart</span>
@@ -70,14 +298,13 @@
 
 <main>
   <!-- ============================================================
-       HERO — four lines of type, ranged left and centred in the
-       full viewport. Each line rises out of its own clipping row
-       on load; the gold heart blooms beside the name, the spikes
-       spin in around the role, the closing marks unskew last.
+       HERO — five stacked rows, each one a mask its line rises
+       out of. The bloom rides row 1, the spikes sit inside row 2
+       as inline glyphs, the drop falls into row 4.
        ============================================================ -->
   <section class="hero-intro">
     <div class="hero-container">
-      <h1 class="visually-hidden">Hi, I&#8217;m Cody Heart. A product designer living in Chicago, IL, remotely building tools for mental healthcare.</h1>
+      <h1 class="visually-hidden">Hi, I&#8217;m Cody Heart. A product designer living in Chicago, IL, building tools for mental healthcare.</h1>
 
       <div class="display-text-div">
         <p class="display-heading" aria-hidden="true"><span class="line__i">Hi, I&#8217;m <span class="display-em">Cody Heart</span></span></p>
@@ -109,74 +336,13 @@
   </section>
 
   <!-- ============================================================
-       TOTALS — five years in four numbers, a night ledger band
-       between the hero and the work: this is the success; the
-       case blocks below are how it happened.
-       ============================================================ -->
-  <section class="totals" aria-labelledby="totals-title">
-    <div class="shell">
-      <header class="totals__head">
-        <span class="label label--accent reveal">By the numbers</span>
-        <h2 class="totals__title reveal reveal--d1" id="totals-title">Five years, totaled.</h2>
-        <p class="totals__lede reveal reveal--d1">Four numbers a finance team could argue with &#8212; and below them, the stories of how each one happened.</p>
-      </header>
-
-      <div class="totals__mosaic">
-        <!-- A — the headline figure, standing on its own painting -->
-        <article class="tot-card tot-card--hero reveal">
-          <img class="tot-card__art" src="assets/art/plate/yellow.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async">
-          <div class="tot-card__scrim" aria-hidden="true"></div>
-          <div class="tot-card__body">
-            <span class="tot-card__num">$3.5M</span>
-            <span class="tot-card__label label">Revenue capacity unlocked</span>
-            <p class="tot-card__note">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
-          </div>
-        </article>
-
-        <!-- B — the operational number. The figure and label already
-             say the rate fell; the note's job is why that matters. -->
-        <article class="tot-card reveal reveal--d1">
-          <span class="tot-card__num">&#8722;32%</span>
-          <span class="tot-card__label label">Rematch rate, relative</span>
-          <p class="tot-card__note">Rematching is pure waste &#8212; staff time, delayed care, a worse experience.</p>
-        </article>
-
-        <!-- C — the hard savings under the capacity story -->
-        <article class="tot-card reveal reveal--d2">
-          <span class="tot-card__num">$500K</span>
-          <span class="tot-card__label label">Annual operating savings</span>
-          <p class="tot-card__note">Hard savings &#8212; the floor under the capacity story.</p>
-        </article>
-
-        <!-- D — the growth number the booking tool carries. No meter:
-             a meter reads as a share of a limit, and year-over-year
-             growth is not a share of anything. A stat tile is the
-             honest form for a lone figure. -->
-        <article class="tot-card reveal reveal--d3">
-          <span class="tot-card__num">+10%</span>
-          <span class="tot-card__label label">Bookings, year over year</span>
-          <p class="tot-card__note">Growth booked through the internal tool, against the same period last year.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <hr class="section-rule" aria-hidden="true">
-
-  <!-- ============================================================
        THE WORK — one project per plate, all the text living on the
-       painting itself, the same treatment as the totals hero card.
+       painting itself.
        ============================================================ -->
-  <div class="shell work-head">
-    <span class="label label--accent reveal">The stories</span>
-    <h2 class="work-head__title reveal reveal--d1">Case studies</h2>
-    <p class="work-head__more reveal reveal--d1"><a href="work.html">All six, and the resume <span class="arrow" aria-hidden="true">&#8594;</span></a></p>
-  </div>
-
   <a class="cs-block" href="case-studies/matching-tool.html">
     <div class="shell">
       <div class="cs-block__plate">
-        <img src="assets/art/oliver/no01.svg?v=5" alt="" loading="lazy" decoding="async">
+        <img src="assets/art/oliver/no01.svg?v=5" alt="" decoding="async">
       </div>
       <div class="cs-block__cap">
         <p class="cs-block__capline">Took an internal booking platform from a two-state pilot to 99% national adoption.</p>
@@ -209,13 +375,60 @@
     </div>
   </a>
 
+  <div class="shell work-tail">
+    <p class="work-head__more reveal"><a href="work.html">All six, and the resume <span class="arrow" aria-hidden="true">&#8594;</span></a></p>
+  </div>
+
   <hr class="section-rule" aria-hidden="true">
 
   <!-- ============================================================
-       WRITING — the case blocks show the work; this shows the
-       thinking underneath it. One essay, set on paper against its
-       own argument in night: a quieter register than the full-bleed
-       plates above, on purpose.
+       TOTALS — five years in four numbers, below the work: the
+       case blocks are how it happened, this is what it came to.
+       ============================================================ -->
+  <section class="totals" aria-labelledby="totals-title">
+    <div class="shell">
+      <header class="totals__head">
+        <span class="label label--accent reveal">By the numbers</span>
+        <h2 class="totals__title reveal reveal--d1" id="totals-title">Five years, totaled.</h2>
+        <p class="totals__lede reveal reveal--d1">Four numbers a finance team could argue with &#8212; and above them, the stories of how each one happened.</p>
+      </header>
+
+      <div class="totals__mosaic">
+        <article class="tot-card tot-card--hero reveal">
+          <img class="tot-card__art" src="assets/art/plate/yellow.jpg" alt="" width="1800" height="1200" loading="lazy" decoding="async">
+          <div class="tot-card__scrim" aria-hidden="true"></div>
+          <div class="tot-card__body">
+            <span class="tot-card__num">$3.5M</span>
+            <span class="tot-card__label label">Revenue capacity unlocked</span>
+            <p class="tot-card__note">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
+          </div>
+        </article>
+
+        <article class="tot-card reveal reveal--d1">
+          <span class="tot-card__num">&#8722;32%</span>
+          <span class="tot-card__label label">Rematch rate, relative</span>
+          <p class="tot-card__note">Rematching is pure waste &#8212; staff time, delayed care, a worse experience.</p>
+        </article>
+
+        <article class="tot-card reveal reveal--d2">
+          <span class="tot-card__num">$500K</span>
+          <span class="tot-card__label label">Annual operating savings</span>
+          <p class="tot-card__note">Hard savings &#8212; the floor under the capacity story.</p>
+        </article>
+
+        <article class="tot-card reveal reveal--d3">
+          <span class="tot-card__num">+10%</span>
+          <span class="tot-card__label label">Bookings, year over year</span>
+          <p class="tot-card__note">Growth booked through the internal tool, against the same period last year.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule" aria-hidden="true">
+
+  <!-- ============================================================
+       WRITING
        ============================================================ -->
   <section class="writing" id="writing" aria-labelledby="writing-title">
     <div class="shell">
@@ -225,11 +438,6 @@
       </header>
 
       <a class="wr-card reveal reveal--d1" href="writing/design-as-a-revenue-lever.html">
-        <!-- The essay's own sentence, stood up as a ladder: the walk
-             from a few seconds saved to a line on the P&L. The rules
-             widen as the argument escalates — the totals section's
-             drawn-to-scale device, borrowed. Night register, so the
-             one writing card holds its own against the plates above. -->
         <div class="wr-card__ledger" role="img" aria-label="The chain the essay follows: seconds, to minutes, to reclaimed labor, to unlocked capacity, to revenue">
           <span class="wr-card__rung" style="--sz:.66rem;--o:.5;--w:22%">Seconds</span>
           <span class="wr-card__rung" style="--sz:.72rem;--o:.63;--w:40%">Minutes</span>
@@ -250,9 +458,7 @@
   <hr class="section-rule" aria-hidden="true">
 
   <!-- ============================================================
-       HELLO — the person behind the numbers: one photo, a few
-       warm lines, a pointer to the longer story. A beat of
-       warmth before the big Let's talk below.
+       HELLO
        ============================================================ -->
   <section class="hello" aria-labelledby="hello-title">
     <div class="shell hello__inner">
@@ -296,8 +502,6 @@
 <!-- ============================================================
      FOOTER
      ============================================================ -->
-<!-- The hero's painting again, flipped vertically — the page ends
-     in the mirror of how it began. Pearl's move, in this palette. -->
 <footer class="site-footer" id="contact">
   <div class="shell site-footer__inner">
     <div class="site-footer__lead">
@@ -327,6 +531,41 @@
   </div>
 </footer>
 
-<script src="js/field.js?v=6"></script>
+<script src="js/field.js?v=5"></script>
+
+<!-- ============================================================
+     Fire the sequence. Every delay lives in the CSS above; this
+     only sets the per-line delay and flips the switch on the
+     frame after the armed state has painted.
+     ============================================================ -->
+<script>
+(function heroRise() {
+  'use strict';
+
+  var html = document.documentElement;
+  var hero = document.querySelector('.hero-intro');
+  if (!hero) { html.classList.remove('js-rise'); return; }
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    html.classList.remove('js-rise');
+    return;
+  }
+
+  // Five rising elements across four rows: the city and the words
+  // after it share row three, 150ms apart, so they rise side by
+  // side rather than as two stacked beats.
+  var DELAYS = [0, 750, 1500, 1650, 2250];
+  var lines = hero.querySelectorAll('.line__i');
+  Array.prototype.forEach.call(lines, function (el, i) {
+    el.style.setProperty('--d', (DELAYS[i] !== undefined ? DELAYS[i] : 2250) + 'ms');
+  });
+
+  // js-rise stays on: it carries the from-state the transitions
+  // start from. The head script's failsafe clears it later, once
+  // .is-lit is holding the settled values anyway.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () { hero.classList.add('is-lit'); });
+  });
+})();
+</script>
 </body>
 </html>
