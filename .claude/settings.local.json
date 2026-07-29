@@ -292,7 +292,11 @@
       "Bash(curl -sL \"https://www.andreavollendorf.com/\" -o av-home.html)",
       "Bash(curl -sL \"https://www.andreavollendorf.com/_next/static/chunks/c7bac35da4368ea8.css\" -o av.css)",
       "Bash(curl -sL -o Geist-Variable.woff2 \"https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2\")",
-      "Bash(curl -sL -o GeistMono-Variable.woff2 \"https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Variable.woff2\")"
+      "Bash(curl -sL -o GeistMono-Variable.woff2 \"https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Variable.woff2\")",
+      "Bash(grep -n \"text-spike\\\\s*{\\\\|text-star\\\\s*{\\\\|\\\\.text-spike,\\\\|\\\\.text-star\" css/field.css)",
+      "Bash(curl -sL \"https://cdn.dribbble.com/userupload/21469843/file/original-2f76622057665c8caf9d6ee33b3377d4.gif\" -o ref.gif)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/126.0 Safari/537.36\" --tlsv1.2 \"https://cdn.dribbble.com/userupload/21469843/file/original-2f76622057665c8caf9d6ee33b3377d4.gif\" -o ref.gif)",
+      "Bash(echo \"exit $?\")"
     ]
   }
 }

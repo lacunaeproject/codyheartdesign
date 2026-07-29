@@ -106,9 +106,200 @@
     });
   })();
 
+  /* ---------- Hero load-in ----------
+     The old hero's rise, rebuilt for a naturally-wrapping title:
+     split the rendered h1 into its visual lines, wrap each in a
+     clipping row, rise them one after the next, spin the spikes
+     in after their line lands, unskew the stars last, fade the
+     lede up at the end — then put the original markup back so
+     the title wraps naturally again on resize.
+
+     html.js-rise is armed by an inline script in the page head so
+     the type is never seen in place and then dropped behind its
+     mask; its own failsafe clears it if this never runs. */
+  (function heroRise() {
+    var html = document.documentElement;
+    var hero = document.querySelector('.hero');
+    var title = document.querySelector('.hero__title');
+    if (!hero || !title) { html.classList.remove('js-rise'); return; }
+    if (reduceMotion || !html.classList.contains('js-rise')) {
+      html.classList.remove('js-rise');
+      return;
+    }
+
+    var STAGGER = 280, RISE = 520;
+    var lede = document.querySelector('.hero__lede');
+    var originalHTML = title.innerHTML;
+
+    // Hold the lede's highlight until the lede itself has risen.
+    if (lede) {
+      Array.prototype.forEach.call(lede.querySelectorAll('.highlight'), function (m) {
+        m.setAttribute('data-hl-defer', '');
+      });
+    }
+
+    function split() {
+      // Pass 1 — wrap every word in a span so it can be measured.
+      // Plain spaces become their own tokens; the spark spans stay
+      // whole; hair spaces and entities stay inside their word.
+      var items = [];
+      var frag = document.createDocumentFragment();
+      function splitWords(text, wrap, parent) {
+        text.split(/( )/).forEach(function (part) {
+          if (part === '') return;
+          if (part === ' ') {
+            items.push({ space: true, wrap: wrap });
+            parent.appendChild(document.createTextNode(' '));
+          } else {
+            var s = document.createElement('span');
+            s.textContent = part;
+            items.push({ el: s, word: true, wrap: wrap });
+            parent.appendChild(s);
+          }
+        });
+      }
+      Array.prototype.slice.call(title.childNodes).forEach(function (node) {
+        if (node.nodeType === 3) {
+          splitWords(node.textContent, null, frag);
+        } else if (node.nodeType === 1 && node.tagName === 'BR') {
+          // Manual breaks shape the measured wrap but aren't tokens:
+          // the per-line rows carry the break from here on.
+          frag.appendChild(node);
+        } else if (node.nodeType === 1 && node.classList.contains('hero-em')) {
+          // A styled phrase (a gradient em): split its words too so
+          // the phrase can break across lines, measured inside a
+          // clone so the bold-italic metrics are right.
+          var shell = node.cloneNode(false);
+          splitWords(node.textContent, node, shell);
+          frag.appendChild(shell);
+        } else if (node.nodeType === 1) {
+          // Atomic marks: the heart, the sparks.
+          items.push({ el: node });
+          frag.appendChild(node);
+        }
+      });
+      title.textContent = '';
+      title.appendChild(frag);
+
+      // Pass 2 — group tokens into rendered lines. The threshold is
+      // generous because the sparks ride .25em high on their line.
+      var threshold = parseFloat(getComputedStyle(title).fontSize) * .6;
+      var lines = [];
+      var lastTop = null;
+      items.forEach(function (it) {
+        if (it.space) { if (lines.length) lines[lines.length - 1].push(it); return; }
+        var top = it.el.offsetTop;
+        if (lastTop === null || Math.abs(top - lastTop) > threshold) {
+          lines.push([it]);
+          lastTop = top;
+        } else {
+          lines[lines.length - 1].push(it);
+        }
+      });
+
+      // Pass 3 — rebuild: one clipping row per line, words restored
+      // to plain text, sparks kept as elements with their own beats.
+      var starDelay = (lines.length - 1) * STAGGER + 850;
+      title.textContent = '';
+      lines.forEach(function (line, i) {
+        while (line.length && line[0].space) line.shift();
+        while (line.length && line[line.length - 1].space) line.pop();
+        var row = document.createElement('span');
+        row.className = 'hero__line';
+        var inner = document.createElement('span');
+        inner.className = 'hero__line-inner';
+        inner.style.setProperty('--d', (i * STAGGER) + 'ms');
+        // Words that belong to a gradient em are regrouped into a
+        // fresh clone of it per line, so a phrase that breaks across
+        // rows keeps its color on both.
+        var container = inner;
+        var currentWrap = null;
+        line.forEach(function (it) {
+          var wrap = it.wrap || null;
+          if (wrap !== currentWrap) {
+            container = wrap ? wrap.cloneNode(false) : inner;
+            if (wrap) inner.appendChild(container);
+            currentWrap = wrap;
+          }
+          if (it.space) container.appendChild(document.createTextNode(' '));
+          else if (it.word) container.appendChild(document.createTextNode(it.el.textContent));
+          else if (it.el.classList.contains('hero-heart')) {
+            it.el.style.setProperty('--hd', (i * STAGGER + 320) + 'ms');
+            container.appendChild(it.el);
+          } else if (it.el.classList.contains('spark')) {
+            var isSpike = it.el.textContent.charCodeAt(0) === 0x2739;
+            it.el.classList.add(isSpike ? 'spark--spike' : 'spark--star');
+            it.el.style.setProperty('--sd', (isSpike ? i * STAGGER + 380 : starDelay) + 'ms');
+            container.appendChild(it.el);
+          } else {
+            // Other atomic pieces (the city + its flag) ride their
+            // line with no extra choreography.
+            container.appendChild(it.el);
+          }
+        });
+        row.appendChild(inner);
+        title.appendChild(row);
+      });
+
+      var ledeDelay = (lines.length - 1) * STAGGER + 420;
+      if (lede) lede.style.setProperty('--ld', ledeDelay + 'ms');
+
+      // Show the prepared, masked state, then flip the switch on
+      // the frame after it has painted.
+      hero.classList.add('is-split');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { hero.classList.add('is-lit'); });
+      });
+
+      // The lede's highlight wipes once the lede is readable.
+      if (lede) {
+        setTimeout(function () {
+          Array.prototype.forEach.call(lede.querySelectorAll('.highlight'), function (m) {
+            m.classList.add('is-on');
+          });
+        }, ledeDelay + 800);
+      }
+
+      // Sequence done: restore the natural markup so the title
+      // wraps freely again. Same words, same width — an invisible
+      // swap.
+      setTimeout(function () {
+        title.innerHTML = originalHTML;
+        html.classList.remove('js-rise');
+      }, starDelay + RISE + 400);
+    }
+
+    // Measure against the real serif, not the fallback — but never
+    // hold the page hostage to a slow font.
+    var ready = (document.fonts && document.fonts.ready) || Promise.resolve();
+    Promise.race([
+      ready,
+      new Promise(function (r) { setTimeout(r, 900); })
+    ]).then(split);
+  })();
+
+  /* ---------- Fly the W ----------
+     Hovering "Chicago, IL" raises the flag in the open air to the
+     right of the headline, where it covers nothing. */
+  (function cubsFlag() {
+    var hero = document.querySelector('.hero');
+    var flag = document.querySelector('.chi-flag');
+    if (!hero || !flag) return;
+    // Delegated, because the load-in rebuilds the headline's DOM
+    // and a listener pinned to the span would be lost with it.
+    hero.addEventListener('mouseover', function (e) {
+      if (e.target.closest && e.target.closest('.city-pop')) flag.classList.add('is-flying');
+    });
+    hero.addEventListener('mouseout', function (e) {
+      if (!e.target.closest || !e.target.closest('.city-pop')) return;
+      if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.city-pop')) return;
+      flag.classList.remove('is-flying');
+    });
+  })();
+
   /* ---------- Highlight wipe on view ---------- */
   (function highlights() {
-    var marks = document.querySelectorAll('.highlight');
+    var marks = document.querySelectorAll('.highlight:not([data-hl-defer])');
     if (!marks.length) return;
     if (reduceMotion || !('IntersectionObserver' in window)) {
       Array.prototype.forEach.call(marks, function (m) { m.classList.add('is-on'); });

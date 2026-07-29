@@ -489,7 +489,13 @@ body.menu-locked { overflow: hidden; }
   padding: 32px var(--gutter);
 }
 @media (min-width: 640px) { .hero { padding: 64px var(--gutter) 56px; } }
-.hero__inner { max-width: 700px; }
+.hero__inner { max-width: 60rem; }
+.hero__lede { max-width: 700px; }
+
+/* The manual break that keeps the name and the role on one line —
+   only where the line actually fits; narrower screens wrap free. */
+.hero-br { display: none; }
+@media (min-width: 1100px) { .hero-br { display: inline; } }
 .hero__title {
   font-size: 28px;
   line-height: 1.25;
@@ -502,9 +508,88 @@ body.menu-locked { overflow: hidden; }
 .hero__title .spark {
   font-family: var(--sans);
   font-size: .55em;
-  color: var(--accent);
+  /* Poppy against the iris of the role and the green of the
+     field — the complement doing what it did in his poppy fields. */
+  color: #D9603B;
   vertical-align: .25em;
   letter-spacing: 0;
+}
+
+/* The heart beside the name — the same mark as the wordmark,
+   scaled to the headline. Hovering the name (or the heart) makes
+   it beat: the old wordmark's double-pulse, brought over. */
+.hero__title .hero-heart {
+  display: inline-block;
+  width: .6em;
+  height: auto;
+}
+.hero-em--name:hover + .hero-heart,
+.hero-heart:hover {
+  animation: heart-pulse 1.3s ease-in-out infinite;
+}
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  15%      { transform: scale(1.15); }
+  30%      { transform: scale(1); }
+  45%      { transform: scale(1.15); }
+  60%      { transform: scale(1); }
+}
+
+/* Hovering the city flies the W — off to the side, in the open
+   air top-right of the headline, so it never covers the name.
+   site.js relays the hover; the pop is the same spring the
+   reference site gives its testimonial reactions. */
+.city-pop { white-space: nowrap; }
+.hero__inner { position: relative; }
+.chi-flag {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: -10px;
+  width: 104px;
+  height: auto;
+  /* drop-shadow (not box-shadow) so the shadow follows the
+     rippling cloth, not the rectangle around it */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .16)) drop-shadow(0 1px 3px rgba(0, 0, 0, .1));
+  opacity: 0;
+  transform: scale(.3) rotate(-8deg);
+  transform-origin: bottom center;
+  transition: transform 250ms var(--ease-out-quart), opacity 150ms ease;
+  pointer-events: none;
+  z-index: 10;
+}
+@media (min-width: 1100px) and (hover: hover) { .chi-flag { display: block; } }
+.chi-flag.is-flying {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+  animation: flag-sway 2.4s ease-in-out .3s infinite;
+}
+@keyframes flag-sway {
+  0%, 100% { rotate: 0deg; }
+  50%      { rotate: 1.5deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-em--name:hover + .hero-heart, .hero-heart:hover { animation: none; }
+  .chi-flag { transition: opacity 150ms ease; transform: none; animation: none !important; }
+}
+
+/* The four emphasised things — name, role, city, field — each in
+   its own petal gradient, clipped to the type: the name in the
+   crushed-brick pink of the house warming into poppy, the role in
+   iris, the city in cerulean water, the field in the green of the
+   door. Engines without clip support keep the charcoal. */
+.hero-em { font-style: italic; font-weight: 700; }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-em {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .hero-em--name  { background-image: linear-gradient(100deg, #A64A3F, #D9603B); }
+  .hero-em--role  { background-image: linear-gradient(100deg, #5D5192, #7B6FAE); }
+  .hero-em--city  { background-image: linear-gradient(100deg, #3E688F, #5E87AE); }
+  .hero-em--field { background-image: linear-gradient(100deg, #217251, #2E9169); }
 }
 .hero__lede {
   font-size: 14px;
@@ -512,6 +597,103 @@ body.menu-locked { overflow: hidden; }
   line-height: 1.45rem;
   letter-spacing: -.005em;
   color: var(--ink-80);
+}
+
+/* Company tags — the employers in the lede as quiet links: a low
+   underline and a small outbound arrow, nothing chip-shaped. */
+.co-tag {
+  font-weight: 500;
+  color: var(--ink-80);
+  white-space: nowrap;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, .22);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+.co-tag:hover {
+  /* The name's rose-brick → poppy, borrowed for the hover. */
+  color: #D9603B;
+  background-image: linear-gradient(100deg, #A64A3F, #D9603B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration-color: rgba(217, 96, 59, .6);
+}
+
+/* ---------- Hero load-in ----------
+   site.js splits the rendered title into its visual lines; each
+   line rises out of its own clipping row, the spikes spin in
+   after their line lands, the stars unskew last, and the lede
+   fades up at the end. Armed by an inline head script
+   (html.js-rise) so nothing is ever hidden without scripting,
+   and skipped under reduced motion.
+
+   :where() keeps the from-state at low specificity so the
+   settled rules below can outrank it — written plainly as
+   `html.js-rise ...` it wins instead and the type never moves. */
+:where(html.js-rise) .hero__title,
+:where(html.js-rise) .hero__lede { visibility: hidden; }
+.hero.is-split .hero__title,
+.hero.is-split .hero__lede { visibility: visible; }
+
+.hero__line {
+  display: block;
+  overflow: hidden;
+  /* room for descenders inside the clip row */
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+}
+.hero__line-inner { display: block; }
+.hero__title .spark { display: inline-block; }
+
+:where(html.js-rise) .hero__line-inner { translate: 0 115%; }
+:where(html.js-rise) .hero__lede { opacity: 0; translate: 0 12px; }
+:where(html.js-rise) .hero-heart { translate: 0 100%; scale: 0; rotate: 0deg; }
+:where(html.js-rise) .spark--spike { scale: 0; rotate: y -720deg; }
+:where(html.js-rise) .spark--star { transform: skew(-45deg, -45deg); }
+
+.hero.is-lit .hero__line-inner {
+  translate: 0 0;
+  transition: translate 520ms var(--ease-out-quint) var(--d, 0ms);
+}
+.hero.is-lit .hero__lede {
+  opacity: 1;
+  translate: 0 0;
+  transition:
+    opacity .6s ease var(--ld, 0ms),
+    translate .6s var(--ease-out-quint) var(--ld, 0ms);
+}
+.hero.is-lit .hero-heart {
+  translate: 0 0;
+  scale: 1;
+  rotate: 360deg;
+  transition:
+    translate 400ms ease-out var(--hd, 0ms),
+    scale 300ms ease calc(var(--hd, 0ms) + 150ms),
+    rotate 1000ms ease-in-out calc(var(--hd, 0ms) + 150ms);
+}
+.hero.is-lit .spark--spike {
+  scale: 1;
+  rotate: y 0deg;
+  transition:
+    scale .5s ease var(--sd, 600ms),
+    rotate .5s cubic-bezier(.175, .885, .32, 1.275) var(--sd, 600ms);
+}
+.hero.is-lit .spark--star {
+  transform: skew(0deg, 0deg);
+  transition: transform .5s ease var(--sd, 2000ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__line-inner, .hero-heart, .spark--spike {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+    transition: none !important;
+  }
+  .spark--star { transform: none !important; transition: none !important; }
+  .hero__line { overflow: visible; }
 }
 
 /* Selected Work carousel */
