@@ -195,11 +195,22 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .nav__wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-family: var(--serif);
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -.01em;
   color: var(--foreground);
+}
+.nav__wordmark svg {
+  display: block;
+  flex-shrink: 0;
+  /* Optical: flex centers on the line box; the cap band sits a
+     hair higher, so the heart rides up half a pixel to match. */
+  position: relative;
+  top: -.5px;
 }
 
 .nav__back {
