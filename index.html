@@ -35,7 +35,22 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Regular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Medium.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/FAIRE-Sprig-Trial-Bold.woff2" crossorigin>
-<link rel="stylesheet" href="css/field.css?v=104">
+<link rel="preload" as="font" type="font/otf" href="assets/fonts/Gooper7-Regular-Trial.otf" crossorigin>
+<link rel="preload" as="font" type="font/otf" href="assets/fonts/Gooper7-Black-Trial.otf" crossorigin>
+<link rel="stylesheet" href="css/field.css?v=109">
+
+<!-- Arm the hero load-in before first paint, so the type is never
+     seen in place and then dropped behind its mask. Under reduced
+     motion it never arms at all, and the failsafe clears it if the
+     script at the foot of the page never runs. -->
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var html = document.documentElement;
+  html.classList.add('js-rise');
+  setTimeout(function () { html.classList.remove('js-rise'); }, 4000);
+})();
+</script>
 </head>
 <body class="home">
 
@@ -55,12 +70,42 @@
 
 <main>
   <!-- ============================================================
-       HERO — one serif statement in the frosted garden light,
-       nothing else. The chip chrome above rides the whole page;
-       the heart lives in the wordmark chip.
+       HERO — four lines of type, ranged left and centred in the
+       full viewport. Each line rises out of its own clipping row
+       on load; the gold heart blooms beside the name, the spikes
+       spin in around the role, the closing marks unskew last.
        ============================================================ -->
-  <section class="hero">
-    <h1 class="hero__statement reveal reveal--d1">Designer creating meaningful tools for mental healthcare &#8212; and every other part of being human.</h1>
+  <section class="hero-intro">
+    <div class="hero-container">
+      <h1 class="visually-hidden">Hi, I&#8217;m Cody Heart. A product designer living in Chicago, IL, remotely building tools for mental healthcare.</h1>
+
+      <div class="display-text-div">
+        <p class="display-heading" aria-hidden="true"><span class="line__i">Hi, I&#8217;m <span class="display-em">Cody Heart</span></span></p>
+        <div class="mark-div mark-div--bloom" aria-hidden="true">
+          <span class="mark-bloom">
+            <svg viewBox="0 0 24 24"><defs><linearGradient id="gold-leaf-m" x1=".24" y1="-.05" x2=".62" y2="1"><stop offset="0" stop-color="#FBE6AE"/><stop offset=".13" stop-color="#F0CB66"/><stop offset=".29" stop-color="#D9A63A"/><stop offset=".43" stop-color="#BC8622"/><stop offset=".52" stop-color="#A97219"/><stop offset=".60" stop-color="#C79331"/><stop offset=".69" stop-color="#F2D688"/><stop offset=".78" stop-color="#DDAE46"/><stop offset=".90" stop-color="#C08D28"/><stop offset="1" stop-color="#A87423"/></linearGradient><radialGradient id="gold-gloss-m" cx=".30" cy=".26" r=".52"><stop offset="0" stop-color="#FFF4CE" stop-opacity=".78"/><stop offset=".55" stop-color="#FFF4CE" stop-opacity=".18"/><stop offset="1" stop-color="#FFF4CE" stop-opacity="0"/></radialGradient><linearGradient id="gold-foot-m" x1="0" y1=".60" x2="0" y2="1"><stop offset="0" stop-color="#6B4208" stop-opacity="0"/><stop offset="1" stop-color="#6B4208" stop-opacity=".28"/></linearGradient><clipPath id="heart-clip-m"><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z"/></clipPath></defs><g clip-path="url(#heart-clip-m)"><rect width="24" height="24" fill="url(#gold-leaf-m)"/><rect width="24" height="24" fill="url(#gold-foot-m)"/><rect width="24" height="24" fill="url(#gold-gloss-m)"/><path d="M12.1 7.6C13.7 5 15.8 3.7 18 4.15 20.9 4.6 22.1 7.1 21.4 9.9 20.8 12.5 18 15.4 11.7 21.9 5.6 15.4 3.1 12.4 2.6 9.7 2 6.9 3.4 4.6 6 4.2 8.1 3.85 10.5 5 12.1 7.6Z" fill="none" stroke="#FFEEB4" stroke-opacity=".55" stroke-width="1.1"/></g></svg>
+          </span>
+        </div>
+      </div>
+
+      <div class="display-text-div">
+        <p class="display-heading _2" aria-hidden="true"><span class="line__i">A <span class="text-spike">&#10041;</span> <span class="display-em">product designer</span> <span class="text-spike">&#10041;</span> living in</span></p>
+      </div>
+
+      <!-- The city and the words after it share this row, which is
+           why the third and fourth delays sit 150ms apart rather
+           than a full beat — they rise side by side, not stacked.
+           The 8px of side padding on each heading closes to about
+           a word space between them. -->
+      <div class="display-text-div">
+        <p class="display-heading" aria-hidden="true"><span class="line__i"><span class="display-em">Chicago, IL</span></span></p>
+        <p class="display-heading" aria-hidden="true"><span class="line__i">remotely building tools</span></p>
+      </div>
+
+      <div class="display-text-div">
+        <p class="display-heading" aria-hidden="true"><span class="line__i">for <span class="text-star">&#10022;</span> <span class="display-em">mental healthcare</span> <span class="text-star">&#10022;</span></span></p>
+      </div>
+    </div>
   </section>
 
   <!-- ============================================================
@@ -282,6 +327,6 @@
   </div>
 </footer>
 
-<script src="js/field.js?v=5"></script>
+<script src="js/field.js?v=6"></script>
 </body>
 </html>
