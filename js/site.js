@@ -278,22 +278,28 @@
     ]).then(split);
   })();
 
-  /* ---------- Fly the W ----------
-     Hovering "Chicago, IL" raises the flag in the open air to the
-     right of the headline, where it covers nothing. */
-  (function cubsFlag() {
+  /* ---------- Hero pop-ups ----------
+     Hover the name: a photo springs up in the open air right of
+     the headline. Hover the city: the W flies in the same spot.
+     Delegated, because the load-in rebuilds the headline's DOM
+     and listeners pinned to the spans would be lost with it. */
+  (function heroPops() {
     var hero = document.querySelector('.hero');
-    var flag = document.querySelector('.chi-flag');
-    if (!hero || !flag) return;
-    // Delegated, because the load-in rebuilds the headline's DOM
-    // and a listener pinned to the span would be lost with it.
-    hero.addEventListener('mouseover', function (e) {
-      if (e.target.closest && e.target.closest('.city-pop')) flag.classList.add('is-flying');
-    });
-    hero.addEventListener('mouseout', function (e) {
-      if (!e.target.closest || !e.target.closest('.city-pop')) return;
-      if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.city-pop')) return;
-      flag.classList.remove('is-flying');
+    if (!hero) return;
+    var pairs = [
+      { sel: '.hero-em--name, .hero-heart', pop: document.querySelector('.me-pop') },
+      { sel: '.city-pop', pop: document.querySelector('.chi-flag') }
+    ];
+    pairs.forEach(function (p) {
+      if (!p.pop) return;
+      hero.addEventListener('mouseover', function (e) {
+        if (e.target.closest && e.target.closest(p.sel)) p.pop.classList.add('is-up');
+      });
+      hero.addEventListener('mouseout', function (e) {
+        if (!e.target.closest || !e.target.closest(p.sel)) return;
+        if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(p.sel)) return;
+        p.pop.classList.remove('is-up');
+      });
     });
   })();
 

@@ -541,36 +541,53 @@ body.menu-locked { overflow: hidden; }
    reference site gives its testimonial reactions. */
 .city-pop { white-space: nowrap; }
 .hero__inner { position: relative; }
-.chi-flag {
+
+/* The two hero pop-ups share the open air top-right of the
+   headline: hover the name and a photo springs up; hover the
+   city and the W flies, just as big. */
+.chi-flag,
+.me-pop {
   display: none;
   position: absolute;
   right: 0;
-  top: -10px;
-  width: 104px;
-  height: auto;
-  /* drop-shadow (not box-shadow) so the shadow follows the
-     rippling cloth, not the rectangle around it */
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .16)) drop-shadow(0 1px 3px rgba(0, 0, 0, .1));
+  top: -16px;
   opacity: 0;
   transform: scale(.3) rotate(-8deg);
-  transform-origin: bottom center;
+  transform-origin: top right;
   transition: transform 250ms var(--ease-out-quart), opacity 150ms ease;
   pointer-events: none;
   z-index: 10;
 }
-@media (min-width: 1100px) and (hover: hover) { .chi-flag { display: block; } }
-.chi-flag.is-flying {
+@media (min-width: 1100px) and (hover: hover) {
+  .chi-flag, .me-pop { display: block; }
+}
+.chi-flag.is-up, .me-pop.is-up {
   opacity: 1;
   transform: scale(1) rotate(0deg);
-  animation: flag-sway 2.4s ease-in-out .3s infinite;
 }
+.chi-flag {
+  width: 210px;
+  height: auto;
+  /* drop-shadow (not box-shadow) so the shadow follows the
+     rippling cloth, not the rectangle around it */
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .16)) drop-shadow(0 1px 3px rgba(0, 0, 0, .1));
+}
+.chi-flag.is-up { animation: flag-sway 2.4s ease-in-out .3s infinite; }
+.me-pop {
+  width: 170px;
+  height: auto;
+  border-radius: 12px;
+  transform: scale(.3) rotate(6deg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, .15), 0 1px 4px rgba(0, 0, 0, .08);
+}
+.me-pop.is-up { transform: scale(1) rotate(0deg); }
 @keyframes flag-sway {
   0%, 100% { rotate: 0deg; }
   50%      { rotate: 1.5deg; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-em--name:hover + .hero-heart, .hero-heart:hover { animation: none; }
-  .chi-flag { transition: opacity 150ms ease; transform: none; animation: none !important; }
+  .chi-flag, .me-pop { transition: opacity 150ms ease; transform: none; animation: none !important; }
 }
 
 /* The four emphasised things — name, role, city, field — each in
