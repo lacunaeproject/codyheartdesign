@@ -279,8 +279,8 @@
   })();
 
   /* ---------- Hero pop-ups ----------
-     Hover the name: a photo springs up in the open air right of
-     the headline. Hover the city: the W flies in the same spot.
+     Hover the name: a photo springs up beside the cursor and
+     rides along with it. Hover the city: the W flies there.
      Delegated, because the load-in rebuilds the headline's DOM
      and listeners pinned to the spans would be lost with it. */
   (function heroPops() {
@@ -290,17 +290,40 @@
       { sel: '.hero-em--name, .hero-heart', pop: document.querySelector('.me-pop') },
       { sel: '.city-pop', pop: document.querySelector('.chi-flag') }
     ];
+    var active = null;
+
+    function place(p, e) {
+      var wrap = p.pop.parentElement;
+      var cs = getComputedStyle(p.pop);
+      var w = parseFloat(cs.width) || 200;
+      var h = parseFloat(cs.height) || 140;
+      var x = e.clientX + 26;
+      if (x + w > window.innerWidth - 12) x = e.clientX - w - 26;
+      var y = e.clientY - h / 2;
+      y = Math.max(12, Math.min(y, window.innerHeight - h - 12));
+      wrap.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+    }
+
     pairs.forEach(function (p) {
       if (!p.pop) return;
       hero.addEventListener('mouseover', function (e) {
-        if (e.target.closest && e.target.closest(p.sel)) p.pop.classList.add('is-up');
+        if (e.target.closest && e.target.closest(p.sel)) {
+          active = p;
+          place(p, e);
+          p.pop.classList.add('is-up');
+        }
       });
       hero.addEventListener('mouseout', function (e) {
         if (!e.target.closest || !e.target.closest(p.sel)) return;
         if (e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(p.sel)) return;
         p.pop.classList.remove('is-up');
+        if (active === p) active = null;
       });
     });
+
+    hero.addEventListener('mousemove', function (e) {
+      if (active) place(active, e);
+    }, { passive: true });
   })();
 
   /* ---------- Highlight wipe on view ---------- */

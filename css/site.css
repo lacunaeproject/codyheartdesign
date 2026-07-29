@@ -542,31 +542,38 @@ body.menu-locked { overflow: hidden; }
 .city-pop { white-space: nowrap; }
 .hero__inner { position: relative; }
 
-/* The two hero pop-ups share the open air top-right of the
-   headline: hover the name and a photo springs up; hover the
-   city and the W flies, just as big. */
-.chi-flag,
-.me-pop {
+/* The two hero pop-ups ride the cursor: hover the name and a
+   photo springs up beside the pointer; hover the city and the W
+   flies there, just as big. The wrapper handles the following
+   (positioned by site.js, with a short trailing ease so it
+   floats), the inner element handles the spring. */
+.pop-follow {
   display: none;
-  position: absolute;
-  right: 0;
-  top: -16px;
-  opacity: 0;
-  transform: scale(.3) rotate(-8deg);
-  transform-origin: top right;
-  transition: transform 250ms var(--ease-out-quart), opacity 150ms ease;
+  position: fixed;
+  left: 0;
+  top: 0;
   pointer-events: none;
-  z-index: 10;
+  z-index: 60;
+  will-change: transform;
+  transition: transform .15s var(--ease-out-cubic);
 }
 @media (min-width: 1100px) and (hover: hover) {
-  .chi-flag, .me-pop { display: block; }
+  .pop-follow { display: block; }
+}
+.chi-flag,
+.me-pop {
+  display: block;
+  opacity: 0;
+  transform: scale(.3) rotate(-8deg);
+  transform-origin: left center;
+  transition: transform 250ms var(--ease-out-quart), opacity 150ms ease;
 }
 .chi-flag.is-up, .me-pop.is-up {
   opacity: 1;
   transform: scale(1) rotate(0deg);
 }
 .chi-flag {
-  width: 210px;
+  width: 320px;
   height: auto;
   /* drop-shadow (not box-shadow) so the shadow follows the
      rippling cloth, not the rectangle around it */
@@ -574,13 +581,14 @@ body.menu-locked { overflow: hidden; }
 }
 .chi-flag.is-up { animation: flag-sway 2.4s ease-in-out .3s infinite; }
 .me-pop {
-  width: 170px;
+  width: 240px;
   height: auto;
-  border-radius: 12px;
-  transform: scale(.3) rotate(6deg);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, .15), 0 1px 4px rgba(0, 0, 0, .08);
+  border-radius: 14px;
+  transform: scale(.3) rotate(12deg);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, .18), 0 1px 4px rgba(0, 0, 0, .08);
 }
-.me-pop.is-up { transform: scale(1) rotate(0deg); }
+/* Lands tilted, like a photo handed to you rather than filed. */
+.me-pop.is-up { transform: scale(1) rotate(3.5deg); }
 @keyframes flag-sway {
   0%, 100% { rotate: 0deg; }
   50%      { rotate: 1.5deg; }
