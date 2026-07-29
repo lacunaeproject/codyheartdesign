@@ -288,7 +288,8 @@
       "WebFetch(domain:claudetype.com)",
       "WebFetch(domain:www.myfonts.com)",
       "Read(//c/Users/codyj/Downloads/**)",
-      "Read(//c/Users/codyj/Downloads//**)"
+      "Read(//c/Users/codyj/Downloads//**)",
+      "Bash(curl -sL -o green-ref.jpg \"https://pafolios.com/portfolio-images/2020-09-17-09-17.jpg\")"
     ]
   }
 }
