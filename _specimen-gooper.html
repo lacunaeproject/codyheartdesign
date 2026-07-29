@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gooper — specimen at site sizes</title>
+<link rel="stylesheet" href="css/field.css?v=105">
+<style>
+/* Every cut the site's type scale would actually ask for. */
+@font-face { font-family:'GooperSpec'; src:url('assets/fonts/Gooper7-Regular-Trial.otf') format('opentype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'GooperSpec'; src:url('assets/fonts/Gooper7-RegularItalic-Trial.otf') format('opentype'); font-weight:400; font-style:italic; }
+@font-face { font-family:'GooperSpec'; src:url('assets/fonts/Gooper7-Medium-Trial.otf') format('opentype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'GooperSpec'; src:url('assets/fonts/Gooper7-Bold-Trial.otf') format('opentype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'GooperSpec'; src:url('assets/fonts/Gooper7-Black-Trial.otf') format('opentype'); font-weight:800; font-style:normal; }
+
+body { background: #fff; padding: 3rem 0 6rem; }
+.spec { max-width: 1180px; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 4rem); }
+.spec__head { margin-bottom: 3rem; }
+.spec__head h1 {
+  font-family: 'GooperSpec'; font-weight: 800; font-size: 3rem;
+  color: #333; margin: 0 0 .5rem;
+}
+.spec__head p { font-size: 1.0625rem; color: var(--muted); margin: 0; max-width: 60ch; }
+
+.row {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule-soft);
+  align-items: baseline;
+}
+.row__meta {
+  font-family: var(--font-label);
+  font-size: .68rem; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--muted);
+  line-height: 1.6;
+}
+.row__meta b { display: block; color: var(--ink); font-weight: 600; }
+.row__meta span { display: block; text-transform: none; letter-spacing: .04em; }
+
+/* Each sample mirrors the real rule it is standing in for. */
+.g { font-family: 'GooperSpec'; color: #333333; margin: 0; }
+
+.s-hero    { font-size: min(4vw, 70px); font-weight: 400; line-height: 1.1; letter-spacing: -.01em; }
+.s-hero b  { font-weight: 800; }
+.s-title   { font-size: clamp(2.1rem, 4.2vw, 3.4rem); font-weight: 400; line-height: 1.05; }
+.s-fighero { font-size: clamp(2.9rem, 4.6vw, 4rem); font-weight: 700; line-height: 1; letter-spacing: -.01em; }
+.s-fig     { font-size: clamp(2.4rem, 3.4vw, 3.2rem); font-weight: 700; line-height: 1; letter-spacing: -.01em; }
+.s-cap     { font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 400; font-style: italic; line-height: 1.35; max-width: 34ch; }
+.s-card    { font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 500; line-height: 1.12; letter-spacing: -.01em; max-width: 22ch; }
+.s-lead    { font-size: 1.3rem; font-weight: 400; line-height: 1.55; max-width: 46ch; }
+.s-talk    { font-size: 1.25rem; font-weight: 500; line-height: 1.4; }
+.s-note    { font-size: 1.22rem; font-weight: 400; line-height: 1.5; max-width: 42ch; color: var(--muted); }
+.s-body    { font-size: 1.0625rem; font-weight: 400; line-height: 1.68; max-width: 62ch; }
+.s-label   { font-family: var(--font-label); font-size: .7rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+
+.note {
+  margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+  font-size: 1.0625rem; color: var(--ink-soft); max-width: 62ch;
+}
+</style>
+</head>
+<body class="home">
+<div class="spec">
+
+  <header class="spec__head">
+    <h1>Gooper at every size the site uses</h1>
+    <p>Each row is set to the exact rule it would replace in field.css, with the page's real copy. Resolved sizes are for a 1440px viewport.</p>
+  </header>
+
+  <div class="row">
+    <div class="row__meta"><b>Hero line</b>min(4vw, 70px)<span>57.6px · 400 / 800</span></div>
+    <p class="g s-hero">Hi, I&#8217;m <b>Cody Heart</b></p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Section title</b>clamp(2.1rem, 4.2vw, 3.4rem)<span>54.4px · 400</span></div>
+    <p class="g s-title">Five years, totaled.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Headline figure</b>clamp(2.9rem, 4.6vw, 4rem)<span>64px · 700</span></div>
+    <p class="g s-fighero">$3.5M</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Stat figure</b>clamp(2.4rem, 3.4vw, 3.2rem)<span>49px · 700</span></div>
+    <p class="g s-fig">&#8722;32% &nbsp; $500K &nbsp; +10%</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Case caption</b>clamp(1.35rem, 2.4vw, 2rem)<span>32px · 400 italic</span></div>
+    <p class="g s-cap">Took an internal booking platform from a two-state pilot to 99% national adoption.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Card title</b>clamp(1.5rem, 2.6vw, 2.1rem)<span>33.6px · 500</span></div>
+    <p class="g s-card">Design as a revenue lever.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Lede</b>--fs-lead<span>20.8px · 400</span></div>
+    <p class="g s-lead">Four numbers a finance team could argue with &#8212; and below them, the stories of how each one happened.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Button</b>1.25rem<span>20px · 500</span></div>
+    <p class="g s-talk">Let&#8217;s talk</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Card note</b>1.22rem<span>19.5px · 400</span></div>
+    <p class="g s-note">Coordinator hours reclaimed from busywork, returned to the queue as booked-visit capacity.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Body copy</b>--fs-body<span>17px · 400 · 62ch</span></div>
+    <p class="g s-body">Seven years in product design, almost all of it in healthcare. I designed member tools, claims software, and billing workflows at Collective Health, and now lead design at LifeStance Health for a national booking platform running across 33 states. The work I&#8217;m proudest of shows up as a number on a P&amp;L &#8212; and every one of those numbers came from sitting with the people behind the workflow.</p>
+  </div>
+
+  <div class="row">
+    <div class="row__meta"><b>Micro-label</b>.7rem · sans<span>stays on the sans stack</span></div>
+    <p class="s-label">By the numbers<span class="sep" aria-hidden="true"></span>No 01 &#183; Admin Pilot</p>
+  </div>
+
+  <p class="note">The label row is deliberately not Gooper — it is the reference for the third voice, which stays on the system grotesque either way.</p>
+
+</div>
+</body>
+</html>
