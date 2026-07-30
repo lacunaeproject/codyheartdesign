@@ -298,7 +298,24 @@
       "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/126.0 Safari/537.36\" --tlsv1.2 \"https://cdn.dribbble.com/userupload/21469843/file/original-2f76622057665c8caf9d6ee33b3377d4.gif\" -o ref.gif)",
       "Bash(echo \"exit $?\")",
       "Bash(mv hudson2.jpg assets/hudson2.jpg)",
-      "Bash(mv bean.jpg assets/bean.jpg)"
+      "Bash(mv bean.jpg assets/bean.jpg)",
+      "PowerShell($b = [System.IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\Owner\\\\Documents\\\\codyheartdesign\\\\assets\\\\self\\\\bean2-sticker.webp\"\\)[0..15]; \\($b | ForEach-Object { $_.ToString\\(\"X2\"\\) }\\) -join \" \"; [System.Text.Encoding]::ASCII.GetString\\($b\\))",
+      "PowerShell(foreach \\($n in @\\(\"cwebp\",\"magick\",\"convert\",\"ffmpeg\",\"python\",\"py\",\"node\"\\)\\) { $c = Get-Command $n -ErrorAction SilentlyContinue; if \\($c\\) { \"$n => $\\($c.Source\\)\" } else { \"$n => MISSING\" } })",
+      "PowerShell(npm install --prefix $sp sharp --no-audit --no-fund 2>&1)",
+      "PowerShell($sp = \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\probe.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\cut.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\zoom.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\serve.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\heads.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\probe3.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\stages.js\")",
+      "PowerShell(npm install --prefix $sp \"@imgly/background-removal-node\" --no-audit --no-fund 2>&1)",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\ml.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\mlcheck.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\maskprobe.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\cut2.js\")",
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\probehud.js\")"
     ]
   }
 }
