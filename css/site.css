@@ -589,21 +589,26 @@ body.menu-locked { overflow: hidden; }
 }
 /* Lands tilted, like a photo handed to you rather than filed. */
 .me-pop.is-up { transform: scale(1) rotate(3.5deg); }
-/* On "More about me" the whole pack arrives: Hudson trots in from
-   the right edge while Bean beams up from the bottom left. Die-cut
-   stickers; the drop-shadows follow their own edges. */
-.pop-follow--right { left: auto; right: 0; top: 52%; }
+/* On "More about me" the whole pack arrives: Hudson leans in from the
+   right edge to give the page his side-eye, Bean beams up from the
+   bottom left, and the two of us rise between them a beat later.
+   Die-cut stickers; the drop-shadows follow their own edges. */
+.pop-follow--right { left: auto; right: 0; top: 56%; }
 .pop-follow--bl { top: auto; bottom: 0; left: 3vw; }
-.hudson2-pop {
+.pop-follow--bc { top: auto; bottom: 0; left: 40%; }
+.hudson-pop {
   display: block;
-  width: 300px;
+  /* fluid so he stays clear of us on a narrower window */
+  width: clamp(260px, 23vw, 340px);
   height: auto;
-  transform: translateX(110%);
+  transform: translateX(110%) rotate(-7deg);
+  transform-origin: right center;
   transition: transform .45s var(--ease-out-quart);
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
 }
-.hudson2-pop.is-up {
-  transform: translateX(4%);
+/* Lands with a slight tilt, the way you lean around a doorframe. */
+.hudson-pop.is-up {
+  transform: translateX(13%) rotate(-2.5deg);
   transition: transform .55s cubic-bezier(.34, 1.56, .64, 1);
 }
 .bean-pop {
@@ -619,6 +624,22 @@ body.menu-locked { overflow: hidden; }
   transform: translateY(24%) rotate(-3deg);
   transition: transform .55s cubic-bezier(.34, 1.56, .64, 1);
 }
+/* Us, wider than a dog and tilted the other way, landing last so the
+   pack arrives as three beats instead of one. The width is fluid so
+   that on a narrower window we stay clear of Hudson on the right. */
+.us-pop {
+  display: block;
+  width: clamp(300px, 29vw, 430px);
+  height: auto;
+  transform: translateY(112%) rotate(-5deg);
+  transform-origin: bottom center;
+  transition: transform .45s var(--ease-out-quart);
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
+}
+.us-pop.is-up {
+  transform: translateY(30%) rotate(2.5deg);
+  transition: transform .6s cubic-bezier(.34, 1.56, .64, 1) 90ms;
+}
 @keyframes flag-sway {
   0%, 100% { rotate: 0deg; }
   50%      { rotate: 1.5deg; }
@@ -626,7 +647,7 @@ body.menu-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .hero-em--name:hover + .hero-heart, .hero-heart:hover { animation: none; }
   .chi-flag, .me-pop { transition: opacity 150ms ease; transform: none; animation: none !important; }
-  .hudson2-pop, .bean-pop { transition: none !important; animation: none !important; }
+  .hudson-pop, .bean-pop, .us-pop { transition: none !important; animation: none !important; }
 }
 
 /* The four emphasised things — name, role, city, field — each in

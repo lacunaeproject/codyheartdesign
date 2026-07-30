@@ -289,8 +289,9 @@
     var pairs = [
       { sel: '.hero-em--name, .hero-heart', pop: document.querySelector('.me-pop') },
       { sel: '.city-pop', pop: document.querySelector('.chi-flag') },
-      { sel: '.more-pop', pop: document.querySelector('.hudson2-pop'), fixed: true },
-      { sel: '.more-pop', pop: document.querySelector('.bean-pop'), fixed: true }
+      { sel: '.more-pop', pop: document.querySelector('.hudson-pop'), fixed: true },
+      { sel: '.more-pop', pop: document.querySelector('.bean-pop'), fixed: true },
+      { sel: '.more-pop', pop: document.querySelector('.us-pop'), fixed: true }
     ];
     var active = null;
 
