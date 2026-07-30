@@ -341,18 +341,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .icon-duo .duo-a { fill: #E1E3E8; transition: fill .15s ease; }
 .icon-duo .duo-b { fill: #8790A1; transition: fill .15s ease; }
 @media (hover: hover) {
-  .menu-item:hover .icon-duo.c-blue   .duo-a { fill: #C2E5FF; }
-  .menu-item:hover .icon-duo.c-blue   .duo-b { fill: #0090FF; }
-  .menu-item:hover .icon-duo.c-orange .duo-a { fill: #FFD19A; }
-  .menu-item:hover .icon-duo.c-orange .duo-b { fill: #F76B15; }
-  .menu-item:hover .icon-duo.c-purple .duo-a { fill: #EAD5F9; }
-  .menu-item:hover .icon-duo.c-purple .duo-b { fill: #8E4EC6; }
-  .menu-item:hover .icon-duo.c-green  .duo-a { fill: #C4E8D1; }
-  .menu-item:hover .icon-duo.c-green  .duo-b { fill: #30A46C; }
-  .menu-item:hover .icon-duo.c-pink   .duo-a { fill: #F6CEE7; }
-  .menu-item:hover .icon-duo.c-pink   .duo-b { fill: #D6409F; }
-  .menu-item:hover .icon-duo.c-teal   .duo-a { fill: #BFEEE4; }
-  .menu-item:hover .icon-duo.c-teal   .duo-b { fill: #12A594; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-blue   .duo-a { fill: #C2E5FF; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-blue   .duo-b { fill: #0090FF; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-orange .duo-a { fill: #FFD19A; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-orange .duo-b { fill: #F76B15; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-purple .duo-a { fill: #EAD5F9; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-purple .duo-b { fill: #8E4EC6; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-green  .duo-a { fill: #C4E8D1; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-green  .duo-b { fill: #30A46C; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-pink   .duo-a { fill: #F6CEE7; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-pink   .duo-b { fill: #D6409F; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-teal   .duo-a { fill: #BFEEE4; }
+  :is(.menu-item, .case-plate):hover .icon-duo.c-teal   .duo-b { fill: #12A594; }
 }
 /* In the mobile menu the icons are always colored */
 .icon-duo.is-colored.c-blue   .duo-a { fill: #C2E5FF; }
@@ -589,6 +589,36 @@ body.menu-locked { overflow: hidden; }
 }
 /* Lands tilted, like a photo handed to you rather than filed. */
 .me-pop.is-up { transform: scale(1) rotate(3.5deg); }
+/* On "More about me" the whole pack arrives: Hudson trots in from
+   the right edge while Bean beams up from the bottom left. Die-cut
+   stickers; the drop-shadows follow their own edges. */
+.pop-follow--right { left: auto; right: 0; top: 52%; }
+.pop-follow--bl { top: auto; bottom: 0; left: 3vw; }
+.hudson2-pop {
+  display: block;
+  width: 300px;
+  height: auto;
+  transform: translateX(110%);
+  transition: transform .45s var(--ease-out-quart);
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
+}
+.hudson2-pop.is-up {
+  transform: translateX(4%);
+  transition: transform .55s cubic-bezier(.34, 1.56, .64, 1);
+}
+.bean-pop {
+  display: block;
+  width: 330px;
+  height: auto;
+  transform: translateY(110%) rotate(6deg);
+  transform-origin: bottom center;
+  transition: transform .45s var(--ease-out-quart);
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
+}
+.bean-pop.is-up {
+  transform: translateY(24%) rotate(-3deg);
+  transition: transform .55s cubic-bezier(.34, 1.56, .64, 1);
+}
 @keyframes flag-sway {
   0%, 100% { rotate: 0deg; }
   50%      { rotate: 1.5deg; }
@@ -596,6 +626,7 @@ body.menu-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .hero-em--name:hover + .hero-heart, .hero-heart:hover { animation: none; }
   .chi-flag, .me-pop { transition: opacity 150ms ease; transform: none; animation: none !important; }
+  .hudson2-pop, .bean-pop { transition: none !important; animation: none !important; }
 }
 
 /* The four emphasised things — name, role, city, field — each in
@@ -721,47 +752,24 @@ body.menu-locked { overflow: hidden; }
   .hero__line { overflow: visible; }
 }
 
-/* Selected Work carousel */
-.work-strip { padding-bottom: 80px; }
-.work-strip__head { padding: 0 var(--gutter); }
-.carousel {
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.carousel::-webkit-scrollbar { display: none; }
-.carousel.is-dragging { cursor: grabbing; scroll-behavior: auto; }
-.carousel__track {
-  display: flex;
-  align-items: flex-start;
+/* Selected Work — a 2×2 of metric plates */
+.work-grid { padding: 0 var(--gutter) 80px; }
+.work-grid__grid {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
-  padding: 0 var(--gutter);
-  width: max-content;
 }
-.plate {
-  flex-shrink: 0;
-  display: block;
-}
-.plate__frame {
+@media (min-width: 640px) { .work-grid__grid { grid-template-columns: repeat(2, 1fr); } }
+.case-plate {
   position: relative;
-  height: 360px;
-  width: 300px;
-  border-radius: 8px;
-  background: var(--surface);
-  overflow: hidden;
-  padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 8px;
+  background: var(--surface);
+  border-radius: 8px;
+  padding: 24px;
+  transition: background-color .15s ease;
 }
-@media (min-width: 640px) { .plate__frame { height: 480px; width: 380px; } }
-.plate__frame::after {
+.case-plate::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -769,7 +777,16 @@ body.menu-locked { overflow: hidden; }
   pointer-events: none;
   box-shadow: var(--shadow-flush);
 }
-.plate__kicker {
+.case-plate:hover { background: var(--surface-hover); }
+.case-plate__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.case-plate__head .menu-item__tile { width: 44px; height: 44px; }
+.case-plate__head .menu-item__tile svg { width: 24px; height: 24px; }
+.case-plate__kicker {
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 500;
@@ -777,36 +794,78 @@ body.menu-locked { overflow: hidden; }
   text-transform: uppercase;
   color: var(--ink-40);
 }
-.plate__num {
+.case-plate__cta {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 450;
+  color: var(--ink-40);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .2s ease, transform .2s var(--ease-out-quart);
+}
+.case-plate:hover .case-plate__cta { opacity: 1; transform: translateX(0); }
+@media (hover: none) { .case-plate__cta { opacity: 1; transform: none; } }
+.case-plate__name {
   font-family: var(--serif);
-  font-size: 56px;
-  line-height: 1.05;
+  font-size: 22px;
+  line-height: 1.2;
   font-weight: 500;
   letter-spacing: -.01em;
   color: var(--ink-85);
+  margin-bottom: 8px;
+}
+/* On hover the name lights up in the icon's color family: the
+   gradient is always painted beneath the text, and the solid ink
+   fill fades to transparent to reveal it. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .case-plate__name {
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: var(--ink-85);
+    transition: -webkit-text-fill-color .25s ease;
+  }
+  .case-plate--orange .case-plate__name { background-image: linear-gradient(100deg, #C2560F, #F76B15); }
+  .case-plate--blue   .case-plate__name { background-image: linear-gradient(100deg, #0072CC, #0090FF); }
+  .case-plate--purple .case-plate__name { background-image: linear-gradient(100deg, #7239A8, #8E4EC6); }
+  .case-plate--pink   .case-plate__name { background-image: linear-gradient(100deg, #B32E85, #D6409F); }
+  .case-plate:hover .case-plate__name { -webkit-text-fill-color: transparent; }
+}
+.case-plate__story p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-65);
+  margin-bottom: 20px;
+  max-width: 46ch;
+}
+.case-plate__stats {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0, 0, 0, .06);
+}
+.case-plate__stats span {
+  display: block;
+  font-size: 13px;
+  font-weight: 550;
+  color: var(--ink-85);
   font-variant-numeric: tabular-nums;
 }
-@media (min-width: 640px) { .plate__num { font-size: 72px; } }
-.plate__caption {
-  font-size: 13px;
-  line-height: 1.45;
-  color: var(--ink-50);
-  max-width: 240px;
+.case-plate__stats em {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--ink-45);
+  margin-top: 2px;
 }
-.plate__reveal { height: 44px; overflow: hidden; }
-.plate__reveal-inner {
-  padding-top: 12px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  transition: transform .2s var(--ease-out-quart);
+.work-grid__more {
+  margin-top: 24px;
+  font-size: 12px;
 }
-@media (min-width: 640px) {
-  a.plate .plate__reveal-inner, div.plate .plate__reveal-inner { transform: translateY(-100%); }
-  a.plate:hover .plate__reveal-inner, div.plate:hover .plate__reveal-inner { transform: translateY(0); }
-}
-.plate__name { font-size: 13px; font-weight: 550; color: var(--ink-85); }
-.plate__cta { font-size: 11px; font-weight: 450; color: var(--ink-40); }
 
 /* Quote cards ("From the Floor") */
 .quotes { padding: 0 var(--gutter) 80px; }

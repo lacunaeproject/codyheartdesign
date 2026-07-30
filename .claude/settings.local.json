@@ -296,7 +296,9 @@
       "Bash(grep -n \"text-spike\\\\s*{\\\\|text-star\\\\s*{\\\\|\\\\.text-spike,\\\\|\\\\.text-star\" css/field.css)",
       "Bash(curl -sL \"https://cdn.dribbble.com/userupload/21469843/file/original-2f76622057665c8caf9d6ee33b3377d4.gif\" -o ref.gif)",
       "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/126.0 Safari/537.36\" --tlsv1.2 \"https://cdn.dribbble.com/userupload/21469843/file/original-2f76622057665c8caf9d6ee33b3377d4.gif\" -o ref.gif)",
-      "Bash(echo \"exit $?\")"
+      "Bash(echo \"exit $?\")",
+      "Bash(mv hudson2.jpg assets/hudson2.jpg)",
+      "Bash(mv bean.jpg assets/bean.jpg)"
     ]
   }
 }

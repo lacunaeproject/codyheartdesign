@@ -288,11 +288,14 @@
     if (!hero) return;
     var pairs = [
       { sel: '.hero-em--name, .hero-heart', pop: document.querySelector('.me-pop') },
-      { sel: '.city-pop', pop: document.querySelector('.chi-flag') }
+      { sel: '.city-pop', pop: document.querySelector('.chi-flag') },
+      { sel: '.more-pop', pop: document.querySelector('.hudson2-pop'), fixed: true },
+      { sel: '.more-pop', pop: document.querySelector('.bean-pop'), fixed: true }
     ];
     var active = null;
 
     function place(p, e) {
+      if (p.fixed) return; // stickers with a home of their own
       var wrap = p.pop.parentElement;
       var cs = getComputedStyle(p.pop);
       var w = parseFloat(cs.width) || 200;
@@ -363,35 +366,6 @@
       });
     }, { threshold: .35 });
     Array.prototype.forEach.call(figs, function (f) { io.observe(f); });
-  })();
-
-  /* ---------- Carousel: drag to scroll ---------- */
-  (function carousel() {
-    var el = document.querySelector('.carousel');
-    if (!el) return;
-    var down = false, startX = 0, startLeft = 0, moved = false;
-
-    el.addEventListener('pointerdown', function (e) {
-      if (e.pointerType !== 'mouse') return; // touch scrolls natively
-      down = true; moved = false;
-      startX = e.clientX;
-      startLeft = el.scrollLeft;
-      el.classList.add('is-dragging');
-    });
-    window.addEventListener('pointermove', function (e) {
-      if (!down) return;
-      var dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) moved = true;
-      el.scrollLeft = startLeft - dx;
-    });
-    window.addEventListener('pointerup', function () {
-      down = false;
-      el.classList.remove('is-dragging');
-    });
-    // Swallow the click that ends a drag so plates don't navigate
-    el.addEventListener('click', function (e) {
-      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
-    }, true);
   })();
 
   /* ---------- TOC scrollspy ---------- */
