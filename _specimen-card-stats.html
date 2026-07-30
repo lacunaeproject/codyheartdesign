@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Card metrics — layout explorations</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="css/site.css?v=36">
+<style>
+/* ---------- Page shell ---------- */
+.spec { max-width: 1060px; margin: 0 auto; padding: 48px var(--gutter) 96px; }
+.spec__head { max-width: 62ch; margin-bottom: 56px; }
+.spec__kicker {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-30);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.spec__head h1 {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color: var(--ink-85);
+  margin-bottom: 12px;
+}
+.spec__head p { color: var(--ink-65); }
+.spec__variant { margin-bottom: 72px; }
+.spec__desc {
+  font-size: 13px;
+  color: var(--ink-55);
+  max-width: 62ch;
+  margin: -12px 0 20px;
+}
+.spec__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media (min-width: 640px) { .spec__grid { grid-template-columns: 1fr 1fr; } }
+
+/* ============================================================
+   A — THREE COLUMNS: the previous shipped layout, kept as
+   the control now that ledger rows are the site default.
+   ============================================================ */
+.v-cols .case-plate__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 14px;
+}
+.v-cols .case-plate__stats > div { display: block; padding: 0; border-top: 0; }
+.v-cols .case-plate__stats span,
+.v-cols .case-plate__stats em { display: block; }
+.v-cols .case-plate__stats em {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 450;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-45);
+}
+
+/* B — LEDGER ROWS: now the site default in site.css; the
+   .v-rows cards below render it with no overrides. */
+
+/* ============================================================
+   C — ONE-LINE STRIP: number + label pairs run inline,
+   separated by middots, wrapping as prose.
+   ============================================================ */
+.v-strip .case-plate__stats {
+  display: block;
+  padding-top: 12px;
+  line-height: 1.7;
+}
+.v-strip .case-plate__stats > div,
+.v-strip .case-plate__stats span,
+.v-strip .case-plate__stats em { display: inline; margin: 0; }
+.v-strip .case-plate__stats > div { border-top: 0; padding: 0; }
+.v-strip .case-plate__stats span { margin-right: 5px; }
+.v-strip .case-plate__stats > div:not(:first-child)::before {
+  content: "\00B7";
+  margin: 0 10px 0 8px;
+  color: var(--ink-30);
+}
+
+/* ============================================================
+   D — CHIPS: each metric a small white pill on the grey
+   surface, wrapping freely. No hairline; the chips are
+   their own furniture.
+   ============================================================ */
+.v-chips .case-plate__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-top: 0;
+  padding-top: 8px;
+}
+.v-chips .case-plate__stats > div {
+  display: inline-flex;
+  flex-direction: row;
+  border-top: 0;
+  align-items: baseline;
+  gap: 6px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px 12px;
+  box-shadow: var(--shadow-flush);
+}
+.v-chips .case-plate__stats span { font-size: 13px; }
+.v-chips .case-plate__stats em { margin-top: 0; }
+
+/* ============================================================
+   E — LEAD METRIC: the first number carries the row at
+   display size; the other two sit beneath it as a pair.
+   ============================================================ */
+.v-lead .case-plate__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+}
+.v-lead .case-plate__stats > div { display: block; padding: 0; border-top: 0; }
+.v-lead .case-plate__stats span,
+.v-lead .case-plate__stats em { display: block; }
+.v-lead .case-plate__stats em { margin-top: 2px; }
+.v-lead .case-plate__stats > div:first-child { grid-column: 1 / -1; }
+.v-lead .case-plate__stats > div:first-child span {
+  font-size: 22px;
+  letter-spacing: -.01em;
+}
+</style>
+</head>
+<body>
+
+<main class="spec">
+  <header class="spec__head">
+    <p class="spec__kicker">Exploration &#183; not linked from the site</p>
+    <h1>Card metrics, five ways</h1>
+    <p>The same two cards each time &#8212; Matching Tool for the long dollar figure, Design&nbsp;ROI for the wide ranges and the long third label. Only the stats block changes; hover still works everywhere. Resize the window to see each one wrap.</p>
+  </header>
+
+  <section class="spec__variant">
+    <div class="section-label"><span>A &#8212; Three columns (previous)</span></div>
+    <p class="spec__desc">How it shipped before. Scannable and symmetric, but the columns force every label to stay short, and three long labels can rag unevenly.</p>
+    <div class="spec__grid v-cols">
+      <a class="case-plate case-plate--blue" href="case-studies/matching-tool.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Internal platform</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Matching Tool</h3>
+        <div class="case-plate__story">
+          <p>The platform existed but hadn&#8217;t shipped. As designer and acting product owner, I ran a two-state pilot, let coordinator distrust set the roadmap, and closed the trust gap fix by fix.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>97%</span><em>operational satisfaction</em></div>
+          <div><span>&#8722;30 sec</span><em>per call, validated</em></div>
+          <div><span>~$500K</span><em>annual savings, modeled</em></div>
+        </div>
+      </a>
+      <a class="case-plate case-plate--pink" href="case-studies/design-roi.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Strategy &amp; ROI</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Design ROI</h3>
+        <div class="case-plate__story">
+          <p>I stopped arguing that design was valuable and modeled it &#8212; on the ledger, against fully-loaded cost, with every assumption inspectable. It became the CTO&#8217;s planning tool.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>9&#8211;11&#215;</span><em>realized return</em></div>
+          <div><span>40&#8211;100&#215;</span><em>scoped upside</em></div>
+          <div><span>3</span><em>functions planning on it</em></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="spec__variant">
+    <div class="section-label"><span>B &#8212; Ledger rows (now live)</span></div>
+    <p class="spec__desc">Each metric on its own line: label left, figure right, hairlines between. Reads like the financial statements the copy keeps invoking, and labels can be as long as they like. Costs vertical space; the cards get taller.</p>
+    <div class="spec__grid v-rows">
+      <a class="case-plate case-plate--blue" href="case-studies/matching-tool.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Internal platform</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Matching Tool</h3>
+        <div class="case-plate__story">
+          <p>The platform existed but hadn&#8217;t shipped. As designer and acting product owner, I ran a two-state pilot, let coordinator distrust set the roadmap, and closed the trust gap fix by fix.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>97%</span><em>operational satisfaction</em></div>
+          <div><span>&#8722;30 sec</span><em>handle time per call, validated</em></div>
+          <div><span>~$500K</span><em>annual savings, modeled</em></div>
+        </div>
+      </a>
+      <a class="case-plate case-plate--pink" href="case-studies/design-roi.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Strategy &amp; ROI</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Design ROI</h3>
+        <div class="case-plate__story">
+          <p>I stopped arguing that design was valuable and modeled it &#8212; on the ledger, against fully-loaded cost, with every assumption inspectable. It became the CTO&#8217;s planning tool.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>9&#8211;11&#215;</span><em>realized return of the current team</em></div>
+          <div><span>40&#8211;100&#215;</span><em>scoped upside with two hires</em></div>
+          <div><span>3</span><em>functions planning on it</em></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="spec__variant">
+    <div class="section-label"><span>C &#8212; One-line strip</span></div>
+    <p class="spec__desc">The metrics run as a single quiet line under the hairline, middots between pairs, wrapping like prose. The most editorial and the most compact &#8212; but the numbers stop being a place the eye can land from across the room.</p>
+    <div class="spec__grid v-strip">
+      <a class="case-plate case-plate--blue" href="case-studies/matching-tool.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Internal platform</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Matching Tool</h3>
+        <div class="case-plate__story">
+          <p>The platform existed but hadn&#8217;t shipped. As designer and acting product owner, I ran a two-state pilot, let coordinator distrust set the roadmap, and closed the trust gap fix by fix.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>97%</span><em>operational satisfaction</em></div>
+          <div><span>&#8722;30 sec</span><em>per call</em></div>
+          <div><span>~$500K</span><em>modeled savings</em></div>
+        </div>
+      </a>
+      <a class="case-plate case-plate--pink" href="case-studies/design-roi.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Strategy &amp; ROI</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Design ROI</h3>
+        <div class="case-plate__story">
+          <p>I stopped arguing that design was valuable and modeled it &#8212; on the ledger, against fully-loaded cost, with every assumption inspectable. It became the CTO&#8217;s planning tool.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>9&#8211;11&#215;</span><em>realized return</em></div>
+          <div><span>40&#8211;100&#215;</span><em>scoped upside</em></div>
+          <div><span>3</span><em>functions planning on it</em></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="spec__variant">
+    <div class="section-label"><span>D &#8212; Chips</span></div>
+    <p class="spec__desc">Each metric a small white pill on the grey surface &#8212; the gate buttons&#8217; furniture, reused. Wraps gracefully at any width and the count per card can vary freely. The most &#8220;product UI&#8221; of the five; possibly too chipper for the ledger voice.</p>
+    <div class="spec__grid v-chips">
+      <a class="case-plate case-plate--blue" href="case-studies/matching-tool.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Internal platform</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Matching Tool</h3>
+        <div class="case-plate__story">
+          <p>The platform existed but hadn&#8217;t shipped. As designer and acting product owner, I ran a two-state pilot, let coordinator distrust set the roadmap, and closed the trust gap fix by fix.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>97%</span><em>operational satisfaction</em></div>
+          <div><span>&#8722;30 sec</span><em>per call</em></div>
+          <div><span>~$500K</span><em>modeled savings</em></div>
+        </div>
+      </a>
+      <a class="case-plate case-plate--pink" href="case-studies/design-roi.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Strategy &amp; ROI</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Design ROI</h3>
+        <div class="case-plate__story">
+          <p>I stopped arguing that design was valuable and modeled it &#8212; on the ledger, against fully-loaded cost, with every assumption inspectable. It became the CTO&#8217;s planning tool.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>9&#8211;11&#215;</span><em>realized return</em></div>
+          <div><span>40&#8211;100&#215;</span><em>scoped upside</em></div>
+          <div><span>3</span><em>functions planning on it</em></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="spec__variant">
+    <div class="section-label"><span>E &#8212; Lead metric</span></div>
+    <p class="spec__desc">One number carries the card at display size; the other two sit beneath as a supporting pair. Strong hierarchy and each card gets a headline stat &#8212; at the cost of the tidy symmetry across the 2&#215;2 grid.</p>
+    <div class="spec__grid v-lead">
+      <a class="case-plate case-plate--blue" href="case-studies/matching-tool.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle class="duo-a" cx="4" cy="4" r="3"/><circle class="duo-a" cx="12" cy="4" r="3"/><circle class="duo-a" cx="20" cy="4" r="3"/><circle class="duo-a" cx="4" cy="12" r="3"/><circle class="duo-a" cx="12" cy="12" r="3"/><circle class="duo-a" cx="20" cy="12" r="3"/><circle class="duo-a" cx="4" cy="20" r="3"/><circle class="duo-a" cx="12" cy="20" r="3"/><circle class="duo-b" cx="19" cy="19" r="5"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Internal platform</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Matching Tool</h3>
+        <div class="case-plate__story">
+          <p>The platform existed but hadn&#8217;t shipped. As designer and acting product owner, I ran a two-state pilot, let coordinator distrust set the roadmap, and closed the trust gap fix by fix.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>97%</span><em>operational satisfaction</em></div>
+          <div><span>&#8722;30 sec</span><em>per call, validated</em></div>
+          <div><span>~$500K</span><em>annual savings, modeled</em></div>
+        </div>
+      </a>
+      <a class="case-plate case-plate--pink" href="case-studies/design-roi.html">
+        <div class="case-plate__head">
+          <div class="menu-item__tile"><svg class="icon-duo c-pink" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect class="duo-a" x="1" y="14" width="5" height="10" rx="1"/><rect class="duo-a" x="9.5" y="9" width="5" height="15" rx="1"/><rect class="duo-b" x="18" y="2" width="5" height="22" rx="1"/></svg></div>
+          <span class="case-plate__kicker">LifeStance &#183; Strategy &amp; ROI</span>
+          <span class="case-plate__cta">View Case Study &#8594;</span>
+        </div>
+        <h3 class="case-plate__name">Design ROI</h3>
+        <div class="case-plate__story">
+          <p>I stopped arguing that design was valuable and modeled it &#8212; on the ledger, against fully-loaded cost, with every assumption inspectable. It became the CTO&#8217;s planning tool.</p>
+        </div>
+        <div class="case-plate__stats">
+          <div><span>9&#8211;11&#215;</span><em>realized return</em></div>
+          <div><span>40&#8211;100&#215;</span><em>scoped upside</em></div>
+          <div><span>3</span><em>functions planning on it</em></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
