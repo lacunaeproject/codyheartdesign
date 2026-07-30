@@ -315,7 +315,14 @@
       "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\mlcheck.js\")",
       "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\maskprobe.js\")",
       "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\cut2.js\")",
-      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\probehud.js\")"
+      "PowerShell(node \"C:\\\\Users\\\\Owner\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Owner-Documents-codyheartdesign\\\\f78f5e9e-f400-4673-88e9-b253b3fff138\\\\scratchpad\\\\probehud.js\")",
+      "Bash(cd C:\\\\Users\\\\codyj\\\\Documents\\\\codyheartdesign *)",
+      "Bash(xargs sed -i 's/site\\\\.css?v=30/site.css?v=31/')",
+      "Bash(xargs sed -i 's/site\\\\.css?v=31/site.css?v=32/')",
+      "Bash(xargs sed -i 's/site\\\\.css?v=32/site.css?v=33/')",
+      "Bash(xargs sed -i 's/site\\\\.css?v=33/site.css?v=34/')",
+      "Bash(xargs sed -i 's/site\\\\.css?v=34/site.css?v=35/')",
+      "Bash(xargs sed -i 's/site\\\\.css?v=35/site.css?v=36/')"
     ]
   }
 }
