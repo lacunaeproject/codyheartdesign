@@ -601,7 +601,9 @@ body.menu-locked { overflow: hidden; }
   /* fluid so he stays clear of us on a narrower window */
   width: clamp(260px, 23vw, 340px);
   height: auto;
-  transform: translateX(110%) rotate(-7deg);
+  /* 125%, not 110% — the -7deg tilt swings his top corner back
+     toward the edge, and at 110% he cleared it by a single pixel. */
+  transform: translateX(125%) rotate(-7deg);
   transform-origin: right center;
   transition: transform .45s var(--ease-out-quart);
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
@@ -615,7 +617,7 @@ body.menu-locked { overflow: hidden; }
   display: block;
   width: 330px;
   height: auto;
-  transform: translateY(110%) rotate(6deg);
+  transform: translateY(122%) rotate(6deg);
   transform-origin: bottom center;
   transition: transform .45s var(--ease-out-quart);
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .22)) drop-shadow(0 1px 4px rgba(0, 0, 0, .12));
